@@ -173,7 +173,8 @@ result.innerHTML = "Loading...";
 try{
 
 const response = await fetch(
-`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`
+const response = await fetch(
+`https://api.frankfurter.app/v1/latest?amount=${amount}&from=${from}&to=${to}`
 );
 
 const data = await response.json();

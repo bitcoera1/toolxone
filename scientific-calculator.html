@@ -233,6 +233,219 @@ Sound OFF
 </div>
 
 <!-- PART 2 JavaScript goes here -->
+<script>
 
+let expression = "";
+let ans = 0;
+let grandTotal = 0;
+
+let history = [];
+let historyIndex = -1;
+
+let soundEnabled = false;
+
+function updateDisplay() {
+    document.getElementById("expression").textContent = expression;
+}
+
+function playSound() {
+    if (!soundEnabled) return;
+
+    try {
+        const audio = new Audio(
+            "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEA"
+        );
+        audio.play().catch(() => {});
+    } catch (e) {}
+}
+
+function appendValue(value) {
+    expression += value;
+    updateDisplay();
+    playSound();
+}
+
+function appendFunction(func) {
+
+    if(func === "sin("){
+        expression += "Math.sin(";
+    }
+
+    if(func === "cos("){
+        expression += "Math.cos(";
+    }
+
+    if(func === "tan("){
+        expression += "Math.tan(";
+    }
+
+    if(func === "log("){
+        expression += "Math.log10(";
+    }
+
+    if(func === "ln("){
+        expression += "Math.log(";
+    }
+
+    updateDisplay();
+    playSound();
+}
+
+function clearAll() {
+    expression = "";
+    document.getElementById("result").textContent = "0";
+    updateDisplay();
+}
+
+function backspace() {
+    expression = expression.slice(0, -1);
+    updateDisplay();
+}
+
+function square() {
+    expression += "**2";
+    updateDisplay();
+}
+
+function useAns() {
+    expression += ans;
+    updateDisplay();
+}
+
+function calculate() {
+
+    try {
+
+        let result = eval(expression);
+
+        ans = result;
+
+        grandTotal += Number(result);
+
+        history.push({
+            exp: expression,
+            result: result
+        });
+
+        historyIndex = history.length - 1;
+
+        document.getElementById("result").textContent = result;
+
+    } catch {
+
+        document.getElementById("result").textContent = "Error";
+
+    }
+
+}
+
+function showGT() {
+
+    document.getElementById("result").textContent =
+        "GT = " + grandTotal;
+
+}
+
+function previousCalc() {
+
+    if(history.length === 0) return;
+
+    historyIndex--;
+
+    if(historyIndex < 0)
+        historyIndex = 0;
+
+    expression = history[historyIndex].exp;
+
+    document.getElementById("result").textContent =
+        history[historyIndex].result;
+
+    updateDisplay();
+
+}
+
+function nextCalc() {
+
+    if(history.length === 0) return;
+
+    historyIndex++;
+
+    if(historyIndex >= history.length)
+        historyIndex = history.length - 1;
+
+    expression = history[historyIndex].exp;
+
+    document.getElementById("result").textContent =
+        history[historyIndex].result;
+
+    updateDisplay();
+
+}
+
+function replayHistory() {
+
+    if(history.length === 0) return;
+
+    let i = 0;
+
+    let interval = setInterval(() => {
+
+        if(i >= history.length) {
+
+            clearInterval(interval);
+            return;
+
+        }
+
+        expression = history[i].exp;
+
+        document.getElementById("result").textContent =
+            history[i].result;
+
+        updateDisplay();
+
+        i++;
+
+    }, 1200);
+
+}
+
+function toggleSound() {
+
+    soundEnabled = !soundEnabled;
+
+    document.getElementById("status").textContent =
+        soundEnabled ? "Sound ON" : "Sound OFF";
+
+}
+
+document.addEventListener("keydown", function(e){
+
+    const key = e.key;
+
+    if("0123456789".includes(key))
+        appendValue(key);
+
+    else if(["+","-","*","/","(",")",".","%"].includes(key))
+        appendValue(key);
+
+    else if(key === "Enter"){
+        e.preventDefault();
+        calculate();
+    }
+
+    else if(key === "Backspace"){
+        backspace();
+    }
+
+    else if(key === "Delete"){
+        clearAll();
+    }
+
+});
+
+updateDisplay();
+
+</script>
 </body>
 </html>

@@ -3,321 +3,236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scientific Calculator Pro</title>
+
+<title>Scientific Calculator - Toolers</title>
 
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-.wrapper {
-  display: flex;
-  gap: 15px;
+body{
+font-family:Arial, sans-serif;
+background:#f4f6f8;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
 }
 
-/* CALCULATOR */
-.calculator {
-  width: 360px;
-  background: #111827;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+.calculator{
+width:100%;
+max-width:520px;
+background:#2d3748;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
 }
 
-/* DISPLAY */
-#display {
-  width: 100%;
-  height: 60px;
-  font-size: 22px;
-  text-align: right;
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  margin-bottom: 12px;
-  background: #1f2937;
-  color: #fff;
+.logo{
+text-align:center;
+color:white;
+font-size:24px;
+font-weight:bold;
+margin-bottom:15px;
 }
 
-/* GRID */
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+.display{
+background:#1a202c;
+border-radius:12px;
+padding:15px;
+margin-bottom:15px;
+color:white;
 }
 
-/* BASE BUTTON */
-button {
-  height: 48px;
-  border: none;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.15s ease;
+.expression{
+min-height:35px;
+font-size:20px;
+text-align:right;
+word-wrap:break-word;
 }
 
-button:hover {
-  transform: scale(1.03);
-  filter: brightness(1.1);
+.result{
+min-height:45px;
+font-size:32px;
+font-weight:bold;
+text-align:right;
 }
 
-/* TYPES */
-.num {
-  background: #374151;
-  color: #e5e7eb;
+.buttons{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
 }
 
-.op {
-  background: #2563eb;
-  color: white;
+button{
+height:58px;
+border:none;
+border-radius:10px;
+font-size:18px;
+cursor:pointer;
+transition:.2s;
 }
 
-.func {
-  background: #4c1d95;
-  color: #e9d5ff;
+button:hover{
+transform:scale(1.03);
 }
 
-.danger {
-  background: #7f1d1d;
-  color: #fecaca;
+.num{
+background:#e2e8f0;
 }
 
-/* HISTORY */
-.history {
-  width: 220px;
-  background: #111827;
-  border-radius: 12px;
-  padding: 10px;
-  color: white;
-  overflow-y: auto;
-  max-height: 420px;
+.operator{
+background:#10b981;
+color:white;
 }
 
-.history h3 {
-  text-align: center;
-  margin: 0 0 10px 0;
+.function{
+background:#475569;
+color:white;
 }
 
-.history-item {
-  background: #1f2937;
-  padding: 6px;
-  margin: 5px 0;
-  border-radius: 8px;
-  font-size: 13px;
-  cursor: pointer;
+.equal{
+background:#2563eb;
+color:white;
 }
 
-.history-item:hover {
-  background: #374151;
+.clear{
+background:#dc2626;
+color:white;
 }
+
+.special{
+background:#7c3aed;
+color:white;
+}
+
+.footer-row{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+margin-top:10px;
+}
+
+.back-home{
+display:block;
+margin-top:15px;
+text-align:center;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.status{
+margin-top:10px;
+text-align:center;
+color:#cbd5e1;
+font-size:14px;
+}
+
+@media(max-width:600px){
+
+button{
+height:52px;
+font-size:16px;
+}
+
+.result{
+font-size:26px;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="wrapper">
-
-<!-- CALCULATOR -->
 <div class="calculator">
 
-  <input type="text" id="display" disabled>
-
-  <div class="buttons">
-
-<!-- ROW 1 (scientific) -->
-<button class="func">sin</button>
-<button class="func">cos</button>
-<button class="func">tan</button>
-<button class="danger" onclick="clearDisplay()">C</button>
-
-<!-- ROW 2 -->
-<button class="num" onclick="append('7')">7</button>
-<button class="num" onclick="append('8')">8</button>
-<button class="num" onclick="append('9')">9</button>
-<button class="op" onclick="append('/')">/</button>
-
-<!-- ROW 3 -->
-<button class="num" onclick="append('4')">4</button>
-<button class="num" onclick="append('5')">5</button>
-<button class="num" onclick="append('6')">6</button>
-<button class="op" onclick="append('*')">*</button>
-
-<!-- ROW 4 -->
-<button class="num" onclick="append('1')">1</button>
-<button class="num" onclick="append('2')">2</button>
-<button class="num" onclick="append('3')">3</button>
-<button class="op" onclick="append('-')">-</button>
-
-<!-- ROW 5 (FIXED ALIGNMENT ROW) -->
-<button class="num" onclick="append('0')">0</button>
-<button class="num" onclick="append('.')">.</button>
-<button class="op" onclick="append('+')">+</button>
-<button class="op" onclick="calculate()">=</button>
-
-<!-- ROW 6 -->
-<button class="func" onclick="append('Math.sqrt(')">√</button>
-<button class="func" onclick="append('Math.PI')">π</button>
-<button class="func" onclick="append('Math.E')">e</button>
-<button class="danger" onclick="deleteLast()">DEL</button>
-
-<!-- ROW 7 -->
-<button class="func" onclick="toggleSign()">+/-</button>
-<button class="func" onclick="percentage()">%</button>
-<button class="func" onclick="grandTotal()">GT</button>
-<button class="func" onclick="autoReplay()">AUTO</button>
-
-<!-- ROW 8 -->
-<button class="func" onclick="prevHistory()">⬆</button>
-<button class="func" onclick="nextHistory()">⬇</button>
-<button disabled></button>
-<button disabled></button>
-
-</div>
+<div class="logo">
+TOOLERS SCIENTIFIC CALCULATOR
 </div>
 
-<!-- HISTORY -->
-<div class="history">
-  <h3>History</h3>
-  <div id="historyList"></div>
+<div class="display">
+<div class="expression" id="expression"></div>
+<div class="result" id="result">0</div>
 </div>
+
+<div class="buttons">
+
+<button class="function" onclick="appendFunction('sin(')">sin</button>
+<button class="function" onclick="appendFunction('cos(')">cos</button>
+<button class="function" onclick="appendFunction('tan(')">tan</button>
+<button class="function" onclick="appendFunction('log(')">log</button>
+
+<button class="function" onclick="appendFunction('ln(')">ln</button>
+<button class="function" onclick="appendValue('Math.sqrt(')">√</button>
+<button class="function" onclick="appendValue('Math.PI')">π</button>
+<button class="function" onclick="appendValue('Math.E')">e</button>
+
+<button class="function" onclick="appendValue('(')">(</button>
+<button class="function" onclick="appendValue(')')">)</button>
+<button class="function" onclick="square()">x²</button>
+<button class="function" onclick="appendValue('**')">xʸ</button>
+
+<button class="num" onclick="appendValue('7')">7</button>
+<button class="num" onclick="appendValue('8')">8</button>
+<button class="num" onclick="appendValue('9')">9</button>
+<button class="operator" onclick="appendValue('/')">÷</button>
+
+<button class="num" onclick="appendValue('4')">4</button>
+<button class="num" onclick="appendValue('5')">5</button>
+<button class="num" onclick="appendValue('6')">6</button>
+<button class="operator" onclick="appendValue('*')">×</button>
+
+<button class="num" onclick="appendValue('1')">1</button>
+<button class="num" onclick="appendValue('2')">2</button>
+<button class="num" onclick="appendValue('3')">3</button>
+<button class="operator" onclick="appendValue('-')">−</button>
+
+<button class="num" onclick="appendValue('0')">0</button>
+<button class="num" onclick="appendValue('.')">.</button>
+<button class="num" onclick="appendValue('%')">%</button>
+<button class="operator" onclick="appendValue('+')">+</button>
+
+<button class="clear" onclick="clearAll()">C</button>
+<button class="clear" onclick="backspace()">⌫</button>
+<button class="special" onclick="useAns()">ANS</button>
+<button class="equal" onclick="calculate()">=</button>
 
 </div>
 
-<script>
+<div class="footer-row">
 
-let display = document.getElementById("display");
-let historyList = document.getElementById("historyList");
+<button class="special" onclick="showGT()">GT</button>
+<button class="special" onclick="previousCalc()">◀</button>
+<button class="special" onclick="nextCalc()">▶</button>
+<button class="special" onclick="replayHistory()">Replay</button>
 
-let history = [];
-let historyIndex = -1;
+</div>
 
-function append(v){ display.value += v; }
-function clearDisplay(){ display.value=""; }
-function deleteLast(){ display.value = display.value.slice(0,-1); }
+<div class="footer-row">
 
-function toggleSign(){
-  if(display.value){
-    display.value = display.value.startsWith("-")
-      ? display.value.slice(1)
-      : "-" + display.value;
-  }
-}
+<button class="function" onclick="toggleSound()">🔊 Sound</button>
 
-function percentage(){
-  if(display.value){
-    display.value = (parseFloat(display.value)/100).toString();
-  }
-}
+</div>
 
-function toRad(x){ return x*Math.PI/180; }
+<div class="status" id="status">
+Sound OFF
+</div>
 
-function calculate(){
-  try{
-    let expr = display.value;
+<a class="back-home" href="index.html">
+← Back To Home
+</a>
 
-    expr = expr
-      .replace(/sin\(/g,"Math.sin(toRad(")
-      .replace(/cos\(/g,"Math.cos(toRad(")
-      .replace(/tan\(/g,"Math.tan(toRad(");
+</div>
 
-    let result = eval(expr);
-
-    display.value = result;
-
-    history.push(expr + " = " + result);
-    historyIndex = history.length;
-
-    renderHistory();
-
-  } catch(e){
-    display.value="Error";
-  }
-}
-
-function renderHistory(){
-  historyList.innerHTML="";
-  history.forEach(item=>{
-    let div=document.createElement("div");
-    div.className="history-item";
-    div.textContent=item;
-    div.onclick=()=>display.value=item.split(" = ")[0];
-    historyList.appendChild(div);
-  });
-}
-
-/* NAVIGATION */
-function prevHistory(){
-  if(historyIndex>0){
-    historyIndex--;
-    display.value = history[historyIndex].split(" = ")[0];
-  }
-}
-
-function nextHistory(){
-  if(historyIndex<history.length-1){
-    historyIndex++;
-    display.value = history[historyIndex].split(" = ")[0];
-  }
-}
-
-/* GT */
-function grandTotal(){
-  let total = history.reduce((s,i)=>{
-    let r = parseFloat(i.split(" = ")[1]);
-    return s + (isNaN(r)?0:r);
-  },0);
-  display.value = total;
-}
-
-/* AUTO REPLAY */
-function autoReplay(){
-  let i=0;
-  let t=setInterval(()=>{
-    if(i>=history.length){ clearInterval(t); return; }
-    display.value = history[i].split(" = ")[0];
-    i++;
-  },800);
-}
-
-</script>
+<!-- PART 2 JavaScript goes here -->
 
 </body>
 </html>
-document.addEventListener("keydown", function (e) {
-
-  // numbers (top row + numpad)
-  if (!isNaN(e.key)) {
-    append(e.key);
-  }
-
-  // operators
-  if (e.key === "+") append("+");
-  if (e.key === "-") append("-");
-  if (e.key === "*") append("*");
-  if (e.key === "/") append("/");
-
-  // decimal
-  if (e.key === ".") append(".");
-
-  // enter = calculate
-  if (e.key === "Enter") {
-    e.preventDefault();
-    calculate();
-  }
-
-  // backspace = delete last
-  if (e.key === "Backspace") {
-    deleteLast();
-  }
-
-  // escape = clear
-  if (e.key === "Escape") {
-    clearDisplay();
-  }
-});

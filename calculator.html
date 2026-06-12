@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Calculator - Toolers</title>
 
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fa;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+margin:0;
+}
+
+.calculator{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 4px 15px rgba(0,0,0,0.15);
+width:320px;
+}
+
+h1{
+text-align:center;
+color:#4CAF50;
+font-size:24px;
+margin-bottom:15px;
+}
+
+#display{
+width:100%;
+height:60px;
+font-size:24px;
+text-align:right;
+padding:10px;
+margin-bottom:15px;
+box-sizing:border-box;
+border:2px solid #ddd;
+border-radius:8px;
+}
+
+.buttons{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+
+button{
+height:60px;
+font-size:20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#f1f1f1;
+}
+
+button:hover{
+background:#ddd;
+}
+
+.operator{
+background:#4CAF50;
+color:white;
+}
+
+.operator:hover{
+background:#45a049;
+}
+
+.equal{
+background:#2196F3;
+color:white;
+}
+
+.equal:hover{
+background:#1976D2;
+}
+
+.clear{
+background:#f44336;
+color:white;
+}
+
+.clear:hover{
+background:#d32f2f;
+}
+
+.back{
+display:block;
+text-align:center;
+margin-top:20px;
+text-decoration:none;
+font-weight:bold;
+color:#4CAF50;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+
+<h1>Basic Calculator</h1>
+
+<input type="text" id="display" readonly>
+
+<div class="buttons">
+
+<button onclick="appendValue('7')">7</button>
+<button onclick="appendValue('8')">8</button>
+<button onclick="appendValue('9')">9</button>
+<button class="operator" onclick="appendValue('/')">÷</button>
+
+<button onclick="appendValue('4')">4</button>
+<button onclick="appendValue('5')">5</button>
+<button onclick="appendValue('6')">6</button>
+<button class="operator" onclick="appendValue('*')">×</button>
+
+<button onclick="appendValue('1')">1</button>
+<button onclick="appendValue('2')">2</button>
+<button onclick="appendValue('3')">3</button>
+<button class="operator" onclick="appendValue('-')">−</button>
+
+<button onclick="appendValue('0')">0</button>
+<button onclick="appendValue('.')">.</button>
+<button class="equal" onclick="calculate()">=</button>
+<button class="operator" onclick="appendValue('+')">+</button>
+
+<button class="clear" onclick="clearDisplay()" style="grid-column: span 4;">
+C
+</button>
+
+</div>
+
+<a class="back" href="index.html">← Back to Home</a>
+
+</div>
+
+<script>
+
+function appendValue(value){
+document.getElementById("display").value += value;
+}
+
+function clearDisplay(){
+document.getElementById("display").value = "";
+}
+
+function calculate(){
+try{
+document.getElementById("display").value =
+eval(document.getElementById("display").value);
+}
+catch{
+document.getElementById("display").value = "Error";
+}
+}
+
+</script>
+
+</body>
+</html>

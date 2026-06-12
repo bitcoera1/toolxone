@@ -164,3 +164,35 @@ document.getElementById("display").value = "Error";
 
 </body>
 </html>
+document.addEventListener("keydown", function (e) {
+
+  // numbers (top row + numpad)
+  if (!isNaN(e.key)) {
+    append(e.key);
+  }
+
+  // operators
+  if (e.key === "+") append("+");
+  if (e.key === "-") append("-");
+  if (e.key === "*") append("*");
+  if (e.key === "/") append("/");
+
+  // decimal
+  if (e.key === ".") append(".");
+
+  // enter = calculate
+  if (e.key === "Enter") {
+    e.preventDefault();
+    calculate();
+  }
+
+  // backspace = delete last
+  if (e.key === "Backspace") {
+    deleteLast();
+  }
+
+  // escape = clear
+  if (e.key === "Escape") {
+    clearDisplay();
+  }
+});

@@ -249,16 +249,33 @@ function updateDisplay() {
 }
 
 function playSound() {
+
     if (!soundEnabled) return;
 
-    try {
-        const audio = new Audio(
-            "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEA"
-        );
-        audio.play().catch(() => {});
-    } catch (e) {}
-}
+    const audioContext =
+        new (window.AudioContext || window.webkitAudioContext)();
 
+    const oscillator =
+        audioContext.createOscillator();
+
+    const gainNode =
+        audioContext.createGain();
+
+    oscillator.connect(gainNode);
+
+    gainNode.connect(audioContext.destination);
+
+    oscillator.type = "square";
+
+    oscillator.frequency.value = 600;
+
+    gainNode.gain.value = 0.05;
+
+    oscillator.start();
+
+    oscillator.stop(audioContext.currentTime + 0.05);
+
+}
 function appendValue(value) {
     expression += value;
     updateDisplay();

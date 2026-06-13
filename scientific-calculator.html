@@ -282,9 +282,21 @@ function playSound() {
 
 function appendValue(value) {
 
-    if (justCalculated && "0123456789.".includes(value)) {
-        expression = "";
-        resultDisplay.textContent = "0";
+    if (justCalculated) {
+
+        if ("0123456789.".includes(value)) {
+
+            expression = "";
+            resultDisplay.textContent = "0";
+
+        }
+
+        else if (["+", "-", "*", "/", "%"].includes(value)) {
+
+            expression = String(ans);
+
+        }
+
         justCalculated = false;
     }
 

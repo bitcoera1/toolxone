@@ -173,6 +173,35 @@ result.innerHTML = "Loading...";
 try{
 
 const response = await fetch(
+`https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`
+);
+
+if(!response.ok){
+throw new Error("API Error");
+}
+
+const data = await response.json();
+
+const convertedAmount = data.rates[to];
+
+result.innerHTML =
+`${amount} ${from} = ${convertedAmount.toFixed(2)} ${to}`;
+
+}
+catch(error){
+
+result.innerHTML =
+"Unable to fetch live exchange rates. Please try again.";
+
+console.error(error);
+
+}
+
+}
+result.innerHTML = "Loading...";
+
+try{
+
 const response = await fetch(
 `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`
 );

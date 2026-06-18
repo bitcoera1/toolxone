@@ -13,6 +13,15 @@ margin:0;
 padding:0;
 }
 
+  .status-bar{
+margin-top:15px;
+text-align:center;
+font-size:15px;
+font-weight:600;
+color:#10B981;
+transition:all .3s ease;
+}
+  
 .container{
 max-width:600px;
 margin:40px auto;
@@ -144,6 +153,10 @@ Swap Currencies
 
 <div class="result" id="result"></div>
 
+<div id="statusBar" class="status-bar">
+Ready ✔
+</div>
+  
 <div class="note">
 Live exchange rates powered by Frankfurter API.
 </div>
@@ -179,8 +192,9 @@ async function convertCurrency() {
 
     if (amount <= 0 || isNaN(amount)) {
 
-        result.innerHTML = "Please enter a valid amount.";
-        return;
+document.getElementById("statusBar").innerHTML =
+"⏳ Checking latest exchange rates...";
+      return;
 
     }
 
@@ -210,13 +224,16 @@ async function convertCurrency() {
             rate,
             data
         );
-
+document.getElementById("statusBar").innerHTML =
+"✅ Updated Successfully";
     }
 
     catch (error) {
 
         console.error(error);
-
+document.getElementById("statusBar").innerHTML =
+"❌ Connection Error";
+      
         result.innerHTML =
         "Unable to fetch live exchange rates. Please try again.";
 

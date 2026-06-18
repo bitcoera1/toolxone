@@ -211,8 +211,8 @@ const rate = data.rates[to];
 
 const convertedAmount = amount * rate;
 
-const exchangeRate = data.rates[to] / amount;
-
+const exchangeRate = convertedAmount / Number(amount);
+  
 result.innerHTML = `
 <h3 style="color:#10B981; margin-bottom:15px;">
 💱 Currency Conversion

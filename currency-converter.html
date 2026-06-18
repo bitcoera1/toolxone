@@ -156,77 +156,93 @@ Live exchange rates powered by Frankfurter API.
 
 <script>
 
-function swapCurrencies(){
+function swapCurrencies() {
 
-const from = document.getElementById("fromCurrency");
-const to = document.getElementById("toCurrency");
+    const from = document.getElementById("fromCurrency");
+    const to = document.getElementById("toCurrency");
 
-const temp = from.value;
-from.value = to.value;
-to.value = temp;
+    let temp = from.value;
+    from.value = to.value;
+    to.value = temp;
 
-}
-
-async function convertCurrency(){
-
-const amount = parseFloat(
-document.getElementById("amount").value
-);
-
-const from =
-document.getElementById("fromCurrency").value;
-
-const to =
-document.getElementById("toCurrency").value;
-
-const result =
-document.getElementById("result");
-
-if(!amount || amount <= 0){
-
-result.innerHTML =
-"Please enter a valid amount.";
-
-return;
+    convertCurrency();
 
 }
 
-result.innerHTML = "Loading...";
+async function convertCurrency() {
 
-try{
+    const amount = Number(document.getElementById("amount").value);
+    const from = document.getElementById("fromCurrency").value;
+    const to = document.getElementById("toCurrency").value;
 
-const response = await fetch(
-`https://open.er-api.com/v6/latest/${from}`
-);
+    const result = document.getElementById("result");
 
-const data = await response.json();
+    if (amount <= 0 || isNaN(amount)) {
 
-if(data.result !== "success"){
+        result.innerHTML = "Please enter a valid amount.";
+        return;
 
-throw new Error("Exchange rate error");
+    }
+
+    result.innerHTML = "Loading latest exchange rates...";
+
+    try {
+
+        const response = await fetch(
+            `https://open.er-api.com/v6/latest/${from}`
+        );
+
+        if (!response.ok) {
+            throw new Error("API Error");
+        }
+
+        const data = await response.json();
+
+        const rate = data.rates[to];
+
+        const convertedAmount = amount * rate;
+
+        displayResult(
+            amount,
+            from,
+            to,
+            convertedAmount,
+            rate,
+            data
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        result.innerHTML =
+        "Unable to fetch live exchange rates. Please try again.";
+
+    }
 
 }
 
-const rate = data.rates[to];
+function displayResult(amount, from, to, convertedAmount, rate, data) {
 
-const convertedAmount = amount * rate;
+    const result = document.getElementById("result");
 
-const exchangeRate = convertedAmount / Number(amount);
-  
-result.innerHTML = `
-<h3 style="color:#10B981; margin-bottom:15px;">
+    result.innerHTML = `
+
+<h3 style="color:#10B981;margin-bottom:15px;">
 💱 Currency Conversion
 </h3>
 
-<div style="font-size:28px; margin-bottom:10px;">
+<div style="font-size:28px;">
 ${amount} ${from}
 </div>
 
-<div style="font-size:24px; color:#10B981; margin-bottom:15px;">
+<div style="font-size:22px;color:#10B981;margin:12px 0;">
 ↓
 </div>
 
-<div style="font-size:30px; font-weight:bold;">
+<div style="font-size:30px;font-weight:bold;">
 ${convertedAmount.toFixed(2)} ${to}
 </div>
 
@@ -234,35 +250,18 @@ ${convertedAmount.toFixed(2)} ${to}
 
 <div style="font-size:16px;">
 <b>Exchange Rate</b><br>
-1 ${from} = ${exchangeRate.toFixed(4)} ${to}
+1 ${from} = ${rate.toFixed(4)} ${to}
 </div>
 
-<div style="margin-top:15px; color:#10B981;">
-✔ Live Exchange Rate
+<div style="margin-top:15px;color:#10B981;">
+✔ Latest Exchange Rate Available
 </div>
+
 `;
 
 }
-catch(error){
-
-console.error(error);
-
-result.innerHTML =
-"Unable to fetch live exchange rates. Please try again.";
-
-}
-
-}
-// Enter key support
-document.addEventListener("keydown", function(e){
-
-if(e.key === "Enter"){
-convertCurrency();
-}
-
-});
 
 </script>
-
+  
 </body>
 </html>

@@ -211,8 +211,36 @@ const rate = data.rates[to];
 
 const convertedAmount = amount * rate;
 
-result.innerHTML =
-`${amount} ${from} = ${convertedAmount.toFixed(2)} ${to}`;
+const exchangeRate = data.rates[to] / amount;
+
+result.innerHTML = `
+<h3 style="color:#10B981; margin-bottom:15px;">
+💱 Currency Conversion
+</h3>
+
+<div style="font-size:28px; margin-bottom:10px;">
+${amount} ${from}
+</div>
+
+<div style="font-size:24px; color:#10B981; margin-bottom:15px;">
+↓
+</div>
+
+<div style="font-size:30px; font-weight:bold;">
+${convertedAmount.toFixed(2)} ${to}
+</div>
+
+<hr style="margin:20px 0;">
+
+<div style="font-size:16px;">
+<b>Exchange Rate</b><br>
+1 ${from} = ${exchangeRate.toFixed(4)} ${to}
+</div>
+
+<div style="margin-top:15px; color:#10B981;">
+✔ Live Exchange Rate
+</div>
+`;
 
 }
 catch(error){

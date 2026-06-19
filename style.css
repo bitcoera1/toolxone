@@ -1,1 +1,33 @@
+/* =====================================
+   TOOLERS DESIGN SYSTEM v1.0
+   ===================================== */
 
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Body */
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#F8FAFC;
+    color:#333333;
+    line-height:1.6;
+}
+
+/* Links */
+
+a{
+    text-decoration:none;
+}
+
+/* Images */
+
+img{
+    max-width:100%;
+    display:block;
+}

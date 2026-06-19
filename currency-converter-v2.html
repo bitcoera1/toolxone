@@ -65,18 +65,25 @@ background:#2196F3;
 background:#1976D2;
 }
 
-.result{
-margin-top:20px;
-padding:20px;
-background:#f8fafc;
-border:2px solid #10B981;
-border-radius:10px;
-font-size:20px;
-font-weight:bold;
+.result-card{
+margin-top:25px;
+padding:25px;
+background:white;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 text-align:center;
-color:#1e293b;
-line-height:1.8;
-box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.big-result{
+font-size:42px;
+font-weight:700;
+color:#10B981;
+margin-bottom:15px;
+}
+
+.exchange-rate{
+font-size:18px;
+color:#666;
 }
   
 .note{
@@ -151,8 +158,20 @@ font-weight:bold;
 Swap Currencies
 </button>
 
-<div class="result" id="result"></div>
+<div class="result-card">
 
+<div id="result" class="big-result">
+Waiting for conversion...
+
+</div>
+
+<div id="exchangeRate" class="exchange-rate">
+
+Exchange rate will appear here.
+
+</div>
+
+</div>
 <div id="statusBar" class="status-bar">
 Ready ✔
 </div>
@@ -245,37 +264,24 @@ function displayResult(amount, from, to, convertedAmount, rate, data) {
 
     const result = document.getElementById("result");
 
-    result.innerHTML = `
+result.innerHTML = `
+<div style="font-size:52px;
+font-weight:bold;
+color:#10B981;
+margin-bottom:15px;">
 
-<h3 style="color:#10B981;margin-bottom:15px;">
-💱 Currency Conversion
-</h3>
-
-<div style="font-size:28px;">
-${amount} ${from}
-</div>
-
-<div style="font-size:22px;color:#10B981;margin:12px 0;">
-↓
-</div>
-
-<div style="font-size:30px;font-weight:bold;">
 ${convertedAmount.toFixed(2)} ${to}
+
 </div>
 
-<hr style="margin:20px 0;">
+<div style="font-size:20px;
+color:#666;">
 
-<div style="font-size:16px;">
-<b>Exchange Rate</b><br>
 1 ${from} = ${rate.toFixed(4)} ${to}
-</div>
 
-<div style="margin-top:15px;color:#10B981;">
-✔ Latest Exchange Rate Available
 </div>
-
 `;
-
+  
 }
 
 </script>

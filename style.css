@@ -266,6 +266,44 @@ color:white;
 }
 
 /* ========================================
+   FEATURED DASHBOARD LAYOUT
+======================================== */
+
+.featured-content{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:40px;
+}
+
+.featured-left{
+    flex:1;
+}
+
+.featured-right{
+    flex:1;
+    text-align:center;
+}
+
+.graph-placeholder{
+    height:240px;
+    background:rgba(255,255,255,.15);
+    border:2px dashed rgba(255,255,255,.45);
+    border-radius:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+.graph-note{
+    font-size:16px;
+    opacity:.9;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 

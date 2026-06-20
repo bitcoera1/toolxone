@@ -176,6 +176,29 @@ onkeyup="searchTools()">
 <p>Fast • Accurate • Free</p>
 
 </footer>
+<script>
 
+function searchTools() {
+
+    let input = document.getElementById("toolSearch").value.toLowerCase();
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card) {
+
+        let title = card.querySelector("h3").innerText.toLowerCase();
+
+        if (title.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+</script>
+  
 </body>
 </html>

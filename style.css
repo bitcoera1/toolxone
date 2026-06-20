@@ -163,6 +163,42 @@ background:#10B981;
 color:white;
 
 }
+/* ========================================
+   SEARCH SECTION
+======================================== */
+
+.search-section{
+    max-width:800px;
+    margin:30px auto 10px;
+    padding:35px 25px;
+    background:white;
+    border-radius:22px;
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+    text-align:center;
+    border:1px solid #e5e7eb;
+}
+
+.search-section h2{
+    font-size:32px;
+    color:#10B981;
+    margin-bottom:20px;
+}
+
+#toolSearch{
+    width:100%;
+    max-width:600px;
+    padding:16px 22px;
+    font-size:18px;
+    border:2px solid #10B981;
+    border-radius:50px;
+    outline:none;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+#toolSearch:focus{
+    box-shadow:0 0 22px rgba(16,185,129,.30);
+}
 
 /* ========================================
    RESPONSIVE

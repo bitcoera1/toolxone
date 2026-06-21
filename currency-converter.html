@@ -175,8 +175,9 @@ Swap Currencies
 <div class="result" id="result"></div>
 <div class="chart-box">
 
-<h3>📈 Live Exchange Rate Trend</h3>
-
+<h3 id="chartTitle">
+📈 Exchange Rate Trend
+</h3>
 <canvas id="rateChart"></canvas>
 
 </div>
@@ -303,73 +304,87 @@ ${convertedAmount.toFixed(2)} ${to}
 </div>
 
 `;
+  
+document.getElementById("chartTitle").innerHTML =
+`📈 ${from} → ${to} Trend`;
+  
+updateRateChart(from, to, rate);
 
 }
 
   // ===== Live Exchange Chart =====
 
-const ctx = document.getElementById('rateChart');
+// ===== Live Exchange Chart =====
 
-if (ctx) {
+let rateChart;
 
-new Chart(ctx, {
+function createSampleTrend(baseRate){
 
-type: 'line',
-
-data: {
-
-labels: ['6h','5h','4h','3h','2h','1h','Now'],
-
-datasets: [{
-
-label: 'Exchange Rate',
-
-data: [279.8,280.0,279.9,280.1,280.2,280.3,280.25],
-
-borderColor:'#10B981',
-
-backgroundColor:'rgba(16,185,129,0.15)',
-
-fill:true,
-
-tension:0.4,
-
-pointRadius:4
-
-}]
-
-},
-
-options:{
-
-responsive:true,
-
-plugins:{
-
-legend:{
-
-display:false
+    return [
+        baseRate * 0.996,
+        baseRate * 0.998,
+        baseRate * 0.997,
+        baseRate * 1.001,
+        baseRate * 1.003,
+        baseRate * 1.002,
+        baseRate
+    ];
 
 }
 
-},
+function updateRateChart(from, to, rate){
 
-scales:{
+    const ctx = document.getElementById("rateChart");
 
-y:{
+    if(!ctx){
+        return;
+    }
 
-beginAtZero:false
+    const trendData = createSampleTrend(rate);
 
-}
+    if(!rateChart){
 
-}
+        rateChart = new Chart(ctx, {
 
-}
+            type:"line",
 
-});
+            data:{
+                labels:["6h","5h","4h","3h","2h","1h","Now"],
+                datasets:[{
+                    label:`${from} to ${to}`,
+                    data:trendData,
+                    borderColor:"#10B981",
+                    backgroundColor:"rgba(16,185,129,0.15)",
+                    fill:true,
+                    tension:0.4,
+                    pointRadius:4
+                }]
+            },
 
-}
-</script>
-  
+            options:{
+                responsive:true,
+                plugins:{
+                    legend:{
+                        display:false
+                    }
+                },
+                scales:{
+                    y:{
+                        beginAtZero:false
+                    }
+                }
+            }
+
+        });
+
+    }else{
+
+        rateChart.data.datasets[0].label = `${from} to ${to}`;
+        rateChart.data.datasets[0].data = trendData;
+        rateChart.update();
+
+    }
+
+}  
 </body>
 </html>

@@ -270,8 +270,8 @@ document.getElementById("statusBar").innerHTML =
 
 }
 
-function displayResult(amount, from, to, convertedAmount, rate, data) {
-
+async function displayResult(amount, from, to, convertedAmount, rate, data){
+  
     const result = document.getElementById("result");
 
     result.innerHTML = `
@@ -308,8 +308,8 @@ ${convertedAmount.toFixed(2)} ${to}
 document.getElementById("chartTitle").innerHTML =
 `📈 ${from} → ${to} Trend`;
   
-updateRateChart(from, to, rate);
-
+await updateRateChart(from, to, rate);
+  
 }
 
   // ===== Live Exchange Chart =====
@@ -318,29 +318,46 @@ updateRateChart(from, to, rate);
 
 let rateChart;
 
-function createSampleTrend(baseRate){
+async function fetchHistoricalRates(from, to){
 
-    return [
-        baseRate * 0.996,
-        baseRate * 0.998,
-        baseRate * 0.997,
-        baseRate * 1.001,
-        baseRate * 1.003,
-        baseRate * 1.002,
-        baseRate
-    ];
+    const endDate = new Date();
+    const startDate = new Date();
+
+    startDate.setDate(endDate.getDate() - 7);
+
+    const start = startDate.toISOString().split("T")[0];
+    const end = endDate.toISOString().split("T")[0];
+
+    const url =
+    `https://api.frankfurter.dev/v2/rates?from=${start}&to=${end}&base=${from}&quotes=${to}`;
+
+    const response = await fetch(url);
+
+    if(!response.ok){
+        throw new Error("Historical API Error");
+    }
+
+    const data = await response.json();
+
+    const labels = data.data.map(item => item.date.slice(5));
+    const rates = data.data.map(item => item.rates[to]);
+
+    return { labels, rates };
 
 }
 
-function updateRateChart(from, to, rate){
-
+async function updateRateChart(from, to, rate){
+  
     const ctx = document.getElementById("rateChart");
+  const history = await fetchHistoricalRates(from, to);
+
+const labels = history.labels;
+const trendData = history.rates;
 
     if(!ctx){
         return;
     }
 
-    const trendData = createSampleTrend(rate);
 
     if(!rateChart){
 

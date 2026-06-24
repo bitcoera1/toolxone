@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Currency Converter - Toolers</title>
-
+<link rel="stylesheet" href="css/tools.css">
 <style>
 body{
 font-family:Arial,sans-serif;
@@ -119,6 +119,26 @@ font-weight:bold;
 
 <body>
 
+<div class="page-wrapper">
+
+<header class="site-header">
+    <h1>🧰 Toolers</h1>
+    <p>Free Online Calculators & Conversion Tools</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<div class="tool-page">
+
 <div class="container">
 
 <h1>Live Currency Converter</h1>
@@ -187,6 +207,7 @@ Live exchange rates powered by ExchangeRate API.
 </div>
 
 <script>
+    
 let rateChart;
 
 function swapCurrencies(){
@@ -322,6 +343,10 @@ function updateRateChart(from,to,rate){
     }
 }
 </script>
+</div>
+</div>
+
+<script src="js/tools.js"></script>
 
 </body>
 </html>

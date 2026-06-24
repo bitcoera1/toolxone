@@ -1,0 +1,230 @@
+/* ==========================================
+   BMI CALCULATOR PAGE
+========================================== */
+
+.bmi-header{
+    text-align:center;
+    padding:45px 20px;
+    background:linear-gradient(135deg,#16a34a,#059669);
+    color:white;
+}
+
+.bmi-header h1{
+    font-size:44px;
+    margin-bottom:10px;
+}
+
+.bmi-header p{
+    font-size:18px;
+    opacity:.95;
+}
+
+.bmi-page{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.bmi-card,
+.bmi-result-card,
+.bmi-info{
+    background:#ffffff;
+    color:#1f2937;
+    border:1px solid #e5e7eb;
+    border-radius:24px;
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+    padding:35px;
+}
+
+.bmi-info{
+    max-width:1200px;
+    margin:0 auto 40px;
+}
+
+.bmi-card h2,
+.bmi-result-card h2,
+.bmi-info h2{
+    color:#1f2937;
+    margin-bottom:22px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:700;
+    color:#1f2937;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px 16px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    background:#ffffff;
+    color:#111827;
+    font-size:16px;
+    outline:none;
+}
+
+.input-group input:focus{
+    border-color:#22c55e;
+    box-shadow:0 0 0 4px rgba(34,197,94,.20);
+}
+
+.unit-switch{
+    margin-bottom:18px;
+}
+
+.unit-btn{
+    border:none;
+    cursor:pointer;
+    padding:8px 12px;
+    border-radius:8px;
+    font-weight:700;
+    background:#e5e7eb;
+    color:#111827;
+}
+
+.unit-btn.active{
+    background:#10b981;
+    color:white;
+}
+
+.calculate-btn,
+.reset-btn{
+    border:none;
+    cursor:pointer;
+    padding:14px 28px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:700;
+    transition:.3s;
+}
+
+.calculate-btn{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+    color:white;
+    box-shadow:0 12px 30px rgba(34,197,94,.35);
+}
+
+.calculate-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 18px 40px rgba(34,197,94,.45);
+}
+
+.reset-btn{
+    background:#334155;
+    color:white;
+    margin-left:10px;
+}
+
+.reset-btn:hover{
+    background:#475569;
+}
+
+/* ---------- BMI SCALE ---------- */
+
+.bmi-scale{
+    position:relative;
+    margin:30px 0;
+    height:18px;
+}
+
+.scale-bar{
+    height:14px;
+    border-radius:20px;
+    background:linear-gradient(
+        90deg,
+        #3b82f6 0%,
+        #3b82f6 25%,
+        #22c55e 25%,
+        #22c55e 55%,
+        #f59e0b 55%,
+        #f59e0b 75%,
+        #ef4444 75%,
+        #ef4444 100%
+    );
+}
+
+.scale-marker{
+    position:absolute;
+    top:-8px;
+    left:0%;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#ffffff;
+    border:5px solid #10b981;
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+    transform:translateX(-50%);
+    transition:left .8s ease;
+}
+
+/* ---------- BMI DARK MODE ---------- */
+
+body.dark-mode .bmi-card,
+body.dark-mode .bmi-result-card,
+body.dark-mode .bmi-info{
+    background:rgba(255,255,255,.08);
+    color:white;
+    border:1px solid rgba(255,255,255,.14);
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
+}
+
+body.dark-mode .bmi-card h2,
+body.dark-mode .bmi-result-card h2,
+body.dark-mode .bmi-info h2,
+body.dark-mode .input-group label,
+body.dark-mode .bmi-category,
+body.dark-mode .bmi-advice,
+body.dark-mode .bmi-number{
+    color:white;
+}
+
+body.dark-mode .input-group input{
+    background:#ffffff;
+    color:#111827;
+}
+
+body.dark-mode .unit-btn{
+    background:#334155;
+    color:white;
+}
+
+body.dark-mode .unit-btn.active{
+    background:#10b981;
+    color:white;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:768px){
+    .bmi-page{
+        grid-template-columns:1fr;
+        padding:30px 15px;
+    }
+
+    .bmi-header h1{
+        font-size:34px;
+    }
+
+    .bmi-card,
+    .bmi-result-card,
+    .bmi-info{
+        padding:25px;
+    }
+
+    .calculate-btn,
+    .reset-btn{
+        width:100%;
+        margin-left:0;
+        margin-top:10px;
+    }
+}

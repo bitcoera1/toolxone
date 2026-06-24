@@ -5,188 +5,269 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Basic Calculator - Toolers</title>
 
+<link rel="stylesheet" href="css/tools.css">
+
 <style>
-body{
-font-family:Arial,sans-serif;
-background:#f5f7fa;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-margin:0;
+.tool-area{
+    padding:60px 20px;
+    display:flex;
+    justify-content:center;
 }
 
-.calculator{
-background:white;
-padding:20px;
-border-radius:15px;
-box-shadow:0 4px 15px rgba(0,0,0,0.15);
-width:320px;
+.calculator-card{
+    width:340px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 12px 35px rgba(0,0,0,.16);
 }
 
-h1{
-text-align:center;
-color:#4CAF50;
-font-size:24px;
-margin-bottom:15px;
+.calculator-card h1{
+    text-align:center;
+    color:#10B981;
+    font-size:26px;
+    margin-bottom:18px;
 }
 
 #display{
-width:100%;
-height:60px;
-font-size:24px;
-text-align:right;
-padding:10px;
-margin-bottom:15px;
-box-sizing:border-box;
-border:2px solid #ddd;
-border-radius:8px;
+    width:100%;
+    height:65px;
+    font-size:26px;
+    text-align:right;
+    padding:12px;
+    margin-bottom:18px;
+    box-sizing:border-box;
+    border:2px solid #d1d5db;
+    border-radius:12px;
+    outline:none;
 }
 
 .buttons{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
 }
 
-button{
-height:60px;
-font-size:20px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-background:#f1f1f1;
+.calc-btn{
+    height:60px;
+    font-size:20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#f1f5f9;
+    transition:.2s;
 }
 
-button:hover{
-background:#ddd;
+.calc-btn:hover{
+    background:#e2e8f0;
+    transform:translateY(-2px);
 }
 
 .operator{
-background:#4CAF50;
-color:white;
+    background:#10B981;
+    color:white;
 }
 
 .operator:hover{
-background:#45a049;
+    background:#059669;
 }
 
 .equal{
-background:#2196F3;
-color:white;
+    background:#2563eb;
+    color:white;
 }
 
 .equal:hover{
-background:#1976D2;
+    background:#1d4ed8;
 }
 
 .clear{
-background:#f44336;
-color:white;
+    background:#ef4444;
+    color:white;
 }
 
 .clear:hover{
-background:#d32f2f;
+    background:#dc2626;
 }
 
 .back{
-display:block;
-text-align:center;
-margin-top:20px;
-text-decoration:none;
-font-weight:bold;
-color:#4CAF50;
+    display:block;
+    text-align:center;
+    margin-top:20px;
+    text-decoration:none;
+    font-weight:bold;
+    color:#10B981;
+}
+
+body.dark-mode .calculator-card{
+    background:#1f2937;
+    color:#e5e7eb;
+}
+
+body.dark-mode #display{
+    background:#111827;
+    color:#e5e7eb;
+    border-color:#374151;
+}
+
+body.dark-mode .calc-btn{
+    background:#374151;
+    color:#e5e7eb;
+}
+
+body.dark-mode .calc-btn:hover{
+    background:#4b5563;
+}
+
+body.dark-mode .operator{
+    background:#10B981;
+    color:white;
+}
+
+body.dark-mode .equal{
+    background:#2563eb;
+    color:white;
+}
+
+body.dark-mode .clear{
+    background:#ef4444;
+    color:white;
 }
 </style>
 </head>
 
 <body>
 
-<div class="calculator">
+<header class="site-header">
+    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
 
-<h1>Basic Calculator</h1>
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <a href="#">📩 Feedback</a>
 
-<input type="text" id="display" readonly>
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
 
-<div class="buttons">
+<main class="tool-area">
 
-<button onclick="appendValue('7')">7</button>
-<button onclick="appendValue('8')">8</button>
-<button onclick="appendValue('9')">9</button>
-<button class="operator" onclick="appendValue('/')">÷</button>
+    <div class="calculator-card">
 
-<button onclick="appendValue('4')">4</button>
-<button onclick="appendValue('5')">5</button>
-<button onclick="appendValue('6')">6</button>
-<button class="operator" onclick="appendValue('*')">×</button>
+        <h1>🧮 Basic Calculator</h1>
 
-<button onclick="appendValue('1')">1</button>
-<button onclick="appendValue('2')">2</button>
-<button onclick="appendValue('3')">3</button>
-<button class="operator" onclick="appendValue('-')">−</button>
+        <input type="text" id="display" readonly>
 
-<button onclick="appendValue('0')">0</button>
-<button onclick="appendValue('.')">.</button>
-<button class="equal" onclick="calculate()">=</button>
-<button class="operator" onclick="appendValue('+')">+</button>
+        <div class="buttons">
 
-<button class="clear" onclick="clearDisplay()" style="grid-column: span 4;">
-C
-</button>
+            <button class="calc-btn" onclick="appendValue('7')">7</button>
+            <button class="calc-btn" onclick="appendValue('8')">8</button>
+            <button class="calc-btn" onclick="appendValue('9')">9</button>
+            <button class="calc-btn operator" onclick="appendValue('/')">÷</button>
 
-</div>
+            <button class="calc-btn" onclick="appendValue('4')">4</button>
+            <button class="calc-btn" onclick="appendValue('5')">5</button>
+            <button class="calc-btn" onclick="appendValue('6')">6</button>
+            <button class="calc-btn operator" onclick="appendValue('*')">×</button>
 
-<a class="back" href="index.html">← Back to Home</a>
+            <button class="calc-btn" onclick="appendValue('1')">1</button>
+            <button class="calc-btn" onclick="appendValue('2')">2</button>
+            <button class="calc-btn" onclick="appendValue('3')">3</button>
+            <button class="calc-btn operator" onclick="appendValue('-')">−</button>
 
-</div>
+            <button class="calc-btn" onclick="appendValue('0')">0</button>
+            <button class="calc-btn" onclick="appendValue('.')">.</button>
+            <button class="calc-btn equal" onclick="calculate()">=</button>
+            <button class="calc-btn operator" onclick="appendValue('+')">+</button>
+
+            <button class="calc-btn clear" onclick="clearDisplay()" style="grid-column:span 4;">C</button>
+
+        </div>
+
+        <a class="back" href="index.html">← Back to Home</a>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    <p><strong>Toolers</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
 
 <script>
+let justCalculated = false;
 
 function appendValue(value){
-document.getElementById("display").value += value;
+
+    const display = document.getElementById("display");
+
+    if(justCalculated && !isNaN(value)){
+        display.value = "";
+        justCalculated = false;
+    }
+
+    display.value += value;
+
 }
 
 function clearDisplay(){
-document.getElementById("display").value = "";
+    document.getElementById("display").value = "";
 }
 
 function calculate(){
-try{
-document.getElementById("display").value =
-eval(document.getElementById("display").value);
+
+    try{
+
+        document.getElementById("display").value =
+        eval(document.getElementById("display").value);
+
+        justCalculated = true;
+
+    }
+
+    catch{
+
+        document.getElementById("display").value = "Error";
+
+    }
+
 }
-catch{
-document.getElementById("display").value = "Error";
-}
-}
+
 document.addEventListener("keydown", function(e){
+    if(!isNaN(e.key)){
+        appendValue(e.key);
+    }
 
-if(!isNaN(e.key)){
-appendValue(e.key);
-}
+    if(["+","-","*","/","."].includes(e.key)){
+        appendValue(e.key);
+    }
 
-if(["+","-","*","/","."].includes(e.key)){
-appendValue(e.key);
-}
+    if(e.key === "Enter"){
+        e.preventDefault();
+        calculate();
+    }
 
-if(e.key==="Enter"){
-e.preventDefault();
-calculate();
-}
+    if(e.key === "Backspace"){
+        let display = document.getElementById("display");
+        display.value = display.value.slice(0,-1);
+    }
 
-if(e.key==="Backspace"){
-
-let display=document.getElementById("display");
-
-display.value=display.value.slice(0,-1);
-}
-
-if(e.key==="Delete" || e.key==="Escape"){
-clearDisplay();
-}
-
+    if(e.key === "Delete" || e.key === "Escape"){
+        clearDisplay();
+    }
 });
 </script>
+
+<script src="js/tools.js"></script>
 
 </body>
 </html>

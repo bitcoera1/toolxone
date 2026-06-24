@@ -7,7 +7,8 @@
 
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
-<link rel="stylesheet" href="style.css">  
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">  
 <style>
 *{
 margin:0;
@@ -132,18 +133,66 @@ Use our Scientific Calculator, Basic Calculator, Currency Converter, and Weight 
 
 <a href="weight-converter.html">⚖️ Weight</a>
 
-<a href="#">📩 Feedback</a>
+<a href="age-calculator.html">🎂 Age</a>
 
+<a href="#">📩 Feedback</a>
+<div class="live-clock" id="liveClock">
+    🕒 Loading time...
+</div>
+<button class="theme-toggle" id="themeToggle">
+    🌙 Dark
+</button>
 </nav>  
+<section class="ticker-section">
+
+    <div class="ticker">
+
+        <div class="ticker-content">
+
+    <span>
+        🟢 Live Exchange Dashboard
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        💱 190+ World Currencies
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        ⚡ Fast API Updates
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🔒 Secure HTTPS
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🌍 Premium Currency Converter
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚀 Updates Every 60 Seconds
+        &nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+
+    <span>
+        🟢 Live Exchange Dashboard
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        💱 190+ World Currencies
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        ⚡ Fast API Updates
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🔒 Secure HTTPS
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🌍 Premium Currency Converter
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        🚀 Updates Every 60 Seconds
+        &nbsp;&nbsp;&nbsp;&nbsp;
+    </span>
+
+</div>
+
+    </div>
+
+</section>
   
-<section class="hero">
+<section class="hero reveal">
 <h2>Calculate, Convert & Simplify</h2>
 <p>
 Welcome to Toolers. Use our free online tools including calculators,
 currency converters, weight converters, and much more.
 </p>
 </section>
-<section class="search-section">
+<section class="search-section reveal">
 
 <h2>🔍 Find Your Tool</h2>
 
@@ -154,7 +203,7 @@ placeholder="Search calculators, converters..."
 onkeyup="searchTools()">
 
 </section>
-  <section class="featured-tool">
+  <section class="featured-tool reveal">
 
 <div class="featured-content">
 
@@ -181,38 +230,88 @@ Convert currencies using live exchange rates with a clean, fast, and easy-to-use
 <div class="featured-right">
 
 <h3>📈 Live Exchange Dashboard</h3>
+<div class="market-status" id="marketStatus">
+    🟢 Forex Market Open
+</div>
 
 <div class="exchange-dashboard">
 
 <div class="rate-row">
-<span>USD → PKR</span>
-<strong id="usdRate">--</strong>
+
+    <div class="rate-top">
+        <span>🇺🇸 USD</span>
+        <span class="rate-value skeleton" id="usdRate">--</span>
+    </div>
+
+    <div class="rate-bar">
+        <div class="rate-fill" id="usdBar"></div>
+    </div>
+    <div class="rate-change" id="usdChange"></div>
+
+
 </div>
 
 <div class="rate-row">
-<span>EUR → PKR</span>
-<strong id="eurRate">--</strong>
+
+    <div class="rate-top">
+        <span>🇪🇺 EUR</span>
+        <span class="rate-value skeleton" id="eurRate">--</span>
+    </div>
+
+    <div class="rate-bar">
+        <div class="rate-fill" id="eurBar"></div>
+    </div>
+    <div class="rate-change" id="eurChange"></div>
 </div>
 
 <div class="rate-row">
-<span>GBP → PKR</span>
-<strong id="gbpRate">--</strong>
+
+    <div class="rate-top">
+        <span>🇬🇧 GBP</span>
+        <span class="rate-value skeleton" id="gbpRate">--</span>
+    </div>
+
+    <div class="rate-bar">
+        <div class="rate-fill" id="gbpBar"></div>
+    </div>
+<div class="rate-change" id="gbpChange"></div>
+
 </div>
 
 <div class="rate-row">
-<span>AED → PKR</span>
-<strong id="aedRate">--</strong>
+
+    <div class="rate-top">
+        <span>🇦🇪 AED</span>
+        <span class="rate-value skeleton" id="aedRate">--</span>
+    </div>
+
+    <div class="rate-bar">
+        <div class="rate-fill" id="aedBar"></div>
+    </div>
+<div class="rate-change" id="aedChange"></div>
 </div>
 
 <div class="rate-row">
-<span>SAR → PKR</span>
-<strong id="sarRate">--</strong>
+
+    <div class="rate-top">
+        <span>🇸🇦 SAR</span>
+        <span class="rate-value skeleton" id="sarRate">--</span>
+    </div>
+
+    <div class="rate-bar">
+    <div class="rate-fill" id="sarBar"></div>
 </div>
+
+<div class="rate-change" id="sarChange"></div>
 
 </div>
 
 <p class="graph-note" id="dashboardUpdated">
 Live rates loading...
+</p>
+
+<p class="countdown" id="countdown">
+    Next update in 60s
 </p>
 
 </div>
@@ -223,29 +322,86 @@ Live rates loading...
   
 <section class="tools">
 
-<div class="card">
+<div class="card reveal reveal-delay-1">
 <h3>🧮 Basic Calculator</h3>
 <p>Perform quick calculations online.</p>
 <a href="calculator.html">Open Tool</a>
 </div>
 
-<div class="card">
+<div class="card reveal reveal-delay-2">
 <h3>🔬 Scientific Calculator</h3>
 <p>Advanced calculations for students and professionals.</p>
 <a href="scientific-calculator.html">Open Tool</a>
 </div>
 
-<div class="card">
+<div class="card reveal reveal-delay-3">
 <h3>💱 Currency Converter</h3>
 <p>Convert currencies using live exchange rates.</p>
 <a href="currency-converter.html">Open Tool</a>
 </div>
   
-<div class="card">
+<div class="card reveal reveal-delay-4">
 <h3>⚖️ Weight Converter</h3>
 <p>Convert KG to Pounds and Pounds to KG.</p>
 <a href="weight-converter.html">Open Tool</a>
 </div>
+<div class="card reveal reveal-delay-5">
+    <h3>🩺 BMI Calculator Pro</h3>
+    <p>Calculate your Body Mass Index and get instant health insights.</p>
+    <a href="bmi-calculator.html">Open Tool</a>
+</div>
+<div class="card reveal reveal-delay-6">
+
+    <h3>🎂 Age Calculator</h3>
+
+    <p>
+        Calculate your exact age in years, months, days and next birthday.
+    </p>
+
+    <a href="age-calculator.html">
+        Open Tool
+    </a>
+
+</div>
+
+<div class="card reveal reveal-delay-7">
+    <h3>📊 Percentage Calculator</h3>
+    <p>Calculate percentages, percentage values and increase/decrease instantly.</p>
+    <a href="percentage-calculator.html">Open Tool</a>
+</div>
+
+</section>
+<section class="stats-section reveal">
+
+    <h2>📊 Toolers in Numbers</h2>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">⚡</div>
+            <h3 id="toolsCounter">0</h3>
+            <p>Online Tools</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🌍</div>
+            <h3 id="currencyCounter">0</h3>
+            <p>Currencies Supported</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">📈</div>
+            <h3>Live</h3>
+            <p>Exchange Rates</p>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">🔒</div>
+            <h3 id="freeCounter">0%</h3>
+            <p>Free Forever</p>
+        </div>
+
+    </div>
 
 </section>
 
@@ -279,8 +435,69 @@ function searchTools() {
     });
 
 }
+function updateClock() {
 
+    const clock = document.getElementById("liveClock");
+
+    if (!clock) return;
+
+    const now = new Date();
+
+    const options = {
+        weekday: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    };
+
+    clock.innerHTML =
+        "🕒 " + now.toLocaleTimeString([], options);
+
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+const themeToggle = document.getElementById("themeToggle");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️ Light";
+}
+
+themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+
+        themeToggle.textContent = "☀️ Light";
+        localStorage.setItem("theme", "dark");
+
+    } else {
+
+        themeToggle.textContent = "🌙 Dark";
+        localStorage.setItem("theme", "light");
+
+    }
+
+});
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (elementTop < windowHeight - revealPoint) {
+            element.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 </script>
-  
+<script src="js/dashboard.js"></script>
 </body>
 </html>

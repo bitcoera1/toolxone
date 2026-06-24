@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/bmi.css">
+</head>
+
+<body>
+<header class="site-header">
+    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<header class="bmi-header">
+    <h1>🧮 BMI Calculator Pro</h1>
+    <p>Calculate your Body Mass Index quickly and understand your weight category.</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <a href="#">📩 Feedback</a>
+
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="bmi-page">
+
+    <section class="bmi-card">
+
+        <h2>Check Your BMI</h2>
+
+        <div class="unit-switch">
+            <button class="unit-btn active" id="metricBtn">Metric</button>
+            <button class="unit-btn" id="imperialBtn">Feet / Pounds</button>
+        </div>
+
+        <div class="input-group metric-inputs">
+            <label for="heightCm">Height (cm)</label>
+            <input type="number" id="heightCm" placeholder="Example: 175">
+        </div>
+
+        <div class="input-group metric-inputs">
+            <label for="weightKg">Weight (kg)</label>
+            <input type="number" id="weightKg" placeholder="Example: 70">
+        </div>
+
+        <div class="imperial-inputs" style="display:none;">
+            <div class="input-group">
+                <label for="heightFt">Height (feet)</label>
+                <input type="number" id="heightFt" placeholder="Example: 5">
+            </div>
+
+            <div class="input-group">
+                <label for="heightIn">Height (inches)</label>
+                <input type="number" id="heightIn" placeholder="Example: 9">
+            </div>
+
+            <div class="input-group">
+                <label for="weightLb">Weight (pounds)</label>
+                <input type="number" id="weightLb" placeholder="Example: 154">
+            </div>
+        </div>
+
+        <button class="calculate-btn" id="calculateBMI">
+            Calculate BMI
+        </button>
+
+        <button class="reset-btn" id="resetBMI">
+            Reset
+        </button>
+
+    </section>
+
+    <section class="bmi-result-card" id="bmiResultCard">
+
+        <h2>Your BMI Result</h2>
+
+        <div class="bmi-number" id="bmiNumber">--</div>
+
+        <div class="bmi-category" id="bmiCategory">
+            Enter your height and weight
+        </div>
+
+        <div class="bmi-scale">
+            <div class="scale-bar"></div>
+            <div class="scale-marker" id="scaleMarker"></div>
+        </div>
+
+        <p class="bmi-advice" id="bmiAdvice">
+            Your health category and advice will appear here.
+        </p>
+
+    </section>
+
+</main>
+
+<section class="bmi-info">
+    <h2>What is BMI?</h2>
+    <p>
+        BMI, or Body Mass Index, is a simple calculation using your height and weight.
+        It helps estimate whether your weight is within a healthy range.
+    </p>
+
+    <h2>BMI Categories</h2>
+    <p>
+        Underweight: Below 18.5<br>
+        Normal weight: 18.5 - 24.9<br>
+        Overweight: 25 - 29.9<br>
+        Obese: 30 and above
+    </p>
+</section>
+
+<footer class="footer">
+    <p><strong>Toolers</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/bmi.js"></script>
+
+<script src="js/tools.js"></script>
+</body>
+</html>

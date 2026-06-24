@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Percentage Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+
+<style>
+.percentage-card{
+    width:100%;
+    max-width:650px;
+    background:white;
+    padding:35px;
+    border-radius:22px;
+    box-shadow:0 14px 38px rgba(0,0,0,.12);
+}
+
+.percentage-card h1{
+    text-align:center;
+    color:#10b981;
+    margin-bottom:12px;
+}
+
+.percentage-card .subtitle{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+.mode-buttons{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.mode-btn{
+    border:none;
+    border-radius:12px;
+    padding:12px;
+    cursor:pointer;
+    font-weight:700;
+    background:#e5e7eb;
+    color:#111827;
+    transition:.3s;
+}
+
+.mode-btn.active{
+    background:#10b981;
+    color:white;
+}
+
+.calc-section{
+    display:none;
+}
+
+.calc-section.active{
+    display:block;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.input-group input{
+    width:100%;
+    padding:14px 16px;
+    font-size:16px;
+    border-radius:12px;
+    border:1px solid #d1d5db;
+    outline:none;
+}
+
+.input-group input:focus{
+    border-color:#10b981;
+    box-shadow:0 0 0 4px rgba(16,185,129,.18);
+}
+
+.percent-btn{
+    width:100%;
+    border:none;
+    border-radius:14px;
+    padding:14px;
+    background:#10b981;
+    color:white;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.percent-btn:hover{
+    background:#059669;
+    transform:translateY(-2px);
+}
+
+.percent-result{
+    margin-top:25px;
+    padding:20px;
+    border-radius:16px;
+    background:#f0fdf4;
+    color:#064e3b;
+    font-weight:700;
+    line-height:1.8;
+    display:none;
+    text-align:center;
+    font-size:18px;
+}
+
+body.dark-mode .percentage-card{
+    background:#1f2937;
+    color:#e5e7eb;
+}
+
+body.dark-mode .percentage-card .subtitle{
+    color:#cbd5e1;
+}
+
+body.dark-mode .input-group input{
+    background:#111827;
+    color:#e5e7eb;
+    border-color:#374151;
+}
+
+body.dark-mode .mode-btn{
+    background:#374151;
+    color:#e5e7eb;
+}
+
+body.dark-mode .mode-btn.active{
+    background:#10b981;
+    color:white;
+}
+
+body.dark-mode .percent-result{
+    background:#064e3b;
+    color:#ecfdf5;
+}
+
+@media(max-width:650px){
+    .mode-buttons{
+        grid-template-columns:1fr;
+    }
+
+    .percentage-card{
+        padding:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <a href="age-calculator.html">🎂 Age</a>
+    <a href="percentage-calculator.html">📊 Percentage</a>
+    <a href="#">📩 Feedback</a>
+
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="tool-area">
+
+    <div class="percentage-card">
+
+        <h1>📊 Percentage Calculator</h1>
+        <p class="subtitle">Calculate percentages, percentage values, and increase/decrease instantly.</p>
+
+        <div class="mode-buttons">
+            <button class="mode-btn active" onclick="showMode('of', this)">X% of Y</button>
+            <button class="mode-btn" onclick="showMode('what', this)">X is what %?</button>
+            <button class="mode-btn" onclick="showMode('change', this)">Increase / Decrease</button>
+        </div>
+
+        <div class="calc-section active" id="modeOf">
+            <div class="input-group">
+                <label for="percentValue">Percentage (%)</label>
+                <input type="number" id="percentValue" placeholder="Example: 20">
+            </div>
+
+            <div class="input-group">
+                <label for="totalValue">Of Value</label>
+                <input type="number" id="totalValue" placeholder="Example: 500">
+            </div>
+
+            <button class="percent-btn" onclick="calculatePercentOf()">Calculate</button>
+        </div>
+
+        <div class="calc-section" id="modeWhat">
+            <div class="input-group">
+                <label for="partValue">Part Value</label>
+                <input type="number" id="partValue" placeholder="Example: 50">
+            </div>
+
+            <div class="input-group">
+                <label for="wholeValue">Total Value</label>
+                <input type="number" id="wholeValue" placeholder="Example: 200">
+            </div>
+
+            <button class="percent-btn" onclick="calculateWhatPercent()">Calculate</button>
+        </div>
+
+        <div class="calc-section" id="modeChange">
+            <div class="input-group">
+                <label for="oldValue">Old Value</label>
+                <input type="number" id="oldValue" placeholder="Example: 100">
+            </div>
+
+            <div class="input-group">
+                <label for="newValue">New Value</label>
+                <input type="number" id="newValue" placeholder="Example: 150">
+            </div>
+
+            <button class="percent-btn" onclick="calculateChange()">Calculate</button>
+        </div>
+
+        <div class="percent-result" id="percentResult"></div>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    <p><strong>Toolers</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
+
+<script>
+function showMode(mode, button){
+    document.querySelectorAll(".calc-section").forEach(section => {
+        section.classList.remove("active");
+    });
+
+    document.querySelectorAll(".mode-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document.getElementById("percentResult").style.display = "none";
+
+    if(mode === "of"){
+        document.getElementById("modeOf").classList.add("active");
+    } else if(mode === "what"){
+        document.getElementById("modeWhat").classList.add("active");
+    } else {
+        document.getElementById("modeChange").classList.add("active");
+    }
+}
+
+function showResult(message){
+    const resultBox = document.getElementById("percentResult");
+    resultBox.style.display = "block";
+    resultBox.innerHTML = message;
+}
+
+function formatNumber(num){
+    return Number(num.toFixed(4)).toLocaleString();
+}
+
+function calculatePercentOf(){
+    const percent = parseFloat(document.getElementById("percentValue").value);
+    const total = parseFloat(document.getElementById("totalValue").value);
+
+    if(isNaN(percent) || isNaN(total)){
+        showResult("Please enter both values.");
+        return;
+    }
+
+    const result = (percent / 100) * total;
+
+    showResult(
+        percent + "% of " + total + " =<br>" +
+        "📌 " + formatNumber(result)
+    );
+}
+
+function calculateWhatPercent(){
+    const part = parseFloat(document.getElementById("partValue").value);
+    const whole = parseFloat(document.getElementById("wholeValue").value);
+
+    if(isNaN(part) || isNaN(whole)){
+        showResult("Please enter both values.");
+        return;
+    }
+
+    if(whole === 0){
+        showResult("Total value cannot be zero.");
+        return;
+    }
+
+    const result = (part / whole) * 100;
+
+    showResult(
+        part + " is what percent of " + whole + "?<br>" +
+        "📌 " + formatNumber(result) + "%"
+    );
+}
+
+function calculateChange(){
+    const oldValue = parseFloat(document.getElementById("oldValue").value);
+    const newValue = parseFloat(document.getElementById("newValue").value);
+
+    if(isNaN(oldValue) || isNaN(newValue)){
+        showResult("Please enter both values.");
+        return;
+    }
+
+    if(oldValue === 0){
+        showResult("Old value cannot be zero.");
+        return;
+    }
+
+    const change = ((newValue - oldValue) / oldValue) * 100;
+    const type = change >= 0 ? "Increase" : "Decrease";
+
+    showResult(
+        "From " + oldValue + " to " + newValue + "<br>" +
+        "📌 " + formatNumber(Math.abs(change)) + "% " + type
+    );
+}
+</script>
+
+<script src="js/tools.js"></script>
+
+</body>
+</html>

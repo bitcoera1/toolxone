@@ -6,241 +6,269 @@
 
 <title>Scientific Calculator - Toolers</title>
 
+<link rel="stylesheet" href="css/tools.css">
+
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+.tool-area{
+    padding:60px 20px;
+    display:flex;
+    justify-content:center;
 }
 
-body{
-font-family:Arial, sans-serif;
-background:#f4f6f8;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
+.scientific-card{
+    width:100%;
+    max-width:560px;
+    background:#2d3748;
+    padding:22px;
+    border-radius:22px;
+    box-shadow:0 14px 38px rgba(0,0,0,.25);
 }
 
-.calculator{
-width:100%;
-max-width:550px;
-background:#2d3748;
-padding:20px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-
-.logo{
-text-align:center;
-color:white;
-font-size:24px;
-font-weight:bold;
-margin-bottom:15px;
+.scientific-title{
+    text-align:center;
+    color:white;
+    font-size:25px;
+    font-weight:bold;
+    margin-bottom:16px;
 }
 
 .display{
-background:#1a202c;
-border-radius:12px;
-padding:15px;
-margin-bottom:15px;
-color:white;
+    background:#111827;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:16px;
+    color:white;
+    border:1px solid rgba(255,255,255,.08);
 }
 
 .expression{
-min-height:35px;
-font-size:20px;
-text-align:right;
-word-wrap:break-word;
-overflow-wrap:break-word;
+    min-height:34px;
+    font-size:20px;
+    text-align:right;
+    word-wrap:break-word;
+    overflow-wrap:break-word;
+    color:#cbd5e1;
 }
 
 .result{
-min-height:45px;
-font-size:32px;
-font-weight:bold;
-text-align:right;
+    min-height:46px;
+    font-size:34px;
+    font-weight:bold;
+    text-align:right;
 }
 
-.buttons{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-}
-
-button{
-height:58px;
-border:none;
-border-radius:10px;
-font-size:18px;
-cursor:pointer;
-transition:.2s;
-font-weight:bold;
-}
-
-button:hover{
-transform:scale(1.03);
-}
-
-.num{
-background:#e2e8f0;
-color:#111827;
-}
-
-.operator{
-background:#10b981;
-color:white;
-}
-
-.function{
-background:#475569;
-color:white;
-}
-
-.equal{
-background:#2563eb;
-color:white;
-}
-
-.clear{
-background:#dc2626;
-color:white;
-}
-
-.special{
-background:#7c3aed;
-color:white;
+.buttons,
+.utility{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
 }
 
 .utility{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
-margin-top:10px;
+    margin-top:10px;
+}
+
+.sci-btn{
+    height:58px;
+    border:none;
+    border-radius:11px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.2s;
+    font-weight:bold;
+}
+
+.sci-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.08);
+}
+
+.num{
+    background:#e2e8f0;
+    color:#111827;
+}
+
+.operator{
+    background:#10b981;
+    color:white;
+}
+
+.function{
+    background:#475569;
+    color:white;
+}
+
+.equal{
+    background:#2563eb;
+    color:white;
+}
+
+.clear{
+    background:#dc2626;
+    color:white;
+}
+
+.special{
+    background:#7c3aed;
+    color:white;
 }
 
 .status{
-margin-top:10px;
-text-align:center;
-color:#cbd5e1;
-font-size:14px;
+    margin-top:12px;
+    text-align:center;
+    color:#cbd5e1;
+    font-size:14px;
 }
 
 .back-home{
-display:block;
-margin-top:15px;
-text-align:center;
-text-decoration:none;
-color:white;
-font-weight:bold;
+    display:block;
+    margin-top:16px;
+    text-align:center;
+    text-decoration:none;
+    color:#10B981;
+    font-weight:bold;
 }
 
 .back-home:hover{
-text-decoration:underline;
+    text-decoration:underline;
+}
+
+body.dark-mode .scientific-card{
+    background:#1f2937;
+}
+
+body.dark-mode .display{
+    background:#111827;
+    border-color:#374151;
+}
+
+body.dark-mode .num{
+    background:#374151;
+    color:#e5e7eb;
 }
 
 @media(max-width:600px){
+    .scientific-card{
+        padding:16px;
+    }
 
-button{
-height:52px;
-font-size:16px;
+    .sci-btn{
+        height:52px;
+        font-size:16px;
+    }
+
+    .result{
+        font-size:28px;
+    }
+
+    .scientific-title{
+        font-size:20px;
+    }
 }
-
-.result{
-font-size:26px;
-}
-
-.logo{
-font-size:20px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="calculator">
+<header class="site-header">
+    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
 
-<div class="logo">
-TOOLERS SCIENTIFIC CALCULATOR
-</div>
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <a href="#">📩 Feedback</a>
 
-<div class="display">
-<div id="expression" class="expression"></div>
-<div id="result" class="result">0</div>
-</div>
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
 
-<div class="buttons">
+<main class="tool-area">
 
-<button class="function" onclick="appendFunction('sin')">sin</button>
-<button class="function" onclick="appendFunction('cos')">cos</button>
-<button class="function" onclick="appendFunction('tan')">tan</button>
-<button class="function" onclick="appendFunction('log')">log</button>
+    <div class="scientific-card">
 
-<button class="function" onclick="appendFunction('ln')">ln</button>
-<button class="function" onclick="appendValue('√(')">√</button>
-<button class="function" onclick="appendValue('π')">π</button>
-<button class="function" onclick="appendValue('e')">e</button>
+        <div class="scientific-title">
+            🔬 Toolers Scientific Calculator
+        </div>
 
-<button class="function" onclick="appendValue('(')">(</button>
-<button class="function" onclick="appendValue(')')">)</button>
-<button class="function" onclick="appendValue('^2')">x²</button>
-<button class="function" onclick="appendValue('^')">xʸ</button>
+        <div class="display">
+            <div id="expression" class="expression"></div>
+            <div id="result" class="result">0</div>
+        </div>
 
-<button class="num" onclick="appendValue('7')">7</button>
-<button class="num" onclick="appendValue('8')">8</button>
-<button class="num" onclick="appendValue('9')">9</button>
-<button class="operator" onclick="appendValue('/')">÷</button>
+        <div class="buttons">
 
-<button class="num" onclick="appendValue('4')">4</button>
-<button class="num" onclick="appendValue('5')">5</button>
-<button class="num" onclick="appendValue('6')">6</button>
-<button class="operator" onclick="appendValue('*')">×</button>
+            <button class="sci-btn function" onclick="appendFunction('sin')">sin</button>
+            <button class="sci-btn function" onclick="appendFunction('cos')">cos</button>
+            <button class="sci-btn function" onclick="appendFunction('tan')">tan</button>
+            <button class="sci-btn function" onclick="appendFunction('log')">log</button>
 
-<button class="num" onclick="appendValue('1')">1</button>
-<button class="num" onclick="appendValue('2')">2</button>
-<button class="num" onclick="appendValue('3')">3</button>
-<button class="operator" onclick="appendValue('-')">−</button>
+            <button class="sci-btn function" onclick="appendFunction('ln')">ln</button>
+            <button class="sci-btn function" onclick="appendValue('√(')">√</button>
+            <button class="sci-btn function" onclick="appendValue('π')">π</button>
+            <button class="sci-btn function" onclick="appendValue('e')">e</button>
 
-<button class="num" onclick="appendValue('0')">0</button>
-<button class="num" onclick="appendValue('.')">.</button>
-<button class="num" onclick="appendValue('%')">%</button>
-<button class="operator" onclick="appendValue('+')">+</button>
+            <button class="sci-btn function" onclick="appendValue('(')">(</button>
+            <button class="sci-btn function" onclick="appendValue(')')">)</button>
+            <button class="sci-btn function" onclick="appendValue('^2')">x²</button>
+            <button class="sci-btn function" onclick="appendValue('^')">xʸ</button>
 
-<button class="clear" onclick="clearAll()">C</button>
-<button class="clear" onclick="backspace()">⌫</button>
-<button class="special" onclick="useAns()">ANS</button>
-<button class="equal" onclick="calculate()">=</button>
+            <button class="sci-btn num" onclick="appendValue('7')">7</button>
+            <button class="sci-btn num" onclick="appendValue('8')">8</button>
+            <button class="sci-btn num" onclick="appendValue('9')">9</button>
+            <button class="sci-btn operator" onclick="appendValue('/')">÷</button>
 
-</div>
+            <button class="sci-btn num" onclick="appendValue('4')">4</button>
+            <button class="sci-btn num" onclick="appendValue('5')">5</button>
+            <button class="sci-btn num" onclick="appendValue('6')">6</button>
+            <button class="sci-btn operator" onclick="appendValue('*')">×</button>
 
-<div class="utility">
+            <button class="sci-btn num" onclick="appendValue('1')">1</button>
+            <button class="sci-btn num" onclick="appendValue('2')">2</button>
+            <button class="sci-btn num" onclick="appendValue('3')">3</button>
+            <button class="sci-btn operator" onclick="appendValue('-')">−</button>
 
-<button class="function" onclick="toggleSound()">🔊 Sound</button>
-<button class="function" onclick="insertPi()">π</button>
-<button class="function" onclick="insertE()">e</button>
-<button class="function" onclick="clearResult()">CE</button>
+            <button class="sci-btn num" onclick="appendValue('0')">0</button>
+            <button class="sci-btn num" onclick="appendValue('.')">.</button>
+            <button class="sci-btn num" onclick="appendValue('%')">%</button>
+            <button class="sci-btn operator" onclick="appendValue('+')">+</button>
 
-</div>
+            <button class="sci-btn clear" onclick="clearAll()">C</button>
+            <button class="sci-btn clear" onclick="backspace()">⌫</button>
+            <button class="sci-btn special" onclick="useAns()">ANS</button>
+            <button class="sci-btn equal" onclick="calculate()">=</button>
 
-<div id="status" class="status">
-Sound OFF
-</div>
+        </div>
 
-<a class="back-home" href="index.html">
-← Back To Home
-</a>
+        <div class="utility">
+            <button class="sci-btn function" onclick="toggleSound()">🔊 Sound</button>
+            <button class="sci-btn function" onclick="insertPi()">π</button>
+            <button class="sci-btn function" onclick="insertE()">e</button>
+            <button class="sci-btn function" onclick="clearResult()">CE</button>
+        </div>
 
-</div>
+        <div id="status" class="status">Sound OFF</div>
 
-<!-- PART 2 JAVASCRIPT WILL GO HERE -->
-<!-- PART 2 JAVASCRIPT WILL GO HERE -->
+        <a class="back-home" href="index.html">← Back To Home</a>
+
+    </div>
+
+</main>
+
+<footer class="footer">
+    <p><strong>Toolers</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
 
 <script>
+
 
 let expression = "";
 let ans = 0;
@@ -255,11 +283,9 @@ function updateDisplay() {
 }
 
 function playSound() {
-
     if (!soundEnabled) return;
 
     try {
-
         const audioContext =
             new (window.AudioContext || window.webkitAudioContext)();
 
@@ -275,40 +301,27 @@ function playSound() {
 
         oscillator.start();
         oscillator.stop(audioContext.currentTime + 0.05);
-
     } catch (e) {}
-
 }
 
 function appendValue(value) {
-
     if (justCalculated) {
-
         if ("0123456789.".includes(value)) {
-
             expression = "";
             resultDisplay.textContent = "0";
-
-        }
-
-        else if (["+", "-", "*", "/", "%"].includes(value)) {
-
+        } else if (["+", "-", "*", "/", "%"].includes(value)) {
             expression = String(ans);
-
         }
 
         justCalculated = false;
     }
 
     expression += value;
-
     updateDisplay();
-
     playSound();
 }
 
 function appendFunction(func) {
-
     if (justCalculated) {
         expression = "";
         resultDisplay.textContent = "0";
@@ -316,42 +329,33 @@ function appendFunction(func) {
     }
 
     expression += func + "(";
-
     updateDisplay();
-
     playSound();
 }
 
 function clearAll() {
-
     expression = "";
     resultDisplay.textContent = "0";
     justCalculated = false;
-
     updateDisplay();
 }
 
 function clearResult() {
-
     resultDisplay.textContent = "0";
 }
 
 function backspace() {
-
     expression = expression.slice(0, -1);
-
     updateDisplay();
 }
 
 function useAns() {
-
     if (justCalculated) {
         expression = "";
         justCalculated = false;
     }
 
     expression += ans;
-
     updateDisplay();
 }
 
@@ -364,7 +368,6 @@ function insertE() {
 }
 
 function toggleSound() {
-
     soundEnabled = !soundEnabled;
 
     document.getElementById("status").textContent =
@@ -372,7 +375,6 @@ function toggleSound() {
 }
 
 function preprocessExpression(expr) {
-
     expr = expr.replace(/π/g, Math.PI);
     expr = expr.replace(/\be\b/g, Math.E);
 
@@ -400,11 +402,8 @@ function preprocessExpression(expr) {
 }
 
 function calculate() {
-
     try {
-
         let processed = preprocessExpression(expression);
-
         let result = eval(processed);
 
         if (!isFinite(result)) {
@@ -414,55 +413,36 @@ function calculate() {
         result = Number(result.toFixed(12));
 
         ans = result;
-
         resultDisplay.textContent = result;
-
         expression = String(result);
-
         justCalculated = true;
-
         updateDisplay();
-
     } catch {
-
         resultDisplay.textContent = "Error";
     }
 }
 
 document.addEventListener("keydown", function(e) {
-
     const key = e.key;
 
     if ("0123456789".includes(key)) {
         appendValue(key);
-    }
-
-    else if (["+", "-", "*", "/", ".", "%", "(", ")"].includes(key)) {
+    } else if (["+", "-", "*", "/", ".", "%", "(", ")"].includes(key)) {
         appendValue(key);
-    }
-
-    else if (key === "Enter") {
-
+    } else if (key === "Enter") {
         e.preventDefault();
-
         calculate();
-    }
-
-    else if (key === "Backspace") {
-
+    } else if (key === "Backspace") {
         backspace();
-    }
-
-    else if (key === "Delete") {
-
+    } else if (key === "Delete") {
         clearAll();
     }
 });
 
 updateDisplay();
-
 </script>
-</body>
-</html>
+
+<script src="js/tools.js"></script>
+
 </body>
 </html>

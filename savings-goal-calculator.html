@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Savings Goal Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/savings.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">❤️ BMI</a>
+    <a href="age-calculator.html">🎂 Age</a>
+    <a href="percentage-calculator.html">📊 Percentage</a>
+    <a href="qr-code-generator.html">📱 QR</a>
+    <a href="loan-calculator.html">💰 Loan</a>
+    <a href="compound-interest-calculator.html">📈 Compound</a>
+    <a href="discount-calculator.html">🏷️ Discount</a>
+    <a href="gst-vat-calculator.html">🧾 GST / VAT</a>
+    <a href="profit-margin-calculator.html">💹 Profit</a>
+    <a href="roi-calculator.html">📈 ROI</a>
+    <a href="savings-goal-calculator.html">🎯 Savings Goal</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="savings-page">
+
+<section class="savings-card">
+
+<h1>🎯 Savings Goal Calculator</h1>
+
+<p class="subtitle">
+Calculate how much you need to save monthly to reach your goal.
+</p>
+
+<label>Target Amount</label>
+<input type="number" id="targetAmount" placeholder="100000">
+
+<label>Current Savings</label>
+<input type="number" id="currentSavings" placeholder="10000">
+
+<label>Time Period (Months)</label>
+<input type="number" id="months" placeholder="12">
+
+<div class="actions">
+<button onclick="calculateSavings()">Calculate</button>
+<button class="reset-btn" onclick="resetSavings()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>Savings Summary</h2>
+
+<div id="savingsResult" class="savings-result">
+<p>Your savings summary will appear here.</p>
+</div>
+
+<div id="savingsBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Current Savings</span>
+<div class="bar-bg">
+<div class="bar investment-bar" id="currentBar"></div>
+</div>
+</div>
+
+<div class="bar-row">
+<span>Remaining Goal</span>
+<div class="bar-bg">
+<div class="bar interest-bar" id="remainingBar"></div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="savings-info">
+
+<h2>Why Use a Savings Goal Calculator?</h2>
+
+<p>
+A savings goal calculator helps you plan how much money you need to save each month to reach a future target, such as buying a car, building an emergency fund, planning travel, or saving for education.
+</p>
+
+</section>
+
+<footer class="footer">
+<p><strong>Toolers</strong> © 2026</p>
+<p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/savings.js"></script>
+
+</body>
+</html>

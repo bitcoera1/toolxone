@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profit Margin Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/profit.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="profit-margin-calculator.html">💹 Profit Margin</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="profit-page">
+
+<section class="profit-card">
+
+<h1>💹 Profit Margin Calculator</h1>
+
+<p class="subtitle">
+Calculate profit, profit margin and markup instantly.
+</p>
+
+<label>Cost Price</label>
+<input type="number" id="costPrice" placeholder="100">
+
+<label>Selling Price</label>
+<input type="number" id="sellingPrice" placeholder="150">
+
+<div class="actions">
+<button onclick="calculateProfit()">Calculate</button>
+<button class="reset-btn" onclick="resetProfit()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>Profit Summary</h2>
+
+<div id="profitResult" class="profit-result">
+
+<p>Your profit summary will appear here.</p>
+
+</div>
+
+<div id="profitBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Cost</span>
+
+<div class="bar-bg">
+<div class="bar investment-bar" id="costBar"></div>
+</div>
+
+</div>
+
+<div class="bar-row">
+
+<span>Profit</span>
+
+<div class="bar-bg">
+<div class="bar interest-bar" id="profitBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="profit-info">
+
+<h2>Why Calculate Profit Margin?</h2>
+
+<p>
+
+Profit margin helps businesses, online sellers and freelancers
+measure profitability and make better pricing decisions.
+
+</p>
+
+</section>
+
+<footer class="footer">
+
+<p><strong>Toolers</strong> © 2026</p>
+
+<p>Fast • Accurate • Free</p>
+
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/profit.js"></script>
+
+</body>
+</html>

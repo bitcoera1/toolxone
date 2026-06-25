@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ROI Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/roi.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">❤️ BMI</a>
+    <a href="age-calculator.html">🎂 Age</a>
+    <a href="percentage-calculator.html">📊 Percentage</a>
+    <a href="qr-code-generator.html">📱 QR</a>
+    <a href="loan-calculator.html">💰 Loan</a>
+    <a href="compound-interest-calculator.html">📈 Compound</a>
+    <a href="discount-calculator.html">🏷️ Discount</a>
+    <a href="gst-vat-calculator.html">🧾 GST / VAT</a>
+    <a href="profit-margin-calculator.html">💹 Profit</a>
+    <a href="roi-calculator.html">📈 ROI</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="roi-page">
+
+<section class="roi-card">
+
+<h1>📈 ROI Calculator</h1>
+
+<p class="subtitle">
+Calculate Return on Investment, profit and ROI percentage instantly.
+</p>
+
+<label>Investment Amount</label>
+<input type="number" id="investment" placeholder="1000">
+
+<label>Final Return</label>
+<input type="number" id="returnAmount" placeholder="1500">
+
+<div class="actions">
+<button onclick="calculateROI()">Calculate</button>
+<button class="reset-btn" onclick="resetROI()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>ROI Summary</h2>
+
+<div id="roiResult" class="roi-result">
+<p>Your ROI summary will appear here.</p>
+</div>
+
+<div id="roiBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Investment</span>
+
+<div class="bar-bg">
+<div class="bar investment-bar" id="investmentBar"></div>
+</div>
+
+</div>
+
+<div class="bar-row">
+<span>Profit</span>
+
+<div class="bar-bg">
+<div class="bar interest-bar" id="profitBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="roi-info">
+
+<h2>Why Use an ROI Calculator?</h2>
+
+<p>
+An ROI calculator helps investors, businesses and marketers measure investment performance and make smarter financial decisions.
+</p>
+
+</section>
+
+<footer class="footer">
+<p><strong>Toolers</strong> © 2026</p>
+<p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/roi.js"></script>
+
+</body>
+</html>

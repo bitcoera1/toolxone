@@ -1,0 +1,211 @@
+/* ==========================================
+   GST / VAT CALCULATOR
+========================================== */
+
+.tax-page{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.tax-card,
+.result-card,
+.tax-info{
+    background:#ffffff;
+    color:#1f2937;
+    border-radius:24px;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    padding:35px;
+}
+
+.tax-card h1{
+    color:#10b981;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.tax-card label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.tax-card input,
+.tax-card select{
+    width:100%;
+    padding:14px 15px;
+    font-size:16px;
+    border-radius:14px;
+    border:1px solid #d1d5db;
+    outline:none;
+    margin-bottom:18px;
+}
+
+.tax-card input:focus,
+.tax-card select:focus{
+    border-color:#10b981;
+    box-shadow:0 0 0 4px rgba(16,185,129,.15);
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+}
+
+.actions button{
+    flex:1;
+    border:none;
+    border-radius:14px;
+    padding:14px 20px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    background:#10b981;
+    color:white;
+    transition:.3s;
+}
+
+.actions button:hover{
+    background:#059669;
+    transform:translateY(-2px);
+}
+
+.reset-btn{
+    background:#334155 !important;
+}
+
+.reset-btn:hover{
+    background:#475569 !important;
+}
+
+.result-card h2,
+.tax-info h2{
+    color:#10b981;
+    text-align:center;
+}
+
+.tax-result{
+    min-height:220px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    border:2px dashed #d1d5db;
+    border-radius:20px;
+    padding:25px;
+    color:#64748b;
+}
+
+.tax-result.active{
+    display:block;
+    text-align:left;
+}
+
+.result-line{
+    display:flex;
+    justify-content:space-between;
+    padding:12px 0;
+    border-bottom:1px solid #e5e7eb;
+    font-weight:700;
+}
+
+.result-line strong{
+    color:#10b981;
+}
+
+.tax-bars{
+    margin-top:25px;
+}
+
+.bar-row{
+    margin-bottom:18px;
+}
+
+.bar-row span{
+    display:block;
+    margin-bottom:8px;
+    font-weight:700;
+}
+
+.bar-bg{
+    height:16px;
+    background:#e5e7eb;
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.bar{
+    height:100%;
+    width:0%;
+    transition:width .8s ease;
+}
+
+.base-bar{
+    background:#10b981;
+}
+
+.tax-bar{
+    background:#f59e0b;
+}
+
+.tax-info{
+    max-width:1100px;
+    margin:0 auto 40px;
+    line-height:1.7;
+}
+
+/* ---------- DARK MODE ---------- */
+
+body.dark-mode .tax-card,
+body.dark-mode .result-card,
+body.dark-mode .tax-info{
+    background:#1f2937;
+    color:#e5e7eb;
+}
+
+body.dark-mode .subtitle,
+body.dark-mode .tax-result{
+    color:#cbd5e1;
+}
+
+body.dark-mode .tax-card input,
+body.dark-mode .tax-card select{
+    background:#111827;
+    color:#e5e7eb;
+    border-color:#374151;
+}
+
+body.dark-mode .tax-result{
+    border-color:#374151;
+}
+
+body.dark-mode .result-line{
+    border-bottom-color:#374151;
+}
+
+body.dark-mode .bar-bg{
+    background:#374151;
+}
+
+@media(max-width:768px){
+
+    .tax-page{
+        grid-template-columns:1fr;
+        padding:35px 15px;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+}

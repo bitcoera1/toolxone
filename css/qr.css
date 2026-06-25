@@ -1,0 +1,207 @@
+/* ==========================================
+   QR CODE GENERATOR
+========================================== */
+
+.qr-page{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+}
+
+.qr-card,
+.qr-preview-card,
+.qr-info{
+    background:#ffffff;
+    color:#1f2937;
+    border-radius:24px;
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    padding:35px;
+}
+
+.qr-card h1{
+    color:#10b981;
+    margin-bottom:10px;
+    text-align:center;
+}
+
+.qr-subtitle{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:25px;
+    line-height:1.6;
+}
+
+.qr-card label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.qr-card textarea{
+    width:100%;
+    min-height:150px;
+    padding:15px;
+    font-size:16px;
+    border-radius:14px;
+    border:1px solid #d1d5db;
+    resize:vertical;
+    outline:none;
+}
+
+.qr-card textarea:focus{
+    border-color:#10b981;
+    box-shadow:0 0 0 4px rgba(16,185,129,.18);
+}
+.qr-card select,
+.qr-card input{
+    width:100%;
+    padding:14px 15px;
+    font-size:16px;
+    border-radius:14px;
+    border:1px solid #d1d5db;
+    outline:none;
+    margin-bottom:18px;
+}
+
+.qr-card select:focus,
+.qr-card input:focus{
+    border-color:#10b981;
+    box-shadow:0 0 0 4px rgba(16,185,129,.18);
+}
+
+body.dark-mode .qr-card select,
+body.dark-mode .qr-card input{
+    background:#111827;
+    color:#e5e7eb;
+    border-color:#374151;
+}
+.qr-actions{
+    display:flex;
+    gap:12px;
+    margin-top:18px;
+}
+
+.qr-actions button,
+.download-btn{
+    border:none;
+    border-radius:14px;
+    padding:14px 20px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    background:#10b981;
+    color:white;
+    transition:.3s;
+}
+
+.qr-actions button:hover,
+.download-btn:hover{
+    background:#059669;
+    transform:translateY(-2px);
+}
+
+.clear-btn{
+    background:#334155 !important;
+}
+
+.clear-btn:hover{
+    background:#475569 !important;
+}
+
+.qr-preview-card h2{
+    text-align:center;
+    color:#10b981;
+    margin-bottom:20px;
+}
+
+.qr-preview{
+    min-height:260px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    border:2px dashed #d1d5db;
+    border-radius:20px;
+    padding:25px;
+    color:#64748b;
+}
+
+.qr-preview canvas,
+.qr-preview img{
+    max-width:100%;
+}
+
+.download-btn{
+    width:100%;
+    margin-top:20px;
+}
+
+.qr-info{
+    max-width:1100px;
+    margin:0 auto 40px;
+    line-height:1.7;
+}
+
+.qr-info h2{
+    color:#10b981;
+}
+
+/* ---------- DARK MODE ---------- */
+
+body.dark-mode .qr-card,
+body.dark-mode .qr-preview-card,
+body.dark-mode .qr-info{
+    background:#1f2937;
+    color:#e5e7eb;
+}
+
+body.dark-mode .qr-subtitle,
+body.dark-mode .qr-preview{
+    color:#cbd5e1;
+}
+
+body.dark-mode .qr-card textarea{
+    background:#111827;
+    color:#e5e7eb;
+    border-color:#374151;
+}
+
+body.dark-mode .qr-preview{
+    border-color:#374151;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:768px){
+    .qr-page{
+        grid-template-columns:1fr;
+        padding:35px 15px;
+    }
+
+    .qr-actions{
+        flex-direction:column;
+    }
+
+    .qr-actions button{
+        width:100%;
+    }
+}
+/* QR SCAN RELIABILITY FIX */
+.qr-preview canvas,
+.qr-preview img{
+    background:#ffffff !important;
+    padding:18px;
+    border-radius:8px;
+}
+
+body.dark-mode .qr-preview{
+    background:#ffffff !important;
+    border-color:#ffffff !important;
+}
+
+body.dark-mode .qr-preview p{
+    color:#334155;
+}

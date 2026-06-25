@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Loan / EMI Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/loan.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <a href="age-calculator.html">🎂 Age</a>
+    <a href="percentage-calculator.html">📊 Percentage</a>
+    <a href="qr-code-generator.html">🔳 QR</a>
+    <a href="loan-calculator.html">💰 Loan</a>
+    <a href="#">📩 Feedback</a>
+
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="loan-page">
+
+    <section class="loan-card">
+        <h1>💰 Loan / EMI Calculator</h1>
+        <p class="loan-subtitle">
+            Calculate monthly EMI, total interest and total payment instantly.
+        </p>
+
+        <label for="loanAmount">Loan Amount</label>
+        <input type="number" id="loanAmount" placeholder="Example: 500000">
+
+        <label for="interestRate">Annual Interest Rate (%)</label>
+        <input type="number" id="interestRate" placeholder="Example: 12">
+
+        <label for="loanTenure">Loan Duration</label>
+        <input type="number" id="loanTenure" placeholder="Example: 5">
+
+        <label for="tenureType">Duration Type</label>
+        <select id="tenureType">
+            <option value="years">Years</option>
+            <option value="months">Months</option>
+        </select>
+
+        <div class="loan-actions">
+            <button onclick="calculateLoan()">Calculate EMI</button>
+            <button class="clear-btn" onclick="resetLoan()">Reset</button>
+        </div>
+    </section>
+
+    <section class="loan-result-card">
+        <h2>Loan Summary</h2>
+
+        <div class="loan-result" id="loanResult">
+            <p>Your loan summary will appear here.</p>
+        </div>
+
+        <div class="loan-bars" id="loanBars" style="display:none;">
+            <div class="bar-row">
+                <span>Principal</span>
+                <div class="bar-bg">
+                    <div class="bar principal-bar" id="principalBar"></div>
+                </div>
+            </div>
+
+            <div class="bar-row">
+                <span>Interest</span>
+                <div class="bar-bg">
+                    <div class="bar interest-bar" id="interestBar"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<section class="loan-info">
+    <h2>What is EMI?</h2>
+    <p>
+        EMI means Equated Monthly Installment. It is the fixed amount you pay every month
+        to repay a loan, including both principal and interest.
+    </p>
+</section>
+
+<footer class="footer">
+    <p><strong>Toolers</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/loan.js"></script>
+
+</body>
+</html>

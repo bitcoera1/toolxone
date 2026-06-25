@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QR Code Generator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/qr.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="calculator.html">🧮 Calculator</a>
+    <a href="scientific-calculator.html">🔬 Scientific</a>
+    <a href="currency-converter.html">💱 Currency</a>
+    <a href="weight-converter.html">⚖️ Weight</a>
+    <a href="bmi-calculator.html">🩺 BMI</a>
+    <a href="age-calculator.html">🎂 Age</a>
+    <a href="percentage-calculator.html">📊 Percentage</a>
+    <a href="qr-code-generator.html">🔳 QR</a>
+    <a href="#">📩 Feedback</a>
+
+    <div class="live-clock" id="liveClock">🕘 Loading time...</div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="qr-page">
+
+    <section class="qr-card">
+        <h1>🔳 QR Code Generator</h1>
+        <p class="qr-subtitle">
+            Create QR codes instantly for websites, text, phone numbers, emails and more.
+        </p>
+
+        <label for="qrType">Select QR Type</label>
+
+<select id="qrType" onchange="changeQRType()">
+    <option value="text">Text / Website URL</option>
+    <option value="email">Email</option>
+    <option value="phone">Phone Number</option>
+    <option value="sms">SMS Message</option>
+    <option value="wifi">WiFi</option>
+</select>
+
+<div id="qrInputs">
+
+    <label for="qrText">Enter Text or URL</label>
+    <textarea id="qrText" placeholder="Example: https://toolers.com or any text"></textarea>
+
+</div>
+
+        <div class="qr-actions">
+            <button onclick="generateQR()">Generate QR</button>
+            <button class="clear-btn" onclick="clearQR()">Clear</button>
+        </div>
+    </section>
+
+    <section class="qr-preview-card">
+        <h2>QR Preview</h2>
+
+        <div class="qr-preview" id="qrPreview">
+            <p>QR Code will appear here</p>
+        </div>
+
+        <button class="download-btn" id="downloadBtn" onclick="downloadQR()" style="display:none;">
+            Download PNG
+        </button>
+    </section>
+
+</main>
+
+<section class="qr-info">
+    <h2>How to Use</h2>
+    <p>
+        Enter your website link, text, email, phone number or message. Click Generate QR and download your QR code instantly.
+    </p>
+</section>
+
+<footer class="footer">
+    <p><strong>Toolers</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/qr.js"></script>
+
+</body>
+</html>

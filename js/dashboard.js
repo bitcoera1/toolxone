@@ -159,7 +159,7 @@ function startCountersWhenVisible() {
   if (sectionPosition < screenPosition) {
     countersStarted = true;
 
-    animateCounter("toolsCounter", 10, "+");
+    animateCounter("toolsCounter", 11, "+");
     animateCounter("currencyCounter", 190, "+");
     animateCounter("freeCounter", 100, "%");
   }

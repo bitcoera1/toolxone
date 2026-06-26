@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Currency Exchange Profit Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/currency-profit.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="currency-profit-calculator.html">💱 Currency Profit</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="currency-profit-page">
+
+<section class="currency-profit-card">
+
+<h1>💱 Currency Exchange Profit Calculator</h1>
+
+<p class="subtitle">
+Calculate gross profit, fees, and net profit from currency exchange transactions.
+</p>
+
+<label>Currency Amount</label>
+<input type="number" id="currencyAmount" placeholder="1000">
+
+<label>Buy Rate</label>
+<input type="number" id="buyRate" placeholder="278">
+
+<label>Sell Rate</label>
+<input type="number" id="sellRate" placeholder="286">
+
+<label>Exchange Fee / Commission (Optional)</label>
+<input type="number" id="exchangeFee" placeholder="500">
+
+<div class="actions">
+<button onclick="calculateCurrencyProfit()">Calculate</button>
+<button class="reset-btn" onclick="resetCurrencyProfit()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>Exchange Summary</h2>
+
+<div id="currencyProfitResult" class="currency-profit-result">
+<p>Your exchange summary will appear here.</p>
+</div>
+
+<div id="currencyProfitBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Buying Cost</span>
+<div class="bar-bg">
+<div class="bar investment-bar" id="buyBar"></div>
+</div>
+</div>
+
+<div class="bar-row">
+<span>Profit</span>
+<div class="bar-bg">
+<div class="bar interest-bar" id="profitBar"></div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="currency-profit-info">
+
+<h2>Why Use This Calculator?</h2>
+
+<p>
+Estimate your profit from buying and selling foreign currency, taking exchange rates and optional fees into account. Useful for freelancers, travelers, traders, and businesses.
+</p>
+
+</section>
+
+<footer class="footer">
+<p><strong>Toolers</strong> © 2026</p>
+<p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/currency-profit.js"></script>
+
+</body>
+</html>

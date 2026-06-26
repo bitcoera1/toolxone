@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMI Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/emi.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="emi-calculator.html">💳 EMI Calculator</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="emi-page">
+
+<section class="emi-card">
+
+<h1>💳 EMI Calculator</h1>
+
+<p class="subtitle">
+Calculate your monthly EMI, total interest and total repayment instantly.
+</p>
+
+<label>Loan Amount</label>
+<input type="number" id="loanAmount" placeholder="500000">
+
+<label>Annual Interest Rate (%)</label>
+<input type="number" id="interestRate" placeholder="12">
+
+<label>Loan Tenure (Years)</label>
+<input type="number" id="loanYears" placeholder="5">
+
+<div class="actions">
+<button onclick="calculateEMI()">Calculate</button>
+<button class="reset-btn" onclick="resetEMI()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>EMI Summary</h2>
+
+<div id="emiResult" class="emi-result">
+<p>Your EMI summary will appear here.</p>
+</div>
+
+<div id="emiBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Principal</span>
+
+<div class="bar-bg">
+<div class="bar investment-bar" id="principalBar"></div>
+</div>
+
+</div>
+
+<div class="bar-row">
+<span>Interest</span>
+
+<div class="bar-bg">
+<div class="bar interest-bar" id="interestBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="emi-info">
+
+<h2>Why Use an EMI Calculator?</h2>
+
+<p>
+An EMI calculator helps you estimate your monthly loan installment, total interest payable, and overall repayment amount before taking a loan.
+</p>
+
+</section>
+
+<footer class="footer">
+<p><strong>Toolers</strong> © 2026</p>
+<p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/emi.js"></script>
+
+</body>
+</html>

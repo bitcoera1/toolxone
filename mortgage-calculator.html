@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mortgage Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/mortgage.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="mortgage-calculator.html">🏡 Mortgage</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="mortgage-page">
+
+<section class="mortgage-card">
+
+<h1>🏡 Mortgage Calculator</h1>
+
+<p class="subtitle">
+Calculate your monthly mortgage payment and total loan cost.
+</p>
+
+<label>Loan Amount</label>
+<input type="number" id="loanAmount" placeholder="300000">
+
+<label>Annual Interest Rate (%)</label>
+<input type="number" id="interestRate" placeholder="5">
+
+<label>Loan Term (Years)</label>
+<input type="number" id="loanYears" placeholder="30">
+
+<div class="actions">
+<button onclick="calculateMortgage()">Calculate</button>
+<button class="reset-btn" onclick="resetMortgage()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>Mortgage Summary</h2>
+
+<div id="mortgageResult" class="mortgage-result">
+<p>Your mortgage summary will appear here.</p>
+</div>
+
+<div id="mortgageBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Principal</span>
+
+<div class="bar-bg">
+<div class="bar investment-bar" id="principalBar"></div>
+</div>
+
+</div>
+
+<div class="bar-row">
+<span>Interest</span>
+
+<div class="bar-bg">
+<div class="bar interest-bar" id="interestBar"></div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="mortgage-info">
+
+<h2>Why Use a Mortgage Calculator?</h2>
+
+<p>
+Estimate your monthly mortgage payments, total interest, and total repayment before buying a home. Perfect for comparing loan options and planning your budget.
+</p>
+
+</section>
+
+<footer class="footer">
+<p><strong>Toolers</strong> © 2026</p>
+<p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/mortgage.js"></script>
+
+</body>
+</html>

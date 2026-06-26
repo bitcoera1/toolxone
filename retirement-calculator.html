@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Retirement Calculator - Toolers</title>
+
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/retirement.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="retirement-calculator.html">🏆 Retirement</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main class="retirement-page">
+
+<section class="retirement-card">
+
+<h1>🏆 Retirement Calculator</h1>
+
+<p class="subtitle">
+Estimate your future retirement savings and investment growth.
+</p>
+
+<label>Current Age</label>
+<input type="number" id="currentAge" placeholder="30">
+
+<label>Retirement Age</label>
+<input type="number" id="retirementAge" placeholder="60">
+
+<label>Current Savings</label>
+<input type="number" id="currentSavings" placeholder="50000">
+
+<label>Monthly Contribution</label>
+<input type="number" id="monthlyContribution" placeholder="1000">
+
+<label>Expected Annual Return (%)</label>
+<input type="number" id="annualReturn" placeholder="8">
+
+<div class="actions">
+<button onclick="calculateRetirement()">Calculate</button>
+<button class="reset-btn" onclick="resetRetirement()">Reset</button>
+</div>
+
+</section>
+
+<section class="result-card">
+
+<h2>Retirement Summary</h2>
+
+<div id="retirementResult" class="retirement-result">
+<p>Your retirement summary will appear here.</p>
+</div>
+
+<div id="retirementBars" class="growth-bars" style="display:none;">
+
+<div class="bar-row">
+<span>Total Contributions</span>
+<div class="bar-bg">
+<div class="bar investment-bar" id="contributionBar"></div>
+</div>
+</div>
+
+<div class="bar-row">
+<span>Investment Growth</span>
+<div class="bar-bg">
+<div class="bar interest-bar" id="growthBar"></div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<section class="retirement-info">
+
+<h2>Why Use a Retirement Calculator?</h2>
+
+<p>
+A retirement calculator helps estimate how much money you may have by retirement age based on your savings, monthly contributions, and expected investment returns.
+</p>
+
+</section>
+
+<footer class="footer">
+<p><strong>Toolers</strong> © 2026</p>
+<p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/tools.js"></script>
+<script src="js/retirement.js"></script>
+
+</body>
+</html>

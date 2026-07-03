@@ -1,9 +1,9 @@
 /* ==================================================
-   TOOLERS SHARED STYLES
+   TOOLXONE SHARED STYLES
    Used by ALL tool pages
 ================================================== */
 
-/* ---------- Toolers Header ---------- */
+/* ---------- ToolXone Header ---------- */
 
 
 .site-header{
@@ -52,7 +52,7 @@
     opacity:.9;
 }
 /* ==========================================
-   TOOLERS NAVBAR
+   TOOLXONE NAVBAR
 ========================================== */
 
 .navbar{
@@ -134,7 +134,7 @@
     background:#059669;
 
 }
-/* Toolers Shared Layout */
+/* ToolXone Shared Layout */
 
 .site-header{
 background:linear-gradient(135deg,#10b981,#059669);

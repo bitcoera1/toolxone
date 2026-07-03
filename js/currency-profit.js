@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS CURRENCY EXCHANGE PROFIT CALCULATOR
+// TOOLXONE CURRENCY EXCHANGE PROFIT CALCULATOR
 // ======================================
 
 function calculateCurrencyProfit() {
@@ -59,7 +59,7 @@ function calculateCurrencyProfit() {
         </div>
 
         <div class="result-line">
-            <span>Toolers Insight</span>
+            <span>ToolXone Insight</span>
             <strong>${sellRate > buyRate ? "📈 Profitable Exchange" : "📉 No Profit"}</strong>
         </div>
     `;
@@ -89,15 +89,3 @@ function resetCurrencyProfit() {
     document.getElementById("buyBar").style.width = "0%";
     document.getElementById("profitBar").style.width = "0%";
 }
-
-document.querySelectorAll("input").forEach(input => {
-
-    input.addEventListener("keydown", function(e){
-
-        if(e.key === "Enter"){
-            calculateCurrencyProfit();
-        }
-
-    });
-
-});

@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS INFLATION CALCULATOR PRO
+// TOOLXONE INFLATION CALCULATOR PRO
 // ======================================
 
 function calculateInflation() {
@@ -75,15 +75,3 @@ function resetInflation() {
     document.getElementById("originalBar").style.width = "0%";
     document.getElementById("increaseBar").style.width = "0%";
 }
-
-document.querySelectorAll("input").forEach(input => {
-
-    input.addEventListener("keydown", function(e){
-
-        if(e.key === "Enter"){
-            calculateInflation();
-        }
-
-    });
-
-});

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GST / VAT Calculator - Toolers</title>
+<title>GST / VAT Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/gst-vat.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -42,27 +42,15 @@
 
 <section class="tax-card">
 
-<h1>🧾 GST / VAT Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate tax amount, price before tax, and final price instantly.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Calculation Type</label>
-<select id="taxType">
-    <option value="add">Add GST / VAT to price</option>
-    <option value="remove">Remove GST / VAT from price</option>
-</select>
-
-<label>Amount</label>
-<input type="number" id="amount" placeholder="1000">
-
-<label>Tax Rate (%)</label>
-<input type="number" id="taxRate" placeholder="18">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateTax()">Calculate</button>
-<button class="reset-btn" onclick="resetTax()">Reset</button>
+    <button onclick="calculateTax()">Calculate</button>
+    <button class="reset-btn" onclick="resetTax()">Reset</button>
 </div>
 
 </section>
@@ -97,23 +85,84 @@ Calculate tax amount, price before tax, and final price instantly.
 
 </main>
 
-<section class="tax-info">
+<section id="related-tools-section">
 
-<h2>Why Use a GST / VAT Calculator?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-A GST / VAT calculator helps shoppers, freelancers and businesses quickly calculate tax-inclusive and tax-exclusive prices using any custom tax rate.
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/gst-vat.js"></script>
+
+<script>
+const taxCalculator = {
+    id: "gst-vat",
+    title: "GST / VAT Calculator",
+    icon: "🧾",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate GST/VAT tax amount, price before tax and final price.",
+    subtitle: "Calculate tax amount, price before tax, and final price instantly.",
+
+    fields: [
+        {
+            label: "Calculation Type",
+            type: "select",
+            id: "taxType",
+            options: [
+                { value: "add", label: "Add GST / VAT to price" },
+                { value: "remove", label: "Remove GST / VAT from price" }
+            ]
+        },
+        { label: "Amount", type: "number", id: "amount", placeholder: "1000" },
+        { label: "Tax Rate (%)", type: "number", id: "taxRate", placeholder: "18" }
+    ],
+
+    info: {
+        title: "Why Use a GST / VAT Calculator?",
+        description: "A GST / VAT calculator helps shoppers, freelancers and businesses quickly calculate tax-inclusive and tax-exclusive prices using any custom tax rate."
+    },
+
+    faq: [
+        {
+            question: "What is GST or VAT?",
+            answer: "GST and VAT are consumption taxes added to goods and services in many countries."
+        },
+        {
+            question: "Can this calculator remove tax from a final price?",
+            answer: "Yes. Choose the remove option to calculate the base price and tax amount from a tax-inclusive price."
+        }
+    ]
+};
+
+createFinanceCalculator(taxCalculator);
+</script>
 
 </body>
 </html>

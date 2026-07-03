@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retirement Calculator - Toolers</title>
+<title>Retirement Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/retirement.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -31,30 +31,15 @@
 
 <section class="retirement-card">
 
-<h1>🏆 Retirement Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Estimate your future retirement savings and investment growth.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Current Age</label>
-<input type="number" id="currentAge" placeholder="30">
-
-<label>Retirement Age</label>
-<input type="number" id="retirementAge" placeholder="60">
-
-<label>Current Savings</label>
-<input type="number" id="currentSavings" placeholder="50000">
-
-<label>Monthly Contribution</label>
-<input type="number" id="monthlyContribution" placeholder="1000">
-
-<label>Expected Annual Return (%)</label>
-<input type="number" id="annualReturn" placeholder="8">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateRetirement()">Calculate</button>
-<button class="reset-btn" onclick="resetRetirement()">Reset</button>
+    <button onclick="runRetirementCalculator()">Calculate</button>
+    <button class="reset-btn" onclick="resetRetirement()">Reset</button>
 </div>
 
 </section>
@@ -89,23 +74,78 @@ Estimate your future retirement savings and investment growth.
 
 </main>
 
-<section class="retirement-info">
+<section id="related-tools-section">
 
-<h2>Why Use a Retirement Calculator?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-A retirement calculator helps estimate how much money you may have by retirement age based on your savings, monthly contributions, and expected investment returns.
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/retirement.js"></script>
+
+<script>
+const retirementCalculator = {
+    id: "retirement",
+    title: "Retirement Calculator",
+    icon: "🏆",
+    category: "Finance",
+    theme: "finance",
+    description: "Estimate your future retirement savings and investment growth.",
+    subtitle: "Estimate your future retirement savings and investment growth.",
+
+    fields: [
+        { label: "Current Age", type: "number", id: "currentAge", placeholder: "30" },
+        { label: "Retirement Age", type: "number", id: "retirementAge", placeholder: "60" },
+        { label: "Current Savings", type: "number", id: "currentSavings", placeholder: "50000" },
+        { label: "Monthly Contribution", type: "number", id: "monthlyContribution", placeholder: "1000" },
+        { label: "Expected Annual Return (%)", type: "number", id: "annualReturn", placeholder: "8" }
+    ],
+
+    info: {
+        title: "Why Use a Retirement Calculator?",
+        description: "A retirement calculator helps estimate how much money you may have by retirement age based on your savings, monthly contributions, and expected investment returns."
+    },
+
+    faq: [
+        {
+            question: "What does this retirement calculator estimate?",
+            answer: "It estimates your future retirement fund based on current age, retirement age, savings, monthly contributions and expected annual return."
+        },
+        {
+            question: "What is the 4% rule?",
+            answer: "The 4% rule is a common retirement guideline that estimates how much you may withdraw annually from your retirement fund."
+        }
+    ]
+};
+
+createFinanceCalculator(retirementCalculator);
+</script>
 
 </body>
 </html>

@@ -3,82 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Weight Converter - Toolers</title>
+<title>Weight Converter - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/weight-converter.css">
 
-<style>
-.tool-area{
-    padding:60px 20px;
-}
-
-.weight-card{
-    max-width:560px;
-    margin:0 auto;
-    background:white;
-    padding:35px;
-    border-radius:18px;
-    box-shadow:0 10px 30px rgba(0,0,0,.12);
-    text-align:center;
-}
-
-.weight-card h1{
-    color:#4CAF50;
-    margin-bottom:25px;
-}
-
-.weight-card input,
-.weight-card select{
-    width:100%;
-    padding:14px;
-    margin:10px 0;
-    font-size:16px;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
-
-.convert-btn{
-    width:100%;
-    padding:14px;
-    margin-top:12px;
-    border:none;
-    border-radius:10px;
-    background:#4CAF50;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.convert-btn:hover{
-    background:#059669;
-}
-
-.result{
-    margin-top:22px;
-    font-size:22px;
-    font-weight:bold;
-    color:#10B981;
-}
-
-body.dark-mode .weight-card{
-    background:#1f2937;
-    color:#e5e7eb;
-}
-
-body.dark-mode .weight-card input,
-body.dark-mode .weight-card select{
-    background:#111827;
-    color:#e5e7eb;
-    border:1px solid #374151;
-}
-</style>
 </head>
 
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <img src="images/logo.png" alt="ToolXone Logo" class="site-logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -115,33 +50,56 @@ body.dark-mode .weight-card select{
 
 </main>
 
+<section id="related-tools-section">
+    <section id="relatedTools"></section>
+</section>
+
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-    <p><strong>Toolers</strong> © 2026</p>
+    <p><strong>ToolXone</strong> © 2026</p>
     <p>Free Online Calculators & Conversion Tools</p>
     <p>Fast • Accurate • Free</p>
 </footer>
 
-<script>
-
-function convertWeight() {
-    const value = parseFloat(document.getElementById("value").value);
-    const conversion = document.getElementById("conversion").value;
-    const resultBox = document.getElementById("result");
-
-    if (isNaN(value)) {
-        resultBox.textContent = "Please enter a value.";
-        return;
-    }
-
-    if (conversion === "kgToLb") {
-        resultBox.textContent = value + " kg = " + (value * 2.20462).toFixed(2) + " lbs";
-    } else {
-        resultBox.textContent = value + " lbs = " + (value / 2.20462).toFixed(2) + " kg";
-    }
-}
-</script>
-
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+<script src="js/finance-components.js"></script>
+
+<script src="js/weight-converter.js"></script>
+
+<script>
+initializeRelatedTools("weight");
+
+renderFinanceInfo(
+    "financeInfo",
+    "Why Use a Weight Converter?",
+    "A weight converter quickly converts kilograms to pounds and pounds to kilograms with accurate calculations."
+);
+
+renderFinanceFAQ(
+    "financeFAQ",
+    [
+        {
+            question: "Which units are supported?",
+            answer: "This converter supports kilograms (kg) and pounds (lbs)."
+        },
+        {
+            question: "Is the conversion accurate?",
+            answer: "Yes. It uses the standard conversion factor of 1 kilogram = 2.20462 pounds."
+        },
+        {
+            question: "Can I convert pounds back to kilograms?",
+            answer: "Yes. Simply choose 'Pounds to Kilograms' from the dropdown."
+        }
+    ]
+);
+
+renderFinanceFeedback("financeFeedback");
+</script>
 
 </body>
 </html>

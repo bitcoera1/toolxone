@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mortgage Calculator - Toolers</title>
+<title>Mortgage Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/mortgage.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -31,24 +31,15 @@
 
 <section class="mortgage-card">
 
-<h1>🏡 Mortgage Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate your monthly mortgage payment and total loan cost.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Loan Amount</label>
-<input type="number" id="loanAmount" placeholder="300000">
-
-<label>Annual Interest Rate (%)</label>
-<input type="number" id="interestRate" placeholder="5">
-
-<label>Loan Term (Years)</label>
-<input type="number" id="loanYears" placeholder="30">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateMortgage()">Calculate</button>
-<button class="reset-btn" onclick="resetMortgage()">Reset</button>
+<button onclick="runMortgageCalculator()">Calculate</button>
+    <button class="reset-btn" onclick="resetMortgage()">Reset</button>
 </div>
 
 </section>
@@ -58,6 +49,7 @@ Calculate your monthly mortgage payment and total loan cost.
 <h2>Mortgage Summary</h2>
 
 <div id="mortgageResult" class="mortgage-result">
+<div id="mortgageMessage" class="calculator-message"></div>
 <p>Your mortgage summary will appear here.</p>
 </div>
 
@@ -85,6 +77,26 @@ Calculate your monthly mortgage payment and total loan cost.
 
 </section>
 
+<section id="related-tools-section">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            💡 RELATED TOOLS
+        </div>
+
+        <h2>You May Also Like</h2>
+
+        <p>
+            Continue exploring related financial calculators.
+        </p>
+
+    </section>
+
+    <div id="relatedTools"></div>
+
+</section>
+
 </main>
 
 <section class="mortgage-info">
@@ -97,13 +109,97 @@ Estimate your monthly mortgage payments, total interest, and total repayment bef
 
 </section>
 
+<section class="faq-section">
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+        <summary>What does this mortgage calculator do?</summary>
+        <p>
+            This calculator estimates your monthly mortgage payment, total interest,
+            and total repayment based on loan amount, interest rate, and loan term.
+        </p>
+    </details>
+
+    <details>
+        <summary>Is this mortgage calculator free?</summary>
+        <p>
+            Yes, this ToolXone mortgage calculator is completely free to use.
+        </p>
+    </details>
+
+</section>
+
+<section class="feedback-section">
+
+    <h2>💬 Help Improve ToolXone</h2>
+
+    <p>Your feedback helps us improve this calculator for everyone.</p>
+
+    <div class="feedback-options">
+        <button>😊 Helpful</button>
+        <button>😐 Average</button>
+        <button>😞 Needs Improvement</button>
+    </div>
+
+    <textarea placeholder="Share your suggestion..."></textarea>
+
+    <button class="feedback-submit">Submit Feedback</button>
+
+</section>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/mortgage.js"></script>
+
+<script>
+const mortgageCalculator = {
+    id: "mortgage",
+    title: "Mortgage Calculator",
+    icon: "🏡",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate monthly mortgage payments accurately.",
+    subtitle: "Calculate your monthly mortgage payment and total loan cost.",
+    fields: [
+        {
+            label: "Loan Amount",
+            type: "number",
+            id: "loanAmount",
+            placeholder: "300000"
+        },
+        {
+            label: "Annual Interest Rate (%)",
+            type: "number",
+            id: "interestRate",
+            placeholder: "5"
+        },
+        {
+            label: "Loan Term (Years)",
+            type: "number",
+            id: "loanYears",
+            placeholder: "30"
+        }
+    ]
+};
+
+createFinanceCalculator(mortgageCalculator);
+</script>
 
 </body>
 </html>

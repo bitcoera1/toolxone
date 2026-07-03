@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Compound Interest Calculator - Toolers</title>
+<title>Compound Interest Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/compound.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -40,42 +40,15 @@
 
 <section class="compound-card">
 
-<h1>📈 Compound Interest Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Watch your investments grow with the power of compound interest.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Initial Investment</label>
-<input type="number" id="principal" placeholder="10000">
-
-<label>Monthly Contribution</label>
-<input type="number" id="monthly" placeholder="500">
-
-<label>Annual Interest Rate (%)</label>
-<input type="number" id="rate" placeholder="8">
-
-<label>Investment Period</label>
-<input type="number" id="years" placeholder="10">
-
-<label>Compounding Frequency</label>
-
-<select id="frequency">
-    <option value="1">Yearly</option>
-    <option value="4">Quarterly</option>
-    <option value="12" selected>Monthly</option>
-    <option value="365">Daily</option>
-</select>
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateCompound()">
-Calculate Growth
-</button>
-
-<button class="reset-btn"
-onclick="resetCompound()">
-Reset
-</button>
+    <button onclick="runCompoundCalculator()">Calculate Growth</button>
+    <button class="reset-btn" onclick="resetCompound()">Reset</button>
 </div>
 
 </section>
@@ -122,30 +95,91 @@ id="interestBar"></div>
 
 </main>
 
-<section class="compound-info">
+<section id="related-tools-section">
 
-<h2>Why Compound Interest Matters</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-
-Compound interest helps your money grow faster because
-you earn interest not only on your original investment
-but also on previously earned interest.
-
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
 
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 
 <p>Fast • Accurate • Free</p>
 
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/compound.js"></script>
+
+<script>
+const compoundCalculator = {
+    id: "compound",
+    title: "Compound Interest Calculator",
+    icon: "📈",
+    category: "Finance",
+    theme: "finance",
+    description: "Estimate future investment growth using compound interest.",
+    subtitle: "Watch your investments grow with the power of compound interest.",
+
+    fields: [
+        { label: "Initial Investment", type: "number", id: "principal", placeholder: "10000" },
+        { label: "Monthly Contribution", type: "number", id: "monthly", placeholder: "500" },
+        { label: "Annual Interest Rate (%)", type: "number", id: "rate", placeholder: "8" },
+        { label: "Investment Period", type: "number", id: "years", placeholder: "10" },
+        {
+            label: "Compounding Frequency",
+            type: "select",
+            id: "frequency",
+            options: [
+                { value: "1", label: "Yearly" },
+                { value: "4", label: "Quarterly" },
+                { value: "12", label: "Monthly" },
+                { value: "365", label: "Daily" }
+            ]
+        }
+    ],
+
+    info: {
+        title: "Why Compound Interest Matters",
+        description: "Compound interest helps your money grow faster because you earn interest not only on your original investment but also on previously earned interest."
+    },
+
+    faq: [
+        {
+            question: "What is compound interest?",
+            answer: "Compound interest means earning interest on both your original investment and the interest already earned."
+        },
+        {
+            question: "Can I include monthly contributions?",
+            answer: "Yes. This calculator allows you to add monthly contributions to estimate long-term investment growth."
+        }
+    ]
+};
+
+createFinanceCalculator(compoundCalculator);
+</script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Discount Calculator - Toolers</title>
+<title>Discount Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/discount.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -41,26 +41,16 @@
 
 <section class="discount-card">
 
-<h1>🏷️ Discount Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate your savings instantly and find the final price after discount.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Original Price</label>
-<input type="number" id="originalPrice" placeholder="1000">
-
-<label>Discount (%)</label>
-<input type="number" id="discountPercent" placeholder="20">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateDiscount()">
-Calculate
-</button>
+    <button onclick="calculateDiscount()">Calculate</button>
+    <button class="reset-btn" onclick="resetDiscount()">Reset</button>
 
-<button class="reset-btn" onclick="resetDiscount()">
-Reset
-</button>
 </div>
 
 </section>
@@ -103,28 +93,78 @@ Reset
 
 </main>
 
-<section class="compound-info">
+<section id="related-tools-section">
 
-<h2>Why Use a Discount Calculator?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-
-A discount calculator helps you instantly determine how much money you save during sales and promotions, making smarter shopping decisions.
-
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
 
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 
 <p>Fast • Accurate • Free</p>
 
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/discount.js"></script>
+
+<script>
+const discountCalculator = {
+    id: "discount",
+    title: "Discount Calculator",
+    icon: "🏷️",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate savings and final price after discount.",
+    subtitle: "Calculate your savings instantly and find the final price after discount.",
+
+    fields: [
+        { label: "Original Price", type: "number", id: "originalPrice", placeholder: "1000" },
+        { label: "Discount (%)", type: "number", id: "discountPercent", placeholder: "20" }
+    ],
+
+    info: {
+        title: "Why Use a Discount Calculator?",
+        description: "A discount calculator helps you instantly determine how much money you save during sales and promotions, making smarter shopping decisions."
+    },
+
+    faq: [
+        {
+            question: "How is discount calculated?",
+            answer: "Discount amount is calculated by multiplying the original price by the discount percentage."
+        },
+        {
+            question: "What does final price mean?",
+            answer: "Final price is the amount you pay after subtracting the discount from the original price."
+        }
+    ]
+};
+
+createFinanceCalculator(discountCalculator);
+</script>
 
 </body>
 </html>

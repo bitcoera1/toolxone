@@ -167,3 +167,26 @@ function startCountersWhenVisible() {
 
 window.addEventListener("scroll", startCountersWhenVisible);
 setTimeout(startCountersWhenVisible, 300);
+function revealCards() {
+
+    const cards = document.querySelectorAll(".tool-card");
+
+    if (!cards.length) return;
+
+    cards.forEach((card, index) => {
+
+        setTimeout(() => {
+
+            card.classList.add("show");
+
+        }, index * 120);
+
+    });
+
+}
+
+window.addEventListener("load", () => {
+
+    setTimeout(revealCards, 300);
+
+});

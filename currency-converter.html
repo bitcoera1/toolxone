@@ -3,116 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Currency Converter - Toolers</title>
+<title>Currency Converter - ToolXone</title>
 <link rel="stylesheet" href="css/tools.css">
-<style>
-body{
-font-family:Arial,sans-serif;
-background:#f5f7fa;
-margin:0;
-padding:0;
-}
-
-.container{
-max-width:600px;
-margin:40px auto;
-background:white;
-padding:30px;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
-}
-
-h1{
-text-align:center;
-color:#4CAF50;
-margin-bottom:20px;
-}
-
-input,select,button{
-width:100%;
-padding:12px;
-margin-top:10px;
-font-size:16px;
-box-sizing:border-box;
-}
-
-button{
-background:#4CAF50;
-color:white;
-border:none;
-cursor:pointer;
-border-radius:5px;
-}
-
-button:hover{
-background:#45a049;
-}
-
-.swap-btn{
-background:#2196F3;
-}
-
-.swap-btn:hover{
-background:#1976D2;
-}
-
-.result{
-margin-top:20px;
-padding:20px;
-background:#f8fafc;
-border:2px solid #10B981;
-border-radius:10px;
-font-size:20px;
-font-weight:bold;
-text-align:center;
-color:#1e293b;
-line-height:1.8;
-box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-
-.chart-box{
-margin-top:30px;
-padding:25px;
-background:#ffffff;
-border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,.08);
-text-align:center;
-}
-
-.chart-box h3{
-margin-bottom:20px;
-color:#1e293b;
-}
-
-#rateChart{
-width:100%;
-max-height:320px;
-}
-
-.status-bar{
-margin-top:15px;
-text-align:center;
-font-size:15px;
-font-weight:600;
-color:#10B981;
-}
-
-.note{
-margin-top:15px;
-font-size:14px;
-text-align:center;
-color:#666;
-}
-
-.back{
-display:block;
-text-align:center;
-margin-top:20px;
-text-decoration:none;
-color:#4CAF50;
-font-weight:bold;
-}
-</style>
+<link rel="stylesheet" href="css/currency-converter.css">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -122,7 +15,7 @@ font-weight:bold;
 <div class="page-wrapper">
 
 <header class="site-header">
-    <h1>🧰 Toolers</h1>
+    <h1>🧰 ToolXone</h1>
     <p>Free Online Calculators & Conversion Tools</p>
 </header>
 
@@ -206,147 +99,58 @@ Live exchange rates powered by ExchangeRate API.
 
 </div>
 
-<script>
-    
-let rateChart;
-
-function swapCurrencies(){
-    const from = document.getElementById("fromCurrency");
-    const to = document.getElementById("toCurrency");
-
-    let temp = from.value;
-    from.value = to.value;
-    to.value = temp;
-
-    convertCurrency();
-}
-
-async function convertCurrency(){
-    const amount = Number(document.getElementById("amount").value);
-    const from = document.getElementById("fromCurrency").value;
-    const to = document.getElementById("toCurrency").value;
-    const result = document.getElementById("result");
-
-    if(amount <= 0 || isNaN(amount)){
-        result.innerHTML = "Please enter a valid amount.";
-        document.getElementById("statusBar").innerHTML = "⚠️ Invalid Amount";
-        return;
-    }
-
-    result.innerHTML = "Loading latest exchange rates...";
-    document.getElementById("statusBar").innerHTML = "⏳ Checking latest exchange rates...";
-
-    try{
-        const response = await fetch(`https://open.er-api.com/v6/latest/${from}`);
-
-        if(!response.ok){
-            throw new Error("API Error");
-        }
-
-        const data = await response.json();
-        const rate = data.rates[to];
-        const convertedAmount = amount * rate;
-
-        displayResult(amount, from, to, convertedAmount, rate);
-
-        document.getElementById("statusBar").innerHTML = "✅ Updated Successfully";
-
-    }catch(error){
-        console.error(error);
-        document.getElementById("statusBar").innerHTML = "❌ Connection Error";
-        result.innerHTML = "Unable to fetch live exchange rates. Please try again.";
-    }
-}
-
-function displayResult(amount, from, to, convertedAmount, rate){
-    const result = document.getElementById("result");
-
-    result.innerHTML = `
-<h3 style="color:#10B981;margin-bottom:15px;">💱 Currency Conversion</h3>
-
-<div style="font-size:28px;">${amount} ${from}</div>
-
-<div style="font-size:22px;color:#10B981;margin:12px 0;">↓</div>
-
-<div style="font-size:30px;font-weight:bold;">${convertedAmount.toFixed(2)} ${to}</div>
-
-<hr style="margin:20px 0;">
-
-<div style="font-size:16px;">
-<b>Exchange Rate</b><br>
-1 ${from} = ${rate.toFixed(4)} ${to}
-</div>
-
-<div style="margin-top:15px;color:#10B981;">
-✔ Latest Exchange Rate Available
-</div>
-`;
-
-    document.getElementById("chartTitle").innerHTML = `📈 ${from} → ${to} Trend`;
-
-    updateRateChart(from,to,rate);
-}
-
-function updateRateChart(from,to,rate){
-    const ctx = document.getElementById("rateChart");
-
-    if(!ctx){
-        return;
-    }
-
-    const labels = ["6h","5h","4h","3h","2h","1h","Now"];
-
-    const trendData = [
-        rate * 0.996,
-        rate * 0.998,
-        rate * 0.997,
-        rate * 1.001,
-        rate * 1.003,
-        rate * 1.002,
-        rate
-    ];
-
-    if(!rateChart){
-        rateChart = new Chart(ctx,{
-            type:"line",
-            data:{
-                labels:labels,
-                datasets:[{
-                    label:`${from} to ${to}`,
-                    data:trendData,
-                    borderColor:"#10B981",
-                    backgroundColor:"rgba(16,185,129,0.15)",
-                    fill:true,
-                    tension:0.4,
-                    pointRadius:4
-                }]
-            },
-            options:{
-                responsive:true,
-                plugins:{
-                    legend:{
-                        display:false
-                    }
-                },
-                scales:{
-                    y:{
-                        beginAtZero:false
-                    }
-                }
-            }
-        });
-    }else{
-        rateChart.data.labels = labels;
-        rateChart.data.datasets[0].label = `${from} to ${to}`;
-        rateChart.data.datasets[0].data = trendData;
-        rateChart.update();
-    }
-}
-</script>
 </div>
 </div>
+<section id="related-tools-section">
+    <section id="relatedTools"></section>
+</section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
+<footer class="footer">
+    <p><strong>ToolXone</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+<script src="js/finance-components.js"></script>
+
+<script src="js/currency-converter.js"></script>
+
+<script>
+initializeRelatedTools("currency");
+
+renderFinanceInfo(
+    "financeInfo",
+    "Why Use a Currency Converter?",
+    "A currency converter helps you quickly convert money between different currencies using live exchange rates."
+);
+
+renderFinanceFAQ(
+    "financeFAQ",
+    [
+        {
+            question: "Does this currency converter use live rates?",
+            answer: "Yes. It fetches the latest available exchange rates from an online exchange rate API."
+        },
+        {
+            question: "Can I swap currencies?",
+            answer: "Yes. Use the Swap Currencies button to instantly switch the from and to currencies."
+        },
+        {
+            question: "Why do rates change?",
+            answer: "Currency exchange rates change because of market demand, inflation, interest rates and global economic conditions."
+        }
+    ]
+);
+
+renderFinanceFeedback("financeFeedback");
+</script>
 
 </body>
 </html>

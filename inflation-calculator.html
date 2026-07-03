@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Inflation Calculator - Toolers</title>
+<title>Inflation Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/inflation.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -31,24 +31,15 @@
 
 <section class="inflation-card">
 
-<h1>📉 Inflation Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Estimate future price and purchasing power after inflation.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Current Price / Amount</label>
-<input type="number" id="currentAmount" placeholder="1000">
-
-<label>Annual Inflation Rate (%)</label>
-<input type="number" id="inflationRate" placeholder="10">
-
-<label>Number of Years</label>
-<input type="number" id="years" placeholder="5">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateInflation()">Calculate</button>
-<button class="reset-btn" onclick="resetInflation()">Reset</button>
+    <button onclick="calculateInflation()">Calculate</button>
+    <button class="reset-btn" onclick="resetInflation()">Reset</button>
 </div>
 
 </section>
@@ -83,23 +74,109 @@ Estimate future price and purchasing power after inflation.
 
 </main>
 
-<section class="inflation-info">
+<section id="related-tools-section">
 
-<h2>Why Use an Inflation Calculator?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-An inflation calculator helps estimate how prices may increase over time and how purchasing power can decrease due to inflation.
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/inflation.js"></script>
+
+<script>
+const inflationCalculator = {
+
+    id: "inflation",
+
+    title: "Inflation Calculator",
+
+    icon: "📉",
+
+    category: "Finance",
+
+    theme: "finance",
+
+    description: "Estimate future prices and purchasing power after inflation.",
+
+    subtitle: "Estimate future price and purchasing power after inflation.",
+
+    fields: [
+
+        {
+            label: "Current Price / Amount",
+            type: "number",
+            id: "currentAmount",
+            placeholder: "1000"
+        },
+
+        {
+            label: "Annual Inflation Rate (%)",
+            type: "number",
+            id: "inflationRate",
+            placeholder: "10"
+        },
+
+        {
+            label: "Number of Years",
+            type: "number",
+            id: "years",
+            placeholder: "5"
+        }
+
+    ],
+
+    info: {
+
+        title: "Why Use an Inflation Calculator?",
+
+        description: "An inflation calculator helps estimate how prices may increase over time and how purchasing power decreases because of inflation."
+
+    },
+
+    faq: [
+
+        {
+            question: "What is inflation?",
+            answer: "Inflation is the gradual increase in prices over time, reducing the purchasing power of money."
+        },
+
+        {
+            question: "Can I estimate future costs?",
+            answer: "Yes. This calculator estimates how much today's amount may cost after a number of years at a chosen inflation rate."
+        }
+
+    ]
+
+};
+
+createFinanceCalculator(inflationCalculator);
+</script>
 
 </body>
 </html>

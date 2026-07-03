@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS DISCOUNT CALCULATOR PRO
+// TOOLXONE DISCOUNT CALCULATOR PRO
 // ======================================
 
 function calculateDiscount() {
@@ -73,16 +73,3 @@ function resetDiscount() {
     document.getElementById("payBar").style.width = "0%";
     document.getElementById("saveBar").style.width = "0%";
 }
-
-// Press Enter to calculate
-document.querySelectorAll("input").forEach(input => {
-
-    input.addEventListener("keydown", function(e){
-
-        if(e.key === "Enter"){
-            calculateDiscount();
-        }
-
-    });
-
-});

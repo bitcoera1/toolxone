@@ -1,16 +1,20 @@
 // ======================================
-// TOOLERS SAVINGS GOAL CALCULATOR PRO
+// TOOLXONE SAVINGS GOAL CALCULATOR PRO
 // ======================================
 
 function calculateSavings() {
-
     const target = parseFloat(document.getElementById("targetAmount").value);
     const current = parseFloat(document.getElementById("currentSavings").value);
     const months = parseFloat(document.getElementById("months").value);
 
-    if (isNaN(target) || isNaN(current) || isNaN(months) ||
-        target <= 0 || current < 0 || months <= 0) {
-
+    if (
+        isNaN(target) ||
+        isNaN(current) ||
+        isNaN(months) ||
+        target <= 0 ||
+        current < 0 ||
+        months <= 0
+    ) {
         alert("Please enter valid values.");
         return;
     }
@@ -19,7 +23,6 @@ function calculateSavings() {
     const monthly = remaining / months;
     const weekly = monthly / 4.345;
     const daily = monthly / 30.44;
-
     const progress = Math.min((current / target) * 100, 100);
 
     const result = document.getElementById("savingsResult");
@@ -69,8 +72,11 @@ function calculateSavings() {
     document.getElementById("remainingBar").style.width = (100 - progress) + "%";
 }
 
-function resetSavings() {
+function runSavingsCalculator() {
+    calculateSavings();
+}
 
+function resetSavings() {
     document.getElementById("targetAmount").value = "";
     document.getElementById("currentSavings").value = "";
     document.getElementById("months").value = "";
@@ -84,15 +90,3 @@ function resetSavings() {
     document.getElementById("currentBar").style.width = "0%";
     document.getElementById("remainingBar").style.width = "0%";
 }
-
-document.querySelectorAll("input").forEach(input => {
-
-    input.addEventListener("keydown", function(e){
-
-        if(e.key === "Enter"){
-            calculateSavings();
-        }
-
-    });
-
-});

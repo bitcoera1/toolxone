@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>QR Code Generator - Toolers</title>
+<title>QR Code Generator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/qr.css">
@@ -13,7 +13,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <img src="images/logo.png" alt="ToolXone Logo" class="site-logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -55,7 +55,7 @@
 <div id="qrInputs">
 
     <label for="qrText">Enter Text or URL</label>
-    <textarea id="qrText" placeholder="Example: https://toolers.com or any text"></textarea>
+    <textarea id="qrText" placeholder="Example: https://toolxone.com or any text"></textarea>
 
 </div>
 
@@ -78,23 +78,59 @@
     </section>
 
 </main>
-
-<section class="qr-info">
-    <h2>How to Use</h2>
-    <p>
-        Enter your website link, text, email, phone number or message. Click Generate QR and download your QR code instantly.
-    </p>
+<section id="related-tools-section">
+    <section id="relatedTools"></section>
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-    <p><strong>Toolers</strong> © 2026</p>
+    <p><strong>ToolXone</strong> © 2026</p>
     <p>Free Online Calculators & Conversion Tools</p>
     <p>Fast • Accurate • Free</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+<script src="js/finance-components.js"></script>
+
 <script src="js/qr.js"></script>
+
+<script>
+initializeRelatedTools("qr");
+
+renderFinanceInfo(
+    "financeInfo",
+    "Why Use a QR Code Generator?",
+    "A QR code generator helps you quickly create scannable QR codes for websites, text, emails, phone numbers, SMS messages and WiFi details."
+);
+
+renderFinanceFAQ(
+    "financeFAQ",
+    [
+        {
+            question: "What can I create QR codes for?",
+            answer: "You can create QR codes for text, website links, email addresses, phone numbers, SMS messages and WiFi details."
+        },
+        {
+            question: "Can I download the QR code?",
+            answer: "Yes. After generating a QR code, you can download it as a PNG image."
+        },
+        {
+            question: "Is this QR code generator free?",
+            answer: "Yes. This ToolXone QR code generator is free to use online."
+        }
+    ]
+);
+
+renderFinanceFeedback("financeFeedback");
+
+</script>
 
 </body>
 </html>

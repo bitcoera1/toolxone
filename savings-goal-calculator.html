@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Savings Goal Calculator - Toolers</title>
+<title>Savings Goal Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/savings.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -45,24 +45,15 @@
 
 <section class="savings-card">
 
-<h1>🎯 Savings Goal Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate how much you need to save monthly to reach your goal.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Target Amount</label>
-<input type="number" id="targetAmount" placeholder="100000">
-
-<label>Current Savings</label>
-<input type="number" id="currentSavings" placeholder="10000">
-
-<label>Time Period (Months)</label>
-<input type="number" id="months" placeholder="12">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateSavings()">Calculate</button>
-<button class="reset-btn" onclick="resetSavings()">Reset</button>
+    <button onclick="runSavingsCalculator()">Calculate</button>
+    <button class="reset-btn" onclick="resetSavings()">Reset</button>
 </div>
 
 </section>
@@ -97,23 +88,91 @@ Calculate how much you need to save monthly to reach your goal.
 
 </main>
 
-<section class="savings-info">
+<section id="related-tools-section">
 
-<h2>Why Use a Savings Goal Calculator?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-A savings goal calculator helps you plan how much money you need to save each month to reach a future target, such as buying a car, building an emergency fund, planning travel, or saving for education.
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
-<p>Fast • Accurate • Free</p>
+    <p><strong>ToolXone</strong> © 2026</p>
+    <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/savings.js"></script>
+
+<script>
+const savingsCalculator = {
+    id: "savings-goal",
+    title: "Savings Goal Calculator",
+    icon: "🎯",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate how much you need to save every month to reach your financial goal.",
+    subtitle: "Calculate how much you need to save monthly to reach your goal.",
+
+    fields: [
+        {
+            label: "Target Amount",
+            type: "number",
+            id: "targetAmount",
+            placeholder: "100000"
+        },
+        {
+            label: "Current Savings",
+            type: "number",
+            id: "currentSavings",
+            placeholder: "10000"
+        },
+        {
+            label: "Time Period (Months)",
+            type: "number",
+            id: "months",
+            placeholder: "12"
+        }
+    ],
+
+    info: {
+        title: "Why Use a Savings Goal Calculator?",
+        description: "A savings goal calculator helps you estimate how much you need to save each month to reach your financial target, whether it's for a home, car, vacation, emergency fund, or education."
+    },
+
+    faq: [
+        {
+            question: "What is a savings goal calculator?",
+            answer: "It helps you calculate the monthly amount you need to save to reach a financial goal within a specific time."
+        },
+        {
+            question: "Can I use it for emergency funds?",
+            answer: "Yes. It works for emergency funds, travel, education, home purchases, retirement planning and many other savings goals."
+        }
+    ]
+};
+
+createFinanceCalculator(savingsCalculator);
+</script>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS RETIREMENT CALCULATOR PRO
+// TOOLXONE RETIREMENT CALCULATOR PRO
 // ======================================
 
 function calculateRetirement() {
@@ -86,7 +86,7 @@ function calculateRetirement() {
         </div>
 
         <div class="result-line">
-            <span>Toolers Insight</span>
+            <span>ToolXone Insight</span>
             <strong>💡 Starting early helps compound growth work for you.</strong>
         </div>
     `;
@@ -136,3 +136,6 @@ document.querySelectorAll("input").forEach(input => {
     });
 
 });
+function runRetirementCalculator() {
+    calculateRetirement();
+}

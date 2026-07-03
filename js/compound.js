@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS COMPOUND INTEREST CALCULATOR
+// TOOLXONE COMPOUND INTEREST CALCULATOR
 // ======================================
 
 function calculateCompound() {
@@ -104,3 +104,7 @@ document.querySelectorAll("input").forEach(input => {
     });
 
 });
+
+function runCompoundCalculator() {
+    calculateCompound();
+}

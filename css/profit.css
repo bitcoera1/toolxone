@@ -206,3 +206,50 @@ body.dark-mode .bar-bg{
     }
 
 }
+.profit-card .form-group {
+    margin-bottom: 18px;
+}
+
+.profit-card .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.profit-card .form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+
+.profit-card .form-group input:focus {
+    border-color: #10b981;
+}
+.profit-form .form-group {
+    margin-bottom: 18px;
+}
+
+.profit-form label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.profit-form input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 15px;
+    font-size: 16px;
+    border-radius: 14px;
+    border: 1px solid #374151;
+    outline: none;
+    margin-bottom: 18px;
+    background: #111827;
+    color: #e5e7eb;
+}

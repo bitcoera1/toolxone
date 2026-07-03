@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS EMI CALCULATOR PRO
+// TOOLXONE EMI CALCULATOR PRO
 // ======================================
 
 function calculateEMI() {
@@ -95,3 +95,7 @@ document.querySelectorAll("input").forEach(input => {
         }
     });
 });
+
+function runEMICalculator() {
+    calculateEMI();
+}

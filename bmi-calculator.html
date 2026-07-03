@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator - Toolers</title>
+    <title>BMI Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/bmi.css">
@@ -11,7 +11,7 @@
 
 <body>
 <header class="site-header">
-    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <img src="images/logo.png" alt="ToolXone Logo" class="site-logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -105,30 +105,60 @@
 
 </main>
 
-<section class="bmi-info">
-    <h2>What is BMI?</h2>
-    <p>
-        BMI, or Body Mass Index, is a simple calculation using your height and weight.
-        It helps estimate whether your weight is within a healthy range.
-    </p>
-
-    <h2>BMI Categories</h2>
-    <p>
-        Underweight: Below 18.5<br>
-        Normal weight: 18.5 - 24.9<br>
-        Overweight: 25 - 29.9<br>
-        Obese: 30 and above
-    </p>
+<section id="related-tools-section">
+    <section id="relatedTools"></section>
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-    <p><strong>Toolers</strong> © 2026</p>
+    <p><strong>ToolXone</strong> © 2026</p>
     <p>Free Online Calculators & Conversion Tools</p>
     <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/finance-components.js"></script>
+
 <script src="js/bmi.js"></script>
 
-<script src="js/tools.js"></script>
+<script>
+initializeRelatedTools("bmi");
+
+renderFinanceInfo(
+    "financeInfo",
+    "What is BMI?",
+    "BMI, or Body Mass Index, is a simple calculation using your height and weight. It helps estimate whether your weight is within a healthy range."
+);
+
+renderFinanceFAQ(
+    "financeFAQ",
+    [
+        {
+            question: "What does BMI mean?",
+            answer: "BMI stands for Body Mass Index. It is a number calculated from your height and weight."
+        },
+        {
+            question: "What is a normal BMI range?",
+            answer: "A normal BMI is usually between 18.5 and 24.9."
+        },
+        {
+            question: "Can I use feet and pounds?",
+            answer: "Yes. This BMI calculator supports both metric units and feet/pounds."
+        },
+        {
+            question: "Is BMI a medical diagnosis?",
+            answer: "No. BMI is only a general health indicator and should not replace medical advice."
+        }
+    ]
+);
+
+renderFinanceFeedback("financeFeedback");
+</script>
+
 </body>
 </html>

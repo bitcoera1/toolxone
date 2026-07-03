@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS LOAN / EMI CALCULATOR PRO
+// TOOLXONE LOAN / EMI CALCULATOR PRO
 // ======================================
 
 function calculateLoan() {
@@ -102,3 +102,7 @@ document.querySelectorAll("input").forEach(input => {
     });
 
 });
+
+function runLoanCalculator() {
+    calculateLoan();
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finance Calculator Template | ToolXone</title>
+
+    <link rel="stylesheet" href="css/tools.css">
+    <link rel="stylesheet" href="css/finance-template.css">
+</head>
+
+<body>
+
+<header class="site-header">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
+    <p>Free Online Calculators, Converters & Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">🏠 Home</a>
+    <a href="finance-template.html">💰 Finance Template</a>
+
+    <div class="live-clock" id="liveClock"></div>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+</nav>
+
+<main>
+
+    <section class="finance-page">
+
+        <section class="calculator-card">
+
+            <h2>Calculator Title</h2>
+
+            <p class="tool-subtitle">
+                Short description of what this calculator does.
+            </p>
+
+            <label>Input Label 1</label>
+            <input type="number" placeholder="Enter value">
+
+            <label>Input Label 2</label>
+            <input type="number" placeholder="Enter value">
+
+            <label>Select Option</label>
+            <select>
+                <option>Option 1</option>
+                <option>Option 2</option>
+            </select>
+
+            <div class="tool-actions">
+                <button>Calculate</button>
+                <button class="clear-btn">Reset</button>
+            </div>
+
+        </section>
+
+        <section class="result-card">
+
+            <h2>Result Summary</h2>
+
+            <div class="result-box">
+                <p>Your results will appear here.</p>
+            </div>
+
+        </section>
+
+    </section>
+
+    <section id="related-tools-section">
+
+        <section class="featured-header">
+
+            <div class="featured-badge-title">
+                💡 RELATED TOOLS
+            </div>
+
+            <h2>You May Also Like</h2>
+
+            <p>
+                Continue exploring related finance tools on ToolXone.
+            </p>
+
+        </section>
+
+        <div id="relatedTools"></div>
+
+    </section>
+
+    <section class="info-section">
+
+        <h2>About This Calculator</h2>
+
+        <p>
+            Add a clear explanation of this calculator here. This section helps users understand
+            what the tool does and also supports SEO.
+        </p>
+
+    </section>
+
+    <section class="faq-section">
+
+        <h2>Frequently Asked Questions</h2>
+
+        <details>
+            <summary>What does this calculator do?</summary>
+            <p>This calculator helps users calculate finance-related values quickly and accurately.</p>
+        </details>
+
+        <details>
+            <summary>Is this calculator free?</summary>
+            <p>Yes, ToolXone calculators are free to use.</p>
+        </details>
+
+    </section>
+</main>
+
+<section class="feedback-section">
+
+    <h2>💬 Help Improve ToolXone</h2>
+
+    <p>Your feedback helps us improve this calculator for everyone.</p>
+
+    <div class="feedback-options">
+        <button>😊 Helpful</button>
+        <button>😐 Average</button>
+        <button>😞 Needs Improvement</button>
+    </div>
+
+    <textarea placeholder="Share your suggestion..."></textarea>
+
+    <button class="feedback-submit">Submit Feedback</button>
+
+</section>
+
+<footer class="footer">
+    <p><strong>ToolXone</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script>
+    initializeRelatedTools("loan");
+</script>
+
+</body>
+</html>

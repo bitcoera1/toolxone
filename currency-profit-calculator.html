@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Currency Exchange Profit Calculator - Toolers</title>
+<title>Currency Exchange Profit Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/currency-profit.css">
@@ -13,7 +13,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -30,27 +30,15 @@
 
 <section class="currency-profit-card">
 
-<h1>💱 Currency Exchange Profit Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate gross profit, fees, and net profit from currency exchange transactions.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Currency Amount</label>
-<input type="number" id="currencyAmount" placeholder="1000">
-
-<label>Buy Rate</label>
-<input type="number" id="buyRate" placeholder="278">
-
-<label>Sell Rate</label>
-<input type="number" id="sellRate" placeholder="286">
-
-<label>Exchange Fee / Commission (Optional)</label>
-<input type="number" id="exchangeFee" placeholder="500">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateCurrencyProfit()">Calculate</button>
-<button class="reset-btn" onclick="resetCurrencyProfit()">Reset</button>
+    <button onclick="calculateCurrencyProfit()">Calculate</button>
+    <button class="reset-btn" onclick="resetCurrencyProfit()">Reset</button>
 </div>
 
 </section>
@@ -85,23 +73,77 @@ Calculate gross profit, fees, and net profit from currency exchange transactions
 
 </main>
 
-<section class="currency-profit-info">
+<section id="related-tools-section">
 
-<h2>Why Use This Calculator?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-Estimate your profit from buying and selling foreign currency, taking exchange rates and optional fees into account. Useful for freelancers, travelers, traders, and businesses.
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/currency-profit.js"></script>
+
+<script>
+const currencyProfitCalculator = {
+    id: "currency-profit",
+    title: "Currency Exchange Profit Calculator",
+    icon: "💱",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate gross profit, fees and net profit from currency exchange transactions.",
+    subtitle: "Calculate gross profit, fees, and net profit from currency exchange transactions.",
+
+    fields: [
+        { label: "Currency Amount", type: "number", id: "currencyAmount", placeholder: "1000" },
+        { label: "Buy Rate", type: "number", id: "buyRate", placeholder: "278" },
+        { label: "Sell Rate", type: "number", id: "sellRate", placeholder: "286" },
+        { label: "Exchange Fee / Commission (Optional)", type: "number", id: "exchangeFee", placeholder: "500" }
+    ],
+
+    info: {
+        title: "Why Use This Calculator?",
+        description: "This calculator helps estimate profit from buying and selling foreign currency, including exchange rates and optional fees. It is useful for freelancers, travelers, traders and businesses."
+    },
+
+    faq: [
+        {
+            question: "What is currency exchange profit?",
+            answer: "Currency exchange profit is the difference between the buying cost and selling value of a currency transaction, after fees or commissions."
+        },
+        {
+            question: "Can I include exchange fees?",
+            answer: "Yes. You can enter an optional exchange fee or commission to calculate net profit more accurately."
+        }
+    ]
+};
+
+createFinanceCalculator(currencyProfitCalculator);
+</script>
 
 </body>
 </html>

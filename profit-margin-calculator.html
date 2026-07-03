@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Profit Margin Calculator - Toolers</title>
+<title>Profit Margin Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/profit.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -31,21 +31,15 @@
 
 <section class="profit-card">
 
-<h1>💹 Profit Margin Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate profit, profit margin and markup instantly.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Cost Price</label>
-<input type="number" id="costPrice" placeholder="100">
-
-<label>Selling Price</label>
-<input type="number" id="sellingPrice" placeholder="150">
+<div id="calculatorForm" class="profit-form"></div>
 
 <div class="actions">
-<button onclick="calculateProfit()">Calculate</button>
-<button class="reset-btn" onclick="resetProfit()">Reset</button>
+    <button onclick="calculateProfit()">Calculate</button>
+    <button class="reset-btn" onclick="resetProfit()">Reset</button>
 </div>
 
 </section>
@@ -55,31 +49,24 @@ Calculate profit, profit margin and markup instantly.
 <h2>Profit Summary</h2>
 
 <div id="profitResult" class="profit-result">
-
-<p>Your profit summary will appear here.</p>
-
+    <p>Your profit summary will appear here.</p>
 </div>
 
 <div id="profitBars" class="growth-bars" style="display:none;">
 
-<div class="bar-row">
-<span>Cost</span>
+    <div class="bar-row">
+        <span>Cost</span>
+        <div class="bar-bg">
+            <div class="bar investment-bar" id="costBar"></div>
+        </div>
+    </div>
 
-<div class="bar-bg">
-<div class="bar investment-bar" id="costBar"></div>
-</div>
-
-</div>
-
-<div class="bar-row">
-
-<span>Profit</span>
-
-<div class="bar-bg">
-<div class="bar interest-bar" id="profitBar"></div>
-</div>
-
-</div>
+    <div class="bar-row">
+        <span>Profit</span>
+        <div class="bar-bg">
+            <div class="bar interest-bar" id="profitBar"></div>
+        </div>
+    </div>
 
 </div>
 
@@ -87,29 +74,78 @@ Calculate profit, profit margin and markup instantly.
 
 </main>
 
-<section class="profit-info">
+<section id="related-tools-section">
 
-<h2>Why Calculate Profit Margin?</h2>
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
 
-<p>
-
-Profit margin helps businesses, online sellers and freelancers
-measure profitability and make better pricing decisions.
-
-</p>
+    <div id="relatedTools"></div>
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
 
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 
 <p>Fast • Accurate • Free</p>
 
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/profit.js"></script>
+
+<script>
+const profitCalculator = {
+    id: "profit-margin",
+    title: "Profit Margin Calculator",
+    icon: "💹",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate profit, profit margin and markup.",
+    subtitle: "Calculate profit, profit margin and markup instantly.",
+
+    fields: [
+        { label: "Cost Price", type: "number", id: "costPrice", placeholder: "100" },
+        { label: "Selling Price", type: "number", id: "sellingPrice", placeholder: "150" }
+    ],
+
+    info: {
+        title: "Why Calculate Profit Margin?",
+        description: "Profit margin helps businesses, online sellers and freelancers measure profitability and make better pricing decisions."
+    },
+
+    faq: [
+        {
+            question: "What is profit margin?",
+            answer: "Profit margin shows what percentage of your selling price is profit after subtracting cost."
+        },
+        {
+            question: "What is markup?",
+            answer: "Markup shows how much the selling price is increased above the cost price."
+        }
+    ]
+};
+
+createFinanceCalculator(profitCalculator);
+</script>
 
 </body>
 </html>

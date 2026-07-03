@@ -1,5 +1,5 @@
 // ===============================
-// Toolers Shared JavaScript
+// ToolXone Shared JavaScript
 // Clock + Theme
 // ===============================
 
@@ -37,7 +37,7 @@ function setupThemeToggle(){
 
     if(!themeToggle) return;
 
-    if(localStorage.getItem("toolersTheme")==="dark"){
+    if(localStorage.getItem("toolxoneTheme")==="dark"){
 
         document.body.classList.add("dark-mode");
 
@@ -59,7 +59,7 @@ function setupThemeToggle(){
 
         if(document.body.classList.contains("dark-mode")){
 
-            localStorage.setItem("toolersTheme","dark");
+            localStorage.setItem("toolxoneTheme","dark");
 
             themeToggle.textContent="☀️ Light";
 
@@ -67,7 +67,7 @@ function setupThemeToggle(){
 
         else{
 
-            localStorage.setItem("toolersTheme","light");
+            localStorage.setItem("toolxoneTheme","light");
 
             themeToggle.textContent="🌙 Dark";
 

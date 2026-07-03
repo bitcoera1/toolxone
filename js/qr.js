@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS QR CODE GENERATOR PRO
+// TOOLXONE QR CODE GENERATOR PRO
 // ======================================
 
 let qrCode = null;
@@ -14,7 +14,7 @@ function changeQRType() {
     if (type === "text") {
         inputs.innerHTML = `
             <label for="qrText">Enter Text or URL</label>
-            <textarea id="qrText" placeholder="Example: https://toolers.com or any text"></textarea>
+            <textarea id="qrText" placeholder="Example: https://example.com or any text"></textarea>
         `;
     }
 
@@ -160,7 +160,7 @@ function downloadQR() {
 
     const link = document.createElement("a");
     link.href = source;
-    link.download = "toolers-qr-code.png";
+    link.download = "toolxone-qr-code.png";
 
     document.body.appendChild(link);
     link.click();

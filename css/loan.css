@@ -1,36 +1,44 @@
 /* ==========================================
-   LOAN / EMI CALCULATOR
+   LOAN / EMI CALCULATOR - CLEAN VERSION
 ========================================== */
 
 .loan-page{
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px;
+    max-width:1320px;
+    margin:45px auto 70px;
+    padding:20px;
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:35px;
+    align-items:stretch;
+}
+
+.loan-card,
+.loan-result-card{
+    min-height:520px;
 }
 
 .loan-card,
 .loan-result-card,
 .loan-info{
-    background:#ffffff;
-    color:#1f2937;
+    background:#1f2937;
+    color:#e5e7eb;
+    border:1px solid #2f4058;
     border-radius:24px;
-    box-shadow:0 18px 45px rgba(0,0,0,.12);
+    box-shadow:0 18px 45px rgba(0,0,0,.18);
     padding:35px;
 }
 
-.loan-card h1{
+.loan-card h1,
+.loan-result-card h2,
+.loan-info h2{
     color:#10b981;
     text-align:center;
-    margin-bottom:10px;
 }
 
 .loan-subtitle{
     text-align:center;
-    color:#64748b;
-    margin-bottom:25px;
+    color:#cbd5e1;
+    margin-bottom:28px;
     line-height:1.6;
 }
 
@@ -43,12 +51,14 @@
 .loan-card input,
 .loan-card select{
     width:100%;
-    padding:14px 15px;
+    padding:15px 16px;
     font-size:16px;
     border-radius:14px;
-    border:1px solid #d1d5db;
+    border:1px solid #374151;
+    background:#111827;
+    color:#e5e7eb;
     outline:none;
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 .loan-card input:focus,
@@ -58,53 +68,43 @@
 }
 
 .loan-actions{
-    display:flex;
-    gap:12px;
-    margin-top:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:24px;
 }
 
 .loan-actions button{
-    flex:1;
     border:none;
     border-radius:14px;
-    padding:14px 20px;
+    padding:15px 20px;
     font-size:16px;
     font-weight:700;
     cursor:pointer;
-    background:#10b981;
-    color:white;
     transition:.3s;
 }
 
+.loan-actions button:first-child{
+    background:#10b981;
+    color:white;
+}
+
+.loan-actions button:last-child,
+.clear-btn{
+    background:#334155 !important;
+    color:white;
+}
+
 .loan-actions button:hover{
-    background:#059669;
     transform:translateY(-2px);
 }
 
-.clear-btn{
-    background:#334155 !important;
-}
-
-.clear-btn:hover{
-    background:#475569 !important;
-}
-
-.loan-result-card h2{
-    text-align:center;
-    color:#10b981;
-    margin-bottom:20px;
-}
-
 .loan-result{
-    min-height:220px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    border:2px dashed #d1d5db;
+    min-height:210px;
+    border:2px dashed #374151;
     border-radius:20px;
-    padding:25px;
-    color:#64748b;
+    padding:28px;
+    color:#cbd5e1;
 }
 
 .loan-result.active{
@@ -115,22 +115,24 @@
 .result-line{
     display:flex;
     justify-content:space-between;
+    align-items:center;
     gap:20px;
-    padding:12px 0;
-    border-bottom:1px solid #e5e7eb;
+    padding:13px 0;
+    border-bottom:1px solid #374151;
     font-weight:700;
 }
 
 .result-line strong{
     color:#10b981;
+    text-align:right;
 }
 
 .loan-bars{
-    margin-top:25px;
+    margin-top:28px;
 }
 
 .bar-row{
-    margin-bottom:18px;
+    margin-bottom:20px;
     font-weight:700;
 }
 
@@ -142,7 +144,7 @@
 .bar-bg{
     width:100%;
     height:16px;
-    background:#e5e7eb;
+    background:#374151;
     border-radius:50px;
     overflow:hidden;
 }
@@ -163,66 +165,70 @@
 }
 
 .loan-info{
-    max-width:1100px;
-    margin:0 auto 40px;
+    max-width:1200px;
+    margin:0 auto 50px;
     line-height:1.7;
 }
 
-.loan-info h2{
-    color:#10b981;
-}
+/* RESPONSIVE */
 
-/* ---------- DARK MODE ---------- */
-
-body.dark-mode .loan-card,
-body.dark-mode .loan-result-card,
-body.dark-mode .loan-info{
-    background:#1f2937;
-    color:#e5e7eb;
-}
-
-body.dark-mode .loan-subtitle,
-body.dark-mode .loan-result{
-    color:#cbd5e1;
-}
-
-body.dark-mode .loan-card input,
-body.dark-mode .loan-card select{
-    background:#111827;
-    color:#e5e7eb;
-    border-color:#374151;
-}
-
-body.dark-mode .loan-result{
-    border-color:#374151;
-}
-
-body.dark-mode .result-line{
-    border-bottom-color:#374151;
-}
-
-body.dark-mode .bar-bg{
-    background:#374151;
-}
-
-/* ---------- RESPONSIVE ---------- */
-
-@media(max-width:768px){
+@media(max-width:900px){
     .loan-page{
         grid-template-columns:1fr;
-        padding:35px 15px;
+        padding:25px 15px;
     }
 
     .loan-actions{
-        flex-direction:column;
-    }
-
-    .loan-actions button{
-        width:100%;
+        grid-template-columns:1fr;
     }
 
     .result-line{
         flex-direction:column;
-        gap:4px;
+        align-items:flex-start;
+        gap:5px;
+    }
+}
+/* RELATED TOOLS - FINAL FIX */
+
+#related-tools-section{
+    max-width:1000px;
+    margin:70px auto 50px;
+    padding:20px;
+}
+
+#relatedTools{
+    display:grid !important;
+    grid-template-columns:repeat(4, 1fr) !important;
+    gap:20px !important;
+}
+
+#relatedTools .tool-card{
+    background:#1d2d44 !important;
+    border:1px solid #2f4058 !important;
+    border-radius:18px !important;
+    padding:18px !important;
+    text-align:left !important;
+}
+
+#relatedTools .tool-card a{
+    display:inline-block !important;
+    margin-top:14px !important;
+    padding:9px 16px !important;
+    background:#10b981 !important;
+    color:white !important;
+    border-radius:999px !important;
+    text-decoration:none !important;
+    font-weight:700 !important;
+}
+
+@media(max-width:1000px){
+    #relatedTools{
+        grid-template-columns:repeat(1, 1fr) !important;
+    }
+}
+
+@media(max-width:600px){
+    #relatedTools{
+        grid-template-columns:1fr !important;
     }
 }

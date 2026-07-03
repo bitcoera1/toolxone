@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS GST / VAT CALCULATOR PRO
+// TOOLXONE GST / VAT CALCULATOR PRO
 // ======================================
 
 function calculateTax() {

@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EMI Calculator - Toolers</title>
+<title>EMI Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/emi.css">
@@ -14,7 +14,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" class="site-logo" alt="Toolers Logo">
+    <img src="images/logo.png" class="site-logo" alt="ToolXone Logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -31,24 +31,15 @@
 
 <section class="emi-card">
 
-<h1>💳 EMI Calculator</h1>
+<h1 class="calculator-title"></h1>
 
-<p class="subtitle">
-Calculate your monthly EMI, total interest and total repayment instantly.
-</p>
+<p class="tool-subtitle"></p>
 
-<label>Loan Amount</label>
-<input type="number" id="loanAmount" placeholder="500000">
-
-<label>Annual Interest Rate (%)</label>
-<input type="number" id="interestRate" placeholder="12">
-
-<label>Loan Tenure (Years)</label>
-<input type="number" id="loanYears" placeholder="5">
+<div id="calculatorForm"></div>
 
 <div class="actions">
-<button onclick="calculateEMI()">Calculate</button>
-<button class="reset-btn" onclick="resetEMI()">Reset</button>
+    <button onclick="runEMICalculator()">Calculate</button>
+    <button class="reset-btn" onclick="resetEMI()">Reset</button>
 </div>
 
 </section>
@@ -86,10 +77,21 @@ Calculate your monthly EMI, total interest and total repayment instantly.
 </section>
 
 </main>
+<section id="related-tools-section">
+
+    <section class="featured-header">
+        <div class="featured-badge-title">💡 RELATED TOOLS</div>
+        <h2>You May Also Like</h2>
+        <p>Continue exploring related financial calculators.</p>
+    </section>
+
+    <div id="relatedTools"></div>
+
+</section>
 
 <section class="emi-info">
 
-<h2>Why Use an EMI Calculator?</h2>
+  <h2>Why Use an EMI Calculator?</h2>
 
 <p>
 An EMI calculator helps you estimate your monthly loan installment, total interest payable, and overall repayment amount before taking a loan.
@@ -97,13 +99,64 @@ An EMI calculator helps you estimate your monthly loan installment, total intere
 
 </section>
 
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
+
 <footer class="footer">
-<p><strong>Toolers</strong> © 2026</p>
+<p><strong>ToolXone</strong> © 2026</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
+
 <script src="js/emi.js"></script>
+
+<script>
+const emiCalculator = {
+    id: "emi",
+    title: "EMI Calculator",
+    icon: "💳",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate monthly EMI, total interest and total repayment.",
+    subtitle: "Calculate your monthly EMI, total interest and total repayment instantly.",
+
+    fields: [
+        { label: "Loan Amount", type: "number", id: "loanAmount", placeholder: "500000" },
+        { label: "Annual Interest Rate (%)", type: "number", id: "interestRate", placeholder: "12" },
+        { label: "Loan Tenure (Years)", type: "number", id: "loanYears", placeholder: "5" }
+    ],
+
+    info: {
+        title: "Why Use an EMI Calculator?",
+        description: "An EMI calculator helps you estimate your monthly loan installment, total interest payable, and overall repayment amount before taking a loan."
+    },
+
+    faq: [
+        {
+            question: "What is EMI?",
+            answer: "EMI means Equated Monthly Installment. It is the fixed monthly payment made to repay a loan."
+        },
+        {
+            question: "Can I use this calculator for car or personal loans?",
+            answer: "Yes. You can use it for car loans, personal loans, home loans and other installment-based loans."
+        }
+    ]
+};
+
+createFinanceCalculator(emiCalculator);
+</script>
 
 </body>
 </html>

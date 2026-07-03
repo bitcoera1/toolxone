@@ -1,5 +1,5 @@
 // ======================================
-// TOOLERS PROFIT MARGIN CALCULATOR PRO
+// TOOLXONE PROFIT MARGIN CALCULATOR PRO
 // ======================================
 
 function calculateProfit() {
@@ -80,16 +80,3 @@ function resetProfit() {
     document.getElementById("costBar").style.width = "0%";
     document.getElementById("profitBar").style.width = "0%";
 }
-
-// Press Enter to calculate
-document.querySelectorAll("input").forEach(input => {
-
-    input.addEventListener("keydown", function(e){
-
-        if(e.key === "Enter"){
-            calculateProfit();
-        }
-
-    });
-
-});

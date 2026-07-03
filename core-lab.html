@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolXone Core Laboratory</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:Arial,Helvetica,sans-serif;
+            background:#f5f7fa;
+        }
+
+        #navbar{
+            min-height:70px;
+        }
+
+        .content{
+            max-width:1000px;
+            margin:50px auto;
+            text-align:center;
+        }
+
+        h1{
+            color:#10b981;
+            margin-bottom:20px;
+        }
+        .toolxone-navbar{
+    background:#0f172a;
+    color:white;
+    min-height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:28px;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+    flex-wrap:wrap;
+    padding:0 20px;
+}
+
+.nav-link,
+.category-btn{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:16px;
+    transition:.25s ease;
+}
+
+.nav-link:hover,
+.category-btn:hover,
+.nav-link.active,
+.category-btn.active{
+    color:#10b981;
+}
+
+.category-menu{
+    position:relative;
+}
+
+.category-btn{
+    background:none;
+    border:none;
+    cursor:pointer;
+}
+
+.category-dropdown{
+  
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(10px);
+    position:absolute;
+    top:42px;
+    left:0;
+    min-width:300px;
+    background:white;
+    border-radius:14px;
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+    padding:12px;
+    z-index:999;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    transition:.25s ease;
+    border:1px solid #e5e7eb;
+}
+.category-dropdown{
+    padding:18px;
+    border:1px solid #e5e7eb;
+}
+
+.category-menu:hover .category-dropdown{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.category-dropdown a{
+    color:#1f2937;
+    text-decoration:none;
+    padding:9px 10px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:700;
+}
+
+.category-dropdown a:hover,
+.category-dropdown a.active{
+    background:#ecfdf5;
+    color:#059669;
+}
+.toolxone-clock{
+    color:#fff;
+    background:#1e293b;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+    padding:10px 16px;
+    box-shadow:0 0 18px rgba(16,185,129,.18);
+    transition:.3s;
+}
+
+.toolxone-clock:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 25px rgba(16,185,129,.35);
+}
+.theme-button{
+
+    background:#10b981;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.theme-button:hover{
+
+    transform:translateY(-2px);
+
+    background:#059669;
+
+}
+/* =========================================
+   TOOLXONE DARK MODE ENGINE
+========================================= */
+
+body{
+    background:#f3f4f6;
+    color:#111827;
+    transition:background .35s,color .35s;
+}
+
+body.dark-mode{
+
+    background:#0f172a;
+    color:#f8fafc;
+
+}
+
+/* Hero */
+
+body.dark-mode h1{
+
+    color:#34d399;
+
+}
+
+body.dark-mode p{
+
+    color:#cbd5e1;
+
+}
+
+/* Navbar */
+
+body.dark-mode .toolxone-navbar{
+
+    background:#020617;
+
+    border-bottom:1px solid #1e293b;
+
+}
+
+/* Dropdown */
+
+body.dark-mode .category-dropdown{
+
+    background:#1e293b;
+
+    border:1px solid #334155;
+
+}
+
+body.dark-mode .category-dropdown a{
+
+    color:white;
+
+}
+
+body.dark-mode .category-dropdown a:hover,
+
+body.dark-mode .category-dropdown a.active{
+
+    background:#10b981;
+
+    color:white;
+
+}
+
+/* Clock */
+
+body.dark-mode .toolxone-clock{
+
+    background:#111827;
+
+}
+
+/* Theme Button */
+
+body.dark-mode .theme-button{
+
+    background:#f59e0b;
+
+    color:#111827;
+
+}
+.appearance-menu{
+
+position:relative;
+
+display:inline-block;
+
+}
+
+.appearance-dropdown{
+
+display:none;
+
+position:absolute;
+
+right:0;
+
+top:110%;
+
+background:white;
+
+min-width:220px;
+
+border-radius:14px;
+
+overflow:hidden;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+z-index:999;
+
+}
+
+.appearance-menu:hover
+.appearance-dropdown{
+
+display:block;
+
+animation:fadeIn .25s;
+
+}
+
+.appearance-dropdown button{
+
+width:100%;
+
+padding:14px 18px;
+
+border:none;
+
+background:white;
+
+cursor:pointer;
+
+text-align:left;
+
+font-size:15px;
+
+font-weight:600;
+
+transition:.25s;
+
+}
+
+.appearance-dropdown button:hover{
+
+background:#10b981;
+
+color:white;
+
+}
+
+.coming-theme{
+
+padding:14px;
+
+font-size:13px;
+
+text-align:center;
+
+background:#ecfdf5;
+
+color:#10b981;
+
+font-weight:bold;
+
+}
+body.dark-mode
+.appearance-dropdown{
+
+background:#1e293b;
+
+}
+
+body.dark-mode
+.appearance-dropdown button{
+
+background:#1e293b;
+
+color:white;
+
+}
+
+body.dark-mode
+.coming-theme{
+
+background:#111827;
+
+}
+.toolxone-clock-container{
+
+position:relative;
+
+display:inline-block;
+
+}
+
+.clock-tooltip{
+
+position:absolute;
+
+right:0;
+
+top:120%;
+
+width:260px;
+
+background:white;
+
+border-radius:14px;
+
+padding:18px;
+
+box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+display:none;
+
+z-index:999;
+
+line-height:2;
+
+font-size:14px;
+
+font-weight:600;
+
+}
+
+.toolxone-clock-container:hover
+.clock-tooltip{
+
+display:block;
+
+animation:fadeIn .25s;
+
+}
+
+body.dark-mode
+.clock-tooltip{
+
+background:#1e293b;
+
+color:white;
+
+border:1px solid #334155;
+
+}
+/* ==========================
+   TOOL SEARCH
+========================== */
+
+.search-container{
+
+    position:relative;
+
+}
+
+.tool-search{
+
+    width:240px;
+
+    padding:10px 16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.tool-search:focus{
+
+    box-shadow:0 0 0 3px rgba(16,185,129,.35);
+
+}
+
+.search-results{
+
+    position:absolute;
+
+    top:115%;
+
+    left:0;
+
+    width:100%;
+
+    background:white;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    display:none;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+    z-index:999;
+
+}
+
+.search-item{
+
+    padding:12px 16px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.search-item:hover{
+
+    background:#10b981;
+
+    color:white;
+
+}
+
+body.dark-mode .tool-search{
+
+    background:#1e293b;
+
+    color:white;
+
+}
+
+body.dark-mode .search-results{
+
+    background:#1e293b;
+
+}
+
+body.dark-mode .search-item{
+
+    color:white;
+
+}
+#dashboard{
+    max-width:1200px;
+    margin:60px auto;
+    padding:20px;
+}
+
+#toolCards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    margin-top:30px;
+}
+
+.tool-card{
+    background:#ffffff;
+    border-radius:22px;
+    padding:32px 24px;
+    box-shadow:0 14px 30px rgba(0,0,0,.14);
+    transition:.3s ease;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.08);
+    position:relative;
+    overflow:hidden;
+}
+
+.tool-card{
+    transition:
+        transform .30s ease,
+        box-shadow .30s ease,
+        border-color .30s ease;
+}
+
+.tool-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.35);
+
+    border-color:#27d89b;
+}
+
+body.dark-mode .tool-card{
+    background:#1d2d44;
+    color:white;
+    border:1px solid #2f4058;
+}
+
+.tool-category{
+    display:inline-block;
+    margin:12px 0;
+    padding:7px 12px;
+    border-radius:999px;
+    background:rgba(16,185,129,.14);
+    color:#10b981;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.tool-card a{
+    display:inline-block;
+    margin-top:16px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#10b981;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+.tool-card a{
+
+transition:.30s ease;
+
+}
+
+.tool-card:hover a{
+
+transform:scale(1.05);
+
+box-shadow:0 8px 20px rgba(39,216,155,.35);
+
+}
+
+.tool-card a:hover{
+    background:#059669;
+    transform:scale(1.05);
+}
+.card-badges{
+    position:absolute;
+    top:14px;
+    right:14px;
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.badge{
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.featured-badge{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.new-badge{
+    background:#dcfce7;
+    color:#166534;
+}
+
+body.dark-mode .featured-badge{
+    background:#78350f;
+    color:#fde68a;
+}
+
+body.dark-mode .new-badge{
+    background:#064e3b;
+    color:#a7f3d0;
+}
+.tool-icon{
+
+transition:.30s ease;
+
+}
+.tool-card:hover .tool-icon{
+
+transform:scale(1.15) rotate(-5deg);
+
+}
+/* ==========================
+   FINAL DASHBOARD POLISH
+========================== */
+
+.card-badges{
+    top:18px;
+    right:18px;
+}
+
+.tool-card{
+    min-height:285px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.tool-card:hover a{
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 8px 20px rgba(39,216,155,.35);
+}
+
+.badge{
+    transition:.30s ease;
+}
+
+.tool-card:hover .badge{
+    transform:scale(1.05);
+}
+/* =========================================
+   HERO SECTION
+========================================= */
+
+#hero{
+
+    max-width:1200px;
+
+    margin:60px auto;
+
+    padding:80px 30px;
+
+    text-align:center;
+
+}
+
+.hero-content{
+
+    background:linear-gradient(135deg,#10b981,#059669);
+
+    color:white;
+
+    border-radius:28px;
+
+    padding:70px 30px;
+
+    box-shadow:0 25px 60px rgba(16,185,129,.30);
+
+}
+
+.hero-content h1{
+
+    font-size:58px;
+
+    margin-bottom:20px;
+
+    color:white;
+
+}
+
+.hero-content h2{
+
+    font-size:32px;
+
+    margin-bottom:18px;
+
+    font-weight:700;
+
+}
+
+.hero-content p{
+
+    font-size:18px;
+
+    margin-bottom:35px;
+
+    opacity:.95;
+
+    color:white;
+
+}
+
+.hero-btn{
+
+    background:white;
+
+    color:#059669;
+
+    border:none;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+.hero-btn:hover{
+
+    transform:translateY(-4px) scale(1.05);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.20);
+
+}
+
+.dashboard-subtitle{
+
+    text-align:center;
+
+    margin:15px 0 35px;
+
+    font-size:18px;
+
+    color:#64748b;
+
+}
+
+body.dark-mode .dashboard-subtitle{
+
+    color:#cbd5e1;
+
+}
+#stats-section{
+    max-width:1200px;
+    margin:10px auto 60px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+}
+
+.stat-card{
+    background:#ffffff;
+    border-radius:22px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 14px 30px rgba(0,0,0,.14);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s ease;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(16,185,129,.22);
+    border-color:#27d89b;
+}
+
+.stat-icon{
+    font-size:42px;
+    margin-bottom:12px;
+    transition:.3s ease;
+}
+
+.stat-card:hover .stat-icon{
+    transform:scale(1.15) rotate(-5deg);
+}
+
+.stat-card h3{
+    font-size:36px;
+    color:#10b981;
+    margin-bottom:8px;
+}
+
+.stat-card p{
+    font-weight:bold;
+    color:#475569;
+}
+
+body.dark-mode .stat-card{
+    background:#1d2d44;
+    color:white;
+    border:1px solid #2f4058;
+}
+
+body.dark-mode .stat-card p{
+    color:#cbd5e1;
+}
+/* ==========================================
+   FEATURED HEADER
+========================================== */
+
+.featured-header{
+
+    text-align:center;
+
+    margin:40px auto 45px;
+
+}
+
+.featured-badge-title{
+
+    display:inline-block;
+
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+
+    color:white;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 8px 20px rgba(245,158,11,.35);
+
+}
+
+.featured-header h2{
+
+    font-size:40px;
+
+    color:#10b981;
+
+    margin-bottom:14px;
+
+}
+
+.featured-header p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#94a3b8;
+
+    font-size:18px;
+
+    line-height:1.7;
+
+}
+
+/* Dark Mode */
+
+body.dark-mode .featured-header h2{
+
+    color:#34d399;
+
+}
+
+body.dark-mode .featured-header p{
+
+    color:#cbd5e1;
+
+}
+/* ==========================================
+   HERO FEATURED CARD
+========================================== */
+
+.hero-featured-card{
+    background:linear-gradient(145deg,#1d2d44,#123d34);
+    border:2px solid #f59e0b;
+    box-shadow:
+        0 0 35px rgba(245,158,11,.22),
+        0 18px 45px rgba(0,0,0,.35);
+}
+
+.hero-featured-card::before{
+    content:"👑 TOP PICK";
+    position:absolute;
+    top:18px;
+    left:18px;
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:#111827;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.hero-featured-card .tool-icon{
+    font-size:52px;
+}
+
+.hero-featured-card h3{
+    color:#fbbf24;
+}
+
+.hero-featured-card a{
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:#111827;
+}
+
+.hero-featured-card:hover{
+    transform:translateY(-12px) scale(1.02);
+}
+/* =====================================
+   FEATURED CARDS REVEAL
+===================================== */
+
+.tool-card{
+    opacity:1;
+    transform:none;
+}
+#newTools{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:40px auto 70px;
+    padding:20px;
+}
+#recommendedTools{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:40px auto 80px;
+    padding:20px;
+}
+
+#categoryCards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:40px auto 80px;
+    padding:20px;
+}
+
+.category-card{
+    background:#ffffff;
+    border-radius:22px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 14px 30px rgba(0,0,0,.14);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s ease;
+}
+
+.category-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(16,185,129,.22);
+    border-color:#27d89b;
+}
+
+.category-card .cat-icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.category-card h3{
+    color:#10b981;
+    margin-bottom:10px;
+}
+
+.category-card p{
+    color:#64748b;
+    font-weight:bold;
+}
+
+body.dark-mode .category-card{
+    background:#1d2d44;
+    color:white;
+    border:1px solid #2f4058;
+}
+
+body.dark-mode .category-card p{
+    color:#cbd5e1;
+}
+
+#category-tool-sections{
+    max-width:1200px;
+    margin:40px auto 90px;
+    padding:20px;
+}
+
+.category-tool-section{
+    margin:80px 0;
+    scroll-margin-top:100px;
+}
+
+.category-tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+#relatedTools{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:40px auto 90px;
+    padding:20px;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="navbar"></div>
+
+<div class="content">
+
+<h1>🧪 ToolxONE Core Laboratory</h1>
+
+<p>If you can see a navbar above, ToolXone Core is working.</p>
+
+</div>
+<hr>
+
+<section id="hero">
+
+    <div class="hero-content">
+
+        <h1>🧮 ToolXone</h1>
+
+        <h2>Free Online Calculators & Smart Utility Tools</h2>
+
+        <p>
+            Fast • Free • Accurate • Mobile Friendly
+        </p>
+
+        <button id="exploreToolsBtn" class="hero-btn">
+            🚀 Explore Tools
+        </button>
+
+    </div>
+
+</section>
+
+<section id="stats-section">
+
+    <div class="stat-card">
+        <div class="stat-icon">🧮</div>
+        <h3><span class="counter" data-target="20">0</span>+</h3>
+        <p>Free Tools</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <h3><span class="counter" data-target="190">0</span>+</h3>
+        <p>Countries Supported</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <h3><span class="counter" data-target="100">0</span>%</h3>
+        <p>Free Forever</p>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🚀</div>
+        <h3>24/7</h3>
+        <p>Always Available</p>
+    </div>
+
+</section>
+
+<section id="dashboard">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            ⭐ FEATURED COLLECTION
+        </div>
+
+        <h2>Our Most Popular Tools</h2>
+
+        <p>
+            Hand-picked calculators and converters loved by thousands of users.
+        </p>
+
+    </section>
+
+    <div id="toolCards"></div>
+
+</section>
+
+<section id="whats-new">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            🆕 WHAT'S NEW
+        </div>
+
+        <h2>Recently Added Tools</h2>
+
+        <p>
+            Fresh tools recently added to ToolXone.
+        </p>
+
+    </section>
+
+        <div id="newTools"></div>
+
+</section>
+<section id="recommended-section">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            💡 RECOMMENDED
+        </div>
+
+        <h2>You May Also Like</h2>
+
+        <p>
+            Smart tool suggestions to help you discover more useful calculators.
+        </p>
+
+    </section>
+
+    <div id="recommendedTools"></div>
+
+</section>
+
+    <section id="categories-section">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            📂 CATEGORIES
+        </div>
+
+        <h2>Browse Tools by Category</h2>
+
+        <p>
+            Explore ToolXone by purpose and find the right tool faster.
+        </p>
+
+    </section>
+    
+    <div id="categoryCards"></div>
+
+</section>
+<section id="category-tool-sections"></section>
+
+<script src="js/config.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/search.js"></script>
+<script src="js/tool-cards.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+
+</html>

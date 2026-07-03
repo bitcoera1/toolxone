@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Loan / EMI Calculator - Toolers</title>
+<title>Loan / EMI Calculator - ToolXone</title>
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/loan.css">
@@ -13,7 +13,7 @@
 <body>
 
 <header class="site-header">
-    <img src="images/logo.png" alt="Toolers Logo" class="site-logo">
+    <img src="images/logo.png" alt="ToolXone Logo" class="site-logo">
     <p>Free Online Calculators, Converters & Utility Tools</p>
     <p>Fast • Accurate • Free</p>
 </header>
@@ -38,31 +38,19 @@
 <main class="loan-page">
 
     <section class="loan-card">
-        <h1>💰 Loan / EMI Calculator</h1>
-        <p class="loan-subtitle">
-            Calculate monthly EMI, total interest and total payment instantly.
-        </p>
+        <h1 class="calculator-title"></h1>
 
-        <label for="loanAmount">Loan Amount</label>
-        <input type="number" id="loanAmount" placeholder="Example: 500000">
+<p class="tool-subtitle"></p>
 
-        <label for="interestRate">Annual Interest Rate (%)</label>
-        <input type="number" id="interestRate" placeholder="Example: 12">
-
-        <label for="loanTenure">Loan Duration</label>
-        <input type="number" id="loanTenure" placeholder="Example: 5">
-
-        <label for="tenureType">Duration Type</label>
-        <select id="tenureType">
-            <option value="years">Years</option>
-            <option value="months">Months</option>
-        </select>
+<div id="calculatorForm"></div>
 
         <div class="loan-actions">
-            <button onclick="calculateLoan()">Calculate EMI</button>
-            <button class="clear-btn" onclick="resetLoan()">Reset</button>
-        </div>
-    </section>
+        <button onclick="runLoanCalculator()">Calculate EMI</button>
+        <button class="clear-btn" onclick="resetLoan()">Reset</button>
+       
+    </div>
+    
+</section>
 
     <section class="loan-result-card">
         <h2>Loan Summary</h2>
@@ -87,25 +75,97 @@
             </div>
         </div>
     </section>
+<section id="related-tools-section">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            💡 RELATED TOOLS
+        </div>
+
+        <h2>You May Also Like</h2>
+
+        <p>
+            Continue exploring related financial calculators.
+        </p>
+
+    </section>
+
+    <div id="relatedTools"></div>
+
+</section>
 
 </main>
 
-<section class="loan-info">
-    <h2>What is EMI?</h2>
-    <p>
-        EMI means Equated Monthly Installment. It is the fixed amount you pay every month
-        to repay a loan, including both principal and interest.
-    </p>
-</section>
+<div id="financeInfo"></div>
+
+<div id="financeFAQ"></div>
+
+<div id="financeFeedback"></div>
 
 <footer class="footer">
-    <p><strong>Toolers</strong> © 2026</p>
+    <p><strong>ToolXone</strong> © 2026</p>
     <p>Free Online Calculators & Conversion Tools</p>
     <p>Fast • Accurate • Free</p>
 </footer>
 
+<script src="js/config.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/finance-engine.js"></script>
 <script src="js/loan.js"></script>
+
+<script>
+const loanCalculator = {
+    id: "loan",
+    title: "Loan / EMI Calculator",
+    icon: "💰",
+    category: "Finance",
+    theme: "finance",
+    description: "Calculate monthly EMI, total interest and total payment.",
+    subtitle: "Calculate monthly EMI, total interest and total payment instantly.",
+
+    fields: [
+        { label: "Loan Amount", type: "number", id: "loanAmount", placeholder: "Example: 500000" },
+        { label: "Annual Interest Rate (%)", type: "number", id: "interestRate", placeholder: "Example: 12" },
+        { label: "Loan Duration", type: "number", id: "loanTenure", placeholder: "Example: 5" },
+        {
+            label: "Duration Type",
+            type: "select",
+            id: "tenureType",
+            options: [
+                { value: "years", label: "Years" },
+                { value: "months", label: "Months" }
+            ]
+        }
+    ],
+
+    info: {
+        title: "What is EMI?",
+        description: "EMI means Equated Monthly Installment. It is the fixed amount you pay every month to repay a loan, including both principal and interest."
+    },
+
+    faq: [
+        {
+            question: "What is EMI?",
+            answer: "EMI is the fixed monthly payment used to repay a loan over time."
+        },
+        {
+            question: "Can I use this calculator for personal loans?",
+            answer: "Yes. It works for personal loans, car loans, home loans and most installment loans."
+        }
+    ]
+};
+
+createFinanceCalculator(loanCalculator);
+</script>
 
 </body>
 </html>

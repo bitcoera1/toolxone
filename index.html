@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ToolXone - Free Online Calculators & Converters</title>
 
-<link rel="icon" type="image/png" href="images/favicon.png">
-<link rel="apple-touch-icon" href="images/favicon.png">
+<link rel="icon" type="image/png" href="images/toolxone-favicon.png">
+<link rel="apple-touch-icon" href="images/toolxone-favicon.png">
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/style.css">
@@ -95,34 +95,251 @@ border-top:3px solid #10B981;
 line-height:1.8;
 font-size:14px;
 }
+.home-hero{
+    min-height:560px;
+    padding:80px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at top left, rgba(16,185,129,.28), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(37,99,235,.25), transparent 35%),
+        linear-gradient(135deg,#0f172a,#102033);
+    color:white;
+}
+
+.hero-content{
+    width:100%;
+    max-width:980px;
+    margin:auto;
+}
+
+.hero-logo{
+    width:320px;
+    max-width:90%;
+    height:auto;
+    display:block;
+    margin:0 auto 25px;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:999px;
+    background:rgba(16,185,129,.16);
+    border:1px solid rgba(16,185,129,.5);
+    color:#6ee7b7;
+    font-weight:700;
+    margin-bottom:22px;
+}
+
+.home-hero h1{
+    font-size:48px;
+    line-height:1.15;
+    max-width:850px;
+    margin:0 auto 20px;
+}
+
+.home-hero p{
+    max-width:720px;
+    margin:0 auto 30px;
+    font-size:18px;
+    line-height:1.7;
+    color:#cbd5e1;
+}
+
+.hero-search-box{
+    max-width:720px;
+    margin:0 auto 25px;
+    background:white;
+    border:2px solid #10b981;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px 20px;
+    box-shadow:0 18px 50px rgba(16,185,129,.22);
+}
+
+.hero-search-box span{
+    font-size:22px;
+}
+
+.hero-search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    font-size:16px;
+    background:transparent;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.hero-buttons a{
+    padding:13px 24px;
+    border-radius:999px;
+    background:#10b981;
+    color:white;
+    text-decoration:none;
+    font-weight:800;
+    box-shadow:0 12px 28px rgba(16,185,129,.28);
+}
+
+.hero-buttons .secondary-btn{
+    background:transparent;
+    border:1px solid rgba(255,255,255,.35);
+}
+
+.hero-highlights{
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.hero-highlights div{
+    padding:12px 18px;
+    border-radius:16px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    font-weight:700;
+}
+
+body.dark-mode .home-hero{
+    background:
+        radial-gradient(circle at top left, rgba(16,185,129,.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(37,99,235,.22), transparent 35%),
+        linear-gradient(135deg,#020617,#0f172a);
+}
+
+@media(max-width:700px){
+    .home-hero{
+        padding:60px 16px;
+        min-height:auto;
+    }
+
+    .home-hero h1{
+        font-size:32px;
+    }
+
+    .home-hero p{
+        font-size:15px;
+    }
+
+    .hero-search-box{
+        border-radius:20px;
+    }
+
+    .hero-logo{
+        width:150px;
+    }
+}
+/* ==========================
+   TOOLXONE LIVE TICKER
+========================== */
+
+.ticker-section{
+    width:100%;
+    overflow:hidden;
+    background:#10b981;
+    border-top:1px solid rgba(255,255,255,.15);
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.ticker{
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.ticker-content{
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
+    animation:toolxoneTicker 28s linear infinite;
+}
+
+.ticker-content span{
+    display:inline-flex;
+    align-items:center;
+    white-space:nowrap;
+    padding-right:80px;
+    color:#fff;
+    font-weight:700;
+    flex-shrink:0;
+}
+
+@keyframes toolxoneTicker{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+/* ==========================
+   RESPONSIVE NAVBAR FIX
+========================== */
+
+.navbar{
+    flex-wrap:wrap;
+    gap:16px;
+    padding:18px 20px;
+}
+
+.navbar a,
+.live-clock,
+.theme-toggle{
+    white-space:nowrap;
+}
+
+@media(max-width:768px){
+    .navbar{
+        justify-content:center;
+        gap:14px;
+        padding:18px 12px;
+    }
+
+    .navbar a{
+        font-size:14px;
+    }
+
+    .live-clock{
+        font-size:14px;
+    }
+
+    .theme-toggle{
+        padding:10px 16px;
+    }
+}
+
+@media(max-width:480px){
+    .navbar{
+        display:grid;
+        grid-template-columns:repeat(2, 1fr);
+        gap:14px;
+        text-align:center;
+    }
+
+    .navbar a,
+    .live-clock,
+    .theme-toggle{
+        width:100%;
+        justify-content:center;
+    }
+}
 </style>
+
 </head>
 
 <body>
 
-<header>
-
-<img src="images/logo.png" alt="ToolXone Logo" height="90">
-
-<p>Free Online Calculators, Converters & Utility Tools</p>
-
-<div class="intro">
-
-<p>
-Welcome to ToolXone — your free online toolkit for everyday calculations and conversions.
-</p>
-
-<p>
-Whether you're a student, professional, business owner, or casual user, ToolXone provides fast, accurate, and easy-to-use calculators and converters to simplify your work.
-</p>
-
-<p>
-Use our Scientific Calculator, Basic Calculator, Currency Converter, and Weight Converter anytime, anywhere — completely free.
-</p>
-
-</div>
-
-</header>
 <nav class="navbar">
 
 <a href="index.html">🏠 Home</a>
@@ -144,7 +361,49 @@ Use our Scientific Calculator, Basic Calculator, Currency Converter, and Weight 
 <button class="theme-toggle" id="themeToggle">
     🌙 Dark
 </button>
-</nav>  
+</nav>
+<section class="home-hero reveal">
+
+    <div class="hero-content">
+
+        <img src="images/toolxone-logo.jpg" alt="ToolXone Logo" class="hero-logo">
+
+        <div class="hero-badge">
+            ⚡ Fast • Accurate • Free
+        </div>
+
+        <h1>
+            Free Online Calculators & Smart Utility Tools
+        </h1>
+
+        <p>
+            ToolXone helps you calculate, convert, compare and simplify everyday tasks with fast, accurate and easy-to-use online tools.
+        </p>
+
+        <div class="hero-search-box">
+            <span>🔍</span>
+            <input
+                type="text"
+                id="toolSearch"
+                placeholder="Search calculators, converters, finance tools..."
+                onkeyup="searchTools()">
+        </div>
+
+        <div class="hero-buttons">
+            <a href="#toolsSection">Explore Tools</a>
+            <a href="currency-converter.html" class="secondary-btn">Live Currency</a>
+        </div>
+
+        <div class="hero-highlights">
+            <div>🧮 20+ Tools</div>
+            <div>🌍 190+ Currencies</div>
+            <div>💚 100% Free</div>
+        </div>
+
+    </div>
+
+</section>
+
 <section class="ticker-section">
 
     <div class="ticker">
@@ -187,24 +446,6 @@ Use our Scientific Calculator, Basic Calculator, Currency Converter, and Weight 
 
 </section>
   
-<section class="hero reveal">
-<h2>Calculate, Convert & Simplify</h2>
-<p>
-Welcome to ToolXone. Use our free online tools including calculators,
-currency converters, weight converters, and much more.
-</p>
-</section>
-<section class="search-section reveal">
-
-<h2>🔍 Find Your Tool</h2>
-
-<input
-type="text"
-id="toolSearch"
-placeholder="Search calculators, converters..."
-onkeyup="searchTools()">
-
-</section>
   <section class="featured-tool reveal">
 
 <div class="featured-content">
@@ -322,7 +563,7 @@ Live rates loading...
 
 </section>
   
-<section class="tools">
+<section class="tools" id="toolsSection">
 
 <div class="card reveal reveal-delay-1">
 <h3>🧮 Basic Calculator</h3>
@@ -460,7 +701,7 @@ Live rates loading...
         <div class="stat-card">
             <div class="stat-icon">⚡</div>
             <h3 id="toolsCounter">0</h3>
-            <p>Online Tools</p>
+            <p>Professional Tools</p>
         </div>
 
         <div class="stat-card">

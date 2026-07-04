@@ -14,7 +14,15 @@ function initializeNavbar() {
     const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
     navbar.innerHTML = `
-        <nav class="ToolXone-navbar">
+    <nav class="ToolXone-navbar">
+
+        <div class="mobile-nav-top">
+            <a href="index.html" class="mobile-brand">ToolXone</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+
+        <div class="mobile-nav-panel" id="mobileNavPanel">
+
             <a href="index.html" class="nav-link ${currentPage === "index.html" ? "active" : ""}">
                 🏠 Home
             </a>
@@ -95,8 +103,20 @@ More Themes Soon...
 </div>
 
 </div>
+
+</div>
         </nav>
     `;
+
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+const mobileNavPanel = document.getElementById("mobileNavPanel");
+
+if (mobileMenuBtn && mobileNavPanel) {
+    mobileMenuBtn.addEventListener("click", function () {
+        mobileNavPanel.classList.toggle("active");
+    });
+}
+
 }
 
 function buildCategoryMenus(currentPage) {

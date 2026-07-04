@@ -135,7 +135,9 @@ function generateQR() {
     });
 
     lastQRText = text;
+setTimeout(() => {
     downloadBtn.style.display = "block";
+}, 300);
 }
 
 function clearQR() {
@@ -148,19 +150,27 @@ function clearQR() {
 }
 
 function downloadQR() {
-    const img = document.querySelector("#qrPreview img");
-    const canvas = document.querySelector("#qrPreview canvas");
+    const preview = document.getElementById("qrPreview");
+    const img = preview.querySelector("img");
+    const canvas = preview.querySelector("canvas");
 
     let source = null;
 
-    if (img) source = img.src;
-    if (canvas) source = canvas.toDataURL("image/png");
+    if (img && img.src) {
+        source = img.src;
+    } else if (canvas) {
+        source = canvas.toDataURL("image/png");
+    }
 
-    if (!source) return;
+    if (!source) {
+        alert("Please generate a QR code first.");
+        return;
+    }
 
     const link = document.createElement("a");
     link.href = source;
-    link.download = "toolxone-qr-code.png";
+    link.download = "ToolXone-QR-Code.png";
+    link.target = "_blank";
 
     document.body.appendChild(link);
     link.click();

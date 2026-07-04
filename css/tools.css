@@ -461,3 +461,32 @@ body:not(.dark-mode) .feedback-section textarea{
 #relatedTools .tool-card p{
     line-height:1.35 !important;
 }
+/* ==========================
+   TOOLXONE MOBILE NAVBAR FIX
+========================== */
+
+.navbar{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    align-items:center !important;
+    gap:10px !important;
+    padding:12px 10px !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    white-space:nowrap !important;
+    scrollbar-width:none;
+}
+
+.navbar::-webkit-scrollbar{
+    display:none;
+}
+
+.navbar a,
+.live-clock,
+.theme-toggle{
+    flex:0 0 auto !important;
+    white-space:nowrap !important;
+    font-size:14px !important;
+    padding:9px 12px !important;
+}

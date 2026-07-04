@@ -1045,6 +1045,68 @@ body.dark-mode .category-card p{
     padding:20px;
 }
 
+/* ==========================
+   TOOLXONE CORE RESPONSIVE NAV
+========================== */
+
+.mobile-nav-top{
+    display:none;
+}
+
+@media(max-width:1400px){
+    .ToolXone-navbar{
+        padding:10px;
+        position:relative;
+    }
+
+    .mobile-nav-top{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        width:100%;
+        padding:10px 12px;
+        background:#111827;
+        border-bottom:1px solid #1f2937;
+    }
+
+    .mobile-brand{
+        color:#10b981;
+        font-weight:800;
+        text-decoration:none;
+    }
+
+    .mobile-menu-btn{
+        background:#10b981;
+        color:white;
+        border:none;
+        border-radius:8px;
+        padding:7px 11px;
+        font-size:18px;
+        cursor:pointer;
+    }
+
+    .mobile-nav-panel{
+        display:none;
+        width:100%;
+        padding:12px;
+        background:#111827;
+    }
+
+    .mobile-nav-panel.active{
+        display:block;
+    }
+
+    .mobile-nav-panel .nav-link,
+    .category-menu,
+    .search-container,
+    .appearance-menu,
+    .ToolXone-clock-container{
+        display:block;
+        width:100%;
+        margin-bottom:10px;
+    }
+}
+
     </style>
 
 </head>

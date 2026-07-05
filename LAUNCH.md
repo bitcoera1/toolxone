@@ -77,8 +77,8 @@
 - [x] Percentage Calculator
 - [x] Profit Margin Calculator
 - [x] QR Code Generator
-- [ ] Retirement Calculator
-- [ ] ROI Calculator
+- [x] Retirement Calculator
+- [x] ROI Calculator
 - [ ] Savings Goal Calculator
 - [ ] Scientific Calculator
 - [ ] Weight Converter

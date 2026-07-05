@@ -76,7 +76,7 @@
 - [x] Mortgage Calculator
 - [x] Percentage Calculator
 - [x] Profit Margin Calculator
-- [ ] QR Code Generator
+- [x] QR Code Generator
 - [ ] Retirement Calculator
 - [ ] ROI Calculator
 - [ ] Savings Goal Calculator

@@ -73,8 +73,8 @@
 - [x] GST / VAT Calculator
 - [x] Inflation Calculator
 - [x] Loan Calculator
-- [ ] Mortgage Calculator
-- [ ] Percentage Calculator
+- [x] Mortgage Calculator
+- [x] Percentage Calculator
 - [ ] Profit Margin Calculator
 - [ ] QR Code Generator
 - [ ] Retirement Calculator

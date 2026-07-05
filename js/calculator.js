@@ -4,15 +4,23 @@ function appendValue(value){
 
     const display = document.getElementById("display");
 
-    if(justCalculated && !isNaN(value)){
-        display.value = "";
-        justCalculated = false;
+    const operators = ["+", "-", "*", "/"];
+
+    if(justCalculated){
+
+        if(operators.includes(value)){
+            justCalculated = false;
+        }
+        else if(!isNaN(value)){
+            display.value = "";
+            justCalculated = false;
+        }
+
     }
 
     display.value += value;
 
 }
-
 function clearDisplay(){
     document.getElementById("display").value = "";
 }

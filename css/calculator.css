@@ -123,3 +123,6 @@ body.dark-mode .clear{
     background:#ef4444;
     color:white;
 }
+.clear-wide{
+    grid-column:span 4;
+}

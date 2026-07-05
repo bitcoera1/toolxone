@@ -44,9 +44,28 @@ if (typeof initializeCategoryCards === "function") {
 if (typeof initializeCategoryToolSections === "function") {
     initializeCategoryToolSections();
 }
-if (typeof initializeRelatedTools === "function") {
-    initializeRelatedTools("loan");
+const currentToolId = document.body.dataset.tool;
+
+if (typeof initializeRelatedTools === "function" && currentToolId) {
+    initializeRelatedTools(currentToolId);
 }
+function revealOnScroll() {
+    const reveals = document.querySelectorAll(".reveal");
+
+    reveals.forEach((element) => {
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if (elementTop < windowHeight - revealPoint) {
+            element.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
     const exploreBtn = document.getElementById("exploreToolsBtn");
 
     if (exploreBtn) {

@@ -10,7 +10,9 @@
 
 <link rel="stylesheet" href="css/tools.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/dashboard.css">  
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/home.css">
+  
 <style>
 *{
 margin:0;
@@ -334,397 +336,146 @@ body.dark-mode .home-hero{
         justify-content:center;
     }
 }
+
 </style>
 
 </head>
 
 <body>
 
-<nav class="navbar">
+<div id="navbar"></div>
 
-<a href="index.html">🏠 Home</a>
-
-<a href="calculator.html">🧮 Calculator</a>
-
-<a href="scientific-calculator.html">🔬 Scientific</a>
-
-<a href="currency-converter.html">💱 Currency</a>
-
-<a href="weight-converter.html">⚖️ Weight</a>
-
-<a href="age-calculator.html">🎂 Age</a>
-
-<a href="#">📩 Feedback</a>
-<div class="live-clock" id="liveClock">
-    🕒 Loading time...
-</div>
-<button class="theme-toggle" id="themeToggle">
-    🌙 Dark
-</button>
-</nav>
-<section class="home-hero reveal">
+<section id="hero">
 
     <div class="hero-content">
 
         <img src="images/toolxone-logo.jpg" alt="ToolXone Logo" class="hero-logo">
 
-        <div class="hero-badge">
-            ⚡ Fast • Accurate • Free
-        </div>
+        <h1>ToolXone</h1>
 
-        <h1>
-            Free Online Calculators & Smart Utility Tools
-        </h1>
+        <h2>Free Online Calculators & Smart Utility Tools</h2>
 
         <p>
-            ToolXone helps you calculate, convert, compare and simplify everyday tasks with fast, accurate and easy-to-use online tools.
+            Fast • Free • Accurate • Mobile Friendly
         </p>
 
-        <div class="hero-search-box">
-            <span>🔍</span>
-            <input
-                type="text"
-                id="toolSearch"
-                placeholder="Search calculators, converters, finance tools..."
-                onkeyup="searchTools()">
-        </div>
-
-        <div class="hero-buttons">
-            <a href="#toolsSection">Explore Tools</a>
-            <a href="currency-converter.html" class="secondary-btn">Live Currency</a>
-        </div>
-
-        <div class="hero-highlights">
-            <div>🧮 20+ Tools</div>
-            <div>🌍 190+ Currencies</div>
-            <div>💚 100% Free</div>
-        </div>
+        <button id="exploreToolsBtn" class="hero-btn">
+            🚀 Explore Tools
+        </button>
 
     </div>
 
 </section>
 
-<section class="ticker-section">
+<section id="stats-section">
 
-    <div class="ticker">
+    <div class="stat-card">
+        <div class="stat-icon">🧮</div>
+        <h3><span class="counter" data-target="20">0</span>+</h3>
+        <p>Professional Tools</p>
+    </div>
 
-        <div class="ticker-content">
+    <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <h3><span class="counter" data-target="190">0</span>+</h3>
+        <p>Currencies Supported</p>
+    </div>
 
-    <span>
-        🟢 Live Exchange Dashboard
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        💱 190+ World Currencies
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        ⚡ Fast API Updates
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        🔒 Secure HTTPS
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        🌍 Premium Currency Converter
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        🚀 Updates Every 60 Seconds
-        &nbsp;&nbsp;&nbsp;&nbsp;
-    </span>
+    <div class="stat-card">
+        <div class="stat-icon">⚡</div>
+        <h3><span class="counter" data-target="100">0</span>%</h3>
+        <p>Free Forever</p>
+    </div>
 
-    <span>
-        🟢 Live Exchange Dashboard
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        💱 190+ World Currencies
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        ⚡ Fast API Updates
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        🔒 Secure HTTPS
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        🌍 Premium Currency Converter
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        🚀 Updates Every 60 Seconds
-        &nbsp;&nbsp;&nbsp;&nbsp;
-    </span>
-
-</div>
-
+    <div class="stat-card">
+        <div class="stat-icon">🚀</div>
+        <h3>24/7</h3>
+        <p>Always Available</p>
     </div>
 
 </section>
-  
-  <section class="featured-tool reveal">
 
-<div class="featured-content">
+<section id="dashboard">
 
-<div class="featured-left">
+    <section class="featured-header">
 
-<span class="featured-label">⭐ Featured Tool</span>
+        <div class="featured-badge-title">
+            ⭐ FEATURED COLLECTION
+        </div>
 
-<h2>💱 Live Currency Converter</h2>
+        <h2>Our Most Popular Tools</h2>
 
-<p>
-Convert currencies using live exchange rates with a clean, fast, and easy-to-use ToolXone interface.
-</p>
+        <p>
+            Hand-picked calculators and converters loved by ToolXone users.
+        </p>
 
-<ul>
-<li>✔ Live exchange rates</li>
-<li>✔ Multiple world currencies</li>
-<li>✔ Fast and simple conversion</li>
-</ul>
+    </section>
 
-<a href="currency-converter.html">Open Currency Converter</a>
-
-</div>
-
-<div class="featured-right">
-
-<h3>📈 Live Exchange Dashboard</h3>
-<div class="market-status" id="marketStatus">
-    🟢 Forex Market Open
-</div>
-
-<div class="exchange-dashboard">
-
-<div class="rate-row">
-
-    <div class="rate-top">
-        <span>🇺🇸 USD</span>
-        <span class="rate-value skeleton" id="usdRate">--</span>
-    </div>
-
-    <div class="rate-bar">
-        <div class="rate-fill" id="usdBar"></div>
-    </div>
-    <div class="rate-change" id="usdChange"></div>
-
-
-</div>
-
-<div class="rate-row">
-
-    <div class="rate-top">
-        <span>🇪🇺 EUR</span>
-        <span class="rate-value skeleton" id="eurRate">--</span>
-    </div>
-
-    <div class="rate-bar">
-        <div class="rate-fill" id="eurBar"></div>
-    </div>
-    <div class="rate-change" id="eurChange"></div>
-</div>
-
-<div class="rate-row">
-
-    <div class="rate-top">
-        <span>🇬🇧 GBP</span>
-        <span class="rate-value skeleton" id="gbpRate">--</span>
-    </div>
-
-    <div class="rate-bar">
-        <div class="rate-fill" id="gbpBar"></div>
-    </div>
-<div class="rate-change" id="gbpChange"></div>
-
-</div>
-
-<div class="rate-row">
-
-    <div class="rate-top">
-        <span>🇦🇪 AED</span>
-        <span class="rate-value skeleton" id="aedRate">--</span>
-    </div>
-
-    <div class="rate-bar">
-        <div class="rate-fill" id="aedBar"></div>
-    </div>
-<div class="rate-change" id="aedChange"></div>
-</div>
-
-<div class="rate-row">
-
-    <div class="rate-top">
-        <span>🇸🇦 SAR</span>
-        <span class="rate-value skeleton" id="sarRate">--</span>
-    </div>
-
-    <div class="rate-bar">
-    <div class="rate-fill" id="sarBar"></div>
-</div>
-
-<div class="rate-change" id="sarChange"></div>
-
-</div>
-
-<p class="graph-note" id="dashboardUpdated">
-Live rates loading...
-</p>
-
-<p class="countdown" id="countdown">
-    Next update in 60s
-</p>
-
-</div>
-
-</div>
+    <div id="toolCards"></div>
 
 </section>
-  
-<section class="tools" id="toolsSection">
 
-<div class="card reveal reveal-delay-1">
-<h3>🧮 Basic Calculator</h3>
-<p>Perform quick calculations online.</p>
-<a href="calculator.html">Open Tool</a>
-</div>
+<section id="whats-new">
 
-<div class="card reveal reveal-delay-2">
-<h3>🔬 Scientific Calculator</h3>
-<p>Advanced calculations for students and professionals.</p>
-<a href="scientific-calculator.html">Open Tool</a>
-</div>
+    <section class="featured-header">
 
-<div class="card reveal reveal-delay-3">
-<h3>💱 Currency Converter</h3>
-<p>Convert currencies using live exchange rates.</p>
-<a href="currency-converter.html">Open Tool</a>
-</div>
-  
-<div class="card reveal reveal-delay-4">
-<h3>⚖️ Weight Converter</h3>
-<p>Convert KG to Pounds and Pounds to KG.</p>
-<a href="weight-converter.html">Open Tool</a>
-</div>
-<div class="card reveal reveal-delay-5">
-    <h3>🩺 BMI Calculator Pro</h3>
-    <p>Calculate your Body Mass Index and get instant health insights.</p>
-    <a href="bmi-calculator.html">Open Tool</a>
-</div>
-<div class="card reveal reveal-delay-6">
+        <div class="featured-badge-title">
+            🆕 WHAT'S NEW
+        </div>
 
-    <h3>🎂 Age Calculator</h3>
+        <h2>Recently Added Tools</h2>
 
-    <p>
-        Calculate your exact age in years, months, days and next birthday.
-    </p>
+        <p>
+            Fresh tools recently added to ToolXone.
+        </p>
 
-    <a href="age-calculator.html">
-        Open Tool
-    </a>
+    </section>
 
-</div>
-
-<div class="card reveal reveal-delay-7">
-    <h3>📊 Percentage Calculator</h3>
-    <p>Calculate percentages, percentage values and increase/decrease instantly.</p>
-    <a href="percentage-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-8">
-    <h3>🔳 QR Code Generator</h3>
-    <p>Generate QR codes instantly for websites, text, contact details and more.</p>
-    <a href="qr-code-generator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-9">
-    <h3>💰 Loan / EMI Calculator</h3>
-    <p>Calculate monthly EMI, total interest and total loan payment instantly.</p>
-    <a href="loan-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-10">
-    <h3>📈 Compound Interest Calculator</h3>
-    <p>Calculate future value, total contributions and interest earned instantly.</p>
-    <a href="compound-interest-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-11">
-    <h3>🏷️ Discount Calculator</h3>
-    <p>Calculate discounts, sale prices and total savings instantly.</p>
-    <a href="discount-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-12">
-    <h3>🧾 GST / VAT Calculator</h3>
-    <p>Calculate tax amount, base price and final price instantly.</p>
-    <a href="gst-vat-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-13">
-    <h3>💹 Profit Margin Calculator</h3>
-    <p>Calculate profit, profit margin and markup instantly.</p>
-    <a href="profit-margin-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-14">
-    <h3>📈 ROI Calculator</h3>
-    <p>Calculate return on investment, profit and ROI percentage instantly.</p>
-    <a href="roi-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-15">
-    <h3>🎯 Savings Goal Calculator</h3>
-    <p>Plan your savings target with monthly, weekly and daily saving estimates instantly.</p>
-    <a href="savings-goal-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-16">
-    <h3>🏡 Mortgage Calculator</h3>
-    <p>Calculate monthly mortgage payment, total interest and total repayment instantly.</p>
-    <a href="mortgage-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-17">
-    <h3>💳 EMI Calculator</h3>
-    <p>Calculate monthly EMI, total interest and total repayment instantly.</p>
-    <a href="emi-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-18">
-    <h3>📉 Inflation Calculator</h3>
-    <p>Estimate future prices, inflation impact, and purchasing power instantly.</p>
-    <a href="inflation-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-19">
-    <h3>💱 Currency Profit Calculator</h3>
-    <p>Calculate buying cost, selling value, exchange profit, fees and net profit instantly.</p>
-    <a href="currency-profit-calculator.html">Open Tool</a>
-</div>
-
-<div class="card reveal reveal-delay-20">
-    <h3>🏆 Retirement Calculator</h3>
-    <p>Estimate future retirement savings, investment growth and monthly retirement income.</p>
-    <a href="retirement-calculator.html">Open Tool</a>
-</div>
+    <div id="newTools"></div>
 
 </section>
-<section class="stats-section reveal">
 
-    <h2>📊 ToolXone in Numbers</h2>
+<section id="recommended-section">
 
-    <div class="stats-grid">
+    <section class="featured-header">
 
-        <div class="stat-card">
-            <div class="stat-icon">⚡</div>
-            <h3 id="toolsCounter">0</h3>
-            <p>Professional Tools</p>
+        <div class="featured-badge-title">
+            💡 RECOMMENDED
         </div>
 
-        <div class="stat-card">
-            <div class="stat-icon">🌍</div>
-            <h3 id="currencyCounter">0</h3>
-            <p>Currencies Supported</p>
-        </div>
+        <h2>You May Also Like</h2>
 
-        <div class="stat-card">
-            <div class="stat-icon">📈</div>
-            <h3>Live</h3>
-            <p>Exchange Rates</p>
-        </div>
+        <p>
+            Smart tool suggestions to help you discover more useful calculators.
+        </p>
 
-        <div class="stat-card">
-            <div class="stat-icon">🔒</div>
-            <h3 id="freeCounter">0%</h3>
-            <p>Free Forever</p>
-        </div>
+    </section>
 
-    </div>
+    <div id="recommendedTools"></div>
 
 </section>
+
+<section id="categories-section">
+
+    <section class="featured-header">
+
+        <div class="featured-badge-title">
+            📂 CATEGORIES
+        </div>
+
+        <h2>Browse Tools by Category</h2>
+
+        <p>
+            Explore ToolXone by purpose and find the right tool faster.
+        </p>
+
+    </section>
+
+    <div id="categoryCards"></div>
+
+</section>
+
+<section id="category-tool-sections"></section>
 
 <footer class="footer">
 
@@ -735,96 +486,15 @@ Live rates loading...
 <p>Fast • Accurate • Free</p>
 
 </footer>
-<script>
 
-function searchTools() {
-
-    let input = document.getElementById("toolSearch").value.toLowerCase();
-
-    let cards = document.querySelectorAll(".card");
-
-    cards.forEach(function(card) {
-
-        let title = card.querySelector("h3").innerText.toLowerCase();
-
-        if (title.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-
-    });
-
-}
-function updateClock() {
-
-    const clock = document.getElementById("liveClock");
-
-    if (!clock) return;
-
-    const now = new Date();
-
-    const options = {
-        weekday: "short",
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit"
-    };
-
-    clock.innerHTML =
-        "🕒 " + now.toLocaleTimeString([], options);
-
-}
-
-updateClock();
-setInterval(updateClock, 1000);
-const themeToggle = document.getElementById("themeToggle");
-
-if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    themeToggle.textContent = "☀️ Light";
-}
-
-themeToggle.addEventListener("click", () => {
-
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-
-        themeToggle.textContent = "☀️ Light";
-        localStorage.setItem("theme", "dark");
-
-    } else {
-
-        themeToggle.textContent = "🌙 Dark";
-        localStorage.setItem("theme", "light");
-
-    }
-
-});
-function revealOnScroll() {
-    const reveals = document.querySelectorAll(".reveal");
-
-    reveals.forEach((element) => {
-        const windowHeight = window.innerHeight;
-        const elementTop = element.getBoundingClientRect().top;
-        const revealPoint = 120;
-
-        if (elementTop < windowHeight - revealPoint) {
-            element.classList.add("active");
-        }
-    });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-</script>
-
-<link rel="stylesheet" href="css/tools.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/dashboard.css">
-
+<script src="js/config.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/search.js"></script>
+<script src="js/tool-cards.js"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>

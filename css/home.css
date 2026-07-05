@@ -1,0 +1,409 @@
+/* ======================================
+   TOOLXONE HOME PAGE STYLES
+====================================== */
+
+#hero{
+    max-width:1200px;
+    margin:60px auto;
+    padding:80px 30px;
+    text-align:center;
+}
+
+.hero-content{
+    background:linear-gradient(135deg,#10b981,#059669);
+    color:white;
+    border-radius:28px;
+    padding:70px 30px;
+    box-shadow:0 25px 60px rgba(16,185,129,.30);
+}
+
+.hero-logo{
+    width:320px;
+    max-width:90%;
+    height:auto;
+    display:block;
+    margin:0 auto 25px;
+}
+
+.hero-content h1{
+    font-size:52px;
+    margin-bottom:10px;
+    color:white;
+}
+
+.hero-content h2{
+    font-size:30px;
+    margin-bottom:16px;
+    color:white;
+}
+
+.hero-content p{
+    font-size:18px;
+    margin-bottom:30px;
+    color:white;
+}
+
+.hero-btn{
+    background:white;
+    color:#059669;
+    border:none;
+    padding:15px 32px;
+    border-radius:999px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.hero-btn:hover{
+    transform:translateY(-4px) scale(1.05);
+    box-shadow:0 18px 35px rgba(0,0,0,.20);
+}
+
+/* Stats */
+
+#stats-section{
+    max-width:1200px;
+    margin:10px auto 60px;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+}
+
+.stat-card{
+    background:#ffffff;
+    border-radius:22px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 14px 30px rgba(0,0,0,.14);
+    transition:.3s ease;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(16,185,129,.22);
+}
+
+.stat-icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.stat-card h3{
+    font-size:36px;
+    color:#10b981;
+    margin-bottom:8px;
+}
+
+.stat-card p{
+    font-weight:bold;
+    color:#475569;
+}
+
+/* Section Headers */
+
+.featured-header{
+    text-align:center;
+    margin:40px auto 45px;
+}
+
+.featured-badge-title{
+    display:inline-block;
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:white;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1px;
+    padding:8px 18px;
+    border-radius:999px;
+    margin-bottom:18px;
+    box-shadow:0 8px 20px rgba(245,158,11,.35);
+}
+
+.featured-header h2{
+    font-size:40px;
+    color:#10b981;
+    margin-bottom:14px;
+}
+
+.featured-header p{
+    max-width:700px;
+    margin:auto;
+    color:#64748b;
+    font-size:18px;
+    line-height:1.7;
+}
+
+/* Dashboard */
+
+#dashboard,
+#whats-new,
+#recommended-section,
+#categories-section,
+#category-tool-sections{
+    max-width:1200px;
+    margin:60px auto;
+    padding:20px;
+}
+
+#toolCards,
+#newTools,
+#recommendedTools,
+#categoryCards,
+.category-tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+/* Cards */
+
+.tool-card,
+.category-card{
+    background:#ffffff;
+    border-radius:22px;
+    padding:30px 22px;
+    text-align:center;
+    box-shadow:0 14px 30px rgba(0,0,0,.14);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.tool-card{
+    min-height:250px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.tool-card:hover,
+.category-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(16,185,129,.22);
+    border-color:#27d89b;
+}
+
+.tool-icon,
+.category-card .cat-icon{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.tool-category{
+    display:inline-block;
+    margin:10px 0;
+    padding:7px 12px;
+    border-radius:999px;
+    background:rgba(16,185,129,.14);
+    color:#10b981;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.tool-card h3,
+.category-card h3{
+    color:#10b981;
+    margin-bottom:10px;
+}
+
+.tool-card p,
+.category-card p{
+    color:#64748b;
+    line-height:1.5;
+}
+
+.tool-card a{
+    display:inline-block;
+    margin-top:16px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:#10b981;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s ease;
+}
+
+.tool-card a:hover{
+    background:#059669;
+    transform:scale(1.05);
+}
+
+/* Badges */
+
+.card-badges{
+    position:absolute;
+    top:14px;
+    right:14px;
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+}
+
+.badge{
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.featured-badge{
+    background:#fef3c7;
+    color:#92400e;
+}
+
+.new-badge{
+    background:#dcfce7;
+    color:#166534;
+}
+
+/* Hero Featured Card */
+
+.hero-featured-card{
+    background:linear-gradient(145deg,#1d2d44,#123d34);
+    border:2px solid #f59e0b;
+    box-shadow:
+        0 0 35px rgba(245,158,11,.22),
+        0 18px 45px rgba(0,0,0,.35);
+}
+
+.hero-featured-card::before{
+    content:"👑 TOP PICK";
+    position:absolute;
+    top:18px;
+    left:18px;
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:#111827;
+    padding:6px 12px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.hero-featured-card h3{
+    color:#fbbf24;
+}
+
+.hero-featured-card a{
+    background:linear-gradient(135deg,#f59e0b,#fbbf24);
+    color:#111827;
+}
+
+/* Category Sections */
+
+.category-tool-section{
+    margin:80px 0;
+    scroll-margin-top:120px;
+}
+
+/* Dark Mode */
+
+body.dark-mode #hero,
+body.dark-mode #dashboard,
+body.dark-mode #whats-new,
+body.dark-mode #recommended-section,
+body.dark-mode #categories-section,
+body.dark-mode #category-tool-sections{
+    background:transparent;
+}
+
+body.dark-mode .stat-card,
+body.dark-mode .tool-card,
+body.dark-mode .category-card{
+    background:#1d2d44;
+    color:white;
+    border:1px solid #2f4058;
+}
+
+body.dark-mode .tool-card p,
+body.dark-mode .category-card p,
+body.dark-mode .featured-header p,
+body.dark-mode .stat-card p{
+    color:#cbd5e1;
+}
+
+body.dark-mode .featured-header h2,
+body.dark-mode .category-card h3,
+body.dark-mode .tool-card h3{
+    color:#34d399;
+}
+
+body.dark-mode .featured-badge{
+    background:#78350f;
+    color:#fde68a;
+}
+
+body.dark-mode .new-badge{
+    background:#064e3b;
+    color:#a7f3d0;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+    #hero{
+        margin:30px auto;
+        padding:40px 16px;
+    }
+
+    .hero-content{
+        padding:45px 18px;
+        border-radius:22px;
+    }
+
+    .hero-logo{
+        width:220px;
+    }
+
+    .hero-content h1{
+        font-size:36px;
+    }
+
+    .hero-content h2{
+        font-size:24px;
+    }
+
+    .hero-content p{
+        font-size:15px;
+    }
+
+    .featured-header h2{
+        font-size:30px;
+    }
+
+    .featured-header p{
+        font-size:15px;
+    }
+
+    #stats-section,
+    #toolCards,
+    #newTools,
+    #recommendedTools,
+    #categoryCards,
+    .category-tools-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:480px){
+    .hero-logo{
+        width:180px;
+    }
+
+    .hero-content h1{
+        font-size:32px;
+    }
+
+    .hero-content h2{
+        font-size:21px;
+    }
+
+    .hero-btn{
+        width:100%;
+    }
+}

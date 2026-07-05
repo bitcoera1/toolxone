@@ -490,3 +490,355 @@ body:not(.dark-mode) .feedback-section textarea{
     font-size:14px !important;
     padding:9px 12px !important;
 }
+/* ==========================
+   TOOLXONE CORE NAVBAR
+========================== */
+
+.ToolXone-navbar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    background:#ffffff;
+    padding:14px 18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
+    position:sticky;
+    top:0;
+    z-index:2000;
+}
+
+.ToolXone-navbar a,
+.category-btn,
+.theme-button{
+    text-decoration:none;
+    color:#1f2937;
+    font-weight:700;
+    padding:10px 14px;
+    border-radius:10px;
+    border:none;
+    background:transparent;
+    cursor:pointer;
+}
+
+.ToolXone-navbar a:hover,
+.category-btn:hover,
+.theme-button:hover{
+    background:#10b981;
+    color:white;
+}
+
+.category-menu{
+    position:relative;
+}
+
+.category-dropdown,
+.appearance-dropdown{
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:auto;
+
+    min-width:220px;
+
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+
+    overflow:hidden;
+    z-index:9999;
+}
+
+.category-menu:hover .category-dropdown,
+.appearance-menu:hover .appearance-dropdown{
+    display:block;
+}
+
+.category-dropdown a,
+.appearance-dropdown button{
+    display:block;
+    width:100%;
+    text-align:left;
+    padding:10px;
+}
+
+.mobile-nav-top{
+    display:none;
+}
+
+.mobile-nav-panel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.ToolXone-clock{
+    font-weight:700;
+    padding:10px 14px;
+}
+
+.search-container{
+    position:relative;
+}
+
+.tool-search{
+    padding:10px 14px;
+    border-radius:999px;
+    border:1px solid #d1d5db;
+}
+
+/* reveal animation restore */
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:.7s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* mobile/tablet hamburger */
+@media(max-width:1400px){
+    .ToolXone-navbar{
+        display:block;
+        padding:0;
+    }
+
+    .mobile-nav-top{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:12px 16px;
+        background:#111827;
+    }
+
+    .mobile-brand{
+        color:#10b981 !important;
+        font-weight:800;
+        text-decoration:none;
+    }
+
+    .mobile-menu-btn{
+        background:#10b981;
+        color:white;
+        border:none;
+        border-radius:10px;
+        padding:8px 12px;
+        font-size:20px;
+        cursor:pointer;
+    }
+
+    .mobile-nav-panel{
+        display:none;
+        background:#111827;
+        padding:14px;
+    }
+
+    .mobile-nav-panel.active{
+        display:block;
+    }
+
+.mobile-nav-panel .nav-link,
+.mobile-nav-panel .category-menu,
+.mobile-nav-panel .ToolXone-clock-container,
+.mobile-nav-panel .search-container,
+.mobile-nav-panel .appearance-menu{
+    display:block;
+    width:100%;
+    margin-bottom:10px;
+}
+
+    .mobile-nav-panel a,
+    .category-btn,
+    .theme-button{
+        display:block;
+        width:100%;
+        color:#e5e7eb;
+        background:#1f2937;
+        text-align:left;
+    }
+
+    .category-dropdown,
+    .appearance-dropdown,
+    .search-results{
+        position:static;
+        margin-top:8px;
+        box-shadow:none;
+        background:#0f172a;
+    }
+
+    .category-menu:hover .category-dropdown,
+    .appearance-menu:hover .appearance-dropdown{
+        display:block;
+    }
+
+    .tool-search{
+        width:100%;
+    }
+}
+/* ==========================
+   TOOLXONE NAV FINAL POLISH
+========================== */
+
+.clock-tooltip{
+    display:none !important;
+}
+
+.ToolXone-clock-container:hover .clock-tooltip{
+    display:block !important;
+    position:absolute;
+    right:20px;
+    top:60px;
+    background:#ffffff;
+    color:#1f2937;
+    padding:12px 16px;
+    border-radius:12px;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    z-index:5000;
+}
+
+.ToolXone-navbar{
+    min-height:auto !important;
+    padding:16px 24px !important;
+}
+
+.mobile-nav-panel{
+    width:100% !important;
+}
+
+/* Desktop layout */
+@media(min-width:1401px){
+    .ToolXone-navbar{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        gap:18px !important;
+    }
+
+    .mobile-nav-panel{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        gap:18px !important;
+        flex-wrap:wrap !important;
+    }
+
+    .ToolXone-clock-container{
+        position:relative;
+    }
+
+    .search-container{
+        margin-left:10px;
+    }
+}
+
+/* Mobile/tablet layout */
+@media(max-width:1400px){
+    .ToolXone-clock-container{
+        position:relative;
+    }
+
+    .clock-tooltip{
+        position:static !important;
+        margin-top:8px;
+        background:#1f2937 !important;
+        color:white !important;
+    }
+}
+/* FINAL APPEARANCE DROPDOWN FIX */
+.appearance-menu{
+    position:relative !important;
+}
+
+.appearance-dropdown{
+    display:none !important;
+    position:absolute !important;
+    top:100% !important;
+    right:0 !important;
+    left:auto !important;
+    min-width:220px !important;
+    background:#ffffff !important;
+    border-radius:14px !important;
+    box-shadow:0 12px 30px rgba(0,0,0,.18) !important;
+    overflow:hidden !important;
+    z-index:9999 !important;
+}
+
+.appearance-menu:hover .appearance-dropdown{
+    display:block !important;
+}
+
+@media(max-width:1400px){
+    .appearance-dropdown{
+        position:static !important;
+        margin-top:8px !important;
+        background:#0f172a !important;
+    }
+}
+/* ==========================
+   DARK MODE NAV TEXT FIX
+========================== */
+
+body.dark-mode .ToolXone-navbar,
+body.dark-mode .mobile-nav-panel{
+    background:#111827 !important;
+}
+
+body.dark-mode .ToolXone-navbar a,
+body.dark-mode .nav-link,
+body.dark-mode .category-btn,
+body.dark-mode .theme-button,
+body.dark-mode .ToolXone-clock{
+    color:#e5e7eb !important;
+}
+
+body.dark-mode .ToolXone-navbar a:hover,
+body.dark-mode .category-btn:hover,
+body.dark-mode .theme-button:hover,
+body.dark-mode .nav-link.active{
+    background:#10b981 !important;
+    color:#ffffff !important;
+}
+
+body.dark-mode .category-dropdown,
+body.dark-mode .appearance-dropdown,
+body.dark-mode .search-results{
+    background:#1f2937 !important;
+}
+
+body.dark-mode .category-dropdown a,
+body.dark-mode .appearance-dropdown button,
+body.dark-mode .search-item{
+    color:#e5e7eb !important;
+}
+
+body.dark-mode .category-dropdown a:hover,
+body.dark-mode .appearance-dropdown button:hover,
+body.dark-mode .search-item:hover{
+    background:#10b981 !important;
+    color:#ffffff !important;
+}
+body.dark-mode .appearance-dropdown{
+    background:#1f2937 !important;
+}
+
+body.dark-mode .appearance-dropdown button{
+    background:#1f2937 !important;
+    color:#ffffff !important;
+    border:1px solid #374151 !important;
+}
+
+body.dark-mode .appearance-dropdown button:hover{
+    background:#10b981 !important;
+    color:#ffffff !important;
+}
+
+body.dark-mode .coming-theme{
+    color:#e5e7eb !important;
+    background:#1f2937 !important;
+}

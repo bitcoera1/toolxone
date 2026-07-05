@@ -198,11 +198,12 @@ const TOOLXONE = {
             icon: "🚀",
             name: "Coming Soon",
             tools: [
-                { id: "ai-tools", icon: "🤖", name: "AI Tools", link: "#" },
-                { id: "pdf-tools", icon: "📄", name: "PDF Tools", link: "#" },
-                { id: "image-tools", icon: "🖼️", name: "Image Tools", link: "#" },
-                { id: "developer-tools", icon: "💻", name: "Developer Tools", link: "#" }
-            ]
+    { id: "ai-tools", icon: "🤖", name: "AI Tools", link: "#" },
+    { id: "pdf-tools", icon: "📄", name: "PDF Tools", link: "#" },
+    { id: "image-tools", icon: "🖼️", name: "Image Tools", link: "#" },
+    { id: "developer-tools", icon: "💻", name: "Developer Tools", link: "#" },
+    { id: "insurance-tools", icon: "🛡️", name: "Insurance Tools", link: "#" }
+]
         }
     ],
 

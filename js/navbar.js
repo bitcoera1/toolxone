@@ -29,9 +29,8 @@ function initializeNavbar() {
 
             ${buildCategoryMenus(currentPage)}
 
-            <a href="#" class="nav-link">⭐ Featured</a>
-            <a href="#" class="nav-link">🆕 New</a>
-
+            <a href="index.html#dashboard" class="nav-link">⭐ Featured</a>
+            <a href="index.html#whats-new" class="nav-link">🆕 New</a>
 <div class="ToolXone-clock-container">
 
 <div

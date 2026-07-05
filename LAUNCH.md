@@ -79,7 +79,7 @@
 - [x] QR Code Generator
 - [x] Retirement Calculator
 - [x] ROI Calculator
-- [ ] Savings Goal Calculator
+- [x] Savings Goal Calculator
 - [ ] Scientific Calculator
 - [ ] Weight Converter
 

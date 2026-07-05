@@ -50,6 +50,41 @@
     color:#1f2937;
     margin-bottom:22px;
 }
+.bmi-number{
+    font-size:60px;
+    font-weight:800;
+    color:#10b981;
+    margin:18px 0 8px;
+}
+
+.bmi-category{
+    display:inline-block;
+    font-size:20px;
+    font-weight:800;
+    padding:10px 16px;
+    border-radius:999px;
+    background:#ecfdf5;
+    color:#047857;
+    margin-bottom:12px;
+}
+
+.bmi-advice{
+    margin-top:20px;
+    font-size:17px;
+    line-height:1.7;
+    color:#475569;
+    font-weight:600;
+}
+
+body.dark-mode .bmi-category{
+    background:rgba(16,185,129,.18);
+    color:#6ee7b7;
+}
+
+body.dark-mode .bmi-advice,
+body.dark-mode .bmi-number{
+    color:white;
+}
 
 .input-group{
     margin-bottom:18px;

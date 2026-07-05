@@ -63,7 +63,7 @@
 ### Tool Pages
 
 - [x] Age Calculator
-- [ ] BMI Calculator
+- [x] BMI Calculator
 - [ ] Basic Calculator
 - [ ] Compound Interest Calculator
 - [ ] Currency Converter

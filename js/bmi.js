@@ -1,20 +1,76 @@
-document.getElementById("calculateBMI").addEventListener("click", calculateBMI);
-document.getElementById("resetBMI").addEventListener("click", resetBMI);
-console.log("BMI JS Loaded Successfully!");
+let currentUnit = "metric";
+
+document.addEventListener("DOMContentLoaded", function () {
+    const metricBtn = document.getElementById("metricBtn");
+    const imperialBtn = document.getElementById("imperialBtn");
+    const metricInputs = document.querySelectorAll(".metric-inputs");
+    const imperialInputs = document.querySelector(".imperial-inputs");
+
+    metricBtn.addEventListener("click", function () {
+        currentUnit = "metric";
+
+        metricBtn.classList.add("active");
+        imperialBtn.classList.remove("active");
+
+        metricInputs.forEach(input => {
+            input.style.display = "block";
+        });
+
+        imperialInputs.style.display = "none";
+        resetBMI();
+    });
+
+    imperialBtn.addEventListener("click", function () {
+        currentUnit = "imperial";
+
+        imperialBtn.classList.add("active");
+        metricBtn.classList.remove("active");
+
+        metricInputs.forEach(input => {
+            input.style.display = "none";
+        });
+
+        imperialInputs.style.display = "block";
+        resetBMI();
+    });
+
+    document.getElementById("calculateBMI").addEventListener("click", calculateBMI);
+    document.getElementById("resetBMI").addEventListener("click", resetBMI);
+
+    console.log("BMI JS Loaded Successfully!");
+});
 
 function calculateBMI() {
-    const height = parseFloat(document.getElementById("heightCm").value);
-    const weight = parseFloat(document.getElementById("weightKg").value);
+    let bmi;
 
-    if (!height || !weight) {
-        alert("Please enter your height and weight.");
-        return;
+    if (currentUnit === "metric") {
+        const height = parseFloat(document.getElementById("heightCm").value);
+        const weight = parseFloat(document.getElementById("weightKg").value);
+
+        if (!height || !weight) {
+            alert("Please enter your height and weight.");
+            return;
+        }
+
+        bmi = weight / Math.pow(height / 100, 2);
+    } else {
+        const feet = parseFloat(document.getElementById("heightFt").value) || 0;
+        const inches = parseFloat(document.getElementById("heightIn").value) || 0;
+        const weightLb = parseFloat(document.getElementById("weightLb").value);
+
+        const totalInches = (feet * 12) + inches;
+
+        if (!totalInches || !weightLb) {
+            alert("Please enter your height and weight.");
+            return;
+        }
+
+        bmi = (weightLb / Math.pow(totalInches, 2)) * 703;
     }
-
-    const bmi = weight / Math.pow(height / 100, 2);
 
     animateBMI(bmi);
     moveBMIMarker(bmi);
+
     let category = "";
     let advice = "";
 
@@ -32,8 +88,13 @@ function calculateBMI() {
         advice = "Consult a healthcare professional for personalized guidance.";
     }
 
-    document.getElementById("bmiCategory").textContent = category;
-    document.getElementById("bmiAdvice").textContent = advice;
+    document.getElementById("bmiCategory").innerHTML = category;
+document.getElementById("bmiAdvice").textContent = advice;
+
+const resultCard = document.getElementById("bmiResultCard");
+if (resultCard) {
+    resultCard.classList.add("show-result");
+}
 }
 
 function animateBMI(target) {
@@ -57,21 +118,22 @@ function animateBMI(target) {
 function resetBMI() {
     document.getElementById("heightCm").value = "";
     document.getElementById("weightKg").value = "";
+    document.getElementById("heightFt").value = "";
+    document.getElementById("heightIn").value = "";
+    document.getElementById("weightLb").value = "";
 
     document.getElementById("bmiNumber").textContent = "--";
+    document.getElementById("bmiCategory").textContent = "Enter your height and weight";
+    document.getElementById("bmiAdvice").textContent = "Your health category and advice will appear here.";
 
-    document.getElementById("bmiCategory").textContent =
-        "Enter your height and weight";
-
-    document.getElementById("bmiAdvice").textContent =
-        "Your health category and advice will appear here.";
+    const marker = document.getElementById("scaleMarker");
+    if (marker) marker.style.left = "0%";
 }
+
 function moveBMIMarker(bmi) {
     const marker = document.getElementById("scaleMarker");
 
-    if (!marker) {
-        return;
-    }
+    if (!marker) return;
 
     let position = 0;
 
@@ -86,4 +148,8 @@ function moveBMIMarker(bmi) {
     }
 
     marker.style.left = position + "%";
+}
+const resultCard = document.getElementById("bmiResultCard");
+if (resultCard) {
+    resultCard.classList.remove("show-result");
 }

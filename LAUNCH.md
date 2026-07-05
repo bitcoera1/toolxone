@@ -64,8 +64,8 @@
 
 - [x] Age Calculator
 - [x] BMI Calculator
-- [ ] Basic Calculator
-- [ ] Compound Interest Calculator
+- [x] Basic Calculator
+- [x] Compound Interest Calculator
 - [ ] Currency Converter
 - [ ] Currency Profit Calculator
 - [ ] Discount Calculator

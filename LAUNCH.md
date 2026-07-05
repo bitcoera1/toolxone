@@ -70,7 +70,7 @@
 - [x] Currency Profit Calculator
 - [x] Discount Calculator
 - [x] EMI Calculator
-- [ ] GST / VAT Calculator
+- [x] GST / VAT Calculator
 - [ ] Inflation Calculator
 - [ ] Loan Calculator
 - [ ] Mortgage Calculator

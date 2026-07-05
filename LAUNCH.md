@@ -71,8 +71,8 @@
 - [x] Discount Calculator
 - [x] EMI Calculator
 - [x] GST / VAT Calculator
-- [ ] Inflation Calculator
-- [ ] Loan Calculator
+- [x] Inflation Calculator
+- [x] Loan Calculator
 - [ ] Mortgage Calculator
 - [ ] Percentage Calculator
 - [ ] Profit Margin Calculator

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/mortgage.css">
 </head>
 
-<body>
+<body data-tool="mortgage">
 
 <header class="site-header">
     <img src="images/toolxone-logo.jpg" class="site-logo" alt="ToolXone Logo">
@@ -96,58 +96,14 @@
 
 </section>
 
-<section class="mortgage-info">
-
-<h2>Why Use a Mortgage Calculator?</h2>
-
-<p>
-Estimate your monthly mortgage payments, total interest, and total repayment before buying a home. Perfect for comparing loan options and planning your budget.
-</p>
-
-</section>
-
-<section class="faq-section">
-
-    <h2>Frequently Asked Questions</h2>
-
-    <details>
-        <summary>What does this mortgage calculator do?</summary>
-        <p>
-            This calculator estimates your monthly mortgage payment, total interest,
-            and total repayment based on loan amount, interest rate, and loan term.
-        </p>
-    </details>
-
-    <details>
-        <summary>Is this mortgage calculator free?</summary>
-        <p>
-            Yes, this ToolXone mortgage calculator is completely free to use.
-        </p>
-    </details>
-
-</section>
-
-<section class="feedback-section">
-
-    <h2>💬 Help Improve ToolXone</h2>
-
-    <p>Your feedback helps us improve this calculator for everyone.</p>
-
-    <div class="feedback-options">
-        <button>😊 Helpful</button>
-        <button>😐 Average</button>
-        <button>😞 Needs Improvement</button>
-    </div>
-
-    <textarea placeholder="Share your suggestion..."></textarea>
-
-    <button class="feedback-submit">Submit Feedback</button>
-
-</section>
+<div id="financeInfo"></div>
+<div id="financeFAQ"></div>
+<div id="financeFeedback"></div>
 
 <footer class="footer">
-<p><strong>ToolXone</strong> © 2026</p>
-<p>Fast • Accurate • Free</p>
+    <p><strong>ToolXone</strong> © 2026</p>
+    <p>Free Online Calculators & Conversion Tools</p>
+    <p>Fast • Accurate • Free</p>
 </footer>
 
 <script src="js/config.js"></script>
@@ -156,7 +112,8 @@ Estimate your monthly mortgage payments, total interest, and total repayment bef
 <script src="js/theme.js"></script>
 <script src="js/search.js"></script>
 <script src="js/tool-cards.js"></script>
-<script src="js/tools.js"></script><script src="js/form-engine.js"></script>
+<script src="js/tools.js"></script>
+<script src="js/form-engine.js"></script>
 <script src="js/calculator-engine.js"></script>
 <script src="js/finance-components.js"></script>
 <script src="js/finance-engine.js"></script>
@@ -173,6 +130,7 @@ const mortgageCalculator = {
     theme: "finance",
     description: "Calculate monthly mortgage payments accurately.",
     subtitle: "Calculate your monthly mortgage payment and total loan cost.",
+
     fields: [
         {
             label: "Loan Amount",
@@ -191,6 +149,22 @@ const mortgageCalculator = {
             type: "number",
             id: "loanYears",
             placeholder: "30"
+        }
+    ],
+
+    info: {
+        title: "Why Use a Mortgage Calculator?",
+        description: "Estimate your monthly mortgage payments, total interest, and total repayment before buying a home. Perfect for comparing loan options and planning your budget."
+    },
+
+    faq: [
+        {
+            question: "What does this mortgage calculator do?",
+            answer: "This calculator estimates your monthly mortgage payment, total interest, and total repayment based on loan amount, interest rate, and loan term."
+        },
+        {
+            question: "Is this mortgage calculator free?",
+            answer: "Yes, this ToolXone mortgage calculator is completely free to use."
         }
     ]
 };

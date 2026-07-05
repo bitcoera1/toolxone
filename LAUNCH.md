@@ -68,7 +68,7 @@
 - [x] Compound Interest Calculator
 - [x] Currency Converter
 - [x] Currency Profit Calculator
-- [ ] Discount Calculator
+- [x] Discount Calculator
 - [ ] EMI Calculator
 - [ ] GST / VAT Calculator
 - [ ] Inflation Calculator

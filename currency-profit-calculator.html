@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/currency-profit.css">
 </head>
 
-<body>
+<body data-tool="currency-profit">
 
 <header class="site-header">
     <img src="images/toolxone-logo.jpg" class="site-logo" alt="ToolXone Logo">
@@ -87,6 +87,7 @@
 
 <footer class="footer">
 <p><strong>ToolXone</strong> © 2026</p>
+<p>Free Online Calculators & Conversion Tools</p>
 <p>Fast • Accurate • Free</p>
 </footer>
 
@@ -97,6 +98,8 @@
 <script src="js/search.js"></script>
 <script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+<script src="js/form-engine.js"></script>
+<script src="js/calculator-engine.js"></script>
 <script src="js/finance-components.js"></script>
 <script src="js/finance-engine.js"></script>
 <script src="js/currency-profit.js"></script>
@@ -137,17 +140,6 @@ const currencyProfitCalculator = {
 };
 
 createFinanceCalculator(currencyProfitCalculator);
-</script>
-
-<script>
-const navToggle = document.getElementById("navToggle");
-const navLinks = document.getElementById("navLinks");
-
-if(navToggle && navLinks){
-    navToggle.addEventListener("click", function(){
-        navLinks.classList.toggle("active");
-    });
-}
 </script>
 
 </body>

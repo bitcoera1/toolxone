@@ -66,8 +66,8 @@
 - [x] BMI Calculator
 - [x] Basic Calculator
 - [x] Compound Interest Calculator
-- [ ] Currency Converter
-- [ ] Currency Profit Calculator
+- [x] Currency Converter
+- [x] Currency Profit Calculator
 - [ ] Discount Calculator
 - [ ] EMI Calculator
 - [ ] GST / VAT Calculator

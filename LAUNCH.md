@@ -80,7 +80,7 @@
 - [x] Retirement Calculator
 - [x] ROI Calculator
 - [x] Savings Goal Calculator
-- [ ] Scientific Calculator
+- [x] Scientific Calculator
 - [ ] Weight Converter
 
 ---

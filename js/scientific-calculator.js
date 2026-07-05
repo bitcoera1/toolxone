@@ -12,11 +12,8 @@ function updateDisplay() {
 
 function playSound() {
     if (!soundEnabled) return;
-
     try {
-        const audioContext =
-            new (window.AudioContext || window.webkitAudioContext)();
-
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
 
@@ -37,10 +34,9 @@ function appendValue(value) {
         if ("0123456789.".includes(value)) {
             expression = "";
             resultDisplay.textContent = "0";
-        } else if (["+", "-", "*", "/", "%"].includes(value)) {
+        } else if (["+", "-", "*", "/", "%", "^"].includes(value)) {
             expression = String(ans);
         }
-
         justCalculated = false;
     }
 
@@ -97,46 +93,55 @@ function insertE() {
 
 function toggleSound() {
     soundEnabled = !soundEnabled;
-
     document.getElementById("status").textContent =
         soundEnabled ? "Sound ON" : "Sound OFF";
 }
 
-function preprocessExpression(expr) {
-    expr = expr.replace(/π/g, Math.PI);
-    expr = expr.replace(/\be\b/g, Math.E);
+function balanceParentheses(expr) {
+    const open = (expr.match(/\(/g) || []).length;
+    const close = (expr.match(/\)/g) || []).length;
 
-    expr = expr.replace(/(\d+(\.\d+)?)\^2/g, "($1**2)");
-    expr = expr.replace(/\^/g, "**");
+    if (open > close) {
+        expr += ")".repeat(open - close);
+    }
+
+    return expr;
+}
+
+function preprocessExpression(expr) {
+    expr = balanceParentheses(expr);
+
+    expr = expr.replace(/π/g, `(${Math.PI})`);
+    expr = expr.replace(/\be\b/g, `(${Math.E})`);
 
     expr = expr.replace(/√\(/g, "Math.sqrt(");
+    expr = expr.replace(/\^/g, "**");
 
-    expr = expr.replace(/sin\(([^()]*)\)/g,
-        (_, x) => `Math.sin((${x})*Math.PI/180)`);
-
-    expr = expr.replace(/cos\(([^()]*)\)/g,
-        (_, x) => `Math.cos((${x})*Math.PI/180)`);
-
-    expr = expr.replace(/tan\(([^()]*)\)/g,
-        (_, x) => `Math.tan((${x})*Math.PI/180)`);
-
-    expr = expr.replace(/log\(([^()]*)\)/g,
-        (_, x) => `Math.log10(${x})`);
-
-    expr = expr.replace(/ln\(([^()]*)\)/g,
-        (_, x) => `Math.log(${x})`);
+    expr = expr.replace(/sin\(/g, "sinDeg(");
+    expr = expr.replace(/cos\(/g, "cosDeg(");
+    expr = expr.replace(/tan\(/g, "tanDeg(");
+    expr = expr.replace(/log\(/g, "Math.log10(");
+    expr = expr.replace(/ln\(/g, "Math.log(");
 
     return expr;
 }
 
 function calculate() {
     try {
-        let processed = preprocessExpression(expression);
-        let result = eval(processed);
+        const sinDeg = x => Math.sin(x * Math.PI / 180);
+        const cosDeg = x => Math.cos(x * Math.PI / 180);
+        const tanDeg = x => Math.tan(x * Math.PI / 180);
 
-        if (!isFinite(result)) {
-            throw new Error();
-        }
+        let processed = preprocessExpression(expression);
+
+        let result = Function(
+            "sinDeg",
+            "cosDeg",
+            "tanDeg",
+            `"use strict"; return (${processed});`
+        )(sinDeg, cosDeg, tanDeg);
+
+        if (!isFinite(result)) throw new Error();
 
         result = Number(result.toFixed(12));
 
@@ -145,6 +150,7 @@ function calculate() {
         expression = String(result);
         justCalculated = true;
         updateDisplay();
+
     } catch {
         resultDisplay.textContent = "Error";
     }
@@ -155,14 +161,14 @@ document.addEventListener("keydown", function(e) {
 
     if ("0123456789".includes(key)) {
         appendValue(key);
-    } else if (["+", "-", "*", "/", ".", "%", "(", ")"].includes(key)) {
+    } else if (["+", "-", "*", "/", ".", "%", "(", ")", "^"].includes(key)) {
         appendValue(key);
     } else if (key === "Enter") {
         e.preventDefault();
         calculate();
     } else if (key === "Backspace") {
         backspace();
-    } else if (key === "Delete") {
+    } else if (key === "Delete" || key === "Escape") {
         clearAll();
     }
 });

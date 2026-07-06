@@ -81,7 +81,7 @@
 - [x] ROI Calculator
 - [x] Savings Goal Calculator
 - [x] Scientific Calculator
-- [ ] Weight Converter
+- [x] Weight Converter
 
 ---
 

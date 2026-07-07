@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/dashboard.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/home-forex.css">div class="market-card hero-market-card">
 
 <style>
 *{
@@ -136,11 +137,14 @@ font-size:14px;
     margin-bottom:22px;
 }
 
-.home-hero h1{
-    font-size:48px;
-    line-height:1.15;
-    max-width:850px;
-    margin:0 auto 20px;
+.hero-left h1{
+
+    font-size:40px;
+
+    line-height:1.2;
+
+    margin:20px 0;
+
 }
 
 .home-hero p{
@@ -345,52 +349,147 @@ body.dark-mode .home-hero{
 
 <div id="navbar"></div>
 
-<section id="hero">
+<section id="hero" class="home-dashboard-hero">
 
-    <div class="hero-content">
+    <div class="hero-center">
 
-        <img src="images/toolxone-logo.jpg" alt="ToolXone Logo" class="hero-logo">
+        <div class="hero-badge">
+            🚀 20 Professional Tools • 100% Free • Mobile Friendly
+        </div>
 
-        <h1>ToolXone</h1>
+        <div class="hero-logo-card">
+            <img src="images/toolxone-logo.jpg"
+                 alt="ToolXone Logo"
+                 class="hero-logo-main">
+        </div>
 
-        <h2>Free Online Calculators & Smart Utility Tools</h2>
+        <h1>
+            Free Online Calculators & Smart Utility Tools
+        </h1>
 
         <p>
-            Fast • Free • Accurate • Mobile Friendly
+            Calculate, convert, compare and simplify everyday tasks with
+            fast, accurate and mobile-friendly online tools.
         </p>
 
-        <button id="exploreToolsBtn" class="hero-btn">
-            🚀 Explore Tools
-        </button>
+        <div class="hero-actions">
+
+            <button id="exploreToolsBtn" class="hero-btn">
+                🧮 Browse All Tools
+            </button>
+
+            <a href="currency-converter.html"
+               class="hero-secondary-btn">
+
+                💱 Live Currency
+
+            </a>
+
+        </div>
+
+        <div class="hero-mini-stats">
+
+            <div>
+                <strong>20+</strong>
+                <span>Professional Tools</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Free Forever</span>
+            </div>
+
+            <div>
+                <strong>24/7</strong>
+                <span>Always Online</span>
+            </div>
+
+        </div>
+
+        <div class="market-card hero-market-card">
+
+    <div class="market-top">
+
+        <div class="market-title">
+
+            <div class="market-icon">
+                📈
+            </div>
+
+            <div>
+                <h3>Live Financial Snapshot</h3>
+                <p>Real-time exchange rates with 24h change</p>
+            </div>
+
+            <span class="live-badge">
+                ● LIVE
+            </span>
+
+        </div>
+
+        <div class="market-update">
+
+            Last updated:
+            <span id="marketTime">--:--</span>
+
+            <span class="green-dot"></span>
+
+        </div>
 
     </div>
 
-</section>
 
-<section id="stats-section">
+    <div class="market-select-row">
 
-    <div class="stat-card">
-        <div class="stat-icon">🧮</div>
-        <h3><span class="counter" data-target="20">0</span>+</h3>
-        <p>Professional Tools</p>
+        <label>Compare against:</label>
+
+        <select id="heroBaseCurrency">
+
+            <option value="PKR">🇵🇰 PKR</option>
+            <option value="USD">🇺🇸 USD</option>
+            <option value="EUR">🇪🇺 EUR</option>
+            <option value="GBP">🇬🇧 GBP</option>
+            <option value="AED">🇦🇪 AED</option>
+            <option value="SAR">🇸🇦 SAR</option>
+            <option value="CAD">🇨🇦 CAD</option>
+            <option value="AUD">🇦🇺 AUD</option>
+            <option value="JPY">🇯🇵 JPY</option>
+            <option value="CNY">🇨🇳 CNY</option>
+
+        </select>
+
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">🌍</div>
-        <h3><span class="counter" data-target="190">0</span>+</h3>
-        <p>Currencies Supported</p>
+
+    <div id="heroForexRows">
+
+        <!-- JS Generates Rows -->
+
     </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">⚡</div>
-        <h3><span class="counter" data-target="100">0</span>%</h3>
-        <p>Free Forever</p>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">🚀</div>
-        <h3>24/7</h3>
-        <p>Always Available</p>
+    <div class="market-bottom">
+
+        <div>
+
+            ✅ Data provided by
+
+            <strong>ExchangeRate API</strong>
+
+        </div>
+
+        <div>
+
+            Reliable • Accurate • Trusted
+
+        </div>
+
+        <div>
+
+            🔄 Auto Updates Every Minute
+
+        </div>
+
     </div>
 
 </section>
@@ -485,7 +584,9 @@ body.dark-mode .home-hero{
 <script src="js/theme.js"></script>
 <script src="js/search.js"></script>
 <script src="js/tool-cards.js"></script>
+<script src="js/tools.js"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/home-forex.js"></script>
 <script src="js/footer.js"></script>
 <script src="js/app.js"></script>
 

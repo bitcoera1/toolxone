@@ -1,85 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://bitcoera1.github.io/toolxone/</loc>
-</url>
-
-<url>
-<loc>https://bitcoera1.github.io/toolxone/calculator.html</loc>
-</url>
-
-<url>
-<loc>https://bitcoera1.github.io/toolxone/scientific-calculator.html</loc>
-</url>
-
-<url>
-<loc>https://bitcoera1.github.io/toolxone/currency-converter.html</loc>
-</url>
-
-<url>
-<loc>https://bitcoera1.github.io/toolxone/weight-converter.html</loc>
-</url>
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/bmi-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/age-calculator.html</loc>
-</url>
-
-<url>
-    <loc>
-https://bitcoera1.github.io/toolxone/percentage-calculator.html
-    </loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/loan-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/compound-interest-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/discount-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/gst-vat-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/profit-margin-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/roi-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/savings-goal-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/mortgage-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/emi-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/inflation-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/currency-profit-calculator.html</loc>
-</url>
-
-<url>
-    <loc>https://bitcoera1.github.io/toolxone/retirement-calculator.html</loc>
-</url>
+<url><loc>https://www.toolxone.com/</loc></url>
+<url><loc>https://www.toolxone.com/calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/scientific-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/currency-converter.html</loc></url>
+<url><loc>https://www.toolxone.com/weight-converter.html</loc></url>
+<url><loc>https://www.toolxone.com/bmi-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/age-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/percentage-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/loan-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/compound-interest-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/discount-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/gst-vat-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/profit-margin-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/roi-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/savings-goal-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/mortgage-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/emi-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/inflation-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/currency-profit-calculator.html</loc></url>
+<url><loc>https://www.toolxone.com/retirement-calculator.html</loc></url>
 
 </urlset>

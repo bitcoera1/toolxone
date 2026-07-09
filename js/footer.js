@@ -21,9 +21,9 @@ document.getElementById("siteFooter").innerHTML = `
             <h3>🚀 Quick Links</h3>
 
             <a href="index.html">🏠 Home</a>
-            <a href="#featured-tools">⭐ Popular Tools</a>
-            <a href="#toolCategories">📂 Categories</a>
-            <a href="#related-tools-section">🧮 Explore Tools</a>
+            <a href="index.html#dashboard">⭐ Popular Tools</a>
+            <a href="index.html#categories-section">📂 Categories</a>
+            <a href="index.html#dashboard">🧮 Explore Tools</a>
 
         </div>
 
@@ -31,9 +31,9 @@ document.getElementById("siteFooter").innerHTML = `
 
             <h3>🏢 Company</h3>
 
-            <a href="#">ℹ️ About Us</a>
-            <a href="#">📞 Contact</a>
-            <a href="#">💬 Feedback</a>
+            <a href="about.html">ℹ️ About Us</a>
+            <a href="contact.html">📧 Contact</a>
+            <a href="feedback.html">💬 Feedback</a>
 
         </div>
 
@@ -41,10 +41,10 @@ document.getElementById("siteFooter").innerHTML = `
 
             <h3>📜 Legal</h3>
 
-            <a href="#">🔒 Privacy Policy</a>
-            <a href="#">📄 Terms & Conditions</a>
-            <a href="#">⚠️ Disclaimer</a>
-            <a href="#">🤝 Affiliate Disclosure</a>
+            <a href="privacy-policy.html">🔒 Privacy Policy</a>
+            <a href="terms-conditions.html">📄 Terms & Conditions</a>
+            <a href="disclaimer.html">⚠️ Disclaimer</a>
+            <a href="affiliate-disclosure.html">🤝 Affiliate Disclosure</a>
 
         </div>
 
@@ -52,10 +52,11 @@ document.getElementById("siteFooter").innerHTML = `
 
             <h3>🌐 Follow Us</h3>
 
-            <a href="#" target="_blank">📘 Facebook</a>
-            <a href="#" target="_blank">📌 Pinterest</a>
-            <a href="#" target="_blank">📸 Instagram</a>
-            <a href="#" target="_blank">🐙 GitHub</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">📌 Pinterest</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
+            <a href="https://github.com/bitcoera1/toolxone" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
 
         </div>
 
@@ -63,11 +64,11 @@ document.getElementById("siteFooter").innerHTML = `
 
     <div class="footer-bottom">
 
-        <p><strong>ToolXone</strong> © 2026</p>
+        <p><strong>© 2026 ToolXone. All Rights Reserved.</strong></p>
 
         <p>Fast • Accurate • Free • Mobile Friendly</p>
 
-        <p>Made with ❤️ for everyone.</p>
+        <p>Made with ❤️ to help people calculate, convert and make smarter decisions.</p>
 
     </div>
 

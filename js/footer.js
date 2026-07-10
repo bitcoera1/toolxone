@@ -48,29 +48,65 @@ document.getElementById("siteFooter").innerHTML = `
 
         </div>
 
-        <div class="footer-column">
+  <div class="footer-column">
 
-            <h3>🌐 Follow Us</h3>
+    <h3>🌐 Follow ToolXone</h3>
 
-            <a href="#" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">📌 Pinterest</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a>
-            <a href="https://github.com/bitcoera1/toolxone" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
+    <a href="https://www.facebook.com/ToolXone"
+       target="_blank"
+       rel="noopener noreferrer">
+       📘 Facebook
+    </a>
 
-        </div>
+    <a href="https://www.instagram.com/toolxone/"
+       target="_blank"
+       rel="noopener noreferrer">
+       📸 Instagram
+    </a>
 
-    </div>
+    <a href="https://www.pinterest.com/toolxone/"
+       target="_blank"
+       rel="noopener noreferrer">
+       📌 Pinterest
+    </a>
 
-    <div class="footer-bottom">
+    <a href="https://www.linkedin.com/company/toolxone/"
+       target="_blank"
+       rel="noopener noreferrer">
+       💼 LinkedIn
+    </a>
 
-        <p><strong>© 2026 ToolXone. All Rights Reserved.</strong></p>
+    <a href="https://www.youtube.com/@toolxone"
+       target="_blank"
+       rel="noopener noreferrer">
+       ▶️ YouTube
+    </a>
 
-        <p>Fast • Accurate • Free • Mobile Friendly</p>
+    <a href="https://www.x.com/TahirAslam1975"
+       target="_blank"
+       rel="noopener noreferrer">
+       ✖️ X
+    </a>
 
-        <p>Made with ❤️ to help people calculate, convert and make smarter decisions.</p>
+    <a href="https://www.reddit.com/user/ToolXone/"
+       target="_blank"
+       rel="noopener noreferrer">
+       👽 Reddit
+    </a>
 
-    </div>
+    <a href="https://medium.com/@toolxone"
+       target="_blank"
+       rel="noopener noreferrer">
+       ✍️ Medium
+    </a>
+
+    <a href="https://github.com/bitcoera1/toolxone"
+       target="_blank"
+       rel="noopener noreferrer">
+       🐙 GitHub
+    </a>
+
+</div>
 
 </footer>
 

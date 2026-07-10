@@ -100,12 +100,6 @@ document.getElementById("siteFooter").innerHTML = `
        ✍️ Medium
     </a>
 
-    <a href="https://github.com/bitcoera1/toolxone"
-       target="_blank"
-       rel="noopener noreferrer">
-       🐙 GitHub
-    </a>
-
 </div>
 
 </footer>

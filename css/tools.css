@@ -602,85 +602,7 @@ body:not(.dark-mode) .feedback-section textarea{
     transform:translateY(0);
 }
 
-/* mobile/tablet hamburger */
-@media(max-width:1400px){
-    .ToolXone-navbar{
-        display:block;
-        padding:0;
-    }
 
-    .mobile-nav-top{
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        padding:12px 16px;
-        background:#111827;
-    }
-
-    .mobile-brand{
-        color:#10b981 !important;
-        font-weight:800;
-        text-decoration:none;
-    }
-
-    .mobile-menu-btn{
-        background:#10b981;
-        color:white;
-        border:none;
-        border-radius:10px;
-        padding:8px 12px;
-        font-size:20px;
-        cursor:pointer;
-    }
-
-    .mobile-nav-panel{
-        display:none;
-        background:#111827;
-        padding:14px;
-    }
-
-    .mobile-nav-panel.active{
-        display:block;
-    }
-
-.mobile-nav-panel .nav-link,
-.mobile-nav-panel .category-menu,
-.mobile-nav-panel .ToolXone-clock-container,
-.mobile-nav-panel .search-container,
-.mobile-nav-panel .appearance-menu{
-    display:block;
-    width:100%;
-    margin-bottom:10px;
-}
-
-    .mobile-nav-panel a,
-    .category-btn,
-    .theme-button{
-        display:block;
-        width:100%;
-        color:#e5e7eb;
-        background:#1f2937;
-        text-align:left;
-    }
-
-    .category-dropdown,
-    .appearance-dropdown,
-    .search-results{
-        position:static;
-        margin-top:8px;
-        box-shadow:none;
-        background:#0f172a;
-    }
-
-    .category-menu:hover .category-dropdown,
-    .appearance-menu:hover .appearance-dropdown{
-        display:block;
-    }
-
-    .tool-search{
-        width:100%;
-    }
-}
 /* ==========================
    TOOLXONE NAV FINAL POLISH
 ========================== */
@@ -737,19 +659,6 @@ body:not(.dark-mode) .feedback-section textarea{
     }
 }
 
-/* Mobile/tablet layout */
-@media(max-width:1400px){
-    .ToolXone-clock-container{
-        position:relative;
-    }
-
-    .clock-tooltip{
-        position:static !important;
-        margin-top:8px;
-        background:#1f2937 !important;
-        color:white !important;
-    }
-}
 /* FINAL APPEARANCE DROPDOWN FIX */
 .appearance-menu{
     position:relative !important;
@@ -967,4 +876,588 @@ body.dark-mode .footer-bottom{
     top:0;
     z-index:9999;
     box-shadow:0 6px 20px rgba(0,0,0,.12);
+}
+/* ==================================================
+   TOOLXONE MOBILE NAVBAR v3.0
+   Sticky brand + search + hamburger
+================================================== */
+
+.mobile-nav-actions,
+.mobile-search-panel{
+    display:none;
+}
+
+
+/* ---------- DESKTOP ---------- */
+
+@media(min-width:1401px){
+
+    .ToolXone-navbar{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        flex-wrap:wrap !important;
+        gap:18px !important;
+
+        padding:16px 24px !important;
+
+        background:#ffffff;
+    }
+
+    .mobile-nav-top,
+    .mobile-search-panel{
+        display:none !important;
+    }
+
+    .mobile-nav-panel{
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        flex-wrap:wrap !important;
+        gap:18px !important;
+
+        width:auto !important;
+        padding:0 !important;
+        background:transparent !important;
+    }
+
+    .desktop-search-container{
+        display:block;
+    }
+}
+
+
+/* ---------- MOBILE + TABLET ---------- */
+
+@media(max-width:1400px){
+
+    #navbar{
+        position:sticky;
+        top:0;
+        z-index:9999;
+    }
+
+    .ToolXone-navbar{
+        display:block !important;
+        width:100% !important;
+        min-height:0 !important;
+        padding:0 !important;
+
+        background:#111827 !important;
+
+        box-shadow:
+            0 6px 20px
+            rgba(0,0,0,.18);
+    }
+
+
+    /* TOP STICKY ROW */
+
+    .mobile-nav-top{
+        display:flex !important;
+        align-items:center;
+        justify-content:space-between;
+
+        width:100%;
+        min-height:58px;
+        padding:9px 12px 9px 16px;
+
+        background:#111827;
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.08);
+    }
+
+    .mobile-brand{
+        display:inline-flex;
+        align-items:center;
+
+        color:#34d399 !important;
+        font-size:20px;
+        font-weight:900;
+        line-height:1;
+        text-decoration:none;
+        letter-spacing:-.02em;
+    }
+
+    .mobile-nav-actions{
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+        gap:8px;
+    }
+
+    .mobile-search-btn,
+    .mobile-menu-btn{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+
+        width:42px;
+        height:42px;
+        padding:0;
+
+        border:none;
+        border-radius:11px;
+
+        background:#10b981;
+        color:#ffffff;
+
+        font-size:19px;
+        line-height:1;
+
+        cursor:pointer;
+
+        transition:
+            background .2s ease,
+            transform .2s ease;
+    }
+
+    .mobile-search-btn:hover,
+    .mobile-menu-btn:hover{
+        background:#059669;
+        transform:translateY(-1px);
+    }
+
+
+    /* SLIDING SEARCH ROW */
+
+    .mobile-search-panel{
+        display:grid;
+
+        grid-template-rows:0fr;
+
+        width:100%;
+
+        padding:0 12px;
+
+        background:#111827;
+
+        overflow:hidden;
+        visibility:hidden;
+        opacity:0;
+
+        border-bottom:
+            0 solid
+            rgba(255,255,255,.08);
+
+        transition:
+            grid-template-rows .25s ease,
+            padding .25s ease,
+            opacity .2s ease,
+            visibility .2s ease,
+            border-width .2s ease;
+    }
+
+    .mobile-search-panel.active{
+        grid-template-rows:1fr;
+
+        padding:10px 12px 12px;
+
+        visibility:visible;
+        opacity:1;
+
+        border-bottom-width:1px;
+    }
+
+    .mobile-search-inner{
+        min-height:0;
+
+        display:flex;
+        align-items:center;
+        gap:8px;
+
+        width:100%;
+
+        padding:6px 8px 6px 12px;
+
+        border-radius:14px;
+
+        background:#ffffff;
+
+        box-shadow:
+            0 8px 24px
+            rgba(0,0,0,.22);
+    }
+
+    .mobile-search-icon{
+        flex:0 0 auto;
+        font-size:16px;
+    }
+
+    .mobile-tool-search{
+        flex:1 1 auto;
+        width:100%;
+        min-width:0;
+
+        padding:10px 2px;
+
+        border:none;
+        outline:none;
+
+        background:transparent;
+        color:#111827;
+
+        font-size:16px;
+    }
+
+    .mobile-tool-search::placeholder{
+        color:#64748b;
+    }
+
+    .mobile-search-close{
+        flex:0 0 auto;
+
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+
+        width:34px;
+        height:34px;
+
+        border:none;
+        border-radius:9px;
+
+        background:#e5e7eb;
+        color:#111827;
+
+        font-size:15px;
+        font-weight:800;
+
+        cursor:pointer;
+    }
+
+
+    /* SEARCH RESULTS */
+
+    .mobile-search-results{
+        position:static !important;
+
+        width:100%;
+        max-height:
+            min(
+                42vh,
+                320px
+            );
+
+        margin-top:8px;
+
+        overflow-y:auto;
+        overscroll-behavior:contain;
+
+        border-radius:14px;
+
+        background:#ffffff !important;
+
+        box-shadow:
+            0 12px 30px
+            rgba(0,0,0,.22);
+    }
+
+    .mobile-search-results:empty{
+        display:none !important;
+    }
+
+    .mobile-search-results a,
+    .mobile-search-results .search-item{
+        display:block;
+
+        width:100%;
+        padding:12px 14px;
+
+        color:#1f2937 !important;
+        background:#ffffff !important;
+
+        text-align:left;
+        text-decoration:none;
+
+        border-bottom:
+            1px solid #e5e7eb;
+    }
+
+    .mobile-search-results a:hover,
+    .mobile-search-results .search-item:hover{
+        background:#ecfdf5 !important;
+        color:#047857 !important;
+    }
+
+
+    /* HAMBURGER MENU PANEL */
+
+    .mobile-nav-panel{
+        display:none;
+
+        width:100% !important;
+
+        padding:12px;
+
+        background:#111827;
+        border-top:
+            1px solid
+            rgba(255,255,255,.06);
+
+        max-height:
+            calc(
+                100dvh - 58px
+            );
+
+        overflow-y:auto;
+        overscroll-behavior:contain;
+    }
+
+    .mobile-nav-panel.active{
+        display:block;
+    }
+
+    .mobile-nav-panel .nav-link,
+    .mobile-nav-panel .category-menu,
+    .mobile-nav-panel .ToolXone-clock-container,
+    .mobile-nav-panel .appearance-menu{
+        display:block;
+        width:100%;
+        margin-bottom:9px;
+    }
+
+    .mobile-nav-panel > a,
+    .mobile-nav-panel .category-btn,
+    .mobile-nav-panel .theme-button,
+    .mobile-nav-panel .ToolXone-clock{
+        display:block !important;
+
+        width:100% !important;
+
+        padding:12px 14px !important;
+
+        border:none;
+        border-radius:11px;
+
+        background:#1f2937 !important;
+        color:#e5e7eb !important;
+
+        text-align:left;
+        font-size:15px;
+        font-weight:700;
+    }
+
+    .mobile-nav-panel > a:hover,
+    .mobile-nav-panel .category-btn:hover,
+    .mobile-nav-panel .theme-button:hover{
+        background:#10b981 !important;
+        color:#ffffff !important;
+    }
+
+
+    /* DESKTOP SEARCH HIDDEN ON MOBILE */
+
+    .desktop-search-container{
+        display:none !important;
+    }
+
+
+    /* DROPDOWNS */
+
+    .category-dropdown,
+    .appearance-dropdown{
+        display:none !important;
+
+        position:static !important;
+
+        width:100%;
+        min-width:0 !important;
+
+        margin-top:7px;
+
+        border-radius:11px !important;
+
+        background:#0f172a !important;
+
+        box-shadow:none !important;
+    }
+
+    .appearance-menu:hover
+.appearance-dropdown{
+    display:block !important;
+}
+
+    .category-dropdown a,
+    .appearance-dropdown button{
+        display:block !important;
+
+        width:100% !important;
+
+        padding:11px 14px !important;
+
+        color:#e5e7eb !important;
+        background:#0f172a !important;
+
+        border:none;
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.06);
+
+        text-align:left;
+    }
+
+
+    /* CLOCK */
+
+    .ToolXone-clock-container{
+        position:relative;
+    }
+
+    .clock-tooltip{
+        position:static !important;
+
+        margin-top:7px;
+
+        background:#1f2937 !important;
+        color:#ffffff !important;
+
+        box-shadow:none !important;
+    }
+
+
+    /* KEYBOARD / SMALL-VIEWPORT SUPPORT */
+
+    .mobile-search-panel.active{
+        position:relative;
+        z-index:10001;
+    }
+
+    .mobile-tool-search{
+        scroll-margin-top:90px;
+    }
+}
+
+
+/* ---------- VERY SMALL PHONES ---------- */
+
+@media(max-width:380px){
+
+    .mobile-nav-top{
+        min-height:54px;
+        padding-left:12px;
+    }
+
+    .mobile-brand{
+        font-size:18px;
+    }
+
+    .mobile-search-btn,
+    .mobile-menu-btn{
+        width:39px;
+        height:39px;
+        font-size:17px;
+    }
+}
+
+
+/* ---------- MOBILE DARK MODE ---------- */
+
+@media(max-width:1400px){
+
+    body.dark-mode
+    .mobile-search-inner{
+        background:#f8fafc;
+    }
+
+    body.dark-mode
+    .mobile-tool-search{
+        color:#111827;
+    }
+
+    body.dark-mode
+    .mobile-search-results,
+    body.dark-mode
+    .mobile-search-results a,
+    body.dark-mode
+    .mobile-search-results
+    .search-item{
+        background:#1f2937 !important;
+        color:#e5e7eb !important;
+    }
+
+    body.dark-mode
+    .mobile-search-results a:hover,
+    body.dark-mode
+    .mobile-search-results
+    .search-item:hover{
+        background:#10b981 !important;
+        color:#ffffff !important;
+    }
+}
+/* ==================================================
+   MOBILE CATEGORY ACCORDION
+================================================== */
+
+@media(max-width:1400px){
+
+    .mobile-nav-panel
+    .category-menu:hover
+    .category-dropdown{
+        display:block !important;
+    }
+
+    .mobile-nav-panel
+    .category-dropdown{
+        display:block !important;
+
+        max-height:0;
+        margin-top:0;
+
+        overflow:hidden;
+
+        opacity:0;
+        visibility:hidden;
+
+        transition:
+            max-height .28s ease,
+            opacity .22s ease,
+            margin-top .22s ease,
+            visibility .22s ease;
+    }
+
+    .mobile-nav-panel
+    .category-menu.is-open
+    .category-dropdown{
+        max-height:900px;
+        margin-top:7px;
+
+        opacity:1;
+        visibility:visible;
+    }
+
+    .mobile-nav-panel
+    .category-btn{
+        position:relative;
+
+        padding-right:44px !important;
+    }
+
+    .mobile-nav-panel
+    .category-btn::after{
+        content:"▾";
+
+        position:absolute;
+        top:50%;
+        right:15px;
+
+        transform:
+            translateY(-50%)
+            rotate(0deg);
+
+        font-size:14px;
+
+        transition:
+            transform .22s ease;
+    }
+
+    .mobile-nav-panel
+    .category-menu.is-open
+    .category-btn::after{
+        transform:
+            translateY(-50%)
+            rotate(180deg);
+    }
 }

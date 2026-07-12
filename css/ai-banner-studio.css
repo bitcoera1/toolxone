@@ -1,0 +1,1781 @@
+/* =========================================================
+   TOOLXONE — AI BANNER STUDIO
+   File: css/ai-banner-studio.css
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+    --studio-primary: #10b981;
+    --studio-primary-dark: #047857;
+    --studio-primary-deep: #065f46;
+    --studio-primary-light: #d1fae5;
+    --studio-primary-soft: #ecfdf5;
+
+    --studio-blue: #2563eb;
+    --studio-blue-dark: #1d4ed8;
+    --studio-blue-soft: #dbeafe;
+
+    --studio-purple: #7c3aed;
+    --studio-purple-dark: #5b21b6;
+    --studio-purple-soft: #ede9fe;
+
+    --studio-dark: #0f172a;
+    --studio-dark-soft: #1e293b;
+
+    --studio-text: #172033;
+    --studio-text-soft: #5f6b7a;
+    --studio-muted: #8490a3;
+
+    --studio-border: #dbe3ec;
+    --studio-border-light: #e8edf3;
+
+    --studio-surface: #ffffff;
+    --studio-surface-soft: #f7f9fc;
+    --studio-page-bg: #f2f6fa;
+
+    --studio-danger: #dc2626;
+    --studio-danger-soft: #fef2f2;
+
+    --studio-shadow-sm:
+        0 5px 18px rgba(15, 23, 42, 0.06);
+
+    --studio-shadow-md:
+        0 14px 36px rgba(15, 23, 42, 0.10);
+
+    --studio-shadow-lg:
+        0 24px 60px rgba(15, 23, 42, 0.16);
+
+    --studio-radius-sm: 10px;
+    --studio-radius-md: 16px;
+    --studio-radius-lg: 24px;
+    --studio-radius-xl: 30px;
+
+    --studio-transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   2. PAGE FOUNDATION
+   ========================================================= */
+
+.ai-banner-page {
+    width: min(1480px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 34px 0 64px;
+    color: var(--studio-text);
+}
+
+.ai-banner-page *,
+.ai-banner-page *::before,
+.ai-banner-page *::after {
+    box-sizing: border-box;
+}
+
+.ai-banner-page button,
+.ai-banner-page input,
+.ai-banner-page textarea,
+.ai-banner-page select {
+    font: inherit;
+}
+
+.ai-banner-page button {
+    cursor: pointer;
+}
+
+.ai-banner-page img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   3. HERO SECTION
+   ========================================================= */
+
+.ai-banner-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 58px 28px;
+    margin-bottom: 34px;
+    text-align: center;
+    border: 1px solid rgba(16, 185, 129, 0.18);
+    border-radius: var(--studio-radius-xl);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(16, 185, 129, 0.20),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 90% 12%,
+            rgba(37, 99, 235, 0.14),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #f0fdf8 0%,
+            #ffffff 52%,
+            #eff6ff 100%
+        );
+    box-shadow: var(--studio-shadow-md);
+}
+
+.ai-banner-hero::before,
+.ai-banner-hero::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+.ai-banner-hero::before {
+    width: 270px;
+    height: 270px;
+    left: -125px;
+    bottom: -165px;
+    background: rgba(16, 185, 129, 0.16);
+}
+
+.ai-banner-hero::after {
+    width: 240px;
+    height: 240px;
+    right: -105px;
+    top: -130px;
+    background: rgba(37, 99, 235, 0.11);
+}
+
+.ai-banner-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 9px 16px;
+    margin-bottom: 18px;
+    color: var(--studio-primary-deep);
+    font-size: 0.84rem;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    border: 1px solid rgba(16, 185, 129, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.84);
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.09);
+    backdrop-filter: blur(10px);
+}
+
+.ai-banner-hero h1 {
+    margin: 0;
+    color: #102238;
+    font-size: clamp(2.1rem, 5vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.055em;
+    font-weight: 900;
+}
+
+.ai-banner-hero > p {
+    width: min(720px, 100%);
+    margin: 18px auto 0;
+    color: var(--studio-text-soft);
+    font-size: clamp(1rem, 2vw, 1.14rem);
+    line-height: 1.8;
+}
+
+.hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.hero-features span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 13px;
+    color: #334155;
+    font-size: 0.88rem;
+    font-weight: 750;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 0 5px 15px rgba(15, 23, 42, 0.04);
+}
+
+
+/* =========================================================
+   4. MAIN WORKSPACE
+   ========================================================= */
+
+.banner-workspace {
+    display: grid;
+    grid-template-columns: minmax(320px, 430px) minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.banner-controls,
+.banner-preview-panel {
+    border: 1px solid var(--studio-border);
+    border-radius: var(--studio-radius-lg);
+    background: var(--studio-surface);
+    box-shadow: var(--studio-shadow-md);
+}
+
+.banner-controls {
+    position: sticky;
+    top: 24px;
+    padding: 25px;
+}
+
+.banner-preview-panel {
+    min-width: 0;
+    padding: 25px;
+}
+
+
+/* =========================================================
+   5. CONTROL PANEL HEADER
+   ========================================================= */
+
+.control-panel-header {
+    padding-bottom: 22px;
+    margin-bottom: 22px;
+    border-bottom: 1px solid var(--studio-border-light);
+}
+
+.step-label {
+    display: inline-block;
+    margin-bottom: 7px;
+    color: var(--studio-primary-dark);
+    font-size: 0.76rem;
+    font-weight: 850;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.control-panel-header h2,
+.preview-toolbar h2 {
+    margin: 0;
+    color: var(--studio-text);
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+.control-panel-header p {
+    margin: 10px 0 0;
+    color: var(--studio-text-soft);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   6. FORM CONTROLS
+   ========================================================= */
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-group > label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+    color: #27364a;
+    font-size: 0.88rem;
+    font-weight: 800;
+}
+
+.control-group > label span {
+    color: var(--studio-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.control-group input[type="text"],
+.control-group textarea,
+.control-group select {
+    width: 100%;
+    color: var(--studio-text);
+    border: 1px solid #cfd8e3;
+    border-radius: 12px;
+    outline: none;
+    background: #ffffff;
+    transition: var(--studio-transition);
+}
+
+.control-group input[type="text"],
+.control-group select {
+    min-height: 48px;
+    padding: 0 14px;
+}
+
+.control-group textarea {
+    display: block;
+    min-height: 96px;
+    padding: 13px 14px;
+    line-height: 1.55;
+    resize: vertical;
+}
+
+.control-group select {
+    appearance: none;
+    padding-right: 42px;
+    cursor: pointer;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #64748b 50%),
+        linear-gradient(135deg, #64748b 50%, transparent 50%);
+    background-position:
+        calc(100% - 18px) calc(50% - 2px),
+        calc(100% - 13px) calc(50% - 2px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+}
+
+.control-group input[type="text"]::placeholder,
+.control-group textarea::placeholder {
+    color: #9aa5b4;
+}
+
+.control-group input[type="text"]:hover,
+.control-group textarea:hover,
+.control-group select:hover {
+    border-color: #aebcca;
+}
+
+.control-group input[type="text"]:focus,
+.control-group textarea:focus,
+.control-group select:focus {
+    border-color: var(--studio-primary);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
+}
+
+.control-group small {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+    color: var(--studio-muted);
+    font-size: 0.73rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 13px;
+}
+
+
+/* =========================================================
+   7. THEME BUTTONS
+   ========================================================= */
+
+.theme-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.theme-button {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 43px;
+    padding: 9px 11px;
+    color: #425169;
+    font-size: 0.8rem;
+    font-weight: 750;
+    text-align: left;
+    border: 1px solid #d7e0e9;
+    border-radius: 11px;
+    background: #ffffff;
+    transition: var(--studio-transition);
+}
+
+.theme-button:hover {
+    transform: translateY(-1px);
+    border-color: #aebcca;
+    box-shadow: var(--studio-shadow-sm);
+}
+
+.theme-button.active {
+    color: var(--studio-primary-deep);
+    border-color: var(--studio-primary);
+    background: var(--studio-primary-soft);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.09);
+}
+
+.theme-dot {
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.15);
+}
+
+.emerald-dot {
+    background: linear-gradient(135deg, #10b981, #065f46);
+}
+
+.blue-dot {
+    background: linear-gradient(135deg, #38bdf8, #1d4ed8);
+}
+
+.dark-dot {
+    background: linear-gradient(135deg, #334155, #020617);
+}
+
+.minimal-dot {
+    background: linear-gradient(135deg, #ffffff 48%, #dfe7ef 48%);
+}
+
+.purple-dot {
+    background: linear-gradient(135deg, #c084fc, #6d28d9);
+}
+
+
+/* =========================================================
+   8. LOGO UPLOAD
+   ========================================================= */
+
+.logo-upload-box {
+    position: relative;
+    overflow: hidden;
+    min-height: 92px;
+    border: 1.5px dashed #b9c6d4;
+    border-radius: 14px;
+    background: var(--studio-surface-soft);
+    transition: var(--studio-transition);
+}
+
+.logo-upload-box:hover {
+    border-color: var(--studio-primary);
+    background: var(--studio-primary-soft);
+}
+
+.logo-upload-box:focus-within {
+    border-color: var(--studio-primary);
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.10);
+}
+
+.logo-upload-box input[type="file"] {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.upload-message {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px;
+    pointer-events: none;
+}
+
+.upload-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    font-size: 1.25rem;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: var(--studio-shadow-sm);
+}
+
+.upload-message strong {
+    display: block;
+    color: #263449;
+    font-size: 0.86rem;
+}
+
+.upload-message p {
+    margin: 3px 0 0;
+    color: var(--studio-muted);
+    font-size: 0.73rem;
+}
+
+.remove-logo-button {
+    display: none;
+    width: 100%;
+    min-height: 39px;
+    margin-top: 9px;
+    color: var(--studio-danger);
+    font-size: 0.78rem;
+    font-weight: 800;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    background: var(--studio-danger-soft);
+    transition: var(--studio-transition);
+}
+
+.remove-logo-button.visible,
+.remove-logo-button.is-visible {
+    display: block;
+}
+
+.remove-logo-button:hover {
+    border-color: #fca5a5;
+    background: #fee2e2;
+}
+
+
+/* =========================================================
+   9. CONTROL ACTION BUTTONS
+   ========================================================= */
+
+.control-actions {
+    display: grid;
+    grid-template-columns: 0.75fr 1.35fr;
+    gap: 11px;
+    padding-top: 4px;
+}
+
+.secondary-action,
+.primary-action {
+    min-height: 50px;
+    padding: 11px 15px;
+    font-weight: 850;
+    border-radius: 12px;
+    transition: var(--studio-transition);
+}
+
+.secondary-action {
+    color: #475569;
+    border: 1px solid #d4dde7;
+    background: #ffffff;
+}
+
+.secondary-action:hover {
+    color: var(--studio-text);
+    border-color: #b4c0cd;
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.primary-action {
+    color: #ffffff;
+    border: 1px solid var(--studio-primary-dark);
+    background:
+        linear-gradient(
+            135deg,
+            var(--studio-primary) 0%,
+            var(--studio-primary-dark) 100%
+        );
+    box-shadow: 0 10px 22px rgba(16, 185, 129, 0.22);
+}
+
+.primary-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(16, 185, 129, 0.28);
+}
+
+.secondary-action:active,
+.primary-action:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================================
+   10. PREVIEW TOOLBAR
+   ========================================================= */
+
+.preview-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 19px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--studio-border-light);
+}
+
+.preview-size {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 152px;
+    padding: 9px 12px;
+    border: 1px solid var(--studio-border);
+    border-radius: 12px;
+    background: var(--studio-surface-soft);
+}
+
+.preview-size span {
+    color: var(--studio-text-soft);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.preview-size strong {
+    margin-top: 2px;
+    color: var(--studio-text);
+    font-size: 0.86rem;
+}
+
+
+/* =========================================================
+   11. CANVAS STAGE
+   ========================================================= */
+
+.canvas-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 530px;
+    padding: 30px;
+    overflow: hidden;
+    border: 1px solid #d8e1ea;
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            45deg,
+            rgba(148, 163, 184, 0.08) 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            -45deg,
+            rgba(148, 163, 184, 0.08) 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 75%,
+            rgba(148, 163, 184, 0.08) 75%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 75%,
+            rgba(148, 163, 184, 0.08) 75%
+        ),
+        #eef3f8;
+    background-size: 26px 26px;
+    background-position:
+        0 0,
+        0 13px,
+        13px -13px,
+        -13px 0;
+}
+
+
+/* =========================================================
+   12. BANNER CANVAS FOUNDATION
+   ========================================================= */
+
+.banner-canvas {
+    --banner-bg-one: #064e3b;
+    --banner-bg-two: #10b981;
+    --banner-text: #ffffff;
+    --banner-text-soft: rgba(255, 255, 255, 0.82);
+    --banner-accent: #facc15;
+    --banner-chip-bg: rgba(255, 255, 255, 0.15);
+    --banner-chip-text: #ffffff;
+    --banner-logo-bg: #ffffff;
+    --banner-logo-text: #047857;
+
+    position: relative;
+    isolation: isolate;
+    width: min(100%, 900px);
+    overflow: hidden;
+    color: var(--banner-text);
+    border-radius: 18px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--banner-bg-one) 0%,
+            var(--banner-bg-two) 100%
+        );
+    box-shadow: var(--studio-shadow-lg);
+    transition:
+        width 0.35s ease,
+        aspect-ratio 0.35s ease,
+        border-radius 0.25s ease,
+        background 0.3s ease;
+}
+
+.banner-canvas.format-landscape {
+    aspect-ratio: 1200 / 630;
+}
+
+.banner-canvas.format-square {
+    width: min(100%, 690px);
+    aspect-ratio: 1 / 1;
+}
+
+.banner-canvas.format-portrait {
+    width: min(100%, 545px);
+    aspect-ratio: 4 / 5;
+}
+
+.banner-canvas.format-pinterest {
+    width: min(100%, 485px);
+    aspect-ratio: 2 / 3;
+}
+
+.banner-canvas.format-widescreen {
+    aspect-ratio: 16 / 9;
+}
+
+.banner-canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -3;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 82% 85%,
+            rgba(255, 255, 255, 0.10),
+            transparent 30%
+        );
+    pointer-events: none;
+}
+
+.banner-canvas::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.banner-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(26px, 5vw, 62px);
+}
+
+
+/* =========================================================
+   13. BANNER DECORATIONS
+   ========================================================= */
+
+.banner-decoration {
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.decoration-one {
+    width: 43%;
+    aspect-ratio: 1;
+    right: -16%;
+    top: -31%;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.decoration-two {
+    width: 32%;
+    aspect-ratio: 1;
+    right: 7%;
+    bottom: -31%;
+    border: clamp(12px, 2.4vw, 26px) solid rgba(255, 255, 255, 0.10);
+}
+
+.decoration-three {
+    width: 18%;
+    aspect-ratio: 1;
+    left: -7%;
+    bottom: -10%;
+    background: var(--banner-accent);
+    opacity: 0.2;
+    filter: blur(1px);
+}
+
+
+/* =========================================================
+   14. BANNER BRAND AREA
+   ========================================================= */
+
+.banner-brand-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(9px, 1.4vw, 16px);
+}
+
+.logo-preview-wrapper {
+    display: grid;
+    flex: 0 0 auto;
+    width: clamp(38px, 5.4vw, 64px);
+    height: clamp(38px, 5.4vw, 64px);
+    overflow: hidden;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: clamp(10px, 1.4vw, 17px);
+    background: var(--banner-logo-bg);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.16);
+}
+
+.default-logo-mark {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+    color: var(--banner-logo-text);
+    font-size: clamp(0.72rem, 1.7vw, 1.3rem);
+    font-weight: 950;
+    letter-spacing: -0.04em;
+}
+
+#uploadedLogoPreview {
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 7%;
+    object-fit: contain;
+    background: #ffffff;
+}
+
+.logo-preview-wrapper.has-uploaded-logo .default-logo-mark {
+    display: none;
+}
+
+.logo-preview-wrapper.has-uploaded-logo #uploadedLogoPreview {
+    display: block;
+}
+
+.banner-brand-name {
+    color: var(--banner-text);
+    font-size: clamp(0.78rem, 1.7vw, 1.26rem);
+    font-weight: 850;
+    letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   15. BANNER COPY
+   ========================================================= */
+
+.banner-copy {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    width: min(77%, 780px);
+    padding: clamp(13px, 2.5vw, 30px) 0;
+}
+
+.banner-kicker {
+    display: inline-flex;
+    align-self: flex-start;
+    margin: 0 0 clamp(10px, 1.5vw, 18px);
+    padding: clamp(5px, 0.7vw, 8px) clamp(9px, 1.2vw, 14px);
+    color: var(--banner-chip-text);
+    font-size: clamp(0.52rem, 1vw, 0.86rem);
+    font-weight: 850;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: var(--banner-chip-bg);
+    backdrop-filter: blur(8px);
+}
+
+#headlinePreview {
+    max-width: 100%;
+    margin: 0;
+    color: var(--banner-text);
+    font-size: clamp(1.55rem, 5.15vw, 4.8rem);
+    line-height: 0.94;
+    font-weight: 950;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+    text-shadow: 0 8px 26px rgba(0, 0, 0, 0.12);
+}
+
+#subtitlePreview {
+    width: min(90%, 700px);
+    margin: clamp(11px, 2.2vw, 24px) 0 0;
+    color: var(--banner-text-soft);
+    font-size: clamp(0.62rem, 1.48vw, 1.2rem);
+    line-height: 1.55;
+    font-weight: 520;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   16. BANNER BOTTOM ROW
+   ========================================================= */
+
+.banner-bottom-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-width: 0;
+}
+
+#websitePreview {
+    min-width: 0;
+    color: var(--banner-text);
+    font-size: clamp(0.58rem, 1.3vw, 1rem);
+    font-weight: 750;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.banner-cta {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: clamp(28px, 4vw, 46px);
+    padding: clamp(6px, 0.9vw, 11px) clamp(11px, 1.7vw, 21px);
+    color: var(--banner-logo-text);
+    font-size: clamp(0.54rem, 1.15vw, 0.92rem);
+    font-weight: 900;
+    border-radius: 999px;
+    background: var(--banner-logo-bg);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.15);
+}
+
+
+/* =========================================================
+   17. PORTRAIT LAYOUT ADJUSTMENTS
+   ========================================================= */
+
+.banner-canvas.format-portrait .banner-content,
+.banner-canvas.format-pinterest .banner-content {
+    padding: clamp(28px, 7vw, 58px);
+}
+
+.banner-canvas.format-portrait .banner-copy,
+.banner-canvas.format-pinterest .banner-copy {
+    width: 100%;
+    justify-content: center;
+}
+
+.banner-canvas.format-portrait #headlinePreview,
+.banner-canvas.format-pinterest #headlinePreview {
+    font-size: clamp(1.65rem, 7.3vw, 4rem);
+    line-height: 0.97;
+}
+
+.banner-canvas.format-portrait #subtitlePreview,
+.banner-canvas.format-pinterest #subtitlePreview {
+    width: 100%;
+    font-size: clamp(0.68rem, 2.4vw, 1.12rem);
+}
+
+.banner-canvas.format-pinterest .banner-copy {
+    padding-top: 8%;
+    padding-bottom: 8%;
+}
+
+.banner-canvas.format-pinterest #headlinePreview {
+    font-size: clamp(1.65rem, 7.8vw, 4rem);
+}
+
+.banner-canvas.format-portrait .decoration-one,
+.banner-canvas.format-pinterest .decoration-one {
+    width: 70%;
+    right: -32%;
+    top: -12%;
+}
+
+.banner-canvas.format-portrait .decoration-two,
+.banner-canvas.format-pinterest .decoration-two {
+    width: 62%;
+    right: -16%;
+    bottom: -15%;
+}
+
+
+/* =========================================================
+   18. BANNER THEMES
+   ========================================================= */
+
+.banner-canvas.theme-emerald {
+    --banner-bg-one: #064e3b;
+    --banner-bg-two: #10b981;
+    --banner-text: #ffffff;
+    --banner-text-soft: rgba(255, 255, 255, 0.84);
+    --banner-accent: #facc15;
+    --banner-chip-bg: rgba(255, 255, 255, 0.14);
+    --banner-chip-text: #ffffff;
+    --banner-logo-bg: #ffffff;
+    --banner-logo-text: #047857;
+}
+
+.banner-canvas.theme-blue {
+    --banner-bg-one: #172554;
+    --banner-bg-two: #2563eb;
+    --banner-text: #ffffff;
+    --banner-text-soft: rgba(255, 255, 255, 0.84);
+    --banner-accent: #38bdf8;
+    --banner-chip-bg: rgba(255, 255, 255, 0.14);
+    --banner-chip-text: #ffffff;
+    --banner-logo-bg: #ffffff;
+    --banner-logo-text: #1d4ed8;
+}
+
+.banner-canvas.theme-dark {
+    --banner-bg-one: #020617;
+    --banner-bg-two: #1e293b;
+    --banner-text: #ffffff;
+    --banner-text-soft: rgba(226, 232, 240, 0.82);
+    --banner-accent: #10b981;
+    --banner-chip-bg: rgba(148, 163, 184, 0.14);
+    --banner-chip-text: #ffffff;
+    --banner-logo-bg: #10b981;
+    --banner-logo-text: #052e26;
+}
+
+.banner-canvas.theme-minimal {
+    --banner-bg-one: #ffffff;
+    --banner-bg-two: #eaf0f6;
+    --banner-text: #102238;
+    --banner-text-soft: #526174;
+    --banner-accent: #10b981;
+    --banner-chip-bg: rgba(16, 185, 129, 0.10);
+    --banner-chip-text: #047857;
+    --banner-logo-bg: #10b981;
+    --banner-logo-text: #ffffff;
+}
+
+.banner-canvas.theme-minimal::before {
+    background:
+        linear-gradient(
+            120deg,
+            transparent 0%,
+            transparent 62%,
+            rgba(16, 185, 129, 0.09) 62%,
+            rgba(16, 185, 129, 0.09) 100%
+        );
+}
+
+.banner-canvas.theme-minimal::after {
+    border-color: rgba(15, 23, 42, 0.10);
+}
+
+.banner-canvas.theme-minimal .banner-kicker {
+    border-color: rgba(16, 185, 129, 0.18);
+}
+
+.banner-canvas.theme-minimal .logo-preview-wrapper {
+    border-color: rgba(15, 23, 42, 0.08);
+}
+
+.banner-canvas.theme-purple {
+    --banner-bg-one: #3b0764;
+    --banner-bg-two: #8b5cf6;
+    --banner-text: #ffffff;
+    --banner-text-soft: rgba(255, 255, 255, 0.84);
+    --banner-accent: #f0abfc;
+    --banner-chip-bg: rgba(255, 255, 255, 0.14);
+    --banner-chip-text: #ffffff;
+    --banner-logo-bg: #ffffff;
+    --banner-logo-text: #6d28d9;
+}
+
+
+/* =========================================================
+   19. PREVIEW NOTICE
+   ========================================================= */
+
+.preview-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 13px 15px;
+    margin-top: 16px;
+    color: #3e5168;
+    border: 1px solid #dbe7f2;
+    border-radius: 12px;
+    background: #f5f9fd;
+}
+
+.preview-notice > span {
+    flex: 0 0 auto;
+    line-height: 1.45;
+}
+
+.preview-notice p {
+    margin: 0;
+    font-size: 0.79rem;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   20. DOWNLOAD PANEL
+   ========================================================= */
+
+.download-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 20px;
+    margin-top: 16px;
+    border: 1px solid var(--studio-border);
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f7fafc 100%
+        );
+}
+
+.download-panel h3 {
+    margin: 0;
+    color: var(--studio-text);
+    font-size: 1rem;
+}
+
+.download-panel p {
+    margin: 5px 0 0;
+    color: var(--studio-text-soft);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+.download-actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.download-button {
+    min-width: 64px;
+    min-height: 40px;
+    padding: 8px 13px;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 850;
+    border: 1px solid var(--studio-primary-dark);
+    border-radius: 10px;
+    background: var(--studio-primary);
+    transition: var(--studio-transition);
+}
+
+.download-button:not(:disabled):hover {
+    transform: translateY(-1px);
+    background: var(--studio-primary-dark);
+    box-shadow: 0 8px 17px rgba(16, 185, 129, 0.20);
+}
+
+.download-button:disabled {
+    color: #9aa5b4;
+    cursor: not-allowed;
+    border-color: #d8e0e8;
+    background: #edf1f5;
+    box-shadow: none;
+    opacity: 0.86;
+}
+
+
+/* =========================================================
+   21. BENEFITS SECTION
+   ========================================================= */
+
+.studio-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.studio-benefit-card {
+    padding: 23px;
+    border: 1px solid var(--studio-border);
+    border-radius: 18px;
+    background: var(--studio-surface);
+    box-shadow: var(--studio-shadow-sm);
+    transition: var(--studio-transition);
+}
+
+.studio-benefit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(16, 185, 129, 0.35);
+    box-shadow: var(--studio-shadow-md);
+}
+
+.studio-benefit-card > span {
+    display: grid;
+    width: 47px;
+    height: 47px;
+    margin-bottom: 15px;
+    place-items: center;
+    font-size: 1.3rem;
+    border-radius: 14px;
+    background: var(--studio-primary-soft);
+}
+
+.studio-benefit-card h3 {
+    margin: 0;
+    color: var(--studio-text);
+    font-size: 1rem;
+}
+
+.studio-benefit-card p {
+    margin: 9px 0 0;
+    color: var(--studio-text-soft);
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   22. GENERATION ANIMATION
+   ========================================================= */
+
+.banner-canvas.is-generating {
+    animation: bannerGeneratePulse 0.55s ease;
+}
+
+@keyframes bannerGeneratePulse {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    45% {
+        transform: scale(0.985);
+        filter: brightness(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+
+/* =========================================================
+   23. DARK MODE SUPPORT
+   Supports common ToolXone dark-mode class patterns.
+   ========================================================= */
+
+body.dark-mode .ai-banner-page,
+body.dark-theme .ai-banner-page,
+html[data-theme="dark"] .ai-banner-page,
+body[data-theme="dark"] .ai-banner-page {
+    --studio-text: #e5edf6;
+    --studio-text-soft: #aebccc;
+    --studio-muted: #8291a5;
+    --studio-border: #334155;
+    --studio-border-light: #2b394c;
+    --studio-surface: #111827;
+    --studio-surface-soft: #182234;
+    --studio-page-bg: #0b1220;
+}
+
+body.dark-mode .ai-banner-hero,
+body.dark-theme .ai-banner-hero,
+html[data-theme="dark"] .ai-banner-hero,
+body[data-theme="dark"] .ai-banner-hero {
+    border-color: rgba(16, 185, 129, 0.20);
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(16, 185, 129, 0.18),
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 90% 12%,
+            rgba(37, 99, 235, 0.16),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0f1f1b 0%,
+            #111827 52%,
+            #101b2e 100%
+        );
+}
+
+body.dark-mode .ai-banner-hero h1,
+body.dark-theme .ai-banner-hero h1,
+html[data-theme="dark"] .ai-banner-hero h1,
+body[data-theme="dark"] .ai-banner-hero h1 {
+    color: #f1f5f9;
+}
+
+body.dark-mode .ai-banner-badge,
+body.dark-theme .ai-banner-badge,
+html[data-theme="dark"] .ai-banner-badge,
+body[data-theme="dark"] .ai-banner-badge {
+    color: #6ee7b7;
+    border-color: rgba(16, 185, 129, 0.25);
+    background: rgba(15, 23, 42, 0.72);
+}
+
+body.dark-mode .hero-features span,
+body.dark-theme .hero-features span,
+html[data-theme="dark"] .hero-features span,
+body[data-theme="dark"] .hero-features span {
+    color: #d6e1ec;
+    border-color: rgba(148, 163, 184, 0.18);
+    background: rgba(15, 23, 42, 0.68);
+}
+
+body.dark-mode .banner-controls,
+body.dark-mode .banner-preview-panel,
+body.dark-mode .studio-benefit-card,
+body.dark-theme .banner-controls,
+body.dark-theme .banner-preview-panel,
+body.dark-theme .studio-benefit-card,
+html[data-theme="dark"] .banner-controls,
+html[data-theme="dark"] .banner-preview-panel,
+html[data-theme="dark"] .studio-benefit-card,
+body[data-theme="dark"] .banner-controls,
+body[data-theme="dark"] .banner-preview-panel,
+body[data-theme="dark"] .studio-benefit-card {
+    background: var(--studio-surface);
+}
+
+body.dark-mode .control-group > label,
+body.dark-theme .control-group > label,
+html[data-theme="dark"] .control-group > label,
+body[data-theme="dark"] .control-group > label {
+    color: #d8e2ed;
+}
+
+body.dark-mode .control-group input[type="text"],
+body.dark-mode .control-group textarea,
+body.dark-mode .control-group select,
+body.dark-theme .control-group input[type="text"],
+body.dark-theme .control-group textarea,
+body.dark-theme .control-group select,
+html[data-theme="dark"] .control-group input[type="text"],
+html[data-theme="dark"] .control-group textarea,
+html[data-theme="dark"] .control-group select,
+body[data-theme="dark"] .control-group input[type="text"],
+body[data-theme="dark"] .control-group textarea,
+body[data-theme="dark"] .control-group select {
+    color: #e5edf6;
+    border-color: #3b4a5e;
+    background-color: #182234;
+}
+
+body.dark-mode .theme-button,
+body.dark-theme .theme-button,
+html[data-theme="dark"] .theme-button,
+body[data-theme="dark"] .theme-button {
+    color: #c5d1de;
+    border-color: #3b4a5e;
+    background: #182234;
+}
+
+body.dark-mode .theme-button.active,
+body.dark-theme .theme-button.active,
+html[data-theme="dark"] .theme-button.active,
+body[data-theme="dark"] .theme-button.active {
+    color: #6ee7b7;
+    border-color: var(--studio-primary);
+    background: rgba(16, 185, 129, 0.11);
+}
+
+body.dark-mode .logo-upload-box,
+body.dark-theme .logo-upload-box,
+html[data-theme="dark"] .logo-upload-box,
+body[data-theme="dark"] .logo-upload-box {
+    border-color: #46566a;
+    background: #182234;
+}
+
+body.dark-mode .upload-icon,
+body.dark-theme .upload-icon,
+html[data-theme="dark"] .upload-icon,
+body[data-theme="dark"] .upload-icon {
+    background: #0f172a;
+}
+
+body.dark-mode .upload-message strong,
+body.dark-theme .upload-message strong,
+html[data-theme="dark"] .upload-message strong,
+body[data-theme="dark"] .upload-message strong {
+    color: #e2e8f0;
+}
+
+body.dark-mode .secondary-action,
+body.dark-theme .secondary-action,
+html[data-theme="dark"] .secondary-action,
+body[data-theme="dark"] .secondary-action {
+    color: #d5dfeb;
+    border-color: #3b4a5e;
+    background: #182234;
+}
+
+body.dark-mode .preview-size,
+body.dark-theme .preview-size,
+html[data-theme="dark"] .preview-size,
+body[data-theme="dark"] .preview-size {
+    background: #182234;
+}
+
+body.dark-mode .canvas-stage,
+body.dark-theme .canvas-stage,
+html[data-theme="dark"] .canvas-stage,
+body[data-theme="dark"] .canvas-stage {
+    border-color: #334155;
+    background:
+        linear-gradient(
+            45deg,
+            rgba(148, 163, 184, 0.05) 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            -45deg,
+            rgba(148, 163, 184, 0.05) 25%,
+            transparent 25%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 75%,
+            rgba(148, 163, 184, 0.05) 75%
+        ),
+        linear-gradient(
+            -45deg,
+            transparent 75%,
+            rgba(148, 163, 184, 0.05) 75%
+        ),
+        #0b1220;
+    background-size: 26px 26px;
+    background-position:
+        0 0,
+        0 13px,
+        13px -13px,
+        -13px 0;
+}
+
+body.dark-mode .preview-notice,
+body.dark-theme .preview-notice,
+html[data-theme="dark"] .preview-notice,
+body[data-theme="dark"] .preview-notice {
+    color: #afbdcc;
+    border-color: #334155;
+    background: #142032;
+}
+
+body.dark-mode .download-panel,
+body.dark-theme .download-panel,
+html[data-theme="dark"] .download-panel,
+body[data-theme="dark"] .download-panel {
+    background:
+        linear-gradient(
+            135deg,
+            #111827 0%,
+            #182234 100%
+        );
+}
+
+
+/* =========================================================
+   24. RESPONSIVE — LARGE TABLETS
+   ========================================================= */
+
+@media (max-width: 1180px) {
+    .banner-workspace {
+        grid-template-columns: minmax(300px, 370px) minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .banner-controls,
+    .banner-preview-panel {
+        padding: 21px;
+    }
+
+    .canvas-stage {
+        min-height: 470px;
+        padding: 22px;
+    }
+
+    .studio-benefits {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================================
+   25. RESPONSIVE — TABLETS
+   ========================================================= */
+
+@media (max-width: 920px) {
+    .ai-banner-page {
+        width: min(100% - 24px, 1480px);
+        padding-top: 24px;
+    }
+
+    .banner-workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .banner-controls {
+        position: static;
+    }
+
+    .canvas-stage {
+        min-height: 510px;
+    }
+
+    .banner-canvas {
+        width: min(100%, 820px);
+    }
+
+    .banner-canvas.format-portrait {
+        width: min(100%, 520px);
+    }
+
+    .banner-canvas.format-pinterest {
+        width: min(100%, 470px);
+    }
+}
+
+
+/* =========================================================
+   26. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .ai-banner-page {
+        width: min(100% - 18px, 1480px);
+        padding: 16px 0 45px;
+    }
+
+    .ai-banner-hero {
+        padding: 39px 17px;
+        margin-bottom: 20px;
+        border-radius: 21px;
+    }
+
+    .ai-banner-hero h1 {
+        font-size: clamp(2rem, 11vw, 3rem);
+    }
+
+    .ai-banner-hero > p {
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+
+    .hero-features {
+        gap: 7px;
+        margin-top: 20px;
+    }
+
+    .hero-features span {
+        min-height: 34px;
+        padding: 7px 10px;
+        font-size: 0.73rem;
+    }
+
+    .banner-controls,
+    .banner-preview-panel {
+        padding: 17px;
+        border-radius: 18px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .theme-options {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .control-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .preview-size {
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .canvas-stage {
+        min-height: 350px;
+        padding: 13px;
+        border-radius: 14px;
+    }
+
+    .banner-canvas {
+        border-radius: 11px;
+    }
+
+    .banner-content {
+        padding: clamp(16px, 5vw, 28px);
+    }
+
+    .banner-copy {
+        width: 82%;
+        padding: 8px 0;
+    }
+
+    #headlinePreview {
+        font-size: clamp(1.05rem, 8vw, 2rem);
+    }
+
+    #subtitlePreview {
+        margin-top: 8px;
+        font-size: clamp(0.46rem, 2.5vw, 0.76rem);
+        line-height: 1.4;
+    }
+
+    .banner-kicker {
+        margin-bottom: 7px;
+        padding: 4px 7px;
+        font-size: clamp(0.4rem, 1.9vw, 0.56rem);
+    }
+
+    .banner-brand-name {
+        font-size: clamp(0.52rem, 2.7vw, 0.78rem);
+    }
+
+    #websitePreview {
+        font-size: clamp(0.43rem, 2.2vw, 0.64rem);
+    }
+
+    .banner-cta {
+        min-height: 23px;
+        padding: 5px 8px;
+        font-size: clamp(0.4rem, 2vw, 0.56rem);
+    }
+
+    .banner-canvas.format-portrait,
+    .banner-canvas.format-pinterest {
+        width: min(100%, 410px);
+    }
+
+    .banner-canvas.format-portrait .banner-content,
+    .banner-canvas.format-pinterest .banner-content {
+        padding: clamp(20px, 8vw, 38px);
+    }
+
+    .banner-canvas.format-portrait #headlinePreview,
+    .banner-canvas.format-pinterest #headlinePreview {
+        font-size: clamp(1.25rem, 10vw, 2.5rem);
+    }
+
+    .banner-canvas.format-portrait #subtitlePreview,
+    .banner-canvas.format-pinterest #subtitlePreview {
+        font-size: clamp(0.56rem, 3.4vw, 0.9rem);
+    }
+
+    .download-panel {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px;
+    }
+
+    .download-actions {
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .download-button {
+        flex: 1 1 70px;
+    }
+
+    .studio-benefits {
+        grid-template-columns: 1fr;
+        gap: 13px;
+        margin-top: 20px;
+    }
+}
+
+
+/* =========================================================
+   27. EXTRA SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .theme-options {
+        grid-template-columns: 1fr;
+    }
+
+    .banner-controls,
+    .banner-preview-panel {
+        padding: 14px;
+    }
+
+    .canvas-stage {
+        padding: 9px;
+    }
+
+    .banner-bottom-row {
+        gap: 6px;
+    }
+
+    .banner-cta {
+        max-width: 46%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+
+/* =========================================================
+   28. ACCESSIBILITY AND REDUCED MOTION
+   ========================================================= */
+
+.theme-button:focus-visible,
+.secondary-action:focus-visible,
+.primary-action:focus-visible,
+.remove-logo-button:focus-visible,
+.download-button:focus-visible {
+    outline: 3px solid rgba(16, 185, 129, 0.34);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-banner-page *,
+    .ai-banner-page *::before,
+    .ai-banner-page *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   END OF AI BANNER STUDIO CSS
+   ========================================================= */

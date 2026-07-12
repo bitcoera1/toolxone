@@ -33,37 +33,46 @@ function initializeNavbar() {
             <div class="mobile-nav-top">
 
                 <a
-                    href="index.html"
-                    class="mobile-brand"
-                    aria-label="ToolXone Home">
+    href="index.html"
+    class="mobile-brand"
+    aria-label="ToolXone Home">
 
-                    ToolXone
+    <img
+        src="images/toolxone-logo.jpg"
+        alt="ToolXone"
+        class="mobile-brand-logo">
 
-                </a>
+</a>
 
                 <div class="mobile-nav-actions">
 
                     <button
-                        type="button"
-                        class="mobile-search-btn"
-                        id="mobileSearchBtn"
-                        aria-label="Open search"
-                        aria-expanded="false">
+    type="button"
+    class="mobile-search-btn"
+    id="mobileSearchBtn"
+    aria-label="Open search"
+    aria-expanded="false">
 
-                        🔍
+    🔍
 
-                    </button>
+</button>
 
-                    <button
-                        type="button"
-                        class="mobile-menu-btn"
-                        id="mobileMenuBtn"
-                        aria-label="Open navigation menu"
-                        aria-expanded="false">
+<div
+    class="mobile-clock"
+    id="mobileNavbarClock"
+    aria-label="Current time">
+</div>
 
-                        ☰
+<button
+    type="button"
+    class="mobile-menu-btn"
+    id="mobileMenuBtn"
+    aria-label="Open navigation menu"
+    aria-expanded="false">
 
-                    </button>
+    ☰
+
+</button>
 
                 </div>
 
@@ -240,9 +249,43 @@ function initializeNavbar() {
     `;
 
     initializeMobileNavbar();
+    initializeMobileNavbarClock();
     initializeMobileSearchBridge();
 }
+/* =========================================
+   MOBILE CLOCK
+========================================= */
 
+function initializeMobileNavbarClock() {
+    const mobileClock =
+        document.getElementById(
+            "mobileNavbarClock"
+        );
+
+    if (!mobileClock) {
+        return;
+    }
+
+    function updateMobileClock() {
+        const now = new Date();
+
+        mobileClock.textContent =
+            now.toLocaleTimeString(
+                [],
+                {
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+    }
+
+    updateMobileClock();
+
+    window.setInterval(
+        updateMobileClock,
+        1000
+    );
+}
 
 /* =========================================
    MOBILE NAVBAR CONTROLS
@@ -622,20 +665,15 @@ function initializeMobileCategoryAccordion() {
    Reuses the existing desktop search logic
 ========================================= */
 
-function initializeMobileSearchBridge() {
-    const desktopSearch =
-        document.getElementById(
-            "toolSearch"
-        );
+/* =========================================
+   MOBILE SEARCH ENGINE
+   Creates real clickable results
+========================================= */
 
+function initializeMobileSearchBridge() {
     const mobileSearch =
         document.getElementById(
             "mobileToolSearch"
-        );
-
-    const desktopResults =
-        document.getElementById(
-            "searchResults"
         );
 
     const mobileResults =
@@ -644,72 +682,103 @@ function initializeMobileSearchBridge() {
         );
 
     if (
-        !desktopSearch ||
-        !mobileSearch
+        !mobileSearch ||
+        !mobileResults ||
+        typeof TOOLXONE === "undefined"
     ) {
         return;
     }
 
+    const tools = [];
+
+    TOOLXONE.categories.forEach(
+        category => {
+            category.tools.forEach(
+                tool => {
+                    tools.push(tool);
+                }
+            );
+        }
+    );
+
     mobileSearch.addEventListener(
         "input",
         () => {
-            desktopSearch.value =
-                mobileSearch.value;
+            const query =
+                mobileSearch.value
+                    .toLowerCase()
+                    .trim();
 
-            desktopSearch.dispatchEvent(
-                new Event(
-                    "input",
-                    {
-                        bubbles: true
+            mobileResults.innerHTML = "";
+
+            if (!query) {
+                mobileResults.style.display =
+                    "none";
+
+                return;
+            }
+
+            const matches =
+                tools.filter(tool => {
+                    return tool.name
+                        .toLowerCase()
+                        .includes(query);
+                });
+
+            matches.forEach(tool => {
+                const item =
+                    document.createElement(
+                        "button"
+                    );
+
+                item.type = "button";
+                item.className =
+                    "search-item mobile-search-item";
+
+                item.textContent =
+                    `${tool.icon} ${tool.name}`;
+
+                item.addEventListener(
+                    "click",
+                    () => {
+                        mobileResults.style.display =
+                            "none";
+
+                        mobileSearch.value = "";
+
+                        window.ToolXoneMobileNavbar
+                            ?.closeSearch();
+
+                        window.location.href =
+                            tool.link;
                     }
-                )
-            );
+                );
 
-            window.setTimeout(
-                () => {
-                    copySearchResults(
-                        desktopResults,
-                        mobileResults
-                    );
-                },
-                0
-            );
+                mobileResults.appendChild(
+                    item
+                );
+            });
+
+            mobileResults.style.display =
+                matches.length
+                    ? "block"
+                    : "none";
         }
     );
 
-    desktopSearch.addEventListener(
-        "input",
-        () => {
-            if (
-                document.activeElement !==
-                mobileSearch
-            ) {
-                mobileSearch.value =
-                    desktopSearch.value;
-            }
-
-            window.setTimeout(
-                () => {
-                    copySearchResults(
-                        desktopResults,
-                        mobileResults
-                    );
-                },
-                0
-            );
-        }
-    );
-
-    mobileResults?.addEventListener(
-        "click",
+    mobileSearch.addEventListener(
+        "keydown",
         event => {
-            const resultLink =
-                event.target.closest("a");
-
-            if (resultLink) {
-                window.ToolXoneMobileNavbar
-                    ?.closeSearch();
+            if (event.key !== "Enter") {
+                return;
             }
+
+            const firstResult =
+                mobileResults.querySelector(
+                    ".mobile-search-item"
+                );
+
+            firstResult?.click();
         }
     );
 }

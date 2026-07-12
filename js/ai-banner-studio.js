@@ -1,9 +1,9 @@
 /* =========================================================
-   TOOLXONE — AI BANNER STUDIO CONTROLLER
+   TOOLXONE — PHOENIX AI DESIGN STUDIO CONTROLLER
    File: js/ai-banner-studio.js
 
    Responsibility:
-   Connect the AI Creative Engines to the Banner Studio UI.
+   Connect the Phoenix AI Creative Engine to the Phoenix AI Design Studio workspace, generating intelligent social media and marketing graphics from natural language prompts.
 
    Workflow:
    User idea
@@ -77,7 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const generateAiBannerButton =
         document.getElementById("generateAiBannerButton");
+    
+    const generatedDesignSection =
+    document.getElementById("generatedDesignSection");
 
+    const toggleFineTuneButton =
+    document.getElementById("toggleFineTuneButton");
+
+    const fineTunePanel =
+    document.getElementById("fineTunePanel");
+
+     
     const generateButtonText =
         generateAiBannerButton?.querySelector(
             ".generate-button-text"
@@ -161,6 +171,57 @@ document.addEventListener("DOMContentLoaded", () => {
     const aiGenerationStatus =
         document.getElementById("aiGenerationStatus");
 
+        /* =====================================================
+   PHOENIX WORKSPACE CONTROLS
+===================================================== */
+
+function showGeneratedDesign() {
+    if (!generatedDesignSection) return;
+
+    generatedDesignSection.hidden = false;
+    generatedDesignSection.classList.add("is-visible");
+
+    setTimeout(() => {
+        generatedDesignSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 180);
+}
+
+function toggleFineTunePanel() {
+
+    if (!toggleFineTuneButton || !fineTunePanel) return;
+
+    const isOpening = fineTunePanel.hidden;
+
+    fineTunePanel.hidden = !isOpening;
+
+    toggleFineTuneButton.setAttribute(
+        "aria-expanded",
+        String(isOpening)
+    );
+
+    toggleFineTuneButton.classList.toggle(
+        "is-open",
+        isOpening
+    );
+
+    if (isOpening) {
+
+        setTimeout(() => {
+
+            fineTunePanel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+
+            });
+
+        }, 120);
+
+    }
+
+}
 
     /* =====================================================
        3. REQUIRED ELEMENT CHECK
@@ -255,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         language: "english",
         theme: "emerald",
         layout: "bold-left",
-        kicker: "AI Banner Studio",
+        kicker: "Phoenix AI",
         headline: "CREATE MORE. STRESS LESS.",
         subtitle:
             "Professional social media graphics in the correct size—without complicated editing.",
@@ -285,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
        ===================================================== */
 
     ToolXoneAI.initialize({
-        studioName: "AI Banner Studio",
+        studioName: "Phoenix AI Design Studio",
         platform: defaultValues.platform,
         tone: defaultValues.tone,
         language: defaultValues.language,
@@ -1066,7 +1127,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const request =
                 ToolXoneAI.createRequest({
                     studio:
-                        "AI Banner Studio",
+                        "Phoenix AI Design Studio",
 
                     prompt:
                         validation.prompt,
@@ -2374,6 +2435,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     console.log(
-        "✅ ToolXone AI Banner Studio Controller Loaded"
+        "✅ Phoenix AI Design Studio Controller Loaded"
     );
 });

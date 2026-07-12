@@ -3,7 +3,7 @@
    File: js/ai/ai-core.js
 
    Shared foundation for:
-   - AI Banner Studio
+   - Phoenix AI Design Studio
    - AI Logo Studio
    - AI Thumbnail Studio
    - Future ToolXone AI creative tools

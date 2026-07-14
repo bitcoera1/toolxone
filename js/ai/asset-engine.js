@@ -1612,55 +1612,6 @@
     };
 }
 
-    function chooseSupportingPlacement(
-        index,
-        visualZone
-    ) {
-        const placementSets = {
-            right: [
-                "right-top",
-                "right-bottom",
-                "center-right",
-                "background-right"
-            ],
-
-            "right-half": [
-                "right-top",
-                "right-bottom",
-                "center-right",
-                "background-right"
-            ],
-
-            "right-product": [
-                "right-top",
-                "right-bottom",
-                "background-right",
-                "center-right"
-            ],
-
-            "background-center": [
-                "top-right",
-                "bottom-left",
-                "bottom-right",
-                "top-left"
-            ],
-
-            "right-interface": [
-                "right-top",
-                "right-bottom",
-                "center-right",
-                "background-right"
-            ]
-        };
-
-        const placements =
-            placementSets[visualZone] ||
-            placementSets.right;
-
-        return placements[
-            index % placements.length
-        ];
-    }
 /* =====================================================
    11. SUPPORTING ASSETS
    ===================================================== */
@@ -2477,14 +2428,571 @@ function chooseSupportingPlacement(
         );
     }
 
+    /* =====================================================
+   20. PHOENIX DESIGN DNA ADAPTER
+   ===================================================== */
+
+function createAssetsFromDNA(
+    analysis,
+    designDNA
+) {
+    if (
+        !analysis ||
+        typeof analysis !== "object"
+    ) {
+        throw new Error(
+            "Phoenix Asset Engine requires a valid analysis object."
+        );
+    }
+
+    if (
+        !designDNA ||
+        typeof designDNA !== "object"
+    ) {
+        throw new Error(
+            "Phoenix Asset Engine requires valid Design DNA."
+        );
+    }
+
+    const heroDNA =
+        designDNA.hero || {};
+
+    const decorationDNA =
+        designDNA.decorations || {};
+
+    const styleDNA =
+        designDNA.style || {};
+
+    const layoutDNA =
+        designDNA.layout || {};
+
+    const paletteDNA =
+        designDNA.palette || {};
+
+    const heroAsset =
+        createHeroAssetFromDNA({
+            analysis,
+            heroDNA,
+            styleDNA,
+            layoutDNA
+        });
+
+    const supportingAssets =
+        createSupportingAssetsFromDNA({
+            heroDNA,
+            styleDNA,
+            layoutDNA
+        });
+
+    const decorativeAssets =
+        createDecorativeAssetsFromDNA({
+            decorationDNA,
+            paletteDNA
+        });
+
+    return {
+        id:
+            createId(
+                "dna-assets"
+            ),
+
+        source:
+            "phoenix-design-dna",
+
+        heroAsset,
+
+        supportingAssets,
+
+        decorativeAssets,
+
+        placements: {
+            hero: {
+                assetId:
+                    heroAsset.id,
+
+                zone:
+                    heroAsset.placement,
+
+                anchor:
+                    chooseAnchor(
+                        heroAsset.placement
+                    ),
+
+                widthPercent:
+                    heroAsset.scalePercent,
+
+                avoidTextZone: true,
+
+                preserveAspectRatio: true
+            },
+
+            supporting:
+                supportingAssets.map(
+                    asset => ({
+                        assetId:
+                            asset.id,
+
+                        zone:
+                            asset.placement,
+
+                        anchor:
+                            chooseAnchor(
+                                asset.placement
+                            ),
+
+                        widthPercent:
+                            asset.scalePercent,
+
+                        opacity:
+                            asset.opacity,
+
+                        avoidTextZone: true
+                    })
+                ),
+
+            decorative:
+                decorativeAssets.map(
+                    asset => ({
+                        assetId:
+                            asset.id,
+
+                        zone:
+                            asset.placement,
+
+                        anchor:
+                            chooseAnchor(
+                                asset.placement
+                            ),
+
+                        opacity:
+                            asset.opacity,
+
+                        avoidTextZone: false
+                    })
+                )
+        },
+
+        fallbackPlan: {
+            heroFallback: {
+                type:
+                    "emoji-or-generated-svg",
+
+                value:
+                    heroAsset.emojiFallback ||
+                    "✦",
+
+                label:
+                    heroAsset.label
+            },
+
+            supportingFallbacks:
+                supportingAssets.map(
+                    asset => ({
+                        assetId:
+                            asset.id,
+
+                        type:
+                            "emoji-or-generated-svg",
+
+                        value:
+                            asset.emojiFallback ||
+                            "•",
+
+                        label:
+                            asset.label
+                    })
+                )
+        },
+
+        createdAt:
+            new Date().toISOString()
+    };
+}
+
+
+function createHeroAssetFromDNA({
+    analysis,
+    heroDNA,
+    styleDNA,
+    layoutDNA
+}) {
+    const visualName =
+        heroDNA.primaryVisual ||
+        heroDNA.subject ||
+        analysis.subject ||
+        "digital interface";
+
+    const libraryAsset =
+        findVisualAssetByDNAName(
+            visualName
+        );
+
+    const heroScaleMap = {
+        small: 22,
+        medium: 30,
+        large: 40,
+        "extra-large": 50
+    };
+
+    const scalePercent =
+        heroScaleMap[
+            layoutDNA.heroScale ||
+            heroDNA.scale
+        ] || 38;
+
+    return {
+        ...libraryAsset,
+
+        role:
+            "hero",
+
+        priority:
+            1,
+
+        scalePercent,
+
+        placement:
+            normalizeDNAPlacement(
+                heroDNA.position ||
+                layoutDNA.heroZone ||
+                "center"
+            ),
+
+        cropStrategy:
+            "contained",
+
+        visualTreatment:
+            heroDNA.treatment ||
+            styleDNA.id ||
+            "balanced-modern",
+
+        accessibilityLabel:
+            libraryAsset.label,
+
+        avoid:
+            Array.isArray(
+                heroDNA.avoid
+            )
+                ? [...heroDNA.avoid]
+                : []
+    };
+}
+
+
+function createSupportingAssetsFromDNA({
+    heroDNA,
+    styleDNA,
+    layoutDNA
+}) {
+    const requested =
+        Array.isArray(
+            heroDNA.supportingVisuals
+        )
+            ? heroDNA.supportingVisuals
+            : [];
+
+    return requested
+        .slice(0, 4)
+        .map(
+            (
+                visualName,
+                index
+            ) => {
+                const asset =
+                    findVisualAssetByDNAName(
+                        visualName
+                    );
+
+                return {
+                    ...asset,
+
+                    role:
+                        "supporting",
+
+                    priority:
+                        index + 2,
+
+                    scalePercent:
+                        index === 0
+                            ? 14
+                            : index === 1
+                                ? 11
+                                : 9,
+
+                    placement:
+                        chooseSupportingPlacement(
+                            index,
+                            normalizeDNAPlacement(
+                                layoutDNA.heroZone ||
+                                heroDNA.position ||
+                                "right"
+                            )
+                        ),
+
+                    opacity:
+                        index === 0
+                            ? 0.95
+                            : index === 1
+                                ? 0.82
+                                : 0.7,
+
+                    visualTreatment:
+                        styleDNA.id ||
+                        "balanced-modern",
+
+                    accessibilityLabel:
+                        asset.label
+                };
+            }
+        );
+}
+
+
+function createDecorativeAssetsFromDNA({
+    decorationDNA,
+    paletteDNA
+}) {
+    const primary =
+        Array.isArray(
+            decorationDNA.primary
+        )
+            ? decorationDNA.primary
+            : [];
+
+    const secondary =
+        Array.isArray(
+            decorationDNA.secondary
+        )
+            ? decorationDNA.secondary
+            : [];
+
+    return [
+        ...primary,
+        ...secondary
+    ]
+        .slice(0, 6)
+        .map(
+            (
+                decoration,
+                index
+            ) => ({
+                id:
+                    `dna-decoration-${
+                        slugify(
+                            decoration.type ||
+                            `shape-${index + 1}`
+                        )
+                    }`,
+
+                label:
+                    titleCase(
+                        decoration.type ||
+                        "Decoration"
+                    ),
+
+                category:
+                    "decoration",
+
+                role:
+                    "decorative",
+
+                priority:
+                    10 + index,
+
+                shape:
+                    decoration.type ||
+                    "soft-shape",
+
+                placement:
+                    normalizeDNAPlacement(
+                        decoration.position ||
+                        [
+                            "top-right",
+                            "bottom-left",
+                            "bottom-right"
+                        ][index % 3]
+                    ),
+
+                emphasis:
+                    decoration.emphasis ||
+                    "low",
+
+                opacity:
+                    resolveDecorationOpacity(
+                        decoration.emphasis
+                    ),
+
+                accentColor:
+                    decorationDNA.accentColor ||
+                    paletteDNA.accent ||
+                    "#22d3ee",
+
+                interactive:
+                    false,
+
+                accessibilityLabel:
+                    ""
+            })
+        );
+}
+
+
+function findVisualAssetByDNAName(
+    visualName
+) {
+    const normalized =
+        normalizeText(
+            visualName
+        );
+
+    const exactMatch =
+        Object.values(
+            VISUAL_LIBRARY
+        ).find(
+            asset =>
+                normalizeText(
+                    asset.id
+                ) === normalized ||
+                normalizeText(
+                    asset.label
+                ) === normalized
+        );
+
+    if (exactMatch) {
+        return clone(
+            exactMatch
+        );
+    }
+
+    const keywordMatch =
+        Object.values(
+            VISUAL_LIBRARY
+        ).find(
+            asset =>
+                asset.keywords.some(
+                    keyword =>
+                        normalized.includes(
+                            normalizeText(
+                                keyword
+                            )
+                        ) ||
+                        normalizeText(
+                            keyword
+                        ).includes(
+                            normalized
+                        )
+                )
+        );
+
+    if (keywordMatch) {
+        return clone(
+            keywordMatch
+        );
+    }
+
+    return createCustomAsset(
+        visualName,
+        0
+    );
+}
+
+
+function normalizeDNAPlacement(
+    placement
+) {
+    const value =
+        normalizeText(
+            placement
+        )
+            .replace(
+                /\s+/g,
+                "-"
+            );
+
+    const placementMap = {
+        center:
+            "background-center",
+
+        "right-center":
+            "center-right",
+
+        right:
+            "center-right",
+
+        left:
+            "top-left",
+
+        "left-upper":
+            "top-left",
+
+        "left-middle":
+            "center-left",
+
+        upper:
+            "top-center",
+
+        top:
+            "top-center",
+
+        "bottom-center":
+            "lower-product",
+
+        bottom:
+            "lower-product",
+
+        "hero-frame":
+            "background-center",
+
+        "around-hero":
+            "background-center",
+
+        background:
+            "background-center",
+
+        edges:
+            "background-center",
+
+        corners:
+            "top-right",
+
+        "cta-area":
+            "bottom-right",
+
+        "hero-side":
+            "center-right"
+    };
+
+    return (
+        placementMap[value] ||
+        value ||
+        "background-center"
+    );
+}
+
+
+function resolveDecorationOpacity(
+    emphasis
+) {
+    const values = {
+        low: 0.16,
+        medium: 0.28,
+        high: 0.42
+    };
+
+    return (
+        values[emphasis] ||
+        values.low
+    );
+}
 
     /* =====================================================
-       20. PUBLIC API
+       21. PUBLIC API
        ===================================================== */
 
     window.ToolXoneAssetEngine =
-        Object.freeze({
-            createAssetPlan,
+    Object.freeze({
+        createAssetPlan,
+        createAssetsFromDNA,
 
             getAssetStyles() {
                 return clone(
@@ -2523,7 +3031,7 @@ function chooseSupportingPlacement(
 
 
     /* =====================================================
-       21. READY EVENT
+       22. READY EVENT
        ===================================================== */
 
     window.ToolXoneAI.emit(

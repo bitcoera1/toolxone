@@ -176,6 +176,74 @@ document.addEventListener("DOMContentLoaded", () => {
 ===================================================== */
 
 function showGeneratedDesign() {
+    if (!generatedDesignSection) {
+        return;
+    }
+
+    generatedDesignSection.hidden = false;
+    generatedDesignSection.classList.add("is-visible");
+
+    window.setTimeout(() => {
+        generatedDesignSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }, 180);
+}
+
+
+function closeFineTunePanel() {
+    if (fineTunePanel) {
+        fineTunePanel.hidden = true;
+    }
+
+    if (toggleFineTuneButton) {
+        toggleFineTuneButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        toggleFineTuneButton.classList.remove(
+            "is-open"
+        );
+    }
+}
+
+
+function toggleFineTunePanel() {
+    if (!toggleFineTuneButton || !fineTunePanel) {
+        return;
+    }
+
+    const isOpening = fineTunePanel.hidden;
+
+    fineTunePanel.hidden = !isOpening;
+
+    toggleFineTuneButton.setAttribute(
+        "aria-expanded",
+        String(isOpening)
+    );
+
+    toggleFineTuneButton.classList.toggle(
+        "is-open",
+        isOpening
+    );
+
+    if (isOpening) {
+        window.setTimeout(() => {
+            fineTunePanel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }, 120);
+    }
+}
+
+        /* =====================================================
+   PHOENIX WORKSPACE CONTROLS
+===================================================== */
+
+function showGeneratedDesign() {
     if (!generatedDesignSection) return;
 
     generatedDesignSection.hidden = false;
@@ -545,28 +613,40 @@ function toggleFineTunePanel() {
        ===================================================== */
 
     function createGeneratedContent(brief) {
-        const prompt =
-            brief.originalPrompt || "";
+    const prompt =
+        brief.originalPrompt || "";
 
-        const brandName =
-            detectBrandName(prompt, brief);
+    const brandName =
+        detectBrandName(prompt, brief);
 
-        const website =
-            detectWebsite(prompt, brandName);
+    const website =
+        detectWebsite(prompt, brandName);
 
-        const industryId =
-            brief.industry?.id || "general";
+    const detectedIndustryId =
+    brief.industry?.id || "general";
 
-        const goalId =
-            brief.goal?.id || "brand-awareness";
+const normalizedPrompt =
+    prompt.toLowerCase();
 
-        const toneId =
-            brief.tone?.id || "professional";
+const industryId =
+    normalizedPrompt.includes("qr generator") ||
+    normalizedPrompt.includes("qr code generator") ||
+    normalizedPrompt.includes("generate qr") ||
+    normalizedPrompt.includes("qr tool")
+        ? "qr-generator"
+        : detectedIndustryId;
 
-        const language =
-            brief.language || "english";
+    const goalId =
+        brief.goal?.id || "brand-awareness";
 
-        const content = generateEnglishContent({
+    const toneId =
+        brief.tone?.id || "professional";
+
+    const language =
+        brief.language || "english";
+
+    const content =
+        generateEnglishContent({
             brief,
             brandName,
             website,
@@ -575,22 +655,29 @@ function toggleFineTunePanel() {
             toneId
         });
 
-        /*
-         Local v1 currently creates English marketing copy.
-         The future AI API will provide genuine multilingual
-         copy generation using the same content structure.
-        */
-        if (language !== "english") {
-            content.languageNotice =
-                "English fallback used by the local creative engine.";
-        }
+    console.log(
+        "[Phoenix AI] Generated content:",
+        content
+    );
 
-        return {
-            ...content,
-            brandName,
-            website
-        };
+    if (language !== "english") {
+        content.languageNotice =
+            "English fallback used by the local creative engine.";
     }
+
+    const finalContent = {
+        ...content,
+        brandName,
+        website
+    };
+
+    console.log(
+        "[Phoenix AI] Final content object:",
+        finalContent
+    );
+
+    return finalContent;
+}
 
     function generateEnglishContent({
         brief,
@@ -826,6 +913,33 @@ function toggleFineTunePanel() {
                 cta: "Shop Now"
             },
 
+            "qr-generator": {
+    kicker:
+        "FREE QR CODE GENERATOR",
+
+    headlines: {
+        sale:
+            "CREATE QR CODES. COMPLETELY FREE.",
+
+        launch:
+            "YOUR QR CODE IN SECONDS.",
+
+        "website-traffic":
+            "CREATE. DOWNLOAD. SCAN.",
+
+        "brand-awareness":
+            "FAST QR CODES. ZERO COST.",
+
+        default:
+            "CREATE. DOWNLOAD. SCAN."
+    },
+
+    subtitle:
+        "Generate QR codes instantly, download them and scan them anytime—100% free on ToolXone.",
+
+    cta:
+        "Create QR Code"
+},
             general: {
                 kicker: brandName,
                 headlines: {
@@ -1122,6 +1236,7 @@ function toggleFineTunePanel() {
         }
 
         setGeneratingState(true);
+        closeFineTunePanel();
 
         try {
             const request =
@@ -1230,14 +1345,17 @@ function toggleFineTunePanel() {
                 animate: true
             });
 
-            updateGeneratedSummary({
-                brief,
-                design,
-                content
-            });
+           updateGeneratedSummary({
+    brief,
+    design,
+    content
+});
 
-            generatedResultPanel.hidden =
-                false;
+if (generatedResultPanel) {
+    generatedResultPanel.hidden = true;
+}
+
+showGeneratedDesign();
 
             state.hasGeneratedResult =
                 true;
@@ -1256,12 +1374,10 @@ function toggleFineTunePanel() {
 
                 message:
                     content.languageNotice ||
-                    "ToolXone created your banner. Refine anything you want, then download it.",
+                    "Phoenix AI created your design. Download it now or fine-tune it if needed.",
 
                 type: "success"
             });
-
-            scrollToGeneratedResult();
 
         } catch (error) {
             console.error(
@@ -2382,7 +2498,10 @@ function toggleFineTunePanel() {
         "click",
         applyManualChanges
     );
-
+toggleFineTuneButton?.addEventListener(
+    "click",
+    toggleFineTunePanel
+);
 
     /* =====================================================
        26. CLEANUP

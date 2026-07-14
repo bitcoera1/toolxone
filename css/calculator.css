@@ -126,3 +126,29 @@ body.dark-mode .clear{
 .clear-wide{
     grid-column:span 4;
 }
+/* =====================================================
+   NUMBER IN WORDS
+   ===================================================== */
+
+.calculator-number-words {
+    margin-top: 8px;
+    min-height: 32px;
+    padding: 8px 10px;
+
+    border: 1px solid #dce7e3;
+    border-radius: 8px;
+
+    background: #f7fbf9;
+
+    color: #14532d;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.45;
+    text-align: center;
+
+    overflow-wrap: anywhere;
+}
+
+.calculator-number-words:empty {
+    display: none;
+}

@@ -206,3 +206,86 @@ body.dark-mode .bar-bg{
     }
 
 }
+/* ======================================
+   RETIREMENT NUMBER WORDS
+   ====================================== */
+
+.retirement-result-item{
+    display:grid;
+    grid-template-columns:
+        minmax(0,1fr)
+        auto;
+
+    gap:4px 12px;
+    align-items:center;
+}
+
+.retirement-result-item strong{
+    font-variant-numeric:
+        tabular-nums;
+
+    text-align:right;
+}
+
+.retirement-number-words{
+    grid-column:1 / -1;
+
+    display:block;
+    margin-top:4px;
+    padding:8px 10px;
+
+    border:
+        1px solid
+        var(--tool-words-border);
+
+    border-radius:8px;
+
+    background:
+        var(--tool-words-bg);
+
+    color:
+        var(--tool-words-text);
+
+    font-size:.76rem;
+    font-weight:600;
+    line-height:1.45;
+    text-align:center;
+
+    overflow-wrap:anywhere;
+}
+
+
+/* ======================================
+   TOOLXONE INSIGHT
+   ====================================== */
+
+.retirement-insight-item{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+
+    margin-top:8px;
+    padding:12px;
+
+    border:
+        1px solid
+        var(--tool-words-border);
+
+    border-radius:10px;
+
+    background:
+        var(--tool-words-bg);
+}
+
+.retirement-insight-item span{
+    color:#10b981;
+    font-weight:800;
+}
+
+.retirement-insight-item strong{
+    color:var(--tool-words-text);
+    font-size:.8rem;
+    font-weight:600;
+    line-height:1.5;
+    text-align:left;
+}

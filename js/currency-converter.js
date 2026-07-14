@@ -1,91 +1,346 @@
- 
 let rateChart;
 
-function swapCurrencies(){
-    const from = document.getElementById("fromCurrency");
-    const to = document.getElementById("toCurrency");
 
-    let temp = from.value;
-    from.value = to.value;
-    to.value = temp;
+/* ======================================
+   SWAP CURRENCIES
+   ====================================== */
+
+function swapCurrencies() {
+    const from =
+        document.getElementById(
+            "fromCurrency"
+        );
+
+    const to =
+        document.getElementById(
+            "toCurrency"
+        );
+
+    const temp =
+        from.value;
+
+    from.value =
+        to.value;
+
+    to.value =
+        temp;
 
     convertCurrency();
 }
 
-async function convertCurrency(){
-    const amount = Number(document.getElementById("amount").value);
-    const from = document.getElementById("fromCurrency").value;
-    const to = document.getElementById("toCurrency").value;
-    const result = document.getElementById("result");
 
-    if(amount <= 0 || isNaN(amount)){
-        result.innerHTML = "Please enter a valid amount.";
-        document.getElementById("statusBar").innerHTML = "⚠️ Invalid Amount";
+/* ======================================
+   CONVERT CURRENCY
+   ====================================== */
+
+async function convertCurrency() {
+    const amount =
+        Number(
+            document.getElementById(
+                "amount"
+            ).value
+        );
+
+    const from =
+        document.getElementById(
+            "fromCurrency"
+        ).value;
+
+    const to =
+        document.getElementById(
+            "toCurrency"
+        ).value;
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+    const statusBar =
+        document.getElementById(
+            "statusBar"
+        );
+
+    if (
+        amount <= 0 ||
+        Number.isNaN(amount)
+    ) {
+        result.innerHTML =
+            "Please enter a valid amount.";
+
+        statusBar.innerHTML =
+            "⚠️ Invalid Amount";
+
         return;
     }
 
-    result.innerHTML = "Loading latest exchange rates...";
-    document.getElementById("statusBar").innerHTML = "⏳ Checking latest exchange rates...";
+    result.innerHTML =
+        "Loading latest exchange rates...";
 
-    try{
-        const response = await fetch(`https://open.er-api.com/v6/latest/${from}`);
+    statusBar.innerHTML =
+        "⏳ Checking latest exchange rates...";
 
-        if(!response.ok){
-            throw new Error("API Error");
+    try {
+        const response =
+            await fetch(
+                `https://open.er-api.com/v6/latest/${from}`
+            );
+
+        if (
+            !response.ok
+        ) {
+            throw new Error(
+                "API Error"
+            );
         }
 
-        const data = await response.json();
-        const rate = data.rates[to];
-        const convertedAmount = amount * rate;
+        const data =
+            await response.json();
 
-        displayResult(amount, from, to, convertedAmount, rate);
+        const rate =
+            data.rates[to];
 
-        document.getElementById("statusBar").innerHTML = "✅ Updated Successfully";
+        if (
+            !Number.isFinite(rate)
+        ) {
+            throw new Error(
+                "Exchange rate unavailable."
+            );
+        }
 
-    }catch(error){
-        console.error(error);
-        document.getElementById("statusBar").innerHTML = "❌ Connection Error";
-        result.innerHTML = "Unable to fetch live exchange rates. Please try again.";
+        const convertedAmount =
+            amount * rate;
+
+        displayResult(
+            amount,
+            from,
+            to,
+            convertedAmount,
+            rate
+        );
+
+        statusBar.innerHTML =
+            "✅ Updated Successfully";
+
+    } catch (error) {
+        console.error(
+            "Currency conversion error:",
+            error
+        );
+
+        statusBar.innerHTML =
+            "❌ Connection Error";
+
+        result.innerHTML =
+            "Unable to fetch live exchange rates. Please try again.";
     }
 }
 
-function displayResult(amount, from, to, convertedAmount, rate){
-    const result = document.getElementById("result");
+
+/* ======================================
+   DISPLAY RESULT
+   ====================================== */
+
+function displayResult(
+    amount,
+    from,
+    to,
+    convertedAmount,
+    rate
+) {
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+    const formattedAmount =
+        formatCurrencyValue(
+            amount
+        );
+
+    const formattedConvertedAmount =
+        formatCurrencyValue(
+            convertedAmount
+        );
+
+    const formattedRate =
+        formatExchangeRate(
+            rate
+        );
+
+    const convertedWords =
+        currencyAmountToWords(
+            convertedAmount
+        );
 
     result.innerHTML = `
-<h3 style="color:#10B981;margin-bottom:15px;">💱 Currency Conversion</h3>
+        <div class="currency-conversion-result">
 
-<div style="font-size:28px;">${amount} ${from}</div>
+            <h3 class="currency-result-title">
+                💱 Currency Conversion
+            </h3>
 
-<div style="font-size:22px;color:#10B981;margin:12px 0;">↓</div>
+            <div class="currency-source-value">
+                ${formattedAmount} ${from}
+            </div>
 
-<div style="font-size:30px;font-weight:bold;">${convertedAmount.toFixed(2)} ${to}</div>
+            <div class="currency-conversion-arrow">
+                ↓
+            </div>
 
-<hr style="margin:20px 0;">
+            <div class="currency-target-value">
+                ${formattedConvertedAmount} ${to}
+            </div>
 
-<div style="font-size:16px;">
-<b>Exchange Rate</b><br>
-1 ${from} = ${rate.toFixed(4)} ${to}
-</div>
+            ${
+                convertedWords
+                    ? `
+                        <div class="currency-number-words">
+                            ${convertedWords} ${to}
+                        </div>
+                    `
+                    : ""
+            }
 
-<div style="margin-top:15px;color:#10B981;">
-✔ Latest Exchange Rate Available
-</div>
-`;
+            <hr class="currency-result-divider">
 
-    document.getElementById("chartTitle").innerHTML = `📈 ${from} → ${to} Trend`;
+            <div class="currency-rate-info">
+                <strong>Exchange Rate</strong>
 
-    updateRateChart(from,to,rate);
+                <span>
+                    1 ${from} =
+                    ${formattedRate} ${to}
+                </span>
+            </div>
+
+            <div class="currency-live-note">
+                ✔ Latest Exchange Rate Available
+            </div>
+
+        </div>
+    `;
+
+    document.getElementById(
+        "chartTitle"
+    ).innerHTML =
+        `📈 ${from} → ${to} Trend`;
+
+    updateRateChart(
+        from,
+        to,
+        rate
+    );
 }
 
-function updateRateChart(from,to,rate){
-    const ctx = document.getElementById("rateChart");
 
-    if(!ctx){
+/* ======================================
+   NUMBER ENGINE HELPERS
+   ====================================== */
+
+function formatCurrencyValue(
+    value
+) {
+    if (
+        window.ToolXoneNumberEngine
+    ) {
+        return ToolXoneNumberEngine.format(
+            value,
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+    }
+
+    return Number(value)
+        .toLocaleString(
+            undefined,
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+}
+
+
+function formatExchangeRate(
+    value
+) {
+    if (
+        window.ToolXoneNumberEngine
+    ) {
+        return ToolXoneNumberEngine.format(
+            value,
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 6
+            }
+        );
+    }
+
+    return Number(value)
+        .toFixed(6)
+        .replace(
+            /0+$/,
+            ""
+        )
+        .replace(
+            /\.$/,
+            ""
+        );
+}
+
+
+function currencyAmountToWords(
+    value
+) {
+    if (
+        !window.ToolXoneNumberEngine
+    ) {
+        return "";
+    }
+
+    const roundedValue =
+        Number(
+            Number(value).toFixed(2)
+        );
+
+    return ToolXoneNumberEngine.words(
+        roundedValue,
+        {
+            decimalLimit: 2
+        }
+    );
+}
+
+
+/* ======================================
+   RATE CHART
+   ====================================== */
+
+function updateRateChart(
+    from,
+    to,
+    rate
+) {
+    const canvas =
+        document.getElementById(
+            "rateChart"
+        );
+
+    if (!canvas) {
         return;
     }
 
-    const labels = ["6h","5h","4h","3h","2h","1h","Now"];
+    const labels = [
+        "6h",
+        "5h",
+        "4h",
+        "3h",
+        "2h",
+        "1h",
+        "Now"
+    ];
 
     const trendData = [
         rate * 0.996,
@@ -97,39 +352,73 @@ function updateRateChart(from,to,rate){
         rate
     ];
 
-    if(!rateChart){
-        rateChart = new Chart(ctx,{
-            type:"line",
-            data:{
-                labels:labels,
-                datasets:[{
-                    label:`${from} to ${to}`,
-                    data:trendData,
-                    borderColor:"#10B981",
-                    backgroundColor:"rgba(16,185,129,0.15)",
-                    fill:true,
-                    tension:0.4,
-                    pointRadius:4
-                }]
-            },
-            options:{
-                responsive:true,
-                plugins:{
-                    legend:{
-                        display:false
-                    }
-                },
-                scales:{
-                    y:{
-                        beginAtZero:false
+    if (!rateChart) {
+        rateChart =
+            new Chart(
+                canvas,
+                {
+                    type:
+                        "line",
+
+                    data: {
+                        labels,
+
+                        datasets: [
+                            {
+                                label:
+                                    `${from} to ${to}`,
+
+                                data:
+                                    trendData,
+
+                                borderColor:
+                                    "#10B981",
+
+                                backgroundColor:
+                                    "rgba(16,185,129,0.15)",
+
+                                fill:
+                                    true,
+
+                                tension:
+                                    0.4,
+
+                                pointRadius:
+                                    4
+                            }
+                        ]
+                    },
+
+                    options: {
+                        responsive:
+                            true,
+
+                        plugins: {
+                            legend: {
+                                display:
+                                    false
+                            }
+                        },
+
+                        scales: {
+                            y: {
+                                beginAtZero:
+                                    false
+                            }
+                        }
                     }
                 }
-            }
-        });
-    }else{
-        rateChart.data.labels = labels;
-        rateChart.data.datasets[0].label = `${from} to ${to}`;
-        rateChart.data.datasets[0].data = trendData;
+            );
+    } else {
+        rateChart.data.labels =
+            labels;
+
+        rateChart.data.datasets[0].label =
+            `${from} to ${to}`;
+
+        rateChart.data.datasets[0].data =
+            trendData;
+
         rateChart.update();
     }
 }

@@ -113,3 +113,107 @@ text-decoration:none;
 color:#4CAF50;
 font-weight:bold;
 }
+/* ======================================
+   CURRENCY CONVERTER NUMBER ENGINE
+   ====================================== */
+
+.currency-conversion-result{
+    display:grid;
+    gap:12px;
+
+    color:
+        var(--tool-text);
+
+    text-align:center;
+}
+
+.currency-result-title{
+    margin:0 0 4px;
+
+    color:#10b981;
+}
+
+.currency-source-value{
+    font-size:1.35rem;
+    font-weight:700;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    overflow-wrap:anywhere;
+}
+
+.currency-conversion-arrow{
+    color:#10b981;
+    font-size:1.45rem;
+    font-weight:800;
+}
+
+.currency-target-value{
+    color:#10b981;
+
+    font-size:1.7rem;
+    font-weight:800;
+
+    font-variant-numeric:
+        tabular-nums;
+
+    overflow-wrap:anywhere;
+}
+
+.currency-number-words{
+    padding:9px 11px;
+
+    border:
+        1px solid
+        var(--tool-words-border);
+
+    border-radius:9px;
+
+    background:
+        var(--tool-words-bg);
+
+    color:
+        var(--tool-words-text);
+
+    font-size:.78rem;
+    font-weight:600;
+    line-height:1.5;
+
+    overflow-wrap:anywhere;
+}
+
+.currency-result-divider{
+    width:100%;
+    margin:5px 0;
+
+    border:0;
+    border-top:
+        1px solid
+        var(--tool-result-border);
+}
+
+.currency-rate-info{
+    display:grid;
+    gap:5px;
+
+    color:
+        var(--tool-text);
+
+    font-size:.95rem;
+}
+
+.currency-rate-info span{
+    color:
+        var(--tool-muted);
+
+    font-variant-numeric:
+        tabular-nums;
+}
+
+.currency-live-note{
+    color:#10b981;
+
+    font-size:.88rem;
+    font-weight:700;
+}

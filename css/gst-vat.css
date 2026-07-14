@@ -209,3 +209,50 @@ body.dark-mode .bar-bg{
     }
 
 }
+/* ======================================
+   GST / VAT NUMBER WORDS
+   ====================================== */
+
+.tax-result-item{
+    display:grid;
+    grid-template-columns:
+        minmax(0,1fr)
+        auto;
+
+    gap:4px 12px;
+    align-items:center;
+}
+
+.tax-result-item strong{
+    font-variant-numeric:
+        tabular-nums;
+
+    text-align:right;
+}
+
+.tax-number-words{
+    grid-column:1 / -1;
+
+    display:block;
+    margin-top:4px;
+    padding:8px 10px;
+
+    border:
+        1px solid
+        var(--tool-words-border);
+
+    border-radius:8px;
+
+    background:
+        var(--tool-words-bg);
+
+    color:
+        var(--tool-words-text);
+
+    font-size:.76rem;
+    font-weight:600;
+    line-height:1.45;
+    text-align:center;
+
+    overflow-wrap:anywhere;
+}

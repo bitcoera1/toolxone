@@ -1779,3 +1779,222 @@ body[data-theme="dark"] .download-panel {
 /* =========================================================
    END OF PHOENIX AI DESIGN STUDIO CSS
    ========================================================= */
+ 
+   /* =====================================================
+   PHOENIX RENDER ENGINE — BASE CANVAS
+   ===================================================== */
+
+.phoenix-render-canvas {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 24px;
+    color: var(--phoenix-text);
+    background: var(--phoenix-background);
+}
+
+.phoenix-render-layer {
+    position: absolute;
+    inset: 0;
+}
+.phoenix-render-canvas{
+
+    --safe-top:7%;
+    --safe-right:7%;
+    --safe-bottom:7%;
+    --safe-left:7%;
+
+    --brand-zone:10;
+    --headline-zone:22;
+    --hero-zone:40;
+    --support-zone:15;
+    --cta-zone:8;
+
+}
+.phoenix-layer-background {
+    z-index: 1;
+    overflow: hidden;
+}
+
+.phoenix-layer-decorations {
+    z-index: 2;
+    pointer-events: none;
+}
+
+.phoenix-layer-hero {
+    z-index: 3;
+}
+
+.phoenix-layer-content {
+    z-index: 4;
+}
+
+.phoenix-layer-cta {
+    z-index: 5;
+}
+
+.phoenix-layer-branding {
+    z-index: 6;
+}
+
+/* =====================================================
+   PHOENIX LAYOUT INTELLIGENCE
+   ===================================================== */
+
+.phoenix-render-canvas {
+    --phoenix-safe-top: 7%;
+    --phoenix-safe-right: 7%;
+    --phoenix-safe-bottom: 7%;
+    --phoenix-safe-left: 7%;
+
+    --phoenix-brand-zone: 10;
+    --phoenix-headline-zone: 23;
+    --phoenix-hero-zone: 39;
+    --phoenix-support-zone: 15;
+    --phoenix-cta-zone: 8;
+}
+
+/* =====================================================
+   BACKGROUND GLOW
+   ===================================================== */
+
+.phoenix-background-glow {
+    position: absolute;
+    width: 58%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+        radial-gradient(
+            circle,
+            var(--phoenix-focal-color) 0%,
+            transparent 68%
+        );
+    opacity:
+        var(--phoenix-overlay-opacity);
+    filter: blur(42px);
+}
+
+.phoenix-background-glow[data-position="center"] {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.phoenix-background-glow[data-position="right"] {
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.phoenix-background-glow[data-position="left"] {
+    left: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* =====================================================
+   DIGITAL GRID PATTERN
+   ===================================================== */
+
+.phoenix-background-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.25;
+}
+
+.phoenix-background-pattern[data-pattern="digital-grid"],
+.phoenix-background-pattern[data-pattern="subtle-chart-grid"] {
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        42px 42px;
+}
+
+.phoenix-background-pattern[data-pattern="gentle-health-curves"],
+.phoenix-background-pattern[data-pattern="organic-curves"] {
+    background:
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 255, 255, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(255, 255, 255, 0.12),
+            transparent 30%
+        );
+}
+
+
+/* =====================================================
+   BACKGROUND TEXTURE
+   ===================================================== */
+
+.phoenix-background-texture {
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.phoenix-background-texture[data-texture="fine-noise"],
+.phoenix-background-texture[data-texture="paper-grain"] {
+    background-image:
+        repeating-radial-gradient(
+            circle at 0 0,
+            rgba(255, 255, 255, 0.35) 0,
+            rgba(255, 255, 255, 0.35) 1px,
+            transparent 1px,
+            transparent 4px
+        );
+}
+/* =====================================================
+   PHOENIX SVG HERO RENDERING
+   ===================================================== */
+
+.phoenix-layer-hero{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+}
+
+.phoenix-hero-visual{
+    width:min(48%, 360px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    filter:
+        drop-shadow(
+            0 22px 40px
+            rgba(0,0,0,.28)
+        );
+}
+
+.phoenix-hero-visual.has-generated-svg{
+    aspect-ratio:1;
+}
+
+.phoenix-svg-hero{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.phoenix-hero-visual.uses-fallback-symbol{
+    min-height:180px;
+    color:var(--phoenix-accent);
+    font-size:clamp(5rem, 13vw, 10rem);
+    font-weight:900;
+}

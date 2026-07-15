@@ -67,16 +67,87 @@
 <div id="navbar"></div>
 
 <main class="tool-area">
+
     <div class="age-card">
+
         <h1>🎂 Age Calculator</h1>
 
-        <label for="birthDate">Enter Your Date of Birth</label>
-        <input type="date" id="birthDate">
+        <p class="dob-heading">
+            Enter Your Date of Birth
+        </p>
 
-        <button class="age-btn" onclick="calculateAge()">Calculate Age</button>
-        <button class="age-reset-btn" onclick="resetAge()">Reset</button>
+        <div class="dob-fields">
 
-        <div class="age-result" id="ageResult"></div>
+            <!-- Day -->
+            <div class="dob-field">
+                <label for="birthDay">Day</label>
+
+                <select
+                    id="birthDay"
+                    name="birthDay">
+                    <option value="">DD</option>
+                </select>
+            </div>
+
+            <!-- Month -->
+            <div class="dob-field">
+                <label for="birthMonth">Month</label>
+
+                <select
+                    id="birthMonth"
+                    name="birthMonth">
+                    <option value="">Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+
+            <!-- Year -->
+            <div class="dob-field">
+                <label for="birthYear">Year</label>
+
+                <select
+                    id="birthYear"
+                    name="birthYear">
+                    <option value="">YYYY</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button
+            class="age-btn"
+            onclick="calculateAge()">
+            Calculate Age
+        </button>
+
+        <button
+            class="age-reset-btn"
+            onclick="resetAge()">
+            Reset
+        </button>
+
+        <div
+            class="age-result"
+            id="ageResult"
+            aria-live="polite">
+        </div>
+
+    </div>
+
+</main>
+
+                <div class="age-result" id="ageResult"></div>
     </div>
 </main>
 

@@ -421,9 +421,11 @@ function toggleFineTunePanel() {
         maximumPromptLength: 700
     });
 
-    ToolXonePreviewEngine.initialize({
-        root: bannerCanvas
-    });
+    /*
+ToolXonePreviewEngine.initialize({
+    root: bannerCanvas
+});
+*/
 
 
     /* =====================================================
@@ -1318,32 +1320,78 @@ const industryId =
                 content
             });
 
-            await ToolXonePreviewEngine.renderPreview({
-                brief,
-                design,
-                assets,
-                content: {
-                    kicker:
-                        content.kicker,
+  /* ======================================
+     PHOENIX RENDER ENGINE PIPELINE
+   ====================================== */
 
-                    headline:
-                        content.headline,
+const phoenixAnalysis =
+    ToolXoneCreativeBrain.analyzePrompt(
+        request.prompt,
+        {
+            platform:
+                request.platform,
 
-                    subtitle:
-                        content.subtitle,
+            tone:
+                request.tone,
 
-                    website:
-                        content.website,
+            language:
+                request.language
+        }
+    );
 
-                    callToAction:
-                        content.callToAction,
+const designDNA =
+    ToolXoneDesignDNA.createDesignDNA(
+        phoenixAnalysis
+    );
 
-                    brandName:
-                        content.brandName
-                },
+const copyDNA =
+    ToolXoneCopyIntelligence.createCopyDNA(
+        phoenixAnalysis,
+        designDNA
+    );
 
-                animate: true
-            });
+const assetDNA =
+    ToolXoneAssetEngine.createAssetsFromDNA(
+        phoenixAnalysis,
+        designDNA
+    );
+
+const phoenixRenderResult =
+    ToolXoneRenderEngine.renderDesign({
+        target:
+            "#bannerCanvas",
+
+        designDNA,
+
+        copyDNA,
+
+        assetDNA,
+
+        options: {
+            brandName:
+                content.brandName ||
+                "ToolXone",
+
+            website:
+                content.website ||
+                "www.toolxone.com"
+        }
+    });
+
+state.currentPhoenixAnalysis =
+    phoenixAnalysis;
+
+state.currentDesignDNA =
+    designDNA;
+
+state.currentCopyDNA =
+    copyDNA;
+
+state.currentAssetDNA =
+    assetDNA;
+
+state.currentRenderResult =
+    phoenixRenderResult;
 
            updateGeneratedSummary({
     brief,
@@ -2064,10 +2112,15 @@ showGeneratedDesign();
                 bannerCanvas
             );
 
+            const exportTarget =
+    bannerCanvas.querySelector(
+        ".phoenix-render-canvas"
+    ) || bannerCanvas;
+
             const originalWidth =
-                bannerCanvas
-                    .getBoundingClientRect()
-                    .width;
+    exportTarget
+        .getBoundingClientRect()
+        .width;
 
             if (!originalWidth) {
                 throw new Error(
@@ -2081,7 +2134,7 @@ showGeneratedDesign();
 
             const renderedCanvas =
                 await html2canvas(
-                    bannerCanvas,
+                  exportTarget,
                     {
                         backgroundColor: null,
                         scale,
@@ -2091,7 +2144,7 @@ showGeneratedDesign();
                         imageTimeout: 15000,
 
                         width:
-                            bannerCanvas.offsetWidth,
+                            exportTarget.offsetWidth,
 
                         height:
                             bannerCanvas.offsetHeight,
@@ -2233,7 +2286,6 @@ showGeneratedDesign();
             );
         }
     }
-
 
     /* =====================================================
        24. DOWNLOAD HELPERS

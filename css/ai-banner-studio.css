@@ -1780,38 +1780,145 @@ body[data-theme="dark"] .download-panel {
    END OF PHOENIX AI DESIGN STUDIO CSS
    ========================================================= */
  
-   /* =====================================================
+  /* =====================================================
    PHOENIX RENDER ENGINE — BASE CANVAS
+   GIANT LEAP 11.3: REAL ZONE COMPOSITION
    ===================================================== */
 
 .phoenix-render-canvas {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    isolation: isolate;
-    border-radius: 24px;
-    color: var(--phoenix-text);
-    background: var(--phoenix-background);
+    --phoenix-safe-top:7%;
+    --phoenix-safe-right:7%;
+    --phoenix-safe-bottom:7%;
+    --phoenix-safe-left:7%;
+
+    --phoenix-brand-zone:10;
+    --phoenix-headline-zone:23;
+    --phoenix-hero-zone:39;
+    --phoenix-support-zone:15;
+    --phoenix-cta-zone:8;
+
+    position:relative;
+    isolation:isolate;
+
+    display:grid;
+
+    grid-template-columns:
+        var(--phoenix-safe-left)
+        minmax(0, 1fr)
+        var(--phoenix-safe-right);
+
+    grid-template-rows:
+        minmax(12px, 5fr)
+        minmax(24px, 7fr)
+        minmax(0, 23fr)
+        minmax(0, 35fr)
+        minmax(0, 12fr)
+        minmax(38px, 8fr)
+        minmax(12px, 5fr);
+
+    width:100%;
+aspect-ratio:var(
+    --phoenix-canvas-ratio,
+    1200 / 630
+);
+min-height:0;
+overflow:hidden;
+
+border-radius:24px;
+color:var(--phoenix-text);
+background:var(--phoenix-background);
 }
 
+/* =====================================================
+   PLATFORM FORMATS
+   ===================================================== */
+
+.phoenix-render-canvas.phoenix-format-landscape{
+    aspect-ratio:1200 / 630;
+}
+
+.phoenix-render-canvas.phoenix-format-square{
+    aspect-ratio:1 / 1;
+}
+
+.phoenix-render-canvas.phoenix-format-portrait{
+    aspect-ratio:2 / 3;
+}
+
+.phoenix-render-canvas.phoenix-format-story{
+    aspect-ratio:9 / 16;
+}
+
+/* =====================================================
+   PHOENIX PREVIEW CONTAINER RESET
+   ===================================================== */
+
+#bannerCanvas.uses-phoenix-renderer{
+    width:100%;
+    height:auto !important;
+    min-height:0 !important;
+
+    aspect-ratio:auto !important;
+    overflow:visible !important;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    padding:12px;
+}
+
+#bannerCanvas.uses-phoenix-renderer
+.phoenix-render-canvas{
+    width:100%;
+    height:auto;
+    margin:0 auto;
+}
+
+/* Comfortable on-page preview sizes */
+
+#bannerCanvas.uses-phoenix-renderer
+.phoenix-format-landscape{
+    max-width:760px;
+}
+
+#bannerCanvas.uses-phoenix-renderer
+.phoenix-format-square{
+    max-width:520px;
+}
+
+#bannerCanvas.uses-phoenix-renderer
+.phoenix-format-portrait{
+    max-width:420px;
+}
+
+#bannerCanvas.uses-phoenix-renderer
+.phoenix-format-story{
+    max-width:360px;
+}
+
+/* =====================================================
+   SHARED LAYER FOUNDATION
+   ===================================================== */
+
 .phoenix-render-layer {
+    position: relative;
+
+    min-width: 0;
+    min-height: 0;
+}
+
+
+/* =====================================================
+   FULL-CANVAS VISUAL LAYERS
+   ===================================================== */
+
+.phoenix-layer-background,
+.phoenix-layer-decorations {
     position: absolute;
     inset: 0;
 }
-.phoenix-render-canvas{
 
-    --safe-top:7%;
-    --safe-right:7%;
-    --safe-bottom:7%;
-    --safe-left:7%;
-
-    --brand-zone:10;
-    --headline-zone:22;
-    --hero-zone:40;
-    --support-zone:15;
-    --cta-zone:8;
-
-}
 .phoenix-layer-background {
     z-index: 1;
     overflow: hidden;
@@ -1822,37 +1929,94 @@ body[data-theme="dark"] .download-panel {
     pointer-events: none;
 }
 
-.phoenix-layer-hero {
-    z-index: 3;
+
+/* =====================================================
+   INTELLIGENT CONTENT ZONES
+   ===================================================== */
+
+.phoenix-layer-content{
+    grid-column:2;
+    grid-row:3;
+
+    z-index:4;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+
+    min-width:0;
+    min-height:0;
 }
 
-.phoenix-layer-content {
+.phoenix-layer-hero {
+    grid-column: 2;
+    grid-row: 4;
+
+    z-index: 3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 0;
+
+    pointer-events: none;
+}
+
+.phoenix-layer-supporting {
+    grid-column: 2;
+    grid-row: 5;
+
     z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    min-width: 0;
 }
 
 .phoenix-layer-cta {
+    grid-column: 2;
+    grid-row: 6;
+
     z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
 }
 
-.phoenix-layer-branding {
-    z-index: 6;
-}
 
 /* =====================================================
-   PHOENIX LAYOUT INTELLIGENCE
+   BRANDING OVERLAY
    ===================================================== */
 
-.phoenix-render-canvas {
-    --phoenix-safe-top: 7%;
-    --phoenix-safe-right: 7%;
-    --phoenix-safe-bottom: 7%;
-    --phoenix-safe-left: 7%;
+.phoenix-layer-branding {
+    position: absolute;
+    inset: 0;
 
-    --phoenix-brand-zone: 10;
-    --phoenix-headline-zone: 23;
-    --phoenix-hero-zone: 39;
-    --phoenix-support-zone: 15;
-    --phoenix-cta-zone: 8;
+    z-index: 6;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding:
+        var(--phoenix-safe-top)
+        var(--phoenix-safe-right)
+        var(--phoenix-safe-bottom)
+        var(--phoenix-safe-left);
+
+    pointer-events: none;
 }
 
 /* =====================================================
@@ -1959,6 +2123,7 @@ body[data-theme="dark"] .download-panel {
             transparent 4px
         );
 }
+
 /* =====================================================
    PHOENIX SVG HERO RENDERING
    ===================================================== */
@@ -1971,10 +2136,14 @@ body[data-theme="dark"] .download-panel {
 }
 
 .phoenix-hero-visual{
-    width:min(48%, 360px);
+    width:min(62%, 360px);
+    max-width:100%;
+    max-height:92%;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     filter:
         drop-shadow(
             0 22px 40px
@@ -1989,12 +2158,244 @@ body[data-theme="dark"] .download-panel {
 .phoenix-svg-hero{
     display:block;
     width:100%;
-    height:auto;
+    height:100%;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
 }
 
 .phoenix-hero-visual.uses-fallback-symbol{
     min-height:180px;
-    color:var(--phoenix-accent);
-    font-size:clamp(5rem, 13vw, 10rem);
+
+    color:
+        var(--phoenix-accent);
+
+    font-size:
+        clamp(
+            5rem,
+            13vw,
+            10rem
+        );
+
     font-weight:900;
+}
+/* =====================================================
+   PHOENIX CONTENT ZONE
+   ===================================================== */
+
+.phoenix-render-kicker{
+    margin:0 0 10px;
+
+    color:
+        var(--phoenix-accent);
+
+    font-size:
+        clamp(
+            .8rem,
+            1.4vw,
+            1rem
+        );
+
+    font-weight:800;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+}
+
+.phoenix-render-headline{
+    max-width:14ch;
+    margin:0;
+
+    color:
+        var(--phoenix-text);
+
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            4.6rem
+        );
+
+    font-weight:900;
+    line-height:.98;
+    letter-spacing:-.045em;
+
+    text-wrap:balance;
+}
+
+.phoenix-render-support{
+    max-width:44rem;
+    margin:16px 0 0;
+
+    color:var(--phoenix-text);
+    opacity:.78;
+
+    font-size:
+        clamp(
+            .95rem,
+            1.6vw,
+            1.2rem
+        );
+
+    font-weight:500;
+    line-height:1.55;
+
+    text-wrap:balance;
+}
+
+.phoenix-render-benefits{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 14px;
+
+    margin:18px 0 0;
+    padding:0;
+
+    list-style:none;
+}
+
+.phoenix-render-benefits li{
+    position:relative;
+
+    padding-left:18px;
+
+    color:
+        var(--phoenix-text);
+
+    font-size:
+        clamp(
+            .78rem,
+            1.25vw,
+            .95rem
+        );
+
+    font-weight:700;
+}
+
+.phoenix-render-benefits li::before{
+    content:"";
+
+    position:absolute;
+    left:0;
+    top:.48em;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:
+        var(--phoenix-accent);
+
+    box-shadow:
+    0 0 14px
+    rgba(34,211,238,.45);
+}
+/* =====================================================
+   PHOENIX SUPPORTING ASSETS
+   ===================================================== */
+
+.phoenix-supporting-asset{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:52px;
+    min-height:52px;
+    padding:10px 14px;
+
+    border:1px solid rgba(34,211,238,.28);
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.10);
+
+    color:
+        var(--phoenix-accent);
+
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            1.35rem
+        );
+
+    font-weight:900;
+
+    box-shadow:
+        0 12px 28px
+        rgba(0,0,0,.16);
+
+    backdrop-filter:
+        blur(10px);
+}
+/* =====================================================
+   PHOENIX CTA ZONE
+   ===================================================== */
+
+.phoenix-render-cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:160px;
+    min-height:48px;
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    background:
+        var(--phoenix-accent);
+
+    color:#ffffff;
+
+    font-size:
+        clamp(
+            .9rem,
+            1.4vw,
+            1.05rem
+        );
+
+    font-weight:800;
+    line-height:1;
+
+    box-shadow:
+    0 16px 34px
+    rgba(34,211,238,.30);
+}
+/* =====================================================
+   PHOENIX BRANDING
+   ===================================================== */
+
+.phoenix-render-brand{
+    align-self:flex-start;
+
+    color:
+        var(--phoenix-text);
+
+    font-size:
+        clamp(
+            .95rem,
+            1.5vw,
+            1.15rem
+        );
+
+    font-weight:900;
+    letter-spacing:.02em;
+}
+
+.phoenix-render-website{
+    align-self:flex-end;
+
+    color:var(--phoenix-text);
+opacity:.72;
+
+    font-size:
+        clamp(
+            .76rem,
+            1.2vw,
+            .92rem
+        );
+
+    font-weight:700;
+    letter-spacing:.04em;
 }

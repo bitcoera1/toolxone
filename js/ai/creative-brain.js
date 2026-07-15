@@ -31,13 +31,21 @@ function analyzePrompt(prompt, context = {}) {
         detectSubject(normalizedPrompt);
 
     const subjectType =
-        detectSubjectType(
-            normalizedPrompt,
-            subject
-        );
+    detectSubjectType(
+        normalizedPrompt,
+        subject
+    );
 
-    const offer =
-        detectOffer(normalizedPrompt);
+const toolIdentity =
+    detectToolIdentity(
+        normalizedPrompt,
+        subject
+    );
+
+const offer =
+    detectOffer(
+        normalizedPrompt
+    );
 
     const goal =
         detectGoal(normalizedPrompt);
@@ -49,181 +57,37 @@ function analyzePrompt(prompt, context = {}) {
         );
 
     return {
-        originalPrompt,
-        normalizedPrompt,
+    originalPrompt,
+    normalizedPrompt,
 
-        platform:
-            context.platform ||
-            detectPlatform(normalizedPrompt) ||
-            "facebook",
+    platform:
+        context.platform ||
+        detectPlatform(
+            normalizedPrompt
+        ) ||
+        "facebook",
 
-        tone:
-            context.tone ||
-            "automatic",
+    tone:
+        context.tone ||
+        "automatic",
 
-        language:
-            context.language ||
-            "english",
+    language:
+        context.language ||
+        "english",
 
-        subject,
-        subjectType,
-        offer,
-        goal,
-        keywords,
+    subject,
+    subjectType,
+    toolIdentity,
+    offer,
+    goal,
+    keywords,
 
-        createdAt:
-            new Date().toISOString()
-    };
+    createdAt:
+        new Date().toISOString()
+};
+
 }
 
-/* =====================================================
-   3. SUBJECT INTELLIGENCE
-   ===================================================== */
-
-function detectSubject(prompt) {
-    const subjectPatterns = [
-        {
-            pattern:
-                /\bqr(?:\s+code)?\s+generator\b/i,
-            label:
-                "QR Code Generator"
-        },
-        {
-            pattern:
-                /\bbmi\s+calculator\b/i,
-            label:
-                "BMI Calculator"
-        },
-        {
-            pattern:
-                /\bscientific\s+calculator\b/i,
-            label:
-                "Scientific Calculator"
-        },
-        {
-            pattern:
-                /\bcompound\s+interest\s+calculator\b/i,
-            label:
-                "Compound Interest Calculator"
-        },
-        {
-            pattern:
-                /\bloan\s+(?:or\s+emi\s+)?calculator\b/i,
-            label:
-                "Loan Calculator"
-        },
-        {
-            pattern:
-                /\bcurrency\s+converter\b/i,
-            label:
-                "Currency Converter"
-        },
-        {
-            pattern:
-                /\bcoffee\s+shop\b/i,
-            label:
-                "Coffee Shop"
-        },
-        {
-            pattern:
-                /\brestaurant\b/i,
-            label:
-                "Restaurant"
-        },
-        {
-            pattern:
-                /\bwebsite\b/i,
-            label:
-                "Website"
-        }
-    ];
-
-    const match =
-        subjectPatterns.find(item => {
-            return item.pattern.test(prompt);
-        });
-
-    return match
-        ? match.label
-        : detectGenericSubject(prompt);
-}
-
-
-function detectGenericSubject(prompt) {
-    const patterns = [
-        /\bpromote\s+(?:my|our|the)\s+([^,.]+)/i,
-        /\bfor\s+(?:my|our|the)\s+([^,.]+)/i,
-        /\bcreate\s+(?:a|an)\s+[^,.]*?\s+for\s+([^,.]+)/i
-    ];
-
-    for (const pattern of patterns) {
-        const match =
-            prompt.match(pattern);
-
-        if (
-            match &&
-            match[1]
-        ) {
-            return titleCase(
-                cleanSubject(match[1])
-            );
-        }
-    }
-
-    return "General Promotion";
-}
-
-
-function cleanSubject(value) {
-    return String(value || "")
-        .replace(
-            /\b(?:tool|website|page|business|product)\b$/i,
-            ""
-        )
-        .replace(
-            /\b(?:that|which|with|and|it is|it's)\b.*$/i,
-            ""
-        )
-        .trim();
-}
-
-
-function detectSubjectType(
-    prompt,
-    subject
-) {
-    if (
-        /\bcalculator\b/i.test(subject) ||
-        /\bconverter\b/i.test(subject) ||
-        /\bgenerator\b/i.test(subject) ||
-        /\btool\b/i.test(prompt)
-    ) {
-        return "digital-tool";
-    }
-
-    if (
-        /\bcoffee shop\b/i.test(subject) ||
-        /\brestaurant\b/i.test(subject) ||
-        /\bbakery\b/i.test(subject)
-    ) {
-        return "local-business";
-    }
-
-    if (
-        /\bproduct\b/i.test(prompt) ||
-        /\bshop\b/i.test(prompt)
-    ) {
-        return "product";
-    }
-
-    if (
-        /\bwebsite\b/i.test(subject)
-    ) {
-        return "website";
-    }
-
-    return "general";
-}
     /* =====================================================
        2. TEXT HELPERS
        ===================================================== */
@@ -384,7 +248,266 @@ function detectSubjectType(
 }
 
 /* =====================================================
-   4. INTENT INTELLIGENCE
+   4. TOOL IDENTITY INTELLIGENCE
+   ===================================================== */
+
+function detectToolIdentity(
+    prompt,
+    subject
+) {
+    const combinedText =
+        `${normalizeText(subject)} ${prompt}`;
+
+    const profiles = [
+        {
+            id:
+                "currency-converter",
+
+            pattern:
+                /\bcurrency\s+converter\b|\bexchange\s+rates?\b|\bforex\b/i,
+
+            industry:
+                "finance",
+
+            category:
+                "currency-exchange",
+
+            hero:
+                "currency-exchange",
+
+            visualKeywords: [
+                "currency symbols",
+                "exchange arrows",
+                "globe",
+                "live rates",
+                "financial chart"
+            ],
+
+            benefitIdeas: [
+                "Live Exchange Rates",
+                "190+ Currencies",
+                "Instant Conversion"
+            ],
+
+            cta:
+                "Convert Now"
+        },
+
+        {
+            id:
+                "qr-code-generator",
+
+            pattern:
+                /\bqr(?:\s+code)?\s+generator\b|\bqr\s+code\b/i,
+
+            industry:
+                "technology",
+
+            category:
+                "qr-generation",
+
+            hero:
+                "qr-code",
+
+            visualKeywords: [
+                "QR code",
+                "smartphone scan",
+                "digital grid",
+                "download icon"
+            ],
+
+            benefitIdeas: [
+                "Generate Instantly",
+                "Download Free",
+                "Easy to Scan"
+            ],
+
+            cta:
+                "Create QR Code"
+        },
+
+        {
+            id:
+                "bmi-calculator",
+
+            pattern:
+                /\bbmi\s+calculator\b|\bbody\s+mass\s+index\b/i,
+
+            industry:
+                "health",
+
+            category:
+                "health-calculator",
+
+            hero:
+                "health-metrics",
+
+            visualKeywords: [
+                "healthy body",
+                "BMI scale",
+                "heartbeat",
+                "health metrics"
+            ],
+
+            benefitIdeas: [
+                "Check Your BMI",
+                "Understand Your Range",
+                "Instant Health Result"
+            ],
+
+            cta:
+                "Calculate BMI"
+        },
+
+        {
+            id:
+                "loan-calculator",
+
+            pattern:
+                /\bloan\s+(?:or\s+emi\s+)?calculator\b|\bmonthly\s+payment\b/i,
+
+            industry:
+                "finance",
+
+            category:
+                "lending",
+
+            hero:
+                "loan-finance",
+
+            visualKeywords: [
+                "loan document",
+                "monthly payment",
+                "money",
+                "finance chart"
+            ],
+
+            benefitIdeas: [
+                "Estimate Monthly Payments",
+                "See Total Interest",
+                "Plan Your Loan"
+            ],
+
+            cta:
+                "Calculate Loan"
+        },
+
+        {
+            id:
+                "compound-interest-calculator",
+
+            pattern:
+                /\bcompound\s+interest\s+calculator\b|\bcompound\s+growth\b/i,
+
+            industry:
+                "finance",
+
+            category:
+                "investment-growth",
+
+            hero:
+                "compound-growth",
+
+            visualKeywords: [
+                "growth chart",
+                "investment",
+                "coins",
+                "upward arrow"
+            ],
+
+            benefitIdeas: [
+                "Project Future Value",
+                "Track Contributions",
+                "Estimate Growth"
+            ],
+
+            cta:
+                "Calculate Growth"
+        },
+
+        {
+            id:
+                "scientific-calculator",
+
+            pattern:
+                /\bscientific\s+calculator\b/i,
+
+            industry:
+                "education",
+
+            category:
+                "mathematics",
+
+            hero:
+                "scientific-math",
+
+            visualKeywords: [
+                "mathematical symbols",
+                "formula",
+                "calculator",
+                "science grid"
+            ],
+
+            benefitIdeas: [
+                "Advanced Calculations",
+                "Scientific Functions",
+                "Fast Accurate Results"
+            ],
+
+            cta:
+                "Calculate Now"
+        }
+    ];
+
+    const match =
+        profiles.find(profile => {
+            return profile.pattern.test(
+                combinedText
+            );
+        });
+
+    if (match) {
+        return {
+            ...match,
+            confidence: 1
+        };
+    }
+
+    return {
+        id:
+            "general-digital-tool",
+
+        industry:
+            "technology",
+
+        category:
+            "digital-tool",
+
+        hero:
+            "digital-tool",
+
+        visualKeywords: [
+            "modern interface",
+            "digital utility",
+            "simple workflow"
+        ],
+
+        benefitIdeas: [
+            "Fast Results",
+            "Easy to Use",
+            "Available Online"
+        ],
+
+        cta:
+            "Try It Now",
+
+        confidence:
+            0.35
+    };
+}
+
+/* =====================================================
+   5. INTENT INTELLIGENCE
    ===================================================== */
 
 function detectOffer(prompt) {
@@ -503,7 +626,7 @@ function detectPlatform(prompt) {
 }
 
 /* =====================================================
-   5. KEYWORD INTELLIGENCE
+   6. KEYWORD INTELLIGENCE
    ===================================================== */
 
 function extractKeywords(
@@ -577,7 +700,7 @@ function titleCase(value) {
 }
 
     /* =====================================================
-       6. PUBLIC API
+       7. PUBLIC API
        ===================================================== */
 
     return {

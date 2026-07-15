@@ -228,7 +228,155 @@ Rendering Layers
         context
     );
 
+    applyPlatformFormat(
+        canvas,
+        context
+    );
+
     return canvas;
+}
+
+/* =====================================================
+   PLATFORM CANVAS FORMAT
+   ===================================================== */
+
+function applyPlatformFormat(
+    canvas,
+    context
+) {
+    const rawPlatform =
+        context.platform?.id ||
+        context.platform ||
+        context.layout?.platform ||
+        "facebook";
+
+    const platform =
+        String(rawPlatform)
+            .trim()
+            .toLowerCase();
+
+    const formats = {
+        pinterest: {
+            width: 1000,
+            height: 1500,
+            className:
+                "phoenix-format-portrait"
+        },
+
+        "pinterest-pin": {
+            width: 1000,
+            height: 1500,
+            className:
+                "phoenix-format-portrait"
+        },
+
+        instagram: {
+            width: 1080,
+            height: 1080,
+            className:
+                "phoenix-format-square"
+        },
+
+        "instagram-post": {
+            width: 1080,
+            height: 1080,
+            className:
+                "phoenix-format-square"
+        },
+
+        "instagram-portrait": {
+            width: 1080,
+            height: 1350,
+            className:
+                "phoenix-format-portrait"
+        },
+
+        "instagram-story": {
+            width: 1080,
+            height: 1920,
+            className:
+                "phoenix-format-story"
+        },
+
+        story: {
+            width: 1080,
+            height: 1920,
+            className:
+                "phoenix-format-story"
+        },
+
+        facebook: {
+            width: 1200,
+            height: 630,
+            className:
+                "phoenix-format-landscape"
+        },
+
+        "facebook-post": {
+            width: 1200,
+            height: 630,
+            className:
+                "phoenix-format-landscape"
+        },
+
+        linkedin: {
+            width: 1200,
+            height: 627,
+            className:
+                "phoenix-format-landscape"
+        },
+
+        x: {
+            width: 1600,
+            height: 900,
+            className:
+                "phoenix-format-landscape"
+        },
+
+        twitter: {
+            width: 1600,
+            height: 900,
+            className:
+                "phoenix-format-landscape"
+        }
+    };
+
+    const format =
+        formats[platform] ||
+        formats.facebook;
+
+    canvas.classList.remove(
+        "phoenix-format-landscape",
+        "phoenix-format-square",
+        "phoenix-format-portrait",
+        "phoenix-format-story"
+    );
+
+    canvas.classList.add(
+        format.className
+    );
+
+    canvas.dataset.platform =
+        platform;
+
+    canvas.dataset.exportWidth =
+        String(format.width);
+
+    canvas.dataset.exportHeight =
+        String(format.height);
+
+    canvas.style.aspectRatio =
+        `${format.width} / ${format.height}`;
+
+    canvas.style.setProperty(
+        "--phoenix-export-width",
+        format.width
+    );
+
+    canvas.style.setProperty(
+        "--phoenix-export-height",
+        format.height
+    );
 }
 
 function applyCanvasVariables(
@@ -333,7 +481,6 @@ function applyCanvasVariables(
         zones.cta ?? 8
     );
 }
-
 
     /* =====================================================
        4. BACKGROUND LAYER
@@ -698,7 +845,6 @@ function renderSupportingLayer(
         return layer;
     }
 
-
     /* =====================================================
        10. LAYER HELPERS
        ===================================================== */
@@ -733,33 +879,37 @@ function resolveBackgroundIntensity(
 }
 
     function appendLayers(
-        canvas,
-        layers
-    ) {
-        [
-    layers.background,
-    layers.decorations,
-    layers.hero,
-    layers.supporting,
-    layers.content,
-    layers.cta,
-    layers.branding
-]
-.forEach(layer => {
-    canvas.appendChild(layer);
-            
-        });
-    }
-
+    canvas,
+    layers
+) {
+    [
+        layers.background,
+        layers.decorations,
+        layers.branding,
+        layers.content,
+        layers.hero,
+        layers.supporting,
+        layers.cta
+    ]
+    .forEach(layer => {
+        canvas.appendChild(
+            layer
+        );
+    });
+}
 
     function mountCanvas({
-        targetElement,
+    targetElement,
+    canvas
+}) {
+    targetElement.classList.add(
+        "uses-phoenix-renderer"
+    );
+
+    targetElement.replaceChildren(
         canvas
-    }) {
-        targetElement.replaceChildren(
-            canvas
-        );
-    }
+    );
+}
 
 
     /* =====================================================

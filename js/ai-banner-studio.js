@@ -69,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const toneSelect =
         document.getElementById("toneSelect");
 
+    const colorPreferenceSelect =
+        document.getElementById("colorPreferenceSelect");    
+
     const languageSelect =
         document.getElementById("languageSelect");
 
@@ -1241,6 +1244,11 @@ const industryId =
         closeFineTunePanel();
 
         try {
+            
+            const colorPreference =
+    colorPreferenceSelect?.value ||
+    "auto";
+
             const request =
                 ToolXoneAI.createRequest({
                     studio:
@@ -1335,7 +1343,9 @@ const phoenixAnalysis =
                 request.tone,
 
             language:
-                request.language
+                request.language,
+
+            colorPreference
         }
     );
 
@@ -1378,14 +1388,11 @@ const compositionDNA =
 
         const colorDNA =
     ToolXoneColorIntelligence
-        .createColorDNA(
-            phoenixAnalysis
-        );
+        .createColorDNA({
+            ...phoenixAnalysis,
 
-        console.log(
-    "🎨 Phoenix Color DNA:",
-    colorDNA
-);
+            colorPreference
+        });
 
         const assetDNA =
     ToolXoneAssetEngine.createAssetsFromDNA(

@@ -2506,3 +2506,11 @@ opacity:.72;
     font-weight:700;
     letter-spacing:.04em;
 }
+
+#bannerPromptInput {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    box-sizing: border-box;
+    resize: vertical;
+}

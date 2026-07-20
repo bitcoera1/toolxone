@@ -1220,24 +1220,32 @@ if (brandingRect) {
         "pinterest";
 
     const palette = {
-        ...(designDNA.palette || {}),
+    ...(designDNA.palette || {}),
 
-        background:
-            colorDNA?.background ??
-            designDNA.palette?.background,
+    background:
+        colorDNA?.background ??
+        designDNA.palette?.background,
 
-        primary:
-            colorDNA?.primary ??
-            designDNA.palette?.primary,
+    primary:
+        colorDNA?.primary ??
+        designDNA.palette?.primary,
 
-        secondary:
-            colorDNA?.secondary ??
-            designDNA.palette?.secondary,
+    secondary:
+        colorDNA?.secondary ??
+        designDNA.palette?.secondary,
 
-        accent:
-            colorDNA?.accent ??
-            designDNA.palette?.accent
-    };
+    accent:
+        colorDNA?.accent ??
+        designDNA.palette?.accent,
+
+    surface:
+        colorDNA?.surface ??
+        designDNA.palette?.surface,
+
+    text:
+        colorDNA?.text ??
+        designDNA.palette?.text
+};
 
     const renderContext =
         createRenderContext({
@@ -2113,21 +2121,35 @@ function applyComposition(
     const gradient =
         background.gradient || {};
 
-    const gradientColors =
-        Array.isArray(
-            gradient.colors
-        )
-            ? gradient.colors
-            : [
-                palette.background ||
-                "#020617",
+    const hasIntelligentPalette =
+    Boolean(
+        context.colorDNA
+            ?.personalityId
+    );
 
-                palette.primary ||
-                "#0f172a",
+const paletteGradientColors = [
+    palette.background ||
+        "#020617",
 
-                palette.secondary ||
-                "#2563eb"
-            ];
+    palette.primary ||
+        "#0f172a",
+
+    palette.secondary ||
+        "#2563eb"
+];
+
+const designGradientColors =
+    Array.isArray(
+        gradient.colors
+    ) &&
+    gradient.colors.length >= 2
+        ? gradient.colors
+        : paletteGradientColors;
+
+const gradientColors =
+    hasIntelligentPalette
+        ? paletteGradientColors
+        : designGradientColors;
 
     const angle =
         Number(
@@ -2141,11 +2163,21 @@ function applyComposition(
         )`;
 
     layer.style.setProperty(
-        "--phoenix-focal-color",
-        background.focalLight?.color ||
-        palette.accent ||
-        "#22d3ee"
-    );
+    "--phoenix-focal-color",
+
+    hasIntelligentPalette
+        ? (
+            palette.accent ||
+            palette.secondary ||
+            "#22d3ee"
+        )
+        : (
+            background.focalLight
+                ?.color ||
+            palette.accent ||
+            "#22d3ee"
+        )
+);
 
     layer.style.setProperty(
         "--phoenix-overlay-opacity",

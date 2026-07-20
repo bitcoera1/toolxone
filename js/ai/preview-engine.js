@@ -165,13 +165,164 @@
        ===================================================== */
 
     async function renderPreview({
-        brief,
-        design,
-        assets,
-        content = {},
-        animate = true
-    } = {}) {
+    brief,
+    design,
+    assets,
+    content = {},
+
+    analysis = null,
+
+    designDNA = null,
+
+    copyDNA = null,
+
+    compositionDNA = null,
+
+    typographyDNA = null,
+
+    colorDNA = null,
+
+    assetDNA = null,
+
+    renderOptions = {},
+
+    animate = true
+
+  } = {}) {
         ensureInitialized();
+
+        /* =====================================================
+   PHOENIX RENDER ENGINE PATHWAY
+   ===================================================== */
+
+if (
+    designDNA &&
+    copyDNA &&
+    window.ToolXoneRenderEngine
+        ?.renderDesign
+) {
+    if (animate) {
+        await playGenerationSequence({
+            brief:
+                analysis ||
+                brief ||
+                {},
+
+            design:
+                designDNA,
+
+            assets:
+                assetDNA ||
+                assets ||
+                {}
+        });
+    }
+
+    state.root.classList.add(
+        "uses-phoenix-renderer"
+    );
+
+    const renderResult =
+        window.ToolXoneRenderEngine
+            .renderDesign({
+                target:
+                    state.root,
+
+                designDNA,
+
+                copyDNA,
+
+                compositionDNA,
+
+                typographyDNA,
+
+                colorDNA,
+
+                assetDNA:
+                    assetDNA ||
+                    null,
+
+                options: {
+                    brandName:
+                        "ToolXone",
+
+                    website:
+                        "www.toolxone.com",
+
+                    ...renderOptions
+                }
+            });
+
+    const result = {
+        engine:
+            "phoenix-render-engine",
+
+        analysis:
+            clone(
+                analysis ||
+                brief ||
+                {}
+            ),
+
+        designDNA:
+            clone(
+                designDNA
+            ),
+
+        copyDNA:
+            clone(
+                copyDNA
+            ),
+
+        compositionDNA:
+            clone(
+                compositionDNA ||
+                {}
+          ),
+
+        typographyDNA:
+            clone(
+                typographyDNA ||
+                {}
+          ),
+
+        colorDNA:
+            clone(
+                colorDNA ||
+                {}
+          ),  
+
+        assetDNA:
+            clone(
+                assetDNA ||
+                {}
+            ),
+
+        canvas:
+            renderResult.canvas,
+
+        layers:
+            renderResult.layers,
+
+        renderedAt:
+            new Date().toISOString()
+    };
+
+    window.ToolXoneAI.emit(
+        "preview:rendered",
+        {
+            preview: {
+                engine:
+                    result.engine,
+
+                renderedAt:
+                    result.renderedAt
+            }
+        }
+    );
+
+    return result;
+}
 
         validatePreviewInput(
             brief,

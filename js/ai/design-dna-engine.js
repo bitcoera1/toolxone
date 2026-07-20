@@ -28,24 +28,117 @@ It decides HOW a design should look.
 ==========================================================
 */
 
-(function () {
-    "use strict";
+window.ToolXoneDesignDNAEngine = (function () {
+
+"use strict";
 
 
-    /* =====================================================
-       CREATE DESIGN DNA
-       ===================================================== */
+ /* =====================================================
+   CREATE DESIGN DNA
+   ===================================================== */
 
-    function createDesignDNA(analysis) {
+function createDesignDNA(
+    analysis
+) {
     if (!analysis) {
         return null;
     }
 
+    const toolProfile =
+        analysis.toolProfile ||
+        null;
+
+    const toolIdentity =
+        analysis.toolIdentity ||
+        null;
+
+    const audience =
+        Array.isArray(
+            analysis.audience
+        )
+            ? analysis.audience
+            : [];
+
+    const context = {
+        subject:
+            analysis.subject ||
+            toolProfile?.name ||
+            "General Promotion",
+
+        toolId:
+            toolProfile?.id ||
+            toolIdentity?.id ||
+            null,
+
+        category:
+            toolProfile?.category ||
+            toolIdentity?.industry ||
+            "General",
+
+        type:
+            toolProfile?.type ||
+            analysis.subjectType ||
+            "general",
+
+        purpose:
+            toolProfile?.purpose ||
+            "",
+
+        benefits:
+            Array.isArray(
+                toolProfile?.benefits
+            )
+                ? [
+                    ...toolProfile.benefits
+                ]
+                : [],
+
+        audience:
+            audience.map(item => ({
+                id:
+                    item.id ||
+                    "general",
+
+                label:
+                    item.label ||
+                    "General Audience"
+            })),
+
+        emotions:
+            Array.isArray(
+                toolProfile?.emotions
+            )
+                ? [
+                    ...toolProfile.emotions
+                ]
+                : [],
+
+        recommendedCTA:
+            toolProfile?.cta ||
+            "Try It Now",
+
+        platform:
+            analysis.platform ||
+            "facebook",
+
+        goal:
+            analysis.goal ||
+            "promotion",
+
+        tone:
+            analysis.tone ||
+            "automatic"
+    };
+
     const palette =
-        createPaletteDNA(analysis);
+        createPaletteDNA(
+            analysis
+        );
 
     const mood =
-        createMoodDNA(analysis);
+        createMoodDNA(
+            analysis
+        );
 
     const style =
         createStyleDNA(
@@ -79,36 +172,28 @@ It decides HOW a design should look.
             background
         );
 
-        const layout =
-    createLayoutDNA(
-        analysis,
-        palette,
-        mood,
-        style,
-        hero,
-        background,
-        decorations
-    );
+    const layout =
+        createLayoutDNA(
+            analysis,
+            palette,
+            mood,
+            style,
+            hero,
+            background,
+            decorations
+        );
 
     return {
-
-    palette,
-
-    background,
-
-    hero,
-
-    decorations,
-
-    layout,
-
-    mood,
-
-    style
-
-};
+        context,
+        palette,
+        background,
+        hero,
+        decorations,
+        layout,
+        mood,
+        style
+    };
 }
-
 
     /* =====================================================
        1. PALETTE INTELLIGENCE
@@ -116,55 +201,165 @@ It decides HOW a design should look.
 
     function createPaletteDNA(analysis) {
         const subject =
-            String(
-                analysis.subject || ""
-            ).toLowerCase();
+    String(
+        analysis.subject || ""
+    ).toLowerCase();
 
-        const subjectType =
-            String(
-                analysis.subjectType || ""
-            ).toLowerCase();
+const subjectType =
+    String(
+        analysis.subjectType || ""
+    ).toLowerCase();
 
-        const keywords =
-            Array.isArray(analysis.keywords)
-                ? analysis.keywords
-                : [];
+const toolProfile =
+    analysis.toolProfile ||
+    null;
 
-        const keywordText =
-            keywords.join(" ").toLowerCase();
+const toolIdentity =
+    analysis.toolIdentity ||
+    null;
 
-        const tone =
-            String(
-                analysis.tone || "automatic"
-            ).toLowerCase();
+const keywords =
+    Array.isArray(
+        analysis.keywords
+    )
+        ? analysis.keywords
+        : [];
 
-        const signals =
-            `${subject} ${subjectType} ${keywordText}`;
+const keywordText =
+    keywords
+        .join(" ")
+        .toLowerCase();
 
+const audience =
+    Array.isArray(
+        analysis.audience
+    )
+        ? analysis.audience
+        : [];
 
-        if (
-            /\bhealth\b|\bbmi\b|\bfitness\b|\bmedical\b|\bwellness\b/.test(
+const audienceText =
+    audience
+        .map(item =>
+            item?.label ||
+            item?.id ||
+            ""
+        )
+        .join(" ")
+        .toLowerCase();
+
+const profileText = [
+    toolProfile?.category,
+    toolProfile?.type,
+    toolProfile?.purpose,
+    ...(Array.isArray(toolProfile?.benefits)
+        ? toolProfile.benefits
+        : []),
+    ...(Array.isArray(toolProfile?.emotions)
+        ? toolProfile.emotions
+        : [])
+]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+const identityText = [
+    toolIdentity?.id,
+    toolIdentity?.industry,
+    toolIdentity?.category,
+    toolIdentity?.hero,
+    ...(Array.isArray(toolIdentity?.visualKeywords)
+        ? toolIdentity.visualKeywords
+        : [])
+]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+const tone =
+    String(
+        analysis.tone ||
+        "automatic"
+    ).toLowerCase();
+
+const signals = [
+
+    subject,
+    subjectType,
+
+    keywordText,
+
+    audienceText,
+
+    profileText,
+
+    identityText,
+
+    tone
+
+]
+
+    .filter(Boolean)
+    .join(" ");
+
+    if (
+            tone === "luxury" ||
+            /\bluxury\b|\bpremium\b|\belegant\b/.test(
                 signals
             )
         ) {
             return {
-                id: "health-trust",
+                id: "premium-luxury",
 
-                primary: "#047857",
-                secondary: "#10b981",
-                accent: "#38bdf8",
-                background: "#ecfdf5",
-                surface: "#ffffff",
-                text: "#064e3b",
+                primary: "#111827",
+                secondary: "#374151",
+                accent: "#d4af37",
+                background: "#030712",
+                surface: "#111827",
+                text: "#f9fafb",
 
                 personality: [
-                    "healthy",
-                    "trustworthy",
-                    "clean"
+                    "premium",
+                    "elegant",
+                    "exclusive"
                 ]
             };
         }
 
+        if (
+    /\bfinance\b|\bloan\b|\bmortgage\b|\binvestment\b|\binterest\b|\bcurrency\b|\bforex\b|\bexchange\b/.test(
+        signals
+    )
+) {
+    return {
+        id:
+            "financial-confidence",
+
+        primary:
+            "#0f172a",
+
+        secondary:
+            "#10b981",
+
+        accent:
+            "#22d3ee",
+
+        background:
+            "#020617",
+
+        surface:
+            "#111827",
+
+        text:
+            "#f8fafc",
+
+        personality: [
+            "trustworthy",
+            "professional",
+            "confident",
+            "fast"
+        ]
+    };
+}
 
         if (
             /\bqr\b|\bdigital\b|\btechnology\b|\bsoftware\b|\bcode\b|\bscan\b/.test(
@@ -189,31 +384,6 @@ It decides HOW a design should look.
             };
         }
 
-
-        if (
-            /\bfinance\b|\bloan\b|\bmortgage\b|\binvestment\b|\binterest\b|\bcurrency\b/.test(
-                signals
-            )
-        ) {
-            return {
-                id: "financial-confidence",
-
-                primary: "#0f766e",
-                secondary: "#14b8a6",
-                accent: "#f59e0b",
-                background: "#f0fdfa",
-                surface: "#ffffff",
-                text: "#134e4a",
-
-                personality: [
-                    "stable",
-                    "professional",
-                    "confident"
-                ]
-            };
-        }
-
-
         if (
             /\bcoffee\b|\bbakery\b|\brestaurant\b|\bfood\b/.test(
                 signals
@@ -237,33 +407,7 @@ It decides HOW a design should look.
             };
         }
 
-
-        if (
-            tone === "luxury" ||
-            /\bluxury\b|\bpremium\b|\belegant\b/.test(
-                signals
-            )
-        ) {
             return {
-                id: "premium-luxury",
-
-                primary: "#111827",
-                secondary: "#374151",
-                accent: "#d4af37",
-                background: "#030712",
-                surface: "#111827",
-                text: "#f9fafb",
-
-                personality: [
-                    "premium",
-                    "elegant",
-                    "exclusive"
-                ]
-            };
-        }
-
-
-        return {
             id: "balanced-modern",
 
             primary: "#0f766e",
@@ -1600,10 +1744,6 @@ function createDecorationDNA(
 
 /* =====================================================
    7. LAYOUT INTELLIGENCE
-   ===================================================== */
-
-/* =====================================================
-   7. LAYOUT INTELLIGENCE
    Platform-aware composition decisions
    ===================================================== */
 
@@ -1625,6 +1765,25 @@ function createLayoutDNA(
         String(
             hero?.subject || ""
         ).toLowerCase();
+
+        const toolId =
+    String(
+        analysis.toolProfile?.id ||
+        analysis.toolIdentity?.id ||
+        ""
+    ).toLowerCase();
+
+const category =
+    String(
+        analysis.toolProfile?.category ||
+        analysis.toolIdentity?.industry ||
+        ""
+    ).toLowerCase();
+
+const subject =
+    String(
+        analysis.subject || ""
+    ).toLowerCase();
 
     const baseLayout = {
         platform,
@@ -1662,6 +1821,124 @@ function createLayoutDNA(
         ]
     };
 
+/* -----------------------------------------------------
+   INTELLIGENT LAYOUT FINALIZER
+   ----------------------------------------------------- */
+
+function finalizeLayout(
+    layout
+) {
+    const finalLayout = {
+        ...layout,
+
+        composition: {
+            heroScalePercent:
+                38,
+
+            contentWidthPercent:
+                56,
+
+            headlineMaxWidthPercent:
+                58,
+
+            heroPosition:
+                layout.heroZone ||
+                "center",
+
+            contentAlignment:
+                layout.alignment ||
+                "center",
+
+            ctaPosition:
+                layout.ctaZone ||
+                "bottom-center",
+
+            visualBalance:
+                "balanced",
+
+            heroOverlap:
+                false
+        }
+    };
+
+
+    /* Currency Converter intelligence */
+
+    if (
+        toolId ===
+            "currency-converter" ||
+        /\bcurrency\b|\bforex\b|\bexchange\b/.test(
+            `${subject} ${category}`
+        )
+    ) {
+        finalLayout.composition = {
+            ...finalLayout.composition,
+
+            visualBalance:
+                "fintech-hero",
+
+            headlineMaxWidthPercent:
+                platform === "pinterest"
+                    ? 82
+                    : 48,
+
+            contentWidthPercent:
+                platform === "pinterest"
+                    ? 88
+                    : 52,
+
+            heroScalePercent:
+                platform === "pinterest"
+                    ? 40
+                    : 44,
+
+            heroPosition:
+                platform === "pinterest"
+                    ? "center"
+                    : "right-center",
+
+            ctaPosition:
+                platform === "pinterest"
+                    ? "bottom-center"
+                    : "left-lower"
+        };
+    }
+
+
+    /* QR Generator intelligence */
+
+    if (
+        toolId ===
+            "qr-code-generator" ||
+        /\bqr\b/.test(
+            `${subject} ${heroSubject}`
+        )
+    ) {
+        finalLayout.composition = {
+            ...finalLayout.composition,
+
+            visualBalance:
+                "qr-focus",
+
+            heroScalePercent:
+                platform === "pinterest"
+                    ? 48
+                    : 42,
+
+            headlineMaxWidthPercent:
+                72,
+
+            heroPosition:
+                "center",
+
+            heroOverlap:
+                false
+        };
+    }
+
+
+    return finalLayout;
+}
 
     /* -----------------------------------------------------
        PINTEREST
@@ -1671,7 +1948,7 @@ function createLayoutDNA(
         platform === "pinterest" ||
         platform === "pinterest-pin"
     ) {
-        return {
+        return finalizeLayout({
             ...baseLayout,
 
             id:
@@ -1728,7 +2005,7 @@ function createLayoutDNA(
                 "cta",
                 "website"
             ]
-        };
+        });
     }
 
 
@@ -1870,7 +2147,7 @@ function createLayoutDNA(
         platform === "facebook-post" ||
         platform === "facebook-banner"
     ) {
-        return {
+        return finalizeLayout({
             ...baseLayout,
 
             id: "facebook-horizontal-split",
@@ -1927,7 +2204,7 @@ function createLayoutDNA(
                 "cta",
                 "hero"
             ]
-        };
+        });
     }
 
 
@@ -2290,8 +2567,8 @@ function createLayoutDNA(
        PUBLIC API
        ===================================================== */
 
-    window.ToolXoneDesignDNA = {
-        createDesignDNA
-    };
+    return Object.freeze({
+    createDesignDNA
+});
 
 })();

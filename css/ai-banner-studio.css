@@ -1803,9 +1803,9 @@ body[data-theme="dark"] .download-panel {
     display:grid;
 
     grid-template-columns:
-        var(--phoenix-safe-left)
-        minmax(0, 1fr)
-        var(--phoenix-safe-right);
+    var(--phoenix-safe-left)
+    repeat(10, minmax(0, 1fr))
+    var(--phoenix-safe-right);
 
     grid-template-rows:
         minmax(12px, 5fr)
@@ -1834,19 +1834,28 @@ background:var(--phoenix-background);
    ===================================================== */
 
 .phoenix-render-canvas.phoenix-format-landscape{
-    aspect-ratio:1200 / 630;
+    aspect-ratio: 1200 / 630;
 }
 
 .phoenix-render-canvas.phoenix-format-square{
-    aspect-ratio:1 / 1;
+    aspect-ratio: 1 / 1;
 }
 
 .phoenix-render-canvas.phoenix-format-portrait{
-    aspect-ratio:2 / 3;
+    aspect-ratio: 2 / 3;
+
+    grid-template-rows:
+        minmax(12px, 5fr)
+        minmax(24px, 8fr)
+        minmax(0, 20fr)
+        minmax(0, 22fr)
+        minmax(0, 28fr)
+        minmax(42px, 10fr)
+        minmax(12px, 7fr);
 }
 
 .phoenix-render-canvas.phoenix-format-story{
-    aspect-ratio:9 / 16;
+    aspect-ratio: 9 / 16;
 }
 
 /* =====================================================
@@ -1929,24 +1938,51 @@ background:var(--phoenix-background);
     pointer-events: none;
 }
 
-
 /* =====================================================
    INTELLIGENT CONTENT ZONES
    ===================================================== */
 
-.phoenix-layer-content{
-    grid-column:2;
-    grid-row:3;
+.phoenix-layer-content {
+    grid-column: 2;
+    grid-row: 2 / 6;
 
-    z-index:4;
+    z-index: 4;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:flex-start;
+    display: flex;
+    flex-direction: column;
 
-    min-width:0;
-    min-height:0;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding:
+        clamp(14px, 2.2vw, 28px)
+        clamp(16px, 2.5vw, 32px);
+
+    box-sizing: border-box;
+
+    overflow: visible;
+}
+
+.phoenix-layer-content > * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.phoenix-layer-content h1,
+.phoenix-layer-content h2,
+.phoenix-layer-content h3 {
+    max-width: 100%;
+    margin-top: 0;
+
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: none;
 }
 
 .phoenix-layer-hero {
@@ -2000,21 +2036,17 @@ background:var(--phoenix-background);
    ===================================================== */
 
 .phoenix-layer-branding {
-    position: absolute;
-    inset: 0;
-
     z-index: 6;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: flex-start;
 
-    padding:
-        var(--phoenix-safe-top)
-        var(--phoenix-safe-right)
-        var(--phoenix-safe-bottom)
-        var(--phoenix-safe-left);
+    gap: 2px;
+
+    min-width: 0;
+    min-height: 0;
 
     pointer-events: none;
 }
@@ -2179,6 +2211,24 @@ background:var(--phoenix-background);
 
     font-weight:900;
 }
+
+/* =====================================================
+   PORTRAIT HERO SPACING
+   ===================================================== */
+
+.phoenix-format-portrait
+.phoenix-layer-hero{
+    padding-top:
+        clamp(
+            10px,
+            2vw,
+            22px
+        );
+
+    box-sizing:
+        border-box;
+}
+
 /* =====================================================
    PHOENIX CONTENT ZONE
    ===================================================== */
@@ -2202,7 +2252,8 @@ background:var(--phoenix-background);
 }
 
 .phoenix-render-headline{
-    max-width:14ch;
+    width:100%;
+    max-width:none;
     margin:0;
 
     color:
@@ -2210,86 +2261,137 @@ background:var(--phoenix-background);
 
     font-size:
         clamp(
-            2rem,
-            5vw,
-            4.6rem
+            1.35rem,
+            3.2vw,
+            3.2rem
         );
 
-    font-weight:900;
-    line-height:.98;
-    letter-spacing:-.045em;
+    font-weight:
+    var(
+        --phoenix-headline-weight,
+        900
+    );
 
-    text-wrap:balance;
+line-height:
+    var(
+        --phoenix-headline-line-height,
+        1.02
+    );
+
+letter-spacing:
+    var(
+        --phoenix-headline-letter-spacing,
+        -.035em
+    );
+
+    overflow-wrap:normal;
+word-break:keep-all;
+hyphens:none;
+text-wrap:balance;
+
 }
 
-.phoenix-render-support{
-    max-width:44rem;
-    margin:16px 0 0;
+.phoenix-render-headline-line{
+    display:block;
+    white-space:nowrap;
+}
 
-    color:var(--phoenix-text);
-    opacity:.78;
-
+.phoenix-format-landscape
+.phoenix-render-headline{
     font-size:
         clamp(
-            .95rem,
-            1.6vw,
-            1.2rem
+            1.25rem,
+            3vw,
+            3rem
         );
 
-    font-weight:500;
-    line-height:1.55;
-
-    text-wrap:balance;
+    line-height:1.1;
 }
 
-.phoenix-render-benefits{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 14px;
-
-    margin:18px 0 0;
-    padding:0;
-
-    list-style:none;
-}
-
-.phoenix-render-benefits li{
-    position:relative;
-
-    padding-left:18px;
-
-    color:
-        var(--phoenix-text);
-
+.phoenix-format-portrait
+.phoenix-render-headline{
     font-size:
         clamp(
-            .78rem,
-            1.25vw,
-            .95rem
+            1.35rem,
+            3.6vw,
+            3.4rem
         );
 
-    font-weight:700;
+    line-height:1.02;
 }
 
-.phoenix-render-benefits li::before{
-    content:"";
-
-    position:absolute;
-    left:0;
-    top:.48em;
-
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:
-        var(--phoenix-accent);
-
-    box-shadow:
-    0 0 14px
-    rgba(34,211,238,.45);
+.phoenix-format-square
+.phoenix-render-headline{
+    font-size:
+        clamp(
+            1.4rem,
+            3.5vw,
+            3.3rem
+        );
 }
+
+.phoenix-format-story
+.phoenix-render-headline{
+    font-size:
+        clamp(
+            1.35rem,
+            4vw,
+            3.5rem
+        );
+}
+
+/* =====================================================
+   TYPOGRAPHY SCALE EXECUTION
+===================================================== */
+
+.phoenix-render-canvas
+.phoenix-render-headline[
+    data-typography-scale="display"
+]{
+    font-size:
+        clamp(
+            1.8rem,
+            4vw,
+            4rem
+        );
+}
+
+.phoenix-render-canvas
+.phoenix-render-headline[
+    data-typography-scale="large"
+]{
+    font-size:
+        clamp(
+            1.5rem,
+            3.4vw,
+            3.3rem
+        );
+}
+
+.phoenix-render-canvas
+.phoenix-render-headline[
+    data-typography-scale="medium"
+]{
+    font-size:
+        clamp(
+            1.25rem,
+            2.8vw,
+            2.7rem
+        );
+}
+
+.phoenix-render-canvas
+.phoenix-render-headline[
+    data-typography-scale="compact"
+]{
+    font-size:
+        clamp(
+            1.05rem,
+            2.2vw,
+            2.1rem
+        );
+}
+
 /* =====================================================
    PHOENIX SUPPORTING ASSETS
    ===================================================== */
@@ -2328,6 +2430,7 @@ background:var(--phoenix-background);
     backdrop-filter:
         blur(10px);
 }
+
 /* =====================================================
    PHOENIX CTA ZONE
    ===================================================== */
@@ -2346,7 +2449,11 @@ background:var(--phoenix-background);
     background:
         var(--phoenix-accent);
 
-    color:#ffffff;
+    color:
+    var(
+        --phoenix-background,
+        #06111f
+    );
 
     font-size:
         clamp(

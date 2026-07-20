@@ -1340,34 +1340,77 @@ const phoenixAnalysis =
     );
 
 const designDNA =
-    ToolXoneDesignDNA.createDesignDNA(
-        phoenixAnalysis
-    );
+    ToolXoneDesignDNAEngine
+        .createDesignDNA(
+            phoenixAnalysis
+        );
 
 const copyDNA =
-    ToolXoneCopyIntelligence.createCopyDNA(
-        phoenixAnalysis,
-        designDNA
-    );
+    ToolXoneCopyIntelligence
+        .createCopyDNA(
+            phoenixAnalysis,
+            designDNA
+        );
 
-const assetDNA =
+const compositionDNA =
+    ToolXoneCompositionEngine
+        .createCompositionDNA({
+            analysis:
+                phoenixAnalysis,
+
+            designDNA,
+
+            copyDNA
+        });
+
+        const typographyDNA =
+    ToolXoneTypographyEngine
+        .createTypographyDNA({
+            analysis:
+                phoenixAnalysis,
+
+            designDNA,
+
+            copyDNA,
+
+            compositionDNA
+        });
+
+        const colorDNA =
+    ToolXoneColorIntelligence
+        .createColorDNA(
+            phoenixAnalysis
+        );
+
+        console.log(
+    "🎨 Phoenix Color DNA:",
+    colorDNA
+);
+
+        const assetDNA =
     ToolXoneAssetEngine.createAssetsFromDNA(
         phoenixAnalysis,
         designDNA
     );
 
 const phoenixRenderResult =
-    ToolXoneRenderEngine.renderDesign({
-        target:
-            "#bannerCanvas",
+    await ToolXonePreviewEngine.renderPreview({
+        analysis:
+            phoenixAnalysis,
 
         designDNA,
 
         copyDNA,
 
+        compositionDNA,
+
+        typographyDNA,
+
+        colorDNA,
+
         assetDNA,
 
-        options: {
+        renderOptions: {
             brandName:
                 content.brandName ||
                 "ToolXone",
@@ -1375,7 +1418,10 @@ const phoenixRenderResult =
             website:
                 content.website ||
                 "www.toolxone.com"
-        }
+        },
+
+        animate:
+            true
     });
 
 state.currentPhoenixAnalysis =
@@ -1386,6 +1432,15 @@ state.currentDesignDNA =
 
 state.currentCopyDNA =
     copyDNA;
+
+state.currentCompositionDNA =
+    compositionDNA;
+
+state.currentTypographyDNA =
+    typographyDNA;
+
+state.currentColorDNA =
+    colorDNA;
 
 state.currentAssetDNA =
     assetDNA;

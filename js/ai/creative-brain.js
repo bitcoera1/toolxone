@@ -12,7 +12,8 @@ It only produces structured creative decisions.
 ==========================================================
 */
 
-window.ToolXoneCreativeBrain = (function () {
+window.ToolXoneCreativeBrain = (
+  function () {
     "use strict";
 
 
@@ -20,35 +21,63 @@ window.ToolXoneCreativeBrain = (function () {
    1. ANALYZE USER PROMPT
    ===================================================== */
 
-function analyzePrompt(prompt, context = {}) {
+function analyzePrompt(
+    prompt,
+    context = {}
+) {
     const originalPrompt =
-        String(prompt || "").trim();
+        String(
+            prompt || ""
+        ).trim();
 
     const normalizedPrompt =
-        normalizeText(originalPrompt);
+        normalizeText(
+            originalPrompt
+        );
 
     const subject =
-        detectSubject(normalizedPrompt);
+        detectSubject(
+            normalizedPrompt
+        );
 
     const subjectType =
-    detectSubjectType(
-        normalizedPrompt,
-        subject
-    );
+        detectSubjectType(
+            normalizedPrompt,
+            subject
+        );
 
-const toolIdentity =
-    detectToolIdentity(
-        normalizedPrompt,
-        subject
-    );
+    const toolIdentity =
+        detectToolIdentity(
+            normalizedPrompt,
+            subject
+        );
 
-const offer =
-    detectOffer(
-        normalizedPrompt
-    );
+    const toolProfile =
+        window.ToolXoneToolIntelligence
+            ?.getToolProfile(
+                toolIdentity.id
+            ) || null;
+
+    const audience =
+        window.ToolXoneAudienceIntelligence
+            ?.detectAudience(
+                normalizedPrompt
+            ) || [
+                {
+                    id: "general",
+                    label: "General Audience"
+                }
+            ];
+
+    const offer =
+        detectOffer(
+            normalizedPrompt
+        );
 
     const goal =
-        detectGoal(normalizedPrompt);
+        detectGoal(
+            normalizedPrompt
+        );
 
     const keywords =
         extractKeywords(
@@ -57,35 +86,36 @@ const offer =
         );
 
     return {
-    originalPrompt,
-    normalizedPrompt,
+        originalPrompt,
+        normalizedPrompt,
 
-    platform:
-        context.platform ||
-        detectPlatform(
-            normalizedPrompt
-        ) ||
-        "facebook",
+        platform:
+            context.platform ||
+            detectPlatform(
+                normalizedPrompt
+            ) ||
+            "facebook",
 
-    tone:
-        context.tone ||
-        "automatic",
+        tone:
+            context.tone ||
+            "automatic",
 
-    language:
-        context.language ||
-        "english",
+        language:
+            context.language ||
+            "english",
 
-    subject,
-    subjectType,
-    toolIdentity,
-    offer,
-    goal,
-    keywords,
+        subject,
+        subjectType,
+        toolIdentity,
+        toolProfile,
+        audience,
+        offer,
+        goal,
+        keywords,
 
-    createdAt:
-        new Date().toISOString()
-};
-
+        createdAt:
+            new Date().toISOString()
+    };
 }
 
     /* =====================================================

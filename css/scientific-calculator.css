@@ -46,32 +46,6 @@
     text-align:right;
 }
 
-.scientific-number-words{
-    width:100%;
-    box-sizing:border-box;
-
-    margin-top:-6px;
-    margin-bottom:16px;
-    padding:11px 14px;
-
-    background:#f0fdf4;
-    border:1px solid #bbf7d0;
-    border-radius:10px;
-
-    color:#14532d;
-    font-size:14px;
-    font-weight:600;
-    line-height:1.5;
-    text-align:center;
-
-    overflow-wrap:anywhere;
-}
-
-.scientific-number-words:empty,
-.scientific-number-words[hidden]{
-    display:none;
-}
-
 .buttons,
 .utility{
     display:grid;
@@ -178,5 +152,71 @@ body.dark-mode .num{
 
     .scientific-title{
         font-size:20px;
+    }
+}
+
+/* =====================================================
+   COMPACT LAPTOP HEIGHT
+   Keeps the full scientific calculator visible
+   at 100% browser zoom on shorter desktop screens
+===================================================== */
+
+@media (max-height:850px) and (min-width:601px){
+
+    .tool-area{
+        padding:24px 20px 12px;
+        align-items:flex-start;
+    }
+
+    .scientific-card{
+        max-width:520px;
+        padding:14px;
+        border-radius:18px;
+    }
+
+    .scientific-title{
+        font-size:21px;
+        margin-bottom:8px;
+    }
+
+    .display{
+        padding:10px 12px;
+        margin-bottom:8px;
+        border-radius:11px;
+    }
+
+    .expression{
+        min-height:24px;
+        font-size:16px;
+    }
+
+    .result{
+        min-height:34px;
+        font-size:28px;
+    }
+
+    .buttons,
+    .utility{
+        gap:7px;
+    }
+
+    .utility{
+        margin-top:7px;
+    }
+
+    .sci-btn{
+        height:46px;
+        font-size:16px;
+        border-radius:9px;
+    }
+
+    .status{
+        margin-top:6px;
+        font-size:12px;
+    }
+
+    .back-home{
+        margin-top:8px;
+        font-size:14px;
     }
 }

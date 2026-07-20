@@ -44,6 +44,76 @@ It only creates structured copy decisions.
             return null;
         }
 
+        const toolProfile =
+    analysis.toolProfile ||
+    null;
+
+const toolIdentity =
+    analysis.toolIdentity ||
+    null;
+
+const audience =
+    Array.isArray(
+        analysis.audience
+    )
+        ? analysis.audience
+        : [];
+
+const context = {
+
+    subject:
+        analysis.subject ||
+        toolProfile?.name ||
+        "General Promotion",
+
+    toolId:
+          toolProfile?.id ||
+          toolIdentity?.id ||
+          null,
+
+    category:
+        toolProfile?.category ||
+        "General",
+
+    type:
+        toolProfile?.type ||
+        "general",
+
+    purpose:
+        toolProfile?.purpose ||
+        "",
+
+    benefits:
+        Array.isArray(
+            toolProfile?.benefits
+        )
+            ? [...toolProfile.benefits]
+            : [],
+
+    emotions:
+        Array.isArray(
+            toolProfile?.emotions
+        )
+            ? [...toolProfile.emotions]
+            : [],
+
+    recommendedCTA:
+        toolProfile?.cta ||
+        "Learn More",
+
+    audience,
+
+    platform:
+        analysis.platform,
+
+    tone:
+        analysis.tone,
+
+    goal:
+        analysis.goal
+
+};
+
         const signals =
             buildCopySignals(analysis);
 
@@ -53,13 +123,20 @@ It only creates structured copy decisions.
             );
 
         const rawCopy =
-            selectSubjectCopy({
-                analysis,
-                designDNA,
-                signals
-            });
+    selectSubjectCopy({
+
+        analysis,
+
+        designDNA,
+
+        context,
+
+        signals
+
+    });
 
         return {
+            context,
             kicker:
                 limitText(
                     rawCopy.kicker,
@@ -122,23 +199,113 @@ It only creates structured copy decisions.
        ===================================================== */
 
     function selectSubjectCopy({
-        analysis,
-        designDNA,
-        signals
-    }) {
-        const brandName =
-            detectBrandName(
-                analysis.originalPrompt
-            );
+    analysis,
+    designDNA,
+    context,
+    signals
+}) {
+    const brandName =
+        detectBrandName(
+            analysis.originalPrompt
+        );
 
-        const offer =
-            detectPrimaryOffer(analysis);
+    const offer =
+        detectPrimaryOffer(
+            analysis
+        );
 
-        const tone =
-            String(
-                analysis.tone ||
-                "automatic"
-            ).toLowerCase();
+    const tone =
+        String(
+            analysis.tone ||
+            "automatic"
+        ).toLowerCase();
+
+
+    /* -------------------------------------------------
+       EXACT TOOL PROFILE — HIGHEST PRIORITY
+       ------------------------------------------------- */
+
+    if (
+        context?.toolId ===
+        "currency-converter"
+    ) {
+        return applyTone(
+            {
+                kicker:
+                    context.subject ||
+                    "Currency Converter",
+
+                headline:
+                    "CONVERT CURRENCIES WITH LIVE RATES.",
+
+                supportingText:
+                    context.purpose ||
+                    "Convert world currencies instantly using live exchange rates.",
+
+                callToAction:
+                    context.recommendedCTA ||
+                    "Convert Now",
+
+                badge:
+                    offer ||
+                    "Live Exchange Rates",
+
+                benefits:
+                    context.benefits?.length
+                        ? context.benefits
+                        : [
+                            "Real-time exchange rates",
+                            "Fast conversion",
+                            "Accurate results"
+                        ]
+            },
+
+            tone,
+            analysis
+        );
+    }
+
+
+    /* -------------------------------------------------
+       QR CODE GENERATOR
+       ------------------------------------------------- */
+
+    if (
+        /\bqr\b|\bqr code\b|\bscan\b|\bscanner\b/.test(
+            signals
+        )
+    ) {
+        return applyTone(
+            {
+                kicker:
+                    "Free QR Code Generator",
+
+                headline:
+                    "CREATE. DOWNLOAD. SCAN.",
+
+                supportingText:
+                    "Generate QR codes instantly, download them in seconds and scan them whenever you need.",
+
+                callToAction:
+                    "Create Free QR",
+
+                badge:
+                    offer ||
+                    "100% Free",
+
+                benefits: [
+                    "Instant generation",
+                    "Easy download",
+                    "Ready to scan"
+                ]
+            },
+
+            tone,
+            analysis
+        );
+    }
+
+    // Keep all remaining existing blocks below this point.       
 
 
         /* -------------------------------------------------

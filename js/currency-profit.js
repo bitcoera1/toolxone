@@ -156,7 +156,13 @@ function calculateCurrencyProfit() {
         `${clampCurrencyProfitPercent(
             profitPercentOfSelling
         )}%`;
-}
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "currency-profit-calculator"
+);
+
+    }
 
 
 /* ======================================

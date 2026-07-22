@@ -181,10 +181,16 @@ function calculate() {
             );
 
         showNumberWords(
-            result
-        );
+    result
+);
 
-        justCalculated = true;
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "basic-calculator"
+);
+
+justCalculated = true;
+
     } catch (error) {
         display.value = "Error";
 

@@ -9,8 +9,15 @@ function convertWeight() {
     }
 
     if (conversion === "kgToLb") {
-        resultBox.textContent = value + " kg = " + (value * 2.20462).toFixed(2) + " lbs";
+        resultBox.textContent =
+            value + " kg = " + (value * 2.20462).toFixed(2) + " lbs";
     } else {
-        resultBox.textContent = value + " lbs = " + (value / 2.20462).toFixed(2) + " kg";
+        resultBox.textContent =
+            value + " lbs = " + (value / 2.20462).toFixed(2) + " kg";
     }
+
+    // Record successful conversion
+    ToolXoneStatisticsEvents.recordCalculation(
+        "weight-converter"
+    );
 }

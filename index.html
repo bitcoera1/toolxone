@@ -32,6 +32,7 @@
 <link rel="stylesheet" href="css/dashboard.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/home-forex.css">
+<link rel="stylesheet" href="css/statistics.css">
 
 <style>
 *{
@@ -543,6 +544,139 @@ body.dark-mode .home-hero{
 
 </section>
 
+<section class="statistics-section">
+
+    <div class="statistics-container">
+
+        <div class="statistics-header">
+
+            <span class="statistics-badge">
+                📊 Live Platform Statistics
+            </span>
+
+            <h2>
+                ToolXone Statistics
+            </h2>
+
+            <p>
+                Real-time usage across ToolXone calculators,
+                converters, utilities and generators.
+            </p>
+
+        </div>
+
+        <div class="statistics-grid">
+
+            <div class="statistics-card">
+
+                <div class="statistics-icon">
+                    ⚡
+                </div>
+
+                <div
+                    class="statistics-number"
+                    id="totalToolActions"
+                >
+                    0
+                </div>
+
+                <div class="statistics-label">
+                    Tool Actions
+                </div>
+
+            </div>
+
+            <div class="statistics-card">
+
+                <div class="statistics-icon">
+                    🧮
+                </div>
+
+                <div
+                    class="statistics-number"
+                    id="totalCalculations"
+                >
+                    0
+                </div>
+
+                <div class="statistics-label">
+                    Calculations
+                </div>
+
+            </div>
+
+            <div class="statistics-card">
+
+                <div class="statistics-icon">
+                    🔄
+                </div>
+
+                <div
+                    class="statistics-number"
+                    id="totalConversions"
+                >
+                    0
+                </div>
+
+                <div class="statistics-label">
+                    Conversions
+                </div>
+
+            </div>
+
+            <div class="statistics-card">
+
+                <div class="statistics-icon">
+                    🛠️
+                </div>
+
+                <div
+                    class="statistics-number"
+                    id="totalUtilities"
+                >
+                    0
+                </div>
+
+                <div class="statistics-label">
+                    Utilities
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="statistics-highlight">
+
+            <div class="statistics-highlight-icon">
+                🏆
+            </div>
+
+            <div class="statistics-highlight-content">
+
+                <span>
+                    Most Used Tool
+                </span>
+
+                <strong id="mostUsedTool">
+                    Loading...
+                </strong>
+
+            </div>
+
+        </div>
+
+        <div class="statistics-footer">
+
+            <span class="statistics-live-dot"></span>
+
+            Live statistics updated automatically
+
+        </div>
+
+    </div>
+
+</section>
+
 <section id="dashboard">
 
     <section class="featured-header">
@@ -634,6 +768,18 @@ body.dark-mode .home-hero{
 <script src="js/search.js"></script>
 <script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
+
+<script src="js/config/tools-registry.js"></script>
+
+<script src="js/statistics/statistics-storage.js"></script>
+<script src="js/statistics/statistics-engine.js"></script>
+<script src="js/statistics/statistics-events.js"></script>
+<script src="js/statistics/statistics-api.js"></script>
+<script src="js/statistics/statistics-dashboard.js"></script>
+<script src="js/statistics/statistics-loader.js"></script>
+
+<script src="js/statistics-home.js"></script>
+
 <script src="js/dashboard.js"></script>
 <script src="js/home-forex.js"></script>
 <script src="js/footer.js"></script>

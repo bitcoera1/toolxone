@@ -293,6 +293,12 @@ function calculateAge() {
                 : "days"
         }
     `;
+
+    // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "age-calculator"
+);
+
 }
 
 

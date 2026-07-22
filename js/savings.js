@@ -124,6 +124,12 @@ function calculateSavings() {
         "remainingBar"
     ).style.width =
         `${100 - progress}%`;
+
+        // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "savings-goal-calculator"
+);
+
 }
 
 

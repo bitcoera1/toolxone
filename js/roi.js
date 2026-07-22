@@ -111,6 +111,12 @@ function calculateROI() {
         "profitBar"
     ).style.width =
         `${profitPercent}%`;
+
+        // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "roi-calculator"
+);
+
 }
 
 

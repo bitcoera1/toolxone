@@ -104,6 +104,12 @@ function calculateDiscount() {
         `${clampDiscountPercent(
             savePercent
         )}%`;
+
+        // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "discount-calculator"
+);
+
 }
 
 

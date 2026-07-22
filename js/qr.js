@@ -135,9 +135,16 @@ function generateQR() {
     });
 
     lastQRText = text;
+
+// Record successful QR generation
+ToolXoneStatisticsEvents.recordCalculation(
+    "qr-code-generator"
+);
+
 setTimeout(() => {
     downloadBtn.style.display = "block";
 }, 300);
+
 }
 
 function clearQR() {

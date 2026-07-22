@@ -1345,6 +1345,27 @@ if (brandingRect) {
         canvas
     );
 
+    const constraintAnalysis =
+    window.PhoenixConstraintEngine
+        ?.evaluate?.({
+
+            verticalFlowMetrics,
+
+            platform
+
+        });
+
+console.log(
+    "🧠 Constraint Analysis",
+    constraintAnalysis
+);
+
+renderAnalysis.constraintAnalysis =
+    constraintAnalysis;
+
+renderContext.constraintAnalysis =
+    constraintAnalysis;
+
 const protectedRegions =
     Phoenix.SafeLayoutEngine
         .buildProtectedRegions(
@@ -1398,6 +1419,12 @@ const verticalDistributionPlan =
 
             renderAnalysis.verticalFlowMetrics =
                 verticalFlowMetrics;
+
+            renderAnalysis.constraintAnalysis =
+                constraintAnalysis;
+
+            renderContext.constraintAnalysis =
+                constraintAnalysis;
 
             renderAnalysis.verticalDistributionPlan =
                 verticalDistributionPlan;

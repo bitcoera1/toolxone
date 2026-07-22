@@ -291,14 +291,20 @@ function calculatePercentOf() {
         );
 
     showResult(
-        createPercentageValueResult({
-            statement:
-                `${formattedPercent}% of ${formattedTotal} equals`,
+    createPercentageValueResult({
+        statement:
+            `${formattedPercent}% of ${formattedTotal} equals`,
 
-            value:
-                result
-        })
-    );
+        value:
+            result
+    })
+);
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "percentage-calculator"
+);
+
 }
 
 

@@ -152,4 +152,10 @@ function moveBMIMarker(bmi) {
 const resultCard = document.getElementById("bmiResultCard");
 if (resultCard) {
     resultCard.classList.remove("show-result");
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "bmi-calculator"
+);
+
 }

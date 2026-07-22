@@ -127,6 +127,12 @@ function calculateInflation() {
         `${clampInflationPercent(
             increasePercent
         )}%`;
+
+        // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "inflation-calculator"
+);
+
 }
 
 

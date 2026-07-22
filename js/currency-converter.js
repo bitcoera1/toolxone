@@ -122,7 +122,14 @@ async function convertCurrency() {
         statusBar.innerHTML =
             "✅ Updated Successfully";
 
-    } catch (error) {
+            // Record successful conversion
+ToolXoneStatisticsEvents.recordCalculation(
+    "currency-converter"
+);
+
+    }
+    
+    catch (error) {
         console.error(
             "Currency conversion error:",
             error

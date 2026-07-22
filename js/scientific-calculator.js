@@ -452,20 +452,25 @@ function calculate() {
 
         ans = result;
 
-        expression =
-            normalizeResult(result);
+expression =
+    normalizeResult(result);
 
-        updateResultDisplay(
-            result
-        );
+updateResultDisplay(
+    result
+);
 
-        showNumberWords(
-            result
-        );
+showNumberWords(
+    result
+);
 
-        justCalculated = true;
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "scientific-calculator"
+);
 
-        updateDisplay();
+justCalculated = true;
+
+updateDisplay();
 
     } catch (error) {
         resultDisplay.textContent =

@@ -126,7 +126,13 @@ function calculateProfit() {
         "profitBar"
     ).style.width =
         `${profitPercent}%`;
-}
+
+        // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "profit-margin-calculator"
+);
+
+    }
 
 
 /* ======================================

@@ -177,6 +177,12 @@ function calculateRetirement() {
         totalContributions,
         investmentGrowth
     });
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "retirement-calculator"
+);
+
 }
 
 

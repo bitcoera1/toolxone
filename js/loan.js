@@ -120,9 +120,15 @@ function calculateLoan() {
         `${principalPercent}%`;
 
     document.getElementById(
-        "interestBar"
-    ).style.width =
-        `${interestPercent}%`;
+    "interestBar"
+).style.width =
+    `${interestPercent}%`;
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "loan-calculator"
+);
+
 }
 
 

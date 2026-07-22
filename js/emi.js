@@ -145,11 +145,17 @@ function calculateEMI() {
         )}%`;
 
     document.getElementById(
-        "interestBar"
-    ).style.width =
-        `${clampEMIPercent(
-            interestPercent
-        )}%`;
+    "interestBar"
+).style.width =
+    `${clampEMIPercent(
+        interestPercent
+    )}%`;
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "loan-calculator"
+);
+
 }
 
 

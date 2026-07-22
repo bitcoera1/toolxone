@@ -138,7 +138,13 @@ function calculateTax() {
         `${clampTaxPercent(
             taxPercent
         )}%`;
-}
+
+// Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "gst-vat-calculator"
+);
+
+    }
 
 
 /* ======================================

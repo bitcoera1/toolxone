@@ -82,7 +82,7 @@ document.getElementById("siteFooter").innerHTML = `
        ▶️ YouTube
     </a>
 
-    <a href="https://www.x.com/TahirAslam1975"
+    <a href="https://x.com/toolxone"
        target="_blank"
        rel="noopener noreferrer">
        ✖️ X

@@ -148,7 +148,13 @@ function calculateCompound() {
         "interestBar"
     ).style.width =
         `${interestPercent}%`;
-}
+
+        // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "compound-interest-calculator"
+);
+
+    }
 
 
 /* ======================================

@@ -326,6 +326,11 @@ function runMortgageCalculator() {
     updateMortgageBars(
         resultData
     );
+
+    // Record successful calculation
+ToolXoneStatisticsEvents.recordCalculation(
+    "mortgage-calculator"
+);
 }
 
 

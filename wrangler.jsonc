@@ -1,0 +1,18 @@
+{
+
+  "name": "toolxone-api",
+
+  "main": "js/workers/worker.js",
+
+  "compatibility_date": "2026-07-22",
+
+  "workers_dev": true,
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "toolxone-db",
+      "database_id": "a17335d5-8605-4ba6-a01b-b6d9822a1684"
+    }
+  ]
+}

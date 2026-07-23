@@ -1,7 +1,7 @@
 /**
  * ==========================================================
  * ToolXone Statistics Events
- * Version: 1.0
+ * Version: 1.1.0
  * ==========================================================
  * Public event layer for ToolXone.
  *
@@ -15,36 +15,88 @@ const ToolXoneStatisticsEvents = (() => {
     /**
      * Successful calculator action
      */
-    function recordCalculation(toolId) {
+    async function recordCalculation(toolId) {
 
         ToolXoneStatistics.record(toolId);
+
+        try {
+
+            await StatisticsService.recordTool(toolId);
+
+        } catch (error) {
+
+            console.error(
+                "Statistics Router Error:",
+                error
+            );
+
+        }
 
     }
 
     /**
      * Successful converter action
      */
-    function recordConversion(toolId) {
+    async function recordConversion(toolId) {
 
         ToolXoneStatistics.record(toolId);
+
+        try {
+
+            await StatisticsService.recordTool(toolId);
+
+        } catch (error) {
+
+            console.error(
+                "Statistics Router Error:",
+                error
+            );
+
+        }
 
     }
 
     /**
      * Successful utility action
      */
-    function recordUtility(toolId) {
+    async function recordUtility(toolId) {
 
         ToolXoneStatistics.record(toolId);
+
+        try {
+
+            await StatisticsService.recordTool(toolId);
+
+        } catch (error) {
+
+            console.error(
+                "Statistics Router Error:",
+                error
+            );
+
+        }
 
     }
 
     /**
      * Successful AI generation
      */
-    function recordAIGeneration(toolId) {
+    async function recordAIGeneration(toolId) {
 
         ToolXoneStatistics.record(toolId);
+
+        try {
+
+            await StatisticsService.recordTool(toolId);
+
+        } catch (error) {
+
+            console.error(
+                "Statistics Router Error:",
+                error
+            );
+
+        }
 
     }
 

@@ -18,82 +18,119 @@ Cloudflare Workers.
 
 const APIClient = {
 
-    async request(
+async request(
 
-        endpoint,
+    endpoint,
 
-        options = {}
+    options = {}
+
+) {
+
+    const url =
+
+        BackendConfig.API_BASE_URL +
+
+        endpoint;
+
+    const controller =
+
+        new AbortController();
+
+    const timeout =
+
+        setTimeout(
+
+            () => controller.abort(),
+
+            BackendConfig.REQUEST_TIMEOUT
+
+        );
+
+    const config = {
+
+        headers: {
+
+            "Content-Type":
+
+                "application/json"
+
+        },
+
+        signal: controller.signal,
+
+        ...options
+
+    };
+
+    try {
+
+        const response =
+
+            await fetch(
+
+                url,
+
+                config
+
+            );
+
+        clearTimeout(
+
+            timeout
+
+        );
+
+        if (
+
+            !response.ok
+
+        ) {
+
+            throw new Error(
+
+                `HTTP ${response.status}`
+
+            );
+
+        }
+
+        return await response.json();
+
+    }
+
+    catch (
+
+        error
 
     ) {
 
-        const url =
+        clearTimeout(
 
-            BackendConfig.API_BASE_URL +
+            timeout
 
-            endpoint;
+        );
 
-        const config = {
+        if (
 
-            headers: {
+            BackendConfig.ENABLE_LOGGING
 
-                "Content-Type":
-                    "application/json"
+        ) {
 
-            },
+            console.error(
 
-            ...options
+                "API Error:",
 
-        };
+                error
 
-        try {
-
-            const response =
-
-                await fetch(
-
-                    url,
-
-                    config
-
-                );
-
-            if (!response.ok) {
-
-                throw new Error(
-
-                    `HTTP ${response.status}`
-
-                );
-
-            }
-
-            return await response.json();
+            );
 
         }
 
-        catch (error) {
+        throw error;
 
-            if (
+    }
 
-                BackendConfig.ENABLE_LOGGING
-
-            ) {
-
-                console.error(
-
-                    "API Error:",
-
-                    error
-
-                );
-
-            }
-
-            throw error;
-
-        }
-
-    },
+},
 
     async get(
 

@@ -294,10 +294,20 @@ function calculateAge() {
         }
     `;
 
-    // Record successful calculation
-ToolXoneStatisticsEvents.recordCalculation(
-    "age-calculator"
-);
+// Record successful utility usage
+if (
+    typeof ToolXoneStatisticsEvents !== "undefined"
+) {
+
+    console.log(
+    "Age Calculator statistics fired!"
+    );
+
+    ToolXoneStatisticsEvents.recordUtility(
+        "age-calculator"
+    );
+
+}
 
 }
 

@@ -81,24 +81,33 @@ return this.dispatch(
     },
 
     async dispatch(
-
     path,
     method,
     request,
     env,
     ctx
-
 ) {
 
+    // Get all statistics
     if (
-
         path === "/statistics" &&
-
         method === "GET"
-
     ) {
 
         return this.getStatistics(env);
+
+    }
+
+    // Increment a statistic
+    if (
+        path === "/statistics/increment" &&
+        method === "POST"
+    ) {
+
+        return this.incrementStatistic(
+            request,
+            env
+        );
 
     }
 
@@ -136,6 +145,88 @@ return this.dispatch(
                 success: true,
 
                 data: results
+
+            }
+
+        );
+
+    }
+
+    catch (error) {
+
+        return this.serverError(
+
+            error
+
+        );
+
+    }
+
+},
+
+async incrementStatistic(
+    request,
+    env
+) {
+
+    try {
+
+        const {
+
+            statKey
+
+        } = await request.json();
+
+        if (
+
+            !statKey
+
+        ) {
+
+            return this.json(
+
+                {
+
+                    success: false,
+
+                    message:
+                        "Statistic key is required."
+
+                },
+
+                400
+
+            );
+
+        }
+
+        await env.DB
+
+            .prepare(
+
+                `
+                UPDATE statistics
+                SET stat_value = stat_value + 1
+                WHERE stat_key = ?
+                `
+
+            )
+
+            .bind(
+
+                statKey
+
+            )
+
+            .run();
+
+        return this.json(
+
+            {
+
+                success: true,
+
+                statKey
 
             }
 

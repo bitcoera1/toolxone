@@ -130,6 +130,42 @@ const ToolXoneStatistics = (() => {
     }
 
     // ------------------------------------------
+// Replace Statistics
+// ------------------------------------------
+
+function replaceStatistics(newStatistics) {
+
+    if (!newStatistics) {
+
+        return;
+
+    }
+
+    statistics.totals = {
+
+        ...statistics.totals,
+
+        ...newStatistics.totals
+
+    };
+
+    statistics.tools = {
+
+        ...statistics.tools,
+
+        ...newStatistics.tools
+
+    };
+
+    ToolXoneStatisticsStorage.save(
+
+        statistics
+
+    );
+
+}
+
+    // ------------------------------------------
     // Reset Statistics
     // ------------------------------------------
 
@@ -143,14 +179,16 @@ const ToolXoneStatistics = (() => {
 
     return {
 
-        record,
+    record,
 
-        getStatistics,
+    getStatistics,
 
-        getTool,
+    getTool,
 
-        reset
+    replaceStatistics,
 
-    };
+    reset
+
+};
 
 })();

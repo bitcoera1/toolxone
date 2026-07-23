@@ -6,46 +6,34 @@ ToolXone Backend
 Backend Configuration
 
 Version:
-1.0.0
-
-Responsibility
-
-Store backend configuration
-used by all backend modules.
+1.1.0
 
 ====================================================
 */
 
-const TOOLXONE_BACKEND_VERSION = "1.0.0";
+const TOOLXONE_BACKEND_VERSION = "1.1.0";
 
 const BackendConfig = {
 
-    APP_NAME:
-        "ToolXone",
+    APP_NAME: "ToolXone",
 
-    API_VERSION:
-        "v1",
+    API_VERSION: "v1",
 
-    ENVIRONMENT:
-        "development",
+    ENVIRONMENT: "production",
 
-    API_BASE_URL:
-        "",
-
-    WORKER_NAME:
-        "",
+    WORKER_NAME: "toolxone-api",
 
     WORKER_URL:
-        "",
+        "https://toolxone-api.toolxone.workers.dev",
 
-    REQUEST_TIMEOUT:
-        10000,
+    API_BASE_URL:
+        "https://toolxone-api.toolxone.workers.dev",
 
-    RETRY_ATTEMPTS:
-        3,
+    REQUEST_TIMEOUT: 15000,
 
-    ENABLE_LOGGING:
-        true,
+    RETRY_ATTEMPTS: 2,
+
+    ENABLE_LOGGING: true,
 
     ENDPOINTS: {
 
@@ -68,6 +56,4 @@ const BackendConfig = {
 
 };
 
-Object.freeze(
-    BackendConfig
-);
+Object.freeze(BackendConfig);

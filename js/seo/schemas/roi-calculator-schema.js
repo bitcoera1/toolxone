@@ -260,7 +260,7 @@
                             "What is the ROI formula?",
 
                         answer:
-                            "The standard ROI formula is ROI = ((Final Return - Investment Cost) / Investment Cost) × 100. The result expresses the investment gain or loss as a percentage of the original investment."
+                            "The standard ROI formula is ROI = ((Final Return - Investment Amount) / Investment Amount) × 100. The result expresses the investment gain or loss as a percentage of the original investment."
 
                     },
 

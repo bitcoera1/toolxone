@@ -1364,6 +1364,8 @@ function calculateDiscount() {
 
     ToolXoneValidationUI.clearAllErrors();
 
+    
+
     if (!validation.valid) {
 
         ToolXoneValidationUI.showErrors(
@@ -1719,9 +1721,15 @@ if (discountInsight) {
        STATISTICS
        ====================================== */
 
+    if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation ===
+        "function"
+) {
     ToolXoneStatisticsEvents.recordCalculation(
         "discount-calculator"
     );
+}
 }
 
 /* =========================================
@@ -1920,6 +1928,39 @@ function resetDiscount() {
     /* Clear validation state */
     ToolXoneValidationUI.clearAllErrors();
 
+    const valueAwareIntelligence =
+    document.getElementById("valueAwareIntelligence");
+
+const dealContextIntelligence =
+    document.getElementById("dealContextIntelligence");
+
+const savingsEfficiencyIntelligence =
+    document.getElementById("savingsEfficiencyIntelligence");
+
+if (valueAwareIntelligence) {
+    valueAwareIntelligence.innerHTML = "";
+    valueAwareIntelligence.style.display = "none";
+}
+
+if (dealContextIntelligence) {
+    dealContextIntelligence.innerHTML = "";
+    dealContextIntelligence.style.display = "none";
+}
+
+if (savingsEfficiencyIntelligence) {
+    savingsEfficiencyIntelligence.innerHTML = "";
+}
+
+const discountStrengthMessage =
+    document.getElementById("discountStrengthMessage");
+
+if (discountStrengthMessage) {
+    discountStrengthMessage.textContent = "";
+}
+
+if (discountInsight) {
+    discountInsight.innerHTML = "";
+}
     document.getElementById(
         "discountResult"
     ).classList.remove(

@@ -127,9 +127,14 @@ function calculateSavings() {
         `${100 - progress}%`;
 
         // Record successful calculation
-ToolXoneStatisticsEvents.recordCalculation(
-    "savings-goal-calculator"
-);
+if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation === "function"
+) {
+    ToolXoneStatisticsEvents.recordCalculation(
+        "savings-goal-calculator"
+    );
+}
 
 }
 
@@ -248,6 +253,18 @@ function savingsNumberToWords(value) {
    ====================================== */
 
 function resetSavings() {
+
+if (
+    window.ToolXoneValidationUI &&
+    typeof ToolXoneValidationUI.clearAllErrors === "function"
+) {
+    const calculatorForm =
+        document.getElementById("calculatorForm");
+
+    ToolXoneValidationUI.clearAllErrors(
+        calculatorForm || document
+    );
+}    
     document.getElementById(
         "targetAmount"
     ).value = "";
@@ -292,24 +309,26 @@ function resetSavings() {
    ENTER KEY SUPPORT
    ====================================== */
 
-document
-    .querySelectorAll(
-        "#targetAmount, " +
-        "#currentSavings, " +
-        "#months"
-    )
-    .forEach(input => {
-        input.addEventListener(
-            "keydown",
-            function (event) {
-                if (
-                    event.key === "Enter"
-                ) {
-                    calculateSavings();
+document.addEventListener("DOMContentLoaded", function () {
+    document
+        .querySelectorAll(
+            "#targetAmount, " +
+            "#currentSavings, " +
+            "#months"
+        )
+        .forEach(input => {
+            input.addEventListener(
+                "keydown",
+                function (event) {
+                    if (
+                        event.key === "Enter"
+                    ) {
+                        calculateSavings();
+                    }
                 }
-            }
-        );
-    });
+            );
+        });
+});
 
 
 function runSavingsCalculator() {

@@ -23,12 +23,12 @@ function calculateTax() {
             "taxType"
         ).value;
 
-    if (
-        Number.isNaN(amount) ||
-        Number.isNaN(rate) ||
-        amount <= 0 ||
-        rate < 0
-    ) {
+if (
+    !Number.isFinite(amount) ||
+    !Number.isFinite(rate) ||
+    amount <= 0 ||
+    rate < 0
+) {
         alert(
             "Please enter a valid amount and tax rate."
         );
@@ -140,9 +140,15 @@ function calculateTax() {
         )}%`;
 
 // Record successful calculation
-ToolXoneStatisticsEvents.recordCalculation(
-    "gst-vat-calculator"
-);
+if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation ===
+        "function"
+) {
+    ToolXoneStatisticsEvents.recordCalculation(
+        "gst-vat-calculator"
+    );
+}
 
     }
 
@@ -278,6 +284,9 @@ function clampTaxPercent(value) {
    ====================================== */
 
 function resetTax() {
+
+    ToolXoneValidationUI.clearAllErrors();
+
     document.getElementById(
         "amount"
     ).value = "";
@@ -362,24 +371,6 @@ document.addEventListener("change", function (event) {
             amountInput.value !== "" &&
             taxRateInput.value !== ""
         ) {
-            calculateTax();
-        }
-    }
-});
-
-document.addEventListener("input", function (event) {
-    if (event.target && event.target.id === "taxRate") {
-        const amountInput = document.getElementById("amount");
-
-        if (amountInput && amountInput.value !== "") {
-            calculateTax();
-        }
-    }
-
-    if (event.target && event.target.id === "amount") {
-        const taxRateInput = document.getElementById("taxRate");
-
-        if (taxRateInput && taxRateInput.value !== "") {
             calculateTax();
         }
     }

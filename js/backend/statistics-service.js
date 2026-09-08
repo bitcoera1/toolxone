@@ -226,6 +226,8 @@ async incrementTextTool() {
 
     await this.incrementToolAction();
 
+    await this.refreshStatistics();
+
 },
 
     async refreshStatistics() {

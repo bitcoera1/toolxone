@@ -155,8 +155,6 @@
 <div id="financeInfo"></div>
 
 
-</section>
-
 <div id="financeFAQ"></div>
 
 <!-- ToolXone Shared Reviews -->
@@ -174,6 +172,7 @@
 <script src="js/tool-cards.js"></script>
 <script src="js/tools.js"></script>
 <script src="js/form-engine.js"></script>
+<script src="js/validation-ui.js"></script>
 <script src="js/calculator-engine.js"></script>
 <script src="js/finance-components.js"></script>
 <script src="js/finance-engine.js"></script>
@@ -306,7 +305,12 @@ const profitCalculator = {
 
 createFinanceCalculator(profitCalculator);
 
-renderFinanceFeedback("financeFeedback", "Profit Margin Calculator");
+initProfitEnterKey();
+
+renderFinanceFeedback(
+    "financeFeedback",
+    "Profit Margin Calculator"
+);
 
 </script>
 

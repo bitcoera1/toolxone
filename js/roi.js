@@ -50,11 +50,11 @@ function calculateROI(options = {}) {
     // --------------------------------------
 
     if (
-        Number.isNaN(investment) ||
-        Number.isNaN(returnAmount) ||
-        investment <= 0 ||
-        returnAmount < 0
-    ) {
+    !Number.isFinite(investment) ||
+    !Number.isFinite(returnAmount) ||
+    investment <= 0 ||
+    returnAmount < 0
+) {
         if (!silent) {
             alert(
                 "Please enter an investment greater than 0 and a final return of 0 or more."
@@ -145,7 +145,7 @@ function calculateROI(options = {}) {
 
     if (
         recordStatistics &&
-        window.ToolXoneStatisticsEvents &&
+        typeof ToolXoneStatisticsEvents !== "undefined" &&
         typeof ToolXoneStatisticsEvents.recordCalculation ===
             "function"
     ) {

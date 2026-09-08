@@ -342,7 +342,7 @@
                             "Can I calculate decimal discounts such as 12.5%?",
 
                         answer:
-                            "Yes. The ToolXone Discount Calculator supports decimal discount percentages such as 12.5%, 17.375% and 22.75%. For example, a 12.5% discount on $800 saves $100, giving a final price of $700."
+                            "Yes. The ToolXone Discount Calculator supports decimal discount percentages such as 12.5%, 17.375%, and 22.75%. For example, a 12.5% discount on $800 saves $100, giving a final price of $700."
 
                     },
 
@@ -386,7 +386,7 @@
                             "Does the Discount Calculator include GST, VAT, or sales tax?",
 
                         answer:
-                            "No. The Discount Calculator calculates the discount amount, savings and final discounted price. GST, VAT, sales tax or other taxes may need to be calculated separately depending on the transaction and applicable tax rules."
+                            "No. The Discount Calculator calculates the discount amount, savings and final discounted price. GST, VAT, sales tax, or other taxes may need to be calculated separately depending on the transaction and applicable tax rules."
 
                     }
 

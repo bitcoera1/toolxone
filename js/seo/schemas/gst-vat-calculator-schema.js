@@ -319,127 +319,133 @@
 
                 faq: [
 
-                    {
 
-                        question:
-                            "What is GST / VAT?",
+        {
+            question:
+                "What is GST / VAT?",
 
-                        answer:
-                            "GST (Goods and Services Tax) and VAT (Value Added Tax) are consumption taxes applied to the sale of goods and services. The terminology, rates and tax rules vary by jurisdiction."
-
-                    },
-
-
-                    {
-
-                        question:
-                            "How is GST or VAT calculated?",
-
-                        answer:
-                            "When tax is added to a tax-exclusive amount, the tax amount is calculated by multiplying the base price by the tax rate divided by 100. The tax amount is then added to the base price to determine the final price."
-
-                    },
+            answer:
+                "GST (Goods and Services Tax) and VAT (Value Added Tax) are consumption taxes applied to goods and services. The terminology, rates, exemptions, and rules vary by jurisdiction, but both generally calculate tax as a percentage of a taxable amount."
+        },
 
 
-                    {
+        {
+            question:
+                "How is GST or VAT calculated?",
 
-                        question:
-                            "How do I calculate the price including GST or VAT?",
-
-                        answer:
-                            "Multiply the tax-exclusive price by 1 plus the tax rate divided by 100. For example, a $100 price with a 15% tax rate produces a $15 tax amount and a $115 final price."
-
-                    },
+            answer:
+                "For a tax-exclusive amount, calculate the tax by multiplying the base price by the tax rate divided by 100. The final price is then the base price plus the tax amount. For example, a $100 price with a 15% tax rate produces $15 tax and a $115 final price."
+        },
 
 
-                    {
+        {
+            question:
+                "What is the GST / VAT formula?",
 
-                        question:
-                            "How do I calculate GST or VAT from a tax-inclusive price?",
-
-                        answer:
-                            "Divide the tax-inclusive amount by 1 plus the tax rate expressed as a decimal to determine the underlying base price. Subtract the base price from the tax-inclusive amount to determine the tax component."
-
-                    },
+            answer:
+                "The standard tax formula for a tax-exclusive amount is: Tax Amount = Base Price × (Tax Rate ÷ 100). The final price is: Final Price = Base Price + Tax Amount."
+        },
 
 
-                    {
+        {
+            question:
+                "How do I calculate GST / VAT on a tax-exclusive price?",
 
-                        question:
-                            "Can I use decimal GST or VAT rates?",
-
-                        answer:
-                            "Yes. The GST / VAT Calculator can calculate tax using decimal percentage rates as long as the rate is entered as a valid non-negative number."
-
-                    },
+            answer:
+                "Enter the price before tax, enter the applicable GST or VAT rate, and select the option to add tax. The calculator determines the tax amount and adds it to the base price to produce the final price."
+        },
 
 
-                    {
+        {
+            question:
+                "How do I calculate GST / VAT from a tax-inclusive price?",
 
-                        question:
-                            "What is the difference between tax-inclusive and tax-exclusive prices?",
-
-                        answer:
-                            "A tax-exclusive price does not include GST or VAT, so the tax is added to the base price. A tax-inclusive price already contains the tax, so the calculator separates the tax component from the total amount."
-
-                    },
+            answer:
+                "When the entered amount already includes tax, calculate the underlying base price by dividing the tax-inclusive amount by 1 plus the tax rate divided by 100. The tax amount is then the tax-inclusive price minus the base price."
+        },
 
 
-                    {
+        {
+            question:
+                "What is the formula for extracting GST / VAT from a tax-inclusive price?",
 
-                        question:
-                            "What does the base price mean?",
-
-                        answer:
-                            "The base price is the amount before GST or VAT is applied. When a tax-inclusive amount is entered, the base price represents the underlying pre-tax amount after the tax component has been extracted."
-
-                    },
+            answer:
+                "The formula is: Base Price = Tax-Inclusive Price ÷ (1 + Tax Rate ÷ 100). The tax amount can then be calculated as: Tax Amount = Tax-Inclusive Price − Base Price."
+        },
 
 
-                    {
+        {
+            question:
+                "What is the difference between adding tax and extracting tax?",
 
-                        question:
-                            "What does the final price mean?",
-
-                        answer:
-                            "The final price is the total amount after GST or VAT has been added when calculating from a tax-exclusive price. When a tax-inclusive amount is entered, the final price is the amount supplied because it already includes the tax."
-
-                    },
+            answer:
+                "Adding tax is used when the entered amount is before GST or VAT and you want to determine the final price after tax. Extracting tax is used when the entered amount already includes GST or VAT and you want to separate the base price from the tax component."
+        },
 
 
-                    {
+        {
+            question:
+                "Can I calculate GST / VAT with decimal tax rates?",
 
-                        question:
-                            "Does this calculator determine which GST or VAT rate applies to my transaction?",
-
-                        answer:
-                            "No. The calculator performs the mathematical calculation using the tax rate you provide. The applicable GST or VAT rate, exemptions, registration requirements and tax treatment depend on the relevant jurisdiction and transaction."
-
-                    },
+            answer:
+                "Yes. The calculator can mathematically work with decimal tax rates such as 7.5%, 12.5%, or 17.5%, provided the entered rate is valid for the calculation you are performing."
+        },
 
 
-                    {
+        {
+            question:
+                "Does the GST / VAT calculator determine the legally applicable tax rate?",
 
-                        question:
-                            "Can GST and VAT rates vary by country?",
-
-                        answer:
-                            "Yes. GST and VAT systems, rates, exemptions, registration requirements and filing rules vary between countries and jurisdictions. Always use the applicable rate for the transaction you are calculating."
-
-                    },
+            answer:
+                "No. The calculator performs the mathematical calculation based on the amount and tax rate you provide. The correct tax rate, exemptions, registration requirements, filing obligations, and legal tax treatment depend on the applicable jurisdiction and transaction."
+        },
 
 
-                    {
+        {
+            question:
+                "Why is tax-inclusive GST / VAT not calculated by simply multiplying the total by the tax rate?",
 
-                        question:
-                            "Is the ToolXone GST / VAT Calculator free to use?",
+            answer:
+                "A tax-inclusive amount already contains the tax. Multiplying the total by the tax rate would calculate the tax as though the total were tax-exclusive. To correctly extract the tax component, the tax-inclusive amount must first be divided by 1 plus the tax rate expressed as a decimal."
+        },
 
-                        answer:
-                            "Yes. The ToolXone GST / VAT Calculator is free to use and calculates GST or VAT amounts, base prices and final prices instantly."
 
-                    }
+        {
+            question:
+                "What is the final price after GST / VAT is added?",
 
-                ]
+            answer:
+                "The final price is the base price plus the calculated tax amount. For example, a $500 base price with a 20% tax rate produces $100 tax and a final price of $600."
+        },
+
+
+        {
+            question:
+                "Can GST / VAT rates vary by country or product?",
+
+            answer:
+                "Yes. GST and VAT rates and treatments vary by jurisdiction and may also differ according to the type of product or service. Some transactions may have reduced rates, zero rates, exemptions, or special rules."
+        },
+
+
+        {
+            question:
+                "Can I use the GST / VAT calculator for invoices?",
+
+            answer:
+                "Yes. The calculator can help with the mathematical calculation of the base price, tax amount, and final price. However, official invoices should follow the applicable tax, rounding, documentation, and record-keeping requirements for the relevant jurisdiction."
+        },
+
+
+        {
+            question:
+                "Does the GST / VAT calculator provide tax or legal advice?",
+
+            answer:
+                "No. The calculator is designed to perform mathematical GST and VAT calculations. It does not determine legal tax obligations, eligibility, registration requirements, exemptions, or the tax treatment that legally applies to a particular transaction."
+        }
+
+    ]
 
             }
 

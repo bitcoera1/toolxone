@@ -118,25 +118,43 @@ function calculateRetirement() {
             months
         );
 
-    const investmentGrowth =
-        futureFund -
-        totalContributions;
+const investmentGrowth =
+    futureFund -
+    totalContributions;
 
-    /*
-     * Estimated monthly retirement income
-     * based on a 4% annual withdrawal estimate.
-     */
-    const estimatedMonthlyIncome =
-        (
-            futureFund *
-            0.04
-        ) /
-        12;
+/*
+ * Estimated monthly retirement income
+ * based on a 4% annual withdrawal estimate.
+ */
+const estimatedMonthlyIncome =
+    (
+        futureFund *
+        0.04
+    ) /
+    12;
 
-    const result =
-        document.getElementById(
-            "retirementResult"
-        );
+
+/*
+ * Protect against overflow / non-finite results.
+ */
+if (
+    !Number.isFinite(futureFund) ||
+    !Number.isFinite(totalContributions) ||
+    !Number.isFinite(investmentGrowth) ||
+    !Number.isFinite(estimatedMonthlyIncome)
+) {
+    alert(
+        "These values are too large to calculate reliably. Please use smaller values."
+    );
+
+    return;
+}
+
+
+const result =
+    document.getElementById(
+        "retirementResult"
+    );
 
     result.classList.add(
         "active"
@@ -179,9 +197,14 @@ function calculateRetirement() {
     });
 
 // Record successful calculation
-ToolXoneStatisticsEvents.recordCalculation(
-    "retirement-calculator"
-);
+if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation === "function"
+) {
+    ToolXoneStatisticsEvents.recordCalculation(
+        "retirement-calculator"
+    );
+}
 
 }
 
@@ -428,6 +451,7 @@ function resetRetirement() {
 /* ======================================
    ENTER KEY SUPPORT
    ====================================== */
+document.addEventListener("DOMContentLoaded", function () {
 
 document
     .querySelectorAll(
@@ -437,18 +461,19 @@ document
         "#monthlyContribution, " +
         "#annualReturn"
     )
-    .forEach(input => {
-        input.addEventListener(
-            "keydown",
-            function (event) {
-                if (
-                    event.key === "Enter"
-                ) {
-                    calculateRetirement();
+        .forEach(input => {
+            input.addEventListener(
+                "keydown",
+                function (event) {
+                    if (
+                        event.key === "Enter"
+                    ) {
+                        calculateRetirement();
+                    }
                 }
-            }
-        );
-    });
+            );
+        });
+});
 
 
 function runRetirementCalculator() {

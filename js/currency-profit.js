@@ -199,15 +199,15 @@ function calculateCurrencyProfit() {
     // STATISTICS
     // ======================================
 
-    if (
-        window.ToolXoneStatisticsEvents &&
-        typeof ToolXoneStatisticsEvents
-            .recordCalculation === "function"
-    ) {
-        ToolXoneStatisticsEvents.recordCalculation(
-            "currency-profit-calculator"
-        );
-    }
+if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation === "function"
+) {
+    ToolXoneStatisticsEvents.recordCalculation(
+        "currency-profit-calculator"
+    );
+}
+
 }
 
 
@@ -405,6 +405,19 @@ function clampCurrencyProfitPercent(
    ====================================== */
 
 function resetCurrencyProfit() {
+
+if (
+    window.ToolXoneValidationUI &&
+    typeof ToolXoneValidationUI.clearAllErrors === "function"
+) {
+    const calculatorForm =
+        document.getElementById("calculatorForm");
+
+    ToolXoneValidationUI.clearAllErrors(
+        calculatorForm || document
+    );
+}
+    
     document.getElementById(
         "currencyAmount"
     ).value = "";
@@ -453,25 +466,24 @@ function resetCurrencyProfit() {
    ENTER KEY SUPPORT
    ====================================== */
 
-document
-    .querySelectorAll(
-        "#currencyAmount, " +
-        "#buyRate, " +
-        "#sellRate, " +
-        "#exchangeFee"
-    )
-    .forEach(input => {
-        input.addEventListener(
-            "keydown",
-            function (event) {
-                if (
-                    event.key === "Enter"
-                ) {
-                    calculateCurrencyProfit();
-                }
-            }
-        );
-    });
+document.addEventListener("keydown", function (event) {
+    if (event.key !== "Enter") return;
+
+    const target = event.target;
+
+    if (
+        target &&
+        (
+            target.id === "currencyAmount" ||
+            target.id === "buyRate" ||
+            target.id === "sellRate" ||
+            target.id === "exchangeFee"
+        )
+    ) {
+        event.preventDefault();
+        calculateCurrencyProfit();
+    }
+});
 
 
 function runCurrencyProfitCalculator() {

@@ -18,12 +18,12 @@ function calculateProfit() {
             ).value
         );
 
-    if (
-        Number.isNaN(cost) ||
-        Number.isNaN(selling) ||
-        selling <= 0 ||
-        cost < 0
-    ) {
+if (
+    !Number.isFinite(cost) ||
+    !Number.isFinite(selling) ||
+    selling <= 0 ||
+    cost < 0
+) {
         alert(
             "Please enter valid cost and selling prices."
         );
@@ -41,12 +41,12 @@ function calculateProfit() {
         ) * 100;
 
     const markup =
-        cost > 0
-            ? (
-                profit /
-                cost
-            ) * 100
-            : 0;
+    cost > 0
+        ? (
+            profit /
+            cost
+        ) * 100
+        : null;
 
     const result =
         document.getElementById(
@@ -127,10 +127,16 @@ function calculateProfit() {
     ).style.width =
         `${profitPercent}%`;
 
-        // Record successful calculation
-ToolXoneStatisticsEvents.recordCalculation(
-    "profit-margin-calculator"
-);
+    // Record successful calculation
+    if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation ===
+        "function"
+) {
+    ToolXoneStatisticsEvents.recordCalculation(
+        "profit-margin-calculator"
+    );
+}
 
     }
 
@@ -190,6 +196,17 @@ function createProfitPercentResult(
     label,
     value
 ) {
+
+    if (value === null) {
+        return `
+            <div class="result-line profit-result-item">
+                <span>${label}</span>
+
+                <strong>N/A</strong>
+            </div>
+        `;
+    }
+
     const formattedValue =
         window.ToolXoneNumberEngine
             ? ToolXoneNumberEngine.format(
@@ -300,19 +317,28 @@ function resetProfit() {
    ENTER KEY SUPPORT
    ====================================== */
 
-document
-    .querySelectorAll(
-        "#costPrice, #sellingPrice"
-    )
-    .forEach(input => {
-        input.addEventListener(
-            "keydown",
-            function (event) {
-                if (
-                    event.key === "Enter"
-                ) {
-                    calculateProfit();
-                }
+function initProfitEnterKey() {
+    document.addEventListener(
+        "keydown",
+        function (event) {
+            if (
+                event.key !== "Enter"
+            ) {
+                return;
             }
-        );
-    });
+
+            const target =
+                event.target;
+
+            if (
+                target.matches(
+                    "#costPrice, #sellingPrice"
+                )
+            ) {
+                event.preventDefault();
+
+                calculateProfit();
+            }
+        }
+    );
+}

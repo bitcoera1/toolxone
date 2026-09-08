@@ -171,15 +171,16 @@ function calculateInflation() {
        STATISTICS
        ====================================== */
 
-    if (
-        window.ToolXoneStatisticsEvents &&
-        typeof ToolXoneStatisticsEvents.recordCalculation ===
-            "function"
-    ) {
-        ToolXoneStatisticsEvents.recordCalculation(
-            "inflation-calculator"
-        );
-    }
+if (
+    typeof ToolXoneStatisticsEvents !== "undefined" &&
+    typeof ToolXoneStatisticsEvents.recordCalculation ===
+        "function"
+) {
+    ToolXoneStatisticsEvents.recordCalculation(
+        "inflation-calculator"
+    );
+}
+
 }
 
 
@@ -315,6 +316,14 @@ function clampInflationPercent(value) {
    ====================================== */
 
 function resetInflation() {
+
+    if (
+        window.ToolXoneValidationUI &&
+        typeof ToolXoneValidationUI.clearAllErrors === "function"
+    ) {
+        ToolXoneValidationUI.clearAllErrors();
+    }
+
     document.getElementById(
         "currentAmount"
     ).value = "";
@@ -359,26 +368,71 @@ function resetInflation() {
    ENTER KEY SUPPORT
    ====================================== */
 
-document
-    .querySelectorAll(
-        "#currentAmount, " +
-        "#inflationRate, " +
-        "#years"
-    )
-    .forEach(input => {
-        input.addEventListener(
-            "keydown",
-            function (event) {
-                if (
-                    event.key === "Enter"
-                ) {
-                    calculateInflation();
-                }
-            }
-        );
-    });
-
-
 function runInflationCalculator() {
     calculateInflation();
 }
+
+/* ======================================
+   INFLATION UI EVENT WIRING
+   Click + Reset + Enter Support
+   ====================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const calculateButton =
+        document.getElementById("calculateInflationBtn");
+
+    const resetButton =
+        document.getElementById("resetInflationBtn");
+
+    const calculatorForm =
+        document.getElementById("calculatorForm");
+
+    if (calculateButton) {
+        calculateButton.addEventListener(
+            "click",
+            function () {
+                calculateInflation();
+            }
+        );
+    }
+
+    if (resetButton) {
+        resetButton.addEventListener(
+            "click",
+            function () {
+                resetInflation();
+            }
+        );
+    }
+
+    if (calculatorForm) {
+        calculatorForm.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key !== "Enter") {
+                    return;
+                }
+
+                const target = event.target;
+
+                if (
+                    !target ||
+                    ![
+                        "currentAmount",
+                        "inflationRate",
+                        "years"
+                    ].includes(target.id)
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                calculateInflation();
+            }
+        );
+    }
+
+});

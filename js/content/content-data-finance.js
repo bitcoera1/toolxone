@@ -2829,7 +2829,7 @@ ToolXoneContentRegistry.register(
             "How to Calculate Discounts, Savings, and Final Price",
 
         introduction:
-            `A discount reduces the original price of a product or service by a specific percentage or amount. Understanding how discounts work can help you compare offers, estimate savings, and determine how much you will actually pay before making a purchase.
+            `A discount reduces the original price of a product or service by a specific percentage. Understanding how discounts work can help you compare offers, estimate savings, and determine how much you will actually pay before making a purchase.
 
 The ToolXone Discount Calculator makes this process simple. Enter the original price and discount percentage to calculate the discount amount, final price, percentage saved, and useful insights about your savings.`,
 

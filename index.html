@@ -360,7 +360,147 @@ body.dark-mode .home-hero{
     }
 }
 
+/* =====================================================
+   TOOLXONE HOMEPAGE ABOUT SECTION
+   ===================================================== */
+
+.tx-home-about{
+    width:100%;
+    padding:70px 20px;
+    background:#ffffff;
+    color:#1e293b;
+}
+
+.tx-home-about-inner{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.tx-home-about-badge{
+    display:inline-block;
+    padding:8px 16px;
+    margin-bottom:16px;
+    border-radius:999px;
+    background:rgba(16,185,129,.10);
+    border:1px solid rgba(16,185,129,.25);
+    color:#059669;
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.3px;
+}
+
+.tx-home-about h2{
+    margin:0 0 20px;
+    font-size:32px;
+    line-height:1.25;
+    color:#0f172a;
+}
+
+.tx-home-about > .tx-home-about-inner > p{
+    max-width:900px;
+    margin:0 0 16px;
+    font-size:17px;
+    line-height:1.8;
+    color:#475569;
+}
+
+.tx-home-about-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:35px;
+}
+
+.tx-home-about-item{
+    padding:24px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+}
+
+.tx-home-about-item span{
+    display:block;
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.tx-home-about-item h3{
+    margin:0 0 8px;
+    font-size:19px;
+    color:#0f172a;
+}
+
+.tx-home-about-item p{
+    margin:0;
+    font-size:15px;
+    line-height:1.7;
+    color:#64748b;
+}
+
+/* Dark mode */
+
+body.dark-mode .tx-home-about{
+    background:transparent;
+    color:#e2e8f0;
+}
+
+body.dark-mode .tx-home-about h2{
+    color:#f8fafc;
+}
+
+body.dark-mode .tx-home-about > .tx-home-about-inner > p{
+    color:#cbd5e1;
+}
+
+body.dark-mode .tx-home-about-item{
+    background:#111c2e;
+    border-color:#243247;
+}
+
+body.dark-mode .tx-home-about-item h3{
+    color:#f8fafc;
+}
+
+body.dark-mode .tx-home-about-item p{
+    color:#94a3b8;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+    .tx-home-about-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+    .tx-home-about{
+        padding:50px 16px;
+    }
+
+    .tx-home-about h2{
+        font-size:26px;
+    }
+
+    .tx-home-about > .tx-home-about-inner > p{
+        font-size:15px;
+        line-height:1.75;
+    }
+
+    .tx-home-about-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+        margin-top:28px;
+    }
+
+    .tx-home-about-item{
+        padding:20px;
+    }
+}
+
 </style>
+
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -538,6 +678,94 @@ body.dark-mode .home-hero{
         <div>
 
             🔄 Auto Updates Every Minute
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     ABOUT TOOLXONE — HOMEPAGE INFORMATION SECTION
+     -----------------------------------------------------
+     Original explanatory content for homepage visitors.
+     ===================================================== -->
+
+<section
+    id="about-toolxone-home"
+    class="tx-home-about"
+    aria-labelledby="about-toolxone-home-title"
+>
+
+    <div class="tx-home-about-inner">
+
+        <div class="tx-home-about-badge">
+            💡 ABOUT TOOLXONE
+        </div>
+
+        <h2 id="about-toolxone-home-title">
+            Simple Tools for Everyday Calculations & Digital Tasks
+        </h2>
+
+        <p>
+            ToolXone is a free online platform designed to make everyday
+            calculations, conversions, financial planning, health calculations,
+            and digital tasks easier to handle. Our tools are built to provide
+            clear and practical results without unnecessary complexity.
+        </p>
+
+        <p>
+            Whether you need to calculate a percentage, plan savings, estimate
+            loan payments, check a BMI result, convert currencies or units,
+            generate a QR code, or work with PDF files, ToolXone brings useful
+            tools together in one place.
+        </p>
+
+        <p>
+            Each tool is designed with simplicity, accessibility, and ease of
+            use in mind, so visitors can quickly find the right tool and get
+            the information they need. Explore our finance tools, calculators,
+            converters, health tools, utilities, and PDF tools to find a
+            practical solution for your everyday needs.
+        </p>
+
+        <div class="tx-home-about-grid">
+
+            <div class="tx-home-about-item">
+                <span>🧮</span>
+                <h3>Calculate</h3>
+                <p>
+                    Solve everyday mathematical, financial, and health-related
+                    calculations with dedicated online tools.
+                </p>
+            </div>
+
+            <div class="tx-home-about-item">
+                <span>🔄</span>
+                <h3>Convert</h3>
+                <p>
+                    Convert currencies and units quickly with simple,
+                    easy-to-use tools.
+                </p>
+            </div>
+
+            <div class="tx-home-about-item">
+                <span>📊</span>
+                <h3>Plan & Compare</h3>
+                <p>
+                    Explore finance and savings calculations to better
+                    understand costs, returns, and goals.
+                </p>
+            </div>
+
+            <div class="tx-home-about-item">
+                <span>🛠️</span>
+                <h3>Create & Simplify</h3>
+                <p>
+                    Use practical utilities such as QR generation and PDF
+                    tools to complete everyday digital tasks.
+                </p>
+            </div>
 
         </div>
 

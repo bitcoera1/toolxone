@@ -21,8 +21,6 @@ const CONFIG = {
 
     runValidation: true,
 
-    runTests: true,
-
     collectMetrics: true,
 
     autoReport: false
@@ -44,8 +42,6 @@ const modules = {
     images: null,
 
     validator: null,
-
-    tests: null
 
 };
 
@@ -83,9 +79,6 @@ function discoverModules(){
 
     modules.validator =
         window.ToolXonePerformanceValidator || null;
-
-    modules.tests =
-        window.ToolXonePerformanceTests || null;
 
 }
 
@@ -136,14 +129,6 @@ function run(){
         modules.validator.run){
 
         modules.validator.run();
-
-    }
-
-    if(CONFIG.runTests &&
-        modules.tests &&
-        modules.tests.run){
-
-        modules.tests.run();
 
     }
 

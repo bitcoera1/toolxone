@@ -1131,7 +1131,7 @@ const CALORIE_CALCULATOR_CONTENT = {
                     "Calorie Maintenance and Weight Change",
 
                 content:
-                    "Estimated maintenance calories can provide a general reference when considering energy balance. Body weight can change when average energy intake differs from average energy expenditure over time, but real-world changes are influenced by many factors and do not always follow a simple short-term calculation."
+                    "Estimated maintenance calories can provide a general reference when considering energy balance. Body weight can change when average energy intake differs from average energy expenditure over time, but real-world changes are influenced by many factors and do not always follow a simple short-term calculation. The calculator computes its weight-loss estimate as the greater of 1,200 and estimated maintenance minus 500 calories/day, and its weight-gain estimate as maintenance plus 500. If the computed weight-loss estimate is not below maintenance, that field displays “—” instead of a numeric target. These fixed adjustments are calculation assumptions, not individualized dietary recommendations."
             },
 
 

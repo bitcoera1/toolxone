@@ -806,6 +806,9 @@ function displayCalorieResult(
        WEIGHT LOSS
     ===================================================== */
 
+    const weightLossUnavailable =
+        weightLossCalories >= maintenanceCalories;
+
     const weightLossElement =
         document.getElementById(
             "weightLossValue"
@@ -815,9 +818,11 @@ function displayCalorieResult(
     if (weightLossElement) {
 
         weightLossElement.textContent =
-            Math.round(
-                weightLossCalories
-            ).toLocaleString();
+            weightLossUnavailable
+                ? "—"
+                : Math.round(
+                    weightLossCalories
+                ).toLocaleString();
 
     }
 
@@ -856,6 +861,11 @@ function displayCalorieResult(
 
         explanationElement.textContent =
             "Your estimated maintenance calories are based on your BMR and selected activity level. Calorie needs are estimates and can vary between individuals.";
+
+        if (weightLossUnavailable) {
+            explanationElement.textContent +=
+                " A weight-loss target is unavailable because the calculator’s computed target is not below your estimated maintenance calories.";
+        }
 
     }
 

@@ -267,20 +267,20 @@
                     {
 
                         question:
-                            "How do regular monthly contributions affect compound growth?",
+                            "Does adding monthly contributions affect compound growth?",
 
                         answer:
-                            "Regular contributions increase the amount invested over time and can provide additional capital for future growth. The effect depends on the contribution amount, investment period, interest rate and compounding frequency."
+                            "Yes. Deposits are added at the beginning of each month, starting alongside the initial investment. There is one deposit per month and no extra deposit at the ending valuation instant. The first deposit grows for the full duration and the final deposit for one month."
 
                     },
 
                     {
 
                         question:
-                            "Does compounding frequency affect investment growth?",
+                            "Does compounding frequency affect the result?",
 
                         answer:
-                            "Yes. Compounding frequency determines how often interest is added to the balance. Depending on the rate and other assumptions, more frequent compounding can produce a different future value than less frequent compounding."
+                            "Yes. Yearly, quarterly, monthly and daily compounding each imply an equivalent monthly growth rate from the entered nominal annual rate. Monthly deposits grow at that equivalent rate, including fractional compounding periods. The selected frequency still determines effective annual growth."
 
                     },
 
@@ -321,6 +321,66 @@
 
                         answer:
                             "No. The calculator provides estimates based on the values and assumptions entered. Actual investment returns may vary because of market performance, fees, taxes, changing rates, contribution timing and other factors."
+
+                    },
+
+                    {
+
+                        question:
+                            "Is the annual interest rate an effective annual yield or APY?",
+
+                        answer:
+                            "No. Enter a nominal annual rate quoted with the selected compounding frequency. Its effective annual growth is (1 + r/n)^n - 1, where r is the nominal rate as a decimal and n is the number of compounding periods per year."
+
+                    },
+
+                    {
+
+                        question:
+                            "How are partial compounding periods handled?",
+
+                        answer:
+                            "The projection includes fractional-exponent compound growth for each amount from its deposit time to the ending valuation. It does not discard growth after the last completed annual or quarterly period and does not model a bank's interest-crediting schedule."
+
+                    },
+
+                    {
+
+                        question:
+                            "Can I enter a duration that includes part of a year?",
+
+                        answer:
+                            "Yes, if it represents a whole number of months. For example, 1.5 years equals 18 months. Decimal approximations extremely close to a whole month are accepted; a genuine fractional month such as 1.1 years (13.2 months) is rejected."
+
+                    },
+
+                    {
+
+                        question:
+                            "How is daily compounding approximated?",
+
+                        answer:
+                            "Daily compounding assumes 365 days per year and equal one-twelfth-year months of 365/12 days. The calculator does not collect a start date or model actual calendar month lengths and leap years."
+
+                    },
+
+                    {
+
+                        question:
+                            "What does the growth percentage mean?",
+
+                        answer:
+                            "Growth percentage is interest earned divided by total contributions, multiplied by 100. It is not an annualized or money-weighted return."
+
+                    },
+
+                    {
+
+                        question:
+                            "What happens at zero interest?",
+
+                        answer:
+                            "Future value equals the initial investment plus all monthly contributions. Interest earned and growth percentage are zero for every supported compounding frequency."
 
                     }
 

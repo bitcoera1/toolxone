@@ -95,6 +95,14 @@
 
 <div id="calculatorForm"></div>
 
+<p class="tool-subtitle">
+    Monthly deposits are added at the beginning of each month, starting today.
+    Enter a nominal annual rate and a duration in years equal to whole months
+    (for example, 1.5 years = 18 months). The selected compounding frequency is
+    converted to an equivalent monthly growth rate, including partial-period
+    growth. Daily compounding uses a 365-day year and equal monthly intervals.
+</p>
+
 <div class="actions">
     <button onclick="runCompoundCalculator()">Calculate Growth</button>
     <button class="reset-btn" onclick="resetCompound()">Reset</button>
@@ -296,7 +304,7 @@ const compoundCalculator = {
         { label: "Initial Investment", type: "number", id: "principal", placeholder: "10000" },
         { label: "Monthly Contribution", type: "number", id: "monthly", placeholder: "500" },
         { label: "Annual Interest Rate (%)", type: "number", id: "rate", placeholder: "8" },
-        { label: "Investment Period", type: "number", id: "years", placeholder: "10" },
+        { label: "Investment Period (Years)", type: "number", id: "years", placeholder: "10", step: "any" },
         {
             label: "Compounding Frequency",
             type: "select",

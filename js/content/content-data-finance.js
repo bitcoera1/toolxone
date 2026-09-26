@@ -1929,15 +1929,27 @@ ToolXoneContentRegistry.register(
 <p>
     In this formula, <strong>A</strong> is the future value,
     <strong>P</strong> is the initial principal, <strong>r</strong> is the
-    annual interest rate expressed as a decimal, <strong>n</strong> is the
+    nominal annual interest rate expressed as a decimal (not an effective
+    annual yield or APY), <strong>n</strong> is the
     number of compounding periods per year, and <strong>t</strong> is the
     number of years.
 </p>
 
 <p>
-    ToolXone's calculator also supports monthly contributions, so its
-    projection includes the additional money entered during the investment
-    period rather than relying only on the starting principal.
+    For monthly deposits, let <strong>C</strong> be the deposit amount and
+    <strong>M = 12t</strong> the whole number of months. The equivalent
+    monthly growth factor is <strong>q = (1 + r/n)<sup>n/12</sup></strong>.
+    Starting with B<sub>0</sub> = P, each month is calculated as follows:
+</p>
+
+<div class="compound-formula">
+    <strong>B<sub>m</sub> = (B<sub>m-1</sub> + C) &times; q</strong>
+</div>
+
+<p>
+    Add the monthly deposit first, then apply one month of growth. Equivalently,
+    future value is Pq<sup>M</sup> + C(q + q<sup>2</sup> + &hellip; + q<sup>M</sup>).
+    When the interest rate is zero, future value is simply P + CM.
 </p>
 `
             },
@@ -2006,10 +2018,18 @@ ToolXoneContentRegistry.register(
                 content:
                     `
 <p>
-    Regular monthly contributions increase the total amount invested and
-    give those additional contributions an opportunity to participate in
-    future growth. Over long periods, consistent contributions can become an
-    important part of the projected investment balance.
+    Contributions are added at the beginning of each month. The first deposit
+    is added alongside the initial investment at time zero, and the final
+    deposit earns one month of growth. An M-month investment receives exactly
+    M deposits, with no extra deposit at the ending valuation instant.
+    Each deposit earns growth only for the time it is invested.
+</p>
+
+<p>
+    For example, an initial investment of 1,000 with deposits of 100 per month,
+    a 12% nominal annual rate and yearly compounding grows to approximately
+    2,396.65 after one year. Total contributions are 2,200 and interest earned
+    is approximately 196.65. Later deposits do not receive a full year's interest.
 </p>
 
 <p>
@@ -2035,15 +2055,27 @@ ToolXoneContentRegistry.register(
                 content:
                     `
 <p>
-    Compounding frequency describes how often interest is added to the
-    investment balance. This calculator allows you to compare yearly,
-    quarterly, monthly and daily compounding assumptions.
+    The nominal annual rate is quoted with a selected compounding frequency:
+    yearly (n = 1), quarterly (n = 4), monthly (n = 12) or daily (n = 365).
+    The calculator converts that rate to an equivalent monthly growth factor
+    so that monthly deposits can be valued consistently. Changing the selected
+    frequency still changes the effective annual growth; it does not simply
+    use r/12 for every option.
 </p>
 
 <p>
-    When the annual rate and other inputs remain the same, changing the
-    compounding frequency may change the projected future value because
-    interest is being incorporated into the balance at different intervals.
+    Incomplete compounding periods use fractional-exponent compound growth.
+    For example, 1,000 at 12% with yearly compounding for 1.5 years grows to
+    1,000 &times; 1.12<sup>1.5</sup>, approximately 1,185.30, without deposits.
+    The projection includes growth within the final partial period rather than
+    stopping at the last annual or quarterly boundary. It is an accumulated-value
+    estimate, not a statement of when a bank credits interest.
+</p>
+
+<p>
+    Daily compounding assumes 365 days per year and equal one-twelfth-year
+    months (365/12 days each). No start date is collected, so actual calendar
+    month lengths and leap years are not modeled.
 </p>
 `
             },
@@ -2085,6 +2117,13 @@ ToolXoneContentRegistry.register(
     Interest earned represents the difference between the projected future
     value and total contributions. It shows how much of the estimated final
     balance comes from growth rather than from the money contributed.
+</p>
+
+<p>
+    Growth percentage is 100 &times; interest earned / total contributions.
+    It is not an annualized or money-weighted return. Calculations retain
+    full internal floating-point precision; displayed amounts are rounded
+    to two decimal places.
 </p>
 
 <p>
@@ -2139,10 +2178,13 @@ ToolXoneContentRegistry.register(
                 content:
                     `
 <p>
-    Enter your initial investment, optional monthly contribution, annual
-    interest rate and investment period. Then select a compounding
-    frequency and choose Calculate Growth. The calculator will estimate
-    future value, total contributions, interest earned and overall growth.
+    Enter your initial investment, optional monthly contribution, nominal
+    annual interest rate and investment period in years. The duration must
+    equal a whole number of months: for example, 1.5 years is 18 months.
+    Decimal approximations extremely close to whole months are accepted;
+    genuine fractional months, such as 1.1 years (13.2 months), are not rounded.
+    Select a compounding frequency and choose Calculate Growth to estimate
+    future value, total contributions, interest earned and growth percentage.
 </p>
 
 <p>
@@ -6041,7 +6083,7 @@ ToolXoneContentRegistry.register(
                 "How does the Compound Interest Calculator work?",
 
             answer:
-                "The calculator estimates future investment value using the initial principal, optional monthly contributions, annual interest rate, investment period, and selected compounding frequency. It then shows the estimated future value, total contributions, interest earned, and growth percentage."
+                "The calculator starts with the principal, adds each monthly contribution at the beginning of the month, and applies the equivalent monthly growth rate derived from the nominal annual rate and selected compounding frequency. It repeats this for the whole number of months in the investment period."
         },
 
         {
@@ -6049,7 +6091,7 @@ ToolXoneContentRegistry.register(
                 "What inputs do I need to use the calculator?",
 
             answer:
-                "You need an initial investment, annual interest rate, investment period, and compounding frequency. You can also enter a monthly contribution if you plan to add money regularly."
+                "Enter a positive initial investment, nominal annual interest rate, duration in years equal to whole months, and yearly, quarterly, monthly or daily compounding. The monthly contribution is optional; leaving it blank means zero."
         },
 
         {
@@ -6073,7 +6115,7 @@ ToolXoneContentRegistry.register(
                 "Does adding monthly contributions affect compound growth?",
 
             answer:
-                "Yes. Regular monthly contributions increase the amount invested and give the additional contributions an opportunity to participate in future growth. The longer the money remains invested, the more time those contributions have to grow."
+                "Yes. Deposits are added at the beginning of each month, starting alongside the initial investment. There is one deposit per month and no extra deposit at the ending valuation instant. The first deposit grows for the full duration and the final deposit for one month."
         },
 
         {
@@ -6081,7 +6123,7 @@ ToolXoneContentRegistry.register(
                 "Does compounding frequency affect the result?",
 
             answer:
-                "Yes. The selected compounding frequency determines how often interest is incorporated into the investment balance. Different compounding frequencies can produce different projected future values when other assumptions remain unchanged."
+                "Yes. Yearly, quarterly, monthly and daily compounding each imply an equivalent monthly growth rate from the entered nominal annual rate. Monthly deposits grow at that equivalent rate, including fractional compounding periods. The selected frequency still determines effective annual growth."
         },
 
         {
@@ -6106,6 +6148,66 @@ ToolXoneContentRegistry.register(
 
             answer:
                 "No. The Compound Interest Calculator estimates nominal investment growth and does not automatically adjust the result for inflation. Inflation can reduce the future purchasing power of money over time."
+        },
+
+        {
+
+            question:
+                "Is the annual interest rate an effective annual yield or APY?",
+
+            answer:
+                "No. Enter a nominal annual rate quoted with the selected compounding frequency. Its effective annual growth is (1 + r/n)^n - 1, where r is the nominal rate as a decimal and n is the number of compounding periods per year."
+
+        },
+
+        {
+
+            question:
+                "How are partial compounding periods handled?",
+
+            answer:
+                "The projection includes fractional-exponent compound growth for each amount from its deposit time to the ending valuation. It does not discard growth after the last completed annual or quarterly period and does not model a bank's interest-crediting schedule."
+
+        },
+
+        {
+
+            question:
+                "Can I enter a duration that includes part of a year?",
+
+            answer:
+                "Yes, if it represents a whole number of months. For example, 1.5 years equals 18 months. Decimal approximations extremely close to a whole month are accepted; a genuine fractional month such as 1.1 years (13.2 months) is rejected."
+
+        },
+
+        {
+
+            question:
+                "How is daily compounding approximated?",
+
+            answer:
+                "Daily compounding assumes 365 days per year and equal one-twelfth-year months of 365/12 days. The calculator does not collect a start date or model actual calendar month lengths and leap years."
+
+        },
+
+        {
+
+            question:
+                "What does the growth percentage mean?",
+
+            answer:
+                "Growth percentage is interest earned divided by total contributions, multiplied by 100. It is not an annualized or money-weighted return."
+
+        },
+
+        {
+
+            question:
+                "What happens at zero interest?",
+
+            answer:
+                "Future value equals the initial investment plus all monthly contributions. Interest earned and growth percentage are zero for every supported compounding frequency."
+
         }
 
     ]

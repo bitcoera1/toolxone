@@ -8,6 +8,7 @@ const COMPOUND_MAX_RATE = 1000;
 const COMPOUND_MAX_YEARS = 100;
 
 const COMPOUND_ALLOWED_FREQUENCIES = [1, 4, 12, 365];
+const COMPOUND_MONTH_TOLERANCE = 1e-8;
 
 
 function calculateCompound() {
@@ -163,12 +164,15 @@ function calculateCompound() {
        CONVERT PERIOD TO WHOLE MONTHS
        ====================================== */
 
-    const totalMonths =
+    const enteredMonths =
         years * 12;
+
+    const totalMonths =
+        Math.round(enteredMonths);
 
 
     if (
-        !Number.isInteger(totalMonths)
+        Math.abs(enteredMonths - totalMonths) > COMPOUND_MONTH_TOLERANCE
     ) {
         alert(
             "Investment period must represent a whole number of months. For example, 1.5 years equals 18 months."
@@ -199,105 +203,44 @@ function calculateCompound() {
     const annualDecimalRate =
         annualRate / 100;
 
-    let balance =
-        principal;
-
-
     /*
-       Monthly contributions are treated as
-       beginning-of-month contributions.
+       Equivalent monthly rate:
+       (1 + annualDecimalRate / frequency) ** (frequency / 12) - 1.
+       log1p/expm1 preserve precision for small positive rates.
 
-       Frequency meaning:
-
-       1   = yearly compounding
-       4   = quarterly compounding
-       12  = monthly compounding
-       365 = daily compounding
-
-       For yearly/quarterly/monthly compounding,
-       interest is applied only when the actual
-       compounding period is completed.
-
-       Daily compounding uses 365 days per year.
+       Deposits arrive at the beginning of each month, including time
+       zero. Each deposit grows only for its remaining months. Fractional
+       compounding periods use the same compound-growth convention.
+       Daily compounding assumes 365 days/year and equal 1/12-year months.
     */
+    const monthlyRate = Math.expm1(
+        (frequency / 12) * Math.log1p(annualDecimalRate / frequency)
+    );
 
+    const totalContribution =
+        principal + monthly * totalMonths;
 
-    const monthsPerPeriod =
-        frequency === 1
-            ? 12
-            : frequency === 4
-                ? 3
-                : frequency === 12
-                    ? 1
-                    : null;
-
-
-    const periodicRate =
-        frequency === 365
-            ? null
-            : annualDecimalRate / frequency;
+    let balance = principal;
 
 
     /* ======================================
        GROWTH SIMULATION
        ====================================== */
 
-    for (
-        let month = 1;
-        month <= totalMonths;
-        month++
-    ) {
+    if (annualRate === 0) {
+        // Avoid accumulated addition error and guarantee zero interest.
+        balance = totalContribution;
+    } else {
+        for (let month = 1; month <= totalMonths; month++) {
+            balance += monthly;
+            balance += balance * monthlyRate;
 
-        /*
-           Contribution is added at the
-           beginning of each month.
-        */
-        balance += monthly;
-
-
-        if (frequency === 365) {
-
-            /*
-               Daily compounding.
-
-               Because this calculator does not
-               collect a start date, use the standard
-               365-day year convention.
-
-               Each month represents 365 / 12 days.
-            */
-
-            const daysThisMonth =
-                365 / 12;
-
-            balance *= Math.pow(
-                1 + annualDecimalRate / 365,
-                daysThisMonth
-            );
-
-        } else if (
-            month % monthsPerPeriod === 0
-        ) {
-
-            /*
-               Apply interest only when the
-               selected compounding period ends.
-            */
-
-            balance *= Math.pow(
-                1 + periodicRate,
-                1
-            );
-        }
-
-
-        if (!Number.isFinite(balance)) {
-
-            alert(
-                "The calculation produced an invalid result. Please use smaller values."
-            );
-
-            return;
+            if (!Number.isFinite(balance)) {
+                alert(
+                    "The calculation produced an invalid result. Please use smaller values."
+                );
+                return;
+            }
         }
     }
 
@@ -305,11 +248,6 @@ function calculateCompound() {
     /* ======================================
        FINAL RESULTS
        ====================================== */
-
-    const totalContribution =
-        principal +
-        monthly * totalMonths;
-
 
     const interestEarned =
         balance -

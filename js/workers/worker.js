@@ -33,6 +33,13 @@ export default {
 };
 
 
+const PUBLIC_FEEDBACK_PREDICATE = `
+    submission_type = 'public_review'
+    AND publication_consent_version = 'public-review-v1'
+    AND publication_consented_at IS NOT NULL
+    AND status = 'published'
+`;
+
 const WorkerRouter = {
 
     // ==================================================
@@ -45,47 +52,24 @@ const WorkerRouter = {
         ctx
     ) {
 
+        const path = new URL(request.url).pathname;
+        const isFeedbackPath =
+            path === "/feedback" || path.startsWith("/feedback/");
+        let response;
+
         try {
-
-            const url = new URL(
-                request.url
-            );
-
-            const path =
-                url.pathname;
-
-            const method =
-                request.method;
-
-            // ------------------------------------------
-            // CORS
-            // ------------------------------------------
-
-            if (
-                method === "OPTIONS"
-            ) {
-
-                return this.cors();
-
-            }
-
-            return this.dispatch(
-                path,
-                method,
-                request,
-                env,
-                ctx
-            );
-
+            response = request.method === "OPTIONS"
+                ? this.cors()
+                : await this.dispatch(path, request.method, request, env, ctx);
+        } catch (error) {
+            response = this.serverError(error);
         }
 
-        catch (error) {
-
-            return this.serverError(
-                error
-            );
-
+        if (isFeedbackPath) {
+            response.headers.set("Cache-Control", "no-store");
         }
+
+        return response;
 
     },
 
@@ -468,15 +452,40 @@ if (
 
         try {
 
-            const data =
-                await request.json();
+            let data;
+            try {
+                data = await request.json();
+            } catch {
+                return this.json({ success: false, message: "Invalid JSON body." }, 400);
+            }
+
+            if (!data || typeof data !== "object" || Array.isArray(data)) {
+                return this.json({ success: false, message: "A JSON object is required." }, 400);
+            }
+
+            const submissionType = Object.prototype.hasOwnProperty.call(data, "submissionType")
+                ? data.submissionType
+                : "private_feedback";
+
+            if (submissionType !== "private_feedback" && submissionType !== "public_review") {
+                return this.json({ success: false, message: "Invalid submission type." }, 400);
+            }
+
+            const isPublicReview = submissionType === "public_review";
+            if (isPublicReview && data.publicationConsentVersion !== "public-review-v1") {
+                return this.json({ success: false, message: "Public review publication consent is required." }, 400);
+            }
+
+            const storedFeedbackType = isPublicReview ? "Public Review" : data.feedbackType;
+            const publicationStatus = isPublicReview ? "published" : "pending";
+            const consentVersion = isPublicReview ? "public-review-v1" : null;
+            const consentedAt = isPublicReview ? new Date().toISOString() : null;
 
 
             const {
     toolId,
     toolName,
     rating,
-    feedbackType,
     name,
     email,
     message
@@ -491,7 +500,7 @@ if (
                 !toolId ||
                 !toolName ||
                 !rating ||
-                !feedbackType ||
+                !storedFeedbackType ||
                 !message
             ) {
 
@@ -624,13 +633,16 @@ const cleanCountryCode =
                             message,
                             country_code,
                             helpful_count,
-                            status
+                            status,
+                            submission_type,
+                            publication_consent_version,
+                            publication_consented_at
 
                         )
 
                         VALUES (
 
-                            ?, ?, ?, ?, ?, ?, ?, ?, 0, 'published'
+                            ?, ?, ?, ?, ?, ?, ?, ?, 0, ?, ?, ?, ?
 
                         )
 
@@ -640,11 +652,15 @@ const cleanCountryCode =
                         toolId,
                         toolName,
                         numericRating,
-                        feedbackType,
+                        storedFeedbackType,
                         cleanName,
                         cleanEmail,
                         cleanMessage,
-                        cleanCountryCode
+                        cleanCountryCode,
+                        publicationStatus,
+                        submissionType,
+                        consentVersion,
+                        consentedAt
 
                     )
                     .run();
@@ -655,7 +671,9 @@ const cleanCountryCode =
                 success: true,
 
                 message:
-                    "Feedback submitted successfully.",
+                    isPublicReview
+                        ? "Public review submitted successfully."
+                        : "Private feedback submitted successfully.",
 
                 feedbackId:
                     result.meta
@@ -757,7 +775,7 @@ const cleanCountryCode =
                     tool_feedback
 
                 WHERE
-                    status = 'published'
+                    ${PUBLIC_FEEDBACK_PREDICATE}
             `;
 
 
@@ -817,7 +835,7 @@ const cleanCountryCode =
                     tool_feedback
 
                 WHERE
-                    status = 'published'
+                    ${PUBLIC_FEEDBACK_PREDICATE}
             `;
 
 
@@ -928,7 +946,6 @@ const cleanCountryCode =
                         message,
                         country_code,
                         helpful_count,
-                        status,
                         created_at
 
                     FROM
@@ -936,6 +953,7 @@ const cleanCountryCode =
 
                     WHERE
                         id = ?
+                        AND ${PUBLIC_FEEDBACK_PREDICATE}
 
                     LIMIT 1
                 `)
@@ -1018,110 +1036,20 @@ async markFeedbackHelpful(
         }
 
 
-        // ------------------------------------------
-        // Check feedback exists
-        // ------------------------------------------
-
-        const {
-            results
-        } = await env.DB
+        const { results: updated } = await env.DB
             .prepare(`
-                SELECT
-                    id,
-                    helpful_count,
-                    status
-
-                FROM
-                    tool_feedback
-
-                WHERE
-                    id = ?
-
-                LIMIT 1
+                UPDATE tool_feedback
+                SET helpful_count = helpful_count + 1
+                WHERE id = ?
+                  AND ${PUBLIC_FEEDBACK_PREDICATE}
+                RETURNING id, helpful_count
             `)
             .bind(numericId)
             .all();
 
-
-        if (
-            !results.length
-        ) {
-
-            return this.json({
-
-                success: false,
-
-                message:
-                    "Feedback not found."
-
-            }, 404);
-
+        if (!updated.length) {
+            return this.json({ success: false, message: "Feedback not found." }, 404);
         }
-
-
-        // ------------------------------------------
-        // Only published reviews
-        // ------------------------------------------
-
-        if (
-            results[0].status !== "published"
-        ) {
-
-            return this.json({
-
-                success: false,
-
-                message:
-                    "This feedback is not available."
-
-            }, 404);
-
-        }
-
-
-        // ------------------------------------------
-        // Increment helpful count
-        // ------------------------------------------
-
-        await env.DB
-            .prepare(`
-                UPDATE
-                    tool_feedback
-
-                SET
-                    helpful_count =
-                        helpful_count + 1
-
-                WHERE
-                    id = ?
-            `)
-            .bind(numericId)
-            .run();
-
-
-        // ------------------------------------------
-        // Get updated count
-        // ------------------------------------------
-
-        const {
-            results: updated
-        } = await env.DB
-            .prepare(`
-                SELECT
-                    id,
-                    helpful_count
-
-                FROM
-                    tool_feedback
-
-                WHERE
-                    id = ?
-
-                LIMIT 1
-            `)
-            .bind(numericId)
-            .all();
-
 
         return this.json({
 

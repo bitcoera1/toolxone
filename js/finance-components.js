@@ -114,6 +114,22 @@ function renderFinanceFeedback(
 
     <form class="feedback-form">
 
+        <div class="tx-feedback-group">
+
+            <label>
+                Submission choice
+                <select class="feedback-submission-type" name="submissionType">
+                    <option value="private_feedback" selected>Private feedback</option>
+                    <option value="public_review">Public review</option>
+                </select>
+            </label>
+
+            <p>Private feedback is not published as a public review.</p>
+            <p>By selecting Public review and submitting, you agree that your submitted name (or Anonymous), rating, message, tool, server-derived country when available, and date may be displayed publicly.</p>
+            <p>Email remains private and is never publicly displayed.</p>
+
+        </div>
+
         <!-- Rating -->
 
         <div class="tx-feedback-group">
@@ -283,7 +299,7 @@ function renderFinanceFeedback(
 
     <div class="tx-feedback-note">
 
-        🔒 Your information stays private.
+        🔒 Private feedback stays private. Only explicitly chosen public reviews may be published.
         We never publish your email address.
 
     </div>
@@ -1464,6 +1480,11 @@ document.addEventListener(
                 'input[name="toolRating"]:checked'
             );
 
+        const submissionType =
+            form.querySelector('.feedback-submission-type')?.value === 'public_review'
+                ? 'public_review'
+                : 'private_feedback';
+
         const type =
             form.querySelector(
                 ".feedback-type"
@@ -1553,8 +1574,11 @@ document.addEventListener(
                             rating.value
                         ),
 
-                    feedbackType:
-                        type,
+                    submissionType,
+
+                    ...(submissionType === 'public_review'
+                        ? { publicationConsentVersion: 'public-review-v1' }
+                        : { feedbackType: type }),
 
                     name,
 
@@ -1591,8 +1615,8 @@ document.addEventListener(
             ----------------------------------------
             */
 
-            status.innerHTML =
-                `🎉 Thank you, ${name}! Your feedback has been submitted successfully.`;
+            status.textContent =
+                `🎉 Thank you, ${name}! Your ${submissionType === 'public_review' ? 'public review' : 'private feedback'} has been submitted successfully.`;
 
             status.className =
                 "feedback-status success";

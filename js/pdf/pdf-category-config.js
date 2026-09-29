@@ -59,10 +59,10 @@ This configuration must NOT contain:
             "📄",
 
         description:
-            "Powerful online PDF tools for converting, organizing, compressing, editing, securing, and working with PDF documents.",
+            "Online tools for converting PDF pages to images and images to PDF documents.",
 
         shortDescription:
-            "Convert, organize, compress, edit, and manage PDF files online.",
+            "Convert PDF pages to images and images to PDF online.",
 
         theme:
             "pdf",
@@ -80,10 +80,10 @@ This configuration must NOT contain:
     const seo = {
 
         title:
-            "Free Online PDF Tools - Convert, Compress, Edit & Manage PDFs | ToolXone",
+            "Free Online PDF Tools - PDF to Image & Image to PDF | ToolXone",
 
         description:
-            "Use free online PDF tools to convert, compress, organize, edit, secure, and manage PDF files. ToolXone provides practical PDF utilities designed to be fast, simple, and easy to use.",
+            "Use ToolXone's free online tools to convert PDF pages to images and JPG, PNG and WebP images into PDF documents.",
 
         keywords: [
 
@@ -95,29 +95,11 @@ This configuration must NOT contain:
 
             "PDF converter",
 
-            "PDF editor",
-
-            "PDF compressor",
-
             "PDF converter online",
 
             "PDF to image",
 
             "image to PDF",
-
-            "merge PDF",
-
-            "split PDF",
-
-            "compress PDF",
-
-            "edit PDF",
-
-            "protect PDF",
-
-            "unlock PDF",
-
-            "OCR PDF",
 
             "PDF utility"
 
@@ -220,7 +202,7 @@ This configuration must NOT contain:
                 "🔄",
 
             description:
-                "Convert PDFs and other common document formats through flexible, user-friendly workflows.",
+                "Convert PDF pages to JPG, PNG or WebP images, and convert supported images into PDF documents.",
 
             order:
                 3,

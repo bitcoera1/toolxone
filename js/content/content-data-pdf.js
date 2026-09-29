@@ -80,7 +80,7 @@ SEO schema architecture remains in:
                 "Complete Guide to ToolXone PDF Tools",
 
             introduction:
-                "PDF files are part of everyday office work, education, business communication and document sharing. ToolXone brings essential PDF workflows together in one place so you can convert, organize, optimize, edit and manage documents without searching through multiple separate utilities.",
+                "PDF files are part of everyday office work, education, business communication and document sharing. ToolXone currently offers two PDF tools: PDF to Image and Image to PDF.",
 
             sections: [
 
@@ -90,7 +90,7 @@ SEO schema architecture remains in:
                         "What Are PDF Tools?",
 
                     content:
-                        "PDF tools are online utilities designed to help users create, convert, organize, compress, edit, secure and extract information from PDF documents. Different workflows address different document needs, from simple file conversion to page management and document security."
+                        "ToolXone's currently available PDF tools convert PDF pages into images and create PDF documents from supported images."
 
                 },
 
@@ -100,67 +100,7 @@ SEO schema architecture remains in:
                         "Convert PDF Files",
 
                     content:
-                        "Convert between PDF documents, images and other common formats through focused workflows. ToolXone's PDF conversion tools are designed around practical tasks rather than separate pages for every minor file-format variation."
-
-                },
-
-                {
-
-                    heading:
-                        "Organize PDF Documents",
-
-                    content:
-                        "Planned PDF organization workflows will help users combine documents, split files, extract pages, remove unwanted pages and arrange documents into the order they need."
-
-                },
-
-                {
-
-                    heading:
-                        "Compress and Optimize PDFs",
-
-                    content:
-                        "Reduce PDF file sizes and prepare documents for easier storage, sharing and uploading while keeping the workflow simple and accessible."
-
-                },
-
-                {
-
-                    heading:
-                        "Edit PDF Documents",
-
-                    content:
-                        "Work with PDF pages through practical editing operations such as rotation, cropping, page numbering and watermarking."
-
-                },
-
-                {
-
-                    heading:
-                        "Protect PDF Documents",
-
-                    content:
-                        "Use PDF security workflows to protect documents, manage access, add signatures and handle sensitive document content."
-
-                },
-
-                {
-
-                    heading:
-                        "Extract Information from PDFs",
-
-                    content:
-                        "PDF documents can contain valuable text and visual information. ToolXone's extraction and OCR tools are designed to make that information easier to work with."
-
-                },
-
-                {
-
-                    heading:
-                        "PDF Intelligence",
-
-                    content:
-                        "The ToolXone PDF ecosystem is designed to grow beyond traditional file conversion with intelligent document workflows such as summarization, translation and structured content extraction."
+                        "Use PDF to Image to convert PDF pages into JPG, PNG or WebP images. Use Image to PDF to convert JPG, PNG or WebP images into a PDF document."
 
                 },
 
@@ -170,7 +110,7 @@ SEO schema architecture remains in:
                         "Why Use ToolXone PDF Tools?",
 
                     content:
-                        "ToolXone brings frequently used PDF workflows together in one organized ecosystem. Instead of searching for a different utility for every task, users can discover related PDF tools through a single practical workspace."
+                        "ToolXone brings PDF-to-image and image-to-PDF conversion together in one place, making it easy to choose the direction you need."
 
                 },
 
@@ -180,7 +120,7 @@ SEO schema architecture remains in:
                         "PDF Tools for Everyday Work",
 
                     content:
-                        "PDF workflows are useful for office documents, scanned pages, reports, forms, receipts, presentations, educational material, business files and everyday document sharing. ToolXone's growing PDF ecosystem is designed around these practical use cases."
+                        "Convert PDF pages into images for previews and sharing, or turn images of receipts, photographs and scanned pages into PDF documents."
 
                 }
 
@@ -215,7 +155,7 @@ SEO schema architecture remains in:
                     "What are PDF tools?",
 
                 answer:
-                    "PDF tools are utilities designed to help users create, convert, organize, compress, edit, secure and extract information from PDF documents."
+                    "ToolXone currently provides two PDF conversion tools: PDF to Image and Image to PDF."
 
             },
 
@@ -255,7 +195,7 @@ SEO schema architecture remains in:
                     "What PDF tasks can ToolXone support?",
 
                 answer:
-                    "The PDF ecosystem is being built to support document conversion, organization, compression, editing, security, extraction, OCR and future intelligent document workflows."
+                    "You can convert PDF pages into JPG, PNG or WebP images, and convert JPG, PNG or WebP images into PDF documents."
 
             },
 
@@ -351,10 +291,10 @@ SEO schema architecture remains in:
                 "Free Online PDF Tools",
 
             subtitle:
-                "Everything You Need to Work With PDFs",
+                "Convert Between PDFs and Images",
 
             description:
-                "Convert PDF pages to images and convert images to PDF documents with practical online tools designed for everyday work. More PDF workflows are being added to the ToolXone ecosystem.",
+                "Convert PDF pages to images and convert images to PDF documents with practical online tools designed for everyday work.",
 
             badge:
                 "PDF TOOLS",
@@ -380,10 +320,10 @@ SEO schema architecture remains in:
             statistics: {
 
                 categories:
-                    "2 Active",
+                    "1 Conversion Category",
 
                 workflows:
-                    "Growing",
+                    "2 Available",
 
                 availability:
                     "24/7",
@@ -459,7 +399,7 @@ SEO schema architecture remains in:
                 "Free Online PDF Tools - PDF to Image & Image to PDF | ToolXone",
 
             description:
-                "Use ToolXone's free online PDF tools to convert PDF pages to images and convert JPG, PNG and WebP images to PDF documents. More PDF workflows are being added over time.",
+                "Use ToolXone's free online PDF tools to convert PDF pages to images and convert JPG, PNG and WebP images to PDF documents.",
 
             keywords: [
 

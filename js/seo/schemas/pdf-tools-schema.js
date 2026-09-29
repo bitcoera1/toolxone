@@ -228,7 +228,7 @@ version:"1.0.0",
                     "What are PDF tools?",
 
                 answer:
-                    "PDF tools are utilities designed to help users create, convert, organize, compress, edit, secure and extract information from PDF documents."
+                    "ToolXone currently provides two PDF conversion tools: PDF to Image and Image to PDF."
 
             },
 
@@ -268,7 +268,7 @@ version:"1.0.0",
                     "What PDF tasks can ToolXone support?",
 
                 answer:
-                    "The PDF ecosystem is being built to support document conversion, organization, compression, editing, security, extraction, OCR and future intelligent document workflows."
+                    "You can convert PDF pages into JPG, PNG or WebP images, and convert JPG, PNG or WebP images into PDF documents."
 
             },
 

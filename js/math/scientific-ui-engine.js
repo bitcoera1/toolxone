@@ -74,6 +74,11 @@
             ".scientific-angle"
         ],
 
+        status: [
+            "[data-scientific-status]",
+            "#status"
+        ],
+
         shift: [
             "[data-scientific-shift]",
             "#scientific-shift",
@@ -120,6 +125,7 @@
         numberWords: null,
         mode: null,
         angle: null,
+        status: null,
         shift: null,
         alpha: null,
         memory: null,
@@ -286,6 +292,9 @@ function discoverElements() {
 
         elements.angle =
             findElement("angle");
+
+        elements.status =
+            findElement("status");
 
         elements.shift =
             findElement("shift");
@@ -637,6 +646,22 @@ function formatNumberToken(value) {
         }
     }
 
+function renderStatus(state) {
+    if (!state) {
+        return;
+    }
+
+    const mode =
+        state.mode || "COMP";
+
+    const angleMode =
+        state.angleMode || "DEG";
+
+    setText(
+        elements.status,
+        `${mode} • ${angleMode}`
+    );
+}
 
 /* =====================================================
    DYNAMIC SCIENTIFIC FUNCTION DECK
@@ -879,6 +904,7 @@ function renderScientificFunctionDeck(state) {
         renderNumberWords(state);
         renderMode(state);
         renderAngle(state);
+        renderStatus(state);
         renderShift(state);
         renderAlpha(state);
         renderMemory(state);

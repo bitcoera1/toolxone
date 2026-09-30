@@ -281,9 +281,9 @@ function calculateAge() {
     resultBox.innerHTML = `
         <strong>🎉 Your Age</strong>
         <br>
-        ${age.years} Years,
-        ${age.months} Months,
-        ${age.days} Days
+        ${age.years} ${age.years === 1 ? "Year" : "Years"},
+        ${age.months} ${age.months === 1 ? "Month" : "Months"},
+        ${age.days} ${age.days === 1 ? "Day" : "Days"}
         <br><br>
         🎂 Days until next birthday:
         ${daysToBirthday}

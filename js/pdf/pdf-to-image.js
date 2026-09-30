@@ -548,6 +548,10 @@
 
         }
 
+        state.pages =
+            [];
+
+        state.selectedPages.clear();
 
         for (
             let pageNumber = 1;
@@ -2535,6 +2539,25 @@ if (
         setControlsDisabled(
             false
         );
+
+        if (
+            exists(
+                elements.dropZone
+            )
+        ) {
+
+            requestAnimationFrame(
+                function () {
+
+                    elements.dropZone.scrollIntoView({
+                        behavior: "smooth",
+                        block: "center"
+                    });
+
+                }
+            );
+
+        }
 
     }
 

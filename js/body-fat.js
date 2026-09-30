@@ -1017,7 +1017,11 @@ function resetBodyFat() {
 
         "waistIn",
 
-        "hipIn"
+        "hipIn",
+
+        "weightKg",
+
+        "weightLb"
 
     ];
 

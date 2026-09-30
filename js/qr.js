@@ -68,6 +68,10 @@ function changeQRType() {
     addEnterSupport();
 }
 
+function escapeWiFiValue(value) {
+    return value.replace(/([\\;,":])/g, "\\$1");
+}
+
 function getQRContent() {
     const type = document.getElementById("qrType").value;
 
@@ -107,7 +111,7 @@ function getQRContent() {
 
         if (!ssid) return "";
 
-        return `WIFI:T:${security};S:${ssid};P:${password};;`;
+        return `WIFI:T:${security};S:${escapeWiFiValue(ssid)};P:${escapeWiFiValue(password)};;`;
     }
 
     return "";

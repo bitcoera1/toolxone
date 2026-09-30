@@ -430,10 +430,12 @@ function calculateChange() {
                 newValue -
                 oldValue
             ) /
-            oldValue
+            Math.abs(
+                oldValue
+            )
         ) *
         100;
-
+        
     const absoluteChange =
         Math.abs(
             change

@@ -1286,6 +1286,21 @@ Images are processed locally in the browser.
             "All images cleared."
         );
 
+
+        /*
+         * Keep the restored upload area in view after the
+         * populated workspace collapses.
+         */
+
+        if (elements.dropZone) {
+
+            elements.dropZone.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
     }
 
 

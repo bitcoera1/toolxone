@@ -90,21 +90,11 @@ const finalPrice =
         savedAmount
     );
 
-const payPercent =
-    originalPrice > 0
-        ? (
-            finalPrice /
-            originalPrice
-        ) * 100
-        : 0;
-
 const savePercent =
-    originalPrice > 0
-        ? (
-            savedAmount /
-            originalPrice
-        ) * 100
-        : 0;
+    discountPercent;
+
+const payPercent =
+    100 - discountPercent;
 
 
 const calculation = {

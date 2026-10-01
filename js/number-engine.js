@@ -345,6 +345,13 @@ Features
         const totalGroups =
             groups.length;
 
+        if (
+            totalGroups >
+            SCALES.length
+        ) {
+            return "";
+        }
+
         const wordsList = [];
 
         groups.forEach(

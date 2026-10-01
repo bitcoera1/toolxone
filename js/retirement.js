@@ -164,7 +164,7 @@ const result =
         ${createRetirementCountResult(
             "Years Remaining",
             years,
-            "Years"
+            years === 1 ? "Year" : "Years"
         )}
 
         ${createRetirementMoneyResult(

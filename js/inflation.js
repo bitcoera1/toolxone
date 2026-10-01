@@ -77,7 +77,9 @@ function calculateInflation() {
         !Number.isFinite(inflationFactor) ||
         !Number.isFinite(futureValue) ||
         !Number.isFinite(increase) ||
-        !Number.isFinite(purchasingPower)
+        !Number.isFinite(purchasingPower) ||
+        Math.abs(futureValue) >= 1e21 ||
+        Math.abs(increase) >= 1e21
     ) {
         alert(
             "These values are too large to calculate reliably. Please use smaller values."

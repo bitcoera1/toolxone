@@ -214,6 +214,33 @@
         return String(value);
     }
 
+    function serializeInverseSquareOperand(value) {
+        const text = String(value);
+
+        if (!/[eE]/.test(text)) {
+            return text;
+        }
+
+        const sign = text.startsWith("-") ? "-" : "";
+        const [coefficient, exponentText] =
+            (sign ? text.slice(1) : text).toLowerCase().split("e");
+        const [whole, fraction = ""] = coefficient.split(".");
+        const digits = whole + fraction;
+        const decimalPosition = whole.length + Number(exponentText);
+
+        if (decimalPosition <= 0) {
+            return sign + "0." + "0".repeat(-decimalPosition) + digits;
+        }
+
+        if (decimalPosition >= digits.length) {
+            return sign + digits + "0".repeat(decimalPosition - digits.length);
+        }
+
+        return sign +
+            digits.slice(0, decimalPosition) + "." +
+            digits.slice(decimalPosition);
+    }
+
     function isFiniteResult(value) {
         return (
             typeof value === "number" &&
@@ -368,7 +395,7 @@
 
         /*
         ----------------------------------------------------
-        Square
+        Square and inverse square
         ----------------------------------------------------
         12 =
         ^2
@@ -376,6 +403,15 @@
         12^2
         ----------------------------------------------------
         */
+
+        else if (
+            trimmedText === "^(-2)" &&
+            isFiniteResult(getResult())
+        ) {
+            setExpression(
+                "(" + serializeInverseSquareOperand(getResult()) + ")^(-2)"
+            );
+        }
 
         else if (
             trimmedText === "^2"
@@ -1483,6 +1519,10 @@
         return appendExpression("^2");
     }
 
+    function insertInverseSquare() {
+        return appendExpression("^(-2)");
+    }
+
     function insertFactorial() {
         return appendExpression("!");
     }
@@ -1659,6 +1699,7 @@
         insertE,
         insertPower,
         insertSquare,
+        insertInverseSquare,
         insertFactorial,
 
         insertPercent,

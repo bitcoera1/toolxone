@@ -34,7 +34,7 @@ window.ToolXoneContentRegistry.register(
             "Scientific Calculator Guide",
 
         introduction:
-            "The ToolXone Scientific Calculator is a free online calculator designed for students, teachers, engineers, researchers and professionals who need accurate mathematical calculations. Beyond basic arithmetic, it supports trigonometric functions, logarithms, exponents, roots, scientific notation, constants and many other advanced operations. Whether you are solving classroom assignments, engineering equations or everyday mathematical problems, this calculator delivers fast, precise and reliable results directly from your web browser without requiring installation or registration.",
+            "The ToolXone Scientific Calculator is a free online calculator designed for students, teachers, engineers, researchers and professionals who need accurate mathematical calculations. Beyond basic arithmetic, it supports trigonometric functions, logarithms, exponents, square and cube roots, constants and many other advanced operations. Whether you are solving classroom assignments, engineering equations or everyday mathematical problems, this calculator delivers fast, precise and reliable results directly from your web browser without requiring installation or registration.",
 
         sections: [
 
@@ -44,7 +44,7 @@ window.ToolXoneContentRegistry.register(
                     "What is a Scientific Calculator?",
 
                 content:
-                    "A scientific calculator is an advanced calculator built to solve mathematical and scientific problems that go far beyond addition, subtraction, multiplication and division. It can calculate trigonometric functions, logarithms, exponents, roots, powers, factorials, fractions and scientific notation while maintaining high precision. Scientific calculators are widely used in education, engineering, physics, chemistry, finance, statistics and research because they simplify complex calculations that would otherwise take much longer to solve manually."
+                    "A scientific calculator is an advanced calculator built to solve mathematical and scientific problems that go far beyond addition, subtraction, multiplication and division. It can calculate trigonometric functions, logarithms, exponents, roots, powers, factorials and fractions while maintaining high precision. Scientific calculators are widely used in education, engineering, physics, chemistry, finance, statistics and research because they simplify complex calculations that would otherwise take much longer to solve manually."
 
             },
 
@@ -64,7 +64,7 @@ window.ToolXoneContentRegistry.register(
                     "Key Features",
 
                 content:
-                    "The calculator supports basic arithmetic, trigonometric functions, inverse trigonometry, logarithms, natural logarithms, powers, exponents, square roots, nth roots, factorials, percentages, scientific notation, memory functions, constants such as π (Pi) and e, and multiple angle modes including Degrees, Radians and Gradians. These features make it suitable for both everyday calculations and advanced mathematical work."
+                    "The calculator supports basic arithmetic, trigonometric functions, inverse trigonometry, logarithms, natural logarithms, powers, exponents, square and cube roots, factorials, percentages, memory functions, constants such as π (Pi) and e, and multiple angle modes including Degrees, Radians and Gradians. For positive values, nth roots can be calculated using fractional powers such as 27^(1/3). Values can also be entered as multiplication by powers of ten, such as 1.2*10^3. There is no dedicated nth-root control, direct exponent-notation input such as 1.2e3, or scientific-notation display mode. These features make it suitable for both everyday calculations and advanced mathematical work."
 
             },
 
@@ -146,7 +146,7 @@ window.ToolXoneContentRegistry.register(
                 "What is a scientific calculator?",
 
             answer:
-                "A scientific calculator is an advanced calculator designed to solve mathematical, engineering and scientific problems. It supports functions such as trigonometry, logarithms, exponents, roots, percentages, scientific notation and many other advanced calculations."
+                "A scientific calculator is an advanced calculator designed to solve mathematical, engineering and scientific problems. It supports functions such as trigonometry, logarithms, exponents, roots, percentages and many other advanced calculations."
 
         },
 
@@ -176,7 +176,7 @@ window.ToolXoneContentRegistry.register(
                 "What mathematical functions are supported?",
 
             answer:
-                "The calculator supports basic arithmetic, trigonometric functions, logarithms, natural logarithms, powers, roots, factorials, percentages, scientific notation, memory operations, constants such as π and e, and multiple angle modes."
+                "The calculator supports basic arithmetic, trigonometric functions, logarithms, natural logarithms, powers, square and cube roots, factorials, percentages, memory operations, constants such as π and e, and multiple angle modes. For positive values, nth roots can be calculated using fractional powers such as 27^(1/3). Values can also be entered as multiplication by powers of ten, such as 1.2*10^3. There is no dedicated nth-root control, direct exponent-notation input such as 1.2e3, or scientific-notation display mode."
 
         },
 

@@ -169,7 +169,35 @@ Calculate your Body Mass Index (BMI) from height and weight using metric or impe
 </section>
 
 
-<div id="financeInfo"></div>
+<div id="financeInfo"><!-- TOOLXONE:STATIC-ARTICLE:START bmi-calculator -->
+
+    <section class="tool-article">
+
+    <h1>How BMI Is Calculated and What Your Result Means</h1>
+<p>Body Mass Index (BMI) is a screening measure that relates an adult's weight to their height. It provides a numerical value that can be compared with commonly used adult BMI ranges. BMI is simple to calculate, but it should be interpreted as a screening measure rather than a complete assessment of health or body composition.</p>
+<h2>BMI Formula Using Kilograms and Meters</h2>
+<p>When weight is measured in kilograms and height is measured in meters, BMI is calculated using the following formula: BMI = weight (kg) ÷ height² (m²). For example, an adult who weighs 70 kg and is 1.75 meters tall would have a BMI of approximately 22.9: BMI = 70 ÷ (1.75 × 1.75) ≈ 22.9. ToolXone's metric mode accepts height in centimeters, so the calculator converts the entered height to meters before calculating BMI.</p>
+<h2>BMI Formula Using Pounds and Inches</h2>
+<p>When weight is entered in pounds and height is measured in inches, the BMI formula used by this calculator is: BMI = [weight (lb) ÷ height² (in²)] × 703. ToolXone's Feet / Pounds mode allows height to be entered as feet and inches. The calculator converts the height to total inches before applying the formula.</p>
+<h2>Adult BMI Ranges</h2>
+<p>This calculator groups adult BMI results into four ranges: Underweight — Below 18.5; Healthy Weight Range — 18.5 to below 25; Overweight — 25 to below 30; Obesity Range — 30 or higher. These ranges are used for adult BMI screening. A BMI result identifies the range in which the calculated value falls; it does not by itself determine a person's overall health.</p>
+<h2>How to Use the BMI Calculator</h2>
+<p>Choose Metric if you want to enter height in centimeters and weight in kilograms. Choose Feet / Pounds if you want to enter height in feet and inches and weight in pounds. Enter your measurements and select Calculate BMI. The calculator displays your BMI rounded to one decimal place, the corresponding adult BMI range, and a visual marker showing where the result falls on the calculator's BMI scale.</p>
+<h2>What Does a BMI Result Tell You?</h2>
+<p>BMI compares weight with height and provides a convenient screening value. It can be useful for looking at weight-related categories at a general level because the calculation requires only height and weight. However, BMI does not directly measure body fat and does not explain why a person has a particular weight. The same BMI value can occur in people with different body compositions.</p>
+<h2>Limitations of BMI</h2>
+<p>BMI uses only height and weight. It does not distinguish between body fat, muscle, bone and other components of body mass. As a result, two adults with the same height and weight can have the same BMI while having different body compositions. BMI also does not directly measure fitness, nutrition, body-fat distribution or overall health. For these reasons, the result should be treated as a screening value rather than a diagnosis or complete health assessment.</p>
+<h2>Adult BMI and BMI for Children Are Not Interpreted the Same Way</h2>
+<p>The fixed ranges shown by this calculator are intended for adults. BMI for children and teenagers is interpreted differently and should not be classified using these adult ranges.</p>
+<h2>Metric vs. Imperial BMI</h2>
+<p>Metric and imperial calculations are two ways of expressing the same height-and-weight relationship. If equivalent measurements are entered correctly, both methods should produce approximately the same BMI, allowing for normal rounding differences. If you need to convert a weight measurement before using a calculator, ToolXone's Weight Converter can help convert between common weight units.</p>
+<h2>How to Interpret Your BMI Estimate</h2>
+<p>Use the result to understand which adult BMI range corresponds to the height and weight entered. Avoid interpreting the number as a complete description of health, fitness or body composition. If an individual health assessment is needed, factors beyond BMI may need to be considered by an appropriately qualified healthcare professional.</p>
+
+
+    </section>
+
+    <!-- TOOLXONE:STATIC-ARTICLE:END bmi-calculator --></div>
 
 <div id="financeFAQ"></div>
 
@@ -306,11 +334,6 @@ if (pageSchema) {
 
 <script>
 
-renderFinanceInfo(
-    "financeInfo",
-    "Understand Your Body Mass Index (BMI)",
-    "Body Mass Index (BMI) is a screening measure based on a person's height and weight. This calculator estimates BMI for adults and shows the corresponding BMI range. BMI can be useful for general screening, but it does not directly measure body fat, fitness, body composition or overall health."
-);
 
 renderToolReviews(
     "tool-reviews",

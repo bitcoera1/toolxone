@@ -1653,10 +1653,7 @@ ToolXoneContentRegistry.register(
     is simply divided by the number of monthly installments.
 </p>
 
-<div
-    class="finance-formula-box"
-    aria-label="Zero interest EMI formula"
->
+<div class="finance-formula-box" aria-label="Zero interest EMI formula">
 
     <span class="formula-label">
         0% Interest Formula

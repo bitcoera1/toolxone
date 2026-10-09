@@ -168,7 +168,7 @@
 
             "bmr-calculator": {
 
-    article: "#healthInfo",
+    article: "#financeInfo",
 
     faq: "#healthFAQ",
 
@@ -178,7 +178,7 @@
 
         "body-fat-calculator": {
 
-            article: "#healthInfo",
+            article: "#financeInfo",
 
             faq: "#healthFAQ",
 
@@ -450,6 +450,10 @@
 
             }
 
+
+            if (tool === "pdf-tools") {
+                return { ...this.renderTargets.default, article: "#pdfInfo" };
+            }
 
             return this.renderTargets.default;
 

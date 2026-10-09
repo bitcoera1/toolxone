@@ -159,7 +159,189 @@ id="interestBar"></div>
 </section>
 
 
-<div id="financeInfo"></div>
+<div id="financeInfo"><!-- TOOLXONE:STATIC-ARTICLE:START compound-interest-calculator -->
+
+    <section class="tool-article">
+
+    <h1>Compound Interest Calculator Guide: Formula, Growth, Contributions & Compounding</h1>
+<p>Understand how compound interest can grow an investment over time, how monthly contributions affect future value, and how interest rates, investment periods and compounding frequency influence projected investment growth.</p>
+<h2>How Compound Interest Grows Your Money</h2>
+<p>
+    Compound interest allows an investment balance to grow by earning
+    interest on both the money invested and interest accumulated over time.
+    As the balance increases, future growth can be calculated on a larger
+    amount, which is why time can have a significant effect on long-term
+    investment growth.
+</p>
+<h2>Compound Interest Formula</h2>
+<p>
+    For a starting principal without additional contributions, compound
+    growth is commonly represented by the following formula:
+</p>
+<div class="compound-formula">
+    <strong>A = P(1 + r/n)<sup>nt</sup></strong>
+</div>
+<p>
+    In this formula, <strong>A</strong> is the future value,
+    <strong>P</strong> is the initial principal, <strong>r</strong> is the
+    nominal annual interest rate expressed as a decimal (not an effective
+    annual yield or APY), <strong>n</strong> is the
+    number of compounding periods per year, and <strong>t</strong> is the
+    number of years.
+</p>
+<p>
+    For monthly deposits, let <strong>C</strong> be the deposit amount and
+    <strong>M = 12t</strong> the whole number of months. The equivalent
+    monthly growth factor is <strong>q = (1 + r/n)<sup>n/12</sup></strong>.
+    Starting with B<sub>0</sub> = P, each month is calculated as follows:
+</p>
+<div class="compound-formula">
+    <strong>B<sub>m</sub> = (B<sub>m-1</sub> + C) &times; q</strong>
+</div>
+<p>
+    Add the monthly deposit first, then apply one month of growth. Equivalently,
+    future value is Pq<sup>M</sup> + C(q + q<sup>2</sup> + &hellip; + q<sup>M</sup>).
+    When the interest rate is zero, future value is simply P + CM.
+</p>
+<h2>Simple Interest vs. Compound Interest</h2>
+<p>
+    Simple interest is generally calculated using the original principal,
+    while compound interest allows previously accumulated interest to become
+    part of the balance used for future growth. The difference may become
+    more noticeable as the investment period increases.
+</p>
+<h2>Why Time Matters in Compound Growth</h2>
+<p>
+    Compounding has more opportunities to affect an investment when the
+    money remains invested for a longer period. Even when the interest rate
+    stays the same, extending the investment period can substantially change
+    the projected future value.
+</p>
+<p>
+    If you are planning specifically for long-term retirement savings, use
+    ToolXone's
+    <a href="retirement-calculator.html">
+        Retirement Calculator
+    </a>
+    to explore savings based on your current age and planned retirement age.
+</p>
+<h2>How Monthly Contributions Affect Future Value</h2>
+<p>
+    Contributions are added at the beginning of each month. The first deposit
+    is added alongside the initial investment at time zero, and the final
+    deposit earns one month of growth. An M-month investment receives exactly
+    M deposits, with no extra deposit at the ending valuation instant.
+    Each deposit earns growth only for the time it is invested.
+</p>
+<p>
+    For example, an initial investment of 1,000 with deposits of 100 per month,
+    a 12% nominal annual rate and yearly compounding grows to approximately
+    2,396.65 after one year. Total contributions are 2,200 and interest earned
+    is approximately 196.65. Later deposits do not receive a full year's interest.
+</p>
+<p>
+    If you are working toward a particular savings amount, the
+    <a href="savings-goal-calculator.html">
+        Savings Goal Calculator
+    </a>
+    can help you explore a target from a goal-based perspective.
+</p>
+<h2>What Is Compounding Frequency?</h2>
+<p>
+    The nominal annual rate is quoted with a selected compounding frequency:
+    yearly (n = 1), quarterly (n = 4), monthly (n = 12) or daily (n = 365).
+    The calculator converts that rate to an equivalent monthly growth factor
+    so that monthly deposits can be valued consistently. Changing the selected
+    frequency still changes the effective annual growth; it does not simply
+    use r/12 for every option.
+</p>
+<p>
+    Incomplete compounding periods use fractional-exponent compound growth.
+    For example, 1,000 at 12% with yearly compounding for 1.5 years grows to
+    1,000 &times; 1.12<sup>1.5</sup>, approximately 1,185.30, without deposits.
+    The projection includes growth within the final partial period rather than
+    stopping at the last annual or quarterly boundary. It is an accumulated-value
+    estimate, not a statement of when a bank credits interest.
+</p>
+<p>
+    Daily compounding assumes 365 days per year and equal one-twelfth-year
+    months (365/12 days each). No start date is collected, so actual calendar
+    month lengths and leap years are not modeled.
+</p>
+<h2>Understanding Total Contributions</h2>
+<p>
+    Total contributions represent the money added by you rather than the
+    growth generated by interest. In this calculator, total contributions
+    include the initial investment plus all monthly contributions made
+    during the selected investment period.
+</p>
+<h2>Understanding Interest Earned</h2>
+<p>
+    Interest earned represents the difference between the projected future
+    value and total contributions. It shows how much of the estimated final
+    balance comes from growth rather than from the money contributed.
+</p>
+<p>
+    Growth percentage is 100 &times; interest earned / total contributions.
+    It is not an annualized or money-weighted return. Calculations retain
+    full internal floating-point precision; displayed amounts are rounded
+    to two decimal places.
+</p>
+<p>
+    To compare a gain or loss with an amount invested from another
+    perspective, explore ToolXone's
+    <a href="roi-calculator.html">
+        ROI Calculator
+    </a>.
+</p>
+<h2>Remember the Effect of Inflation</h2>
+<p>
+    A future investment value may be larger in numerical terms, but
+    inflation can reduce the purchasing power of money over time. This
+    calculator estimates compound growth and does not automatically adjust
+    the projected balance for future inflation.
+</p>
+<p>
+    Use the
+    <a href="inflation-calculator.html">
+        Inflation Calculator
+    </a>
+    to explore how purchasing power may change over time.
+</p>
+<h2>How to Use the Compound Interest Calculator</h2>
+<p>
+    Enter your initial investment, optional monthly contribution, nominal
+    annual interest rate and investment period in years. The duration must
+    equal a whole number of months: for example, 1.5 years is 18 months.
+    Decimal approximations extremely close to whole months are accepted;
+    genuine fractional months, such as 1.1 years (13.2 months), are not rounded.
+    Select a compounding frequency and choose Calculate Growth to estimate
+    future value, total contributions, interest earned and growth percentage.
+</p>
+<p>
+    Try several scenarios by changing the interest rate, monthly
+    contribution, investment period or compounding frequency. Comparing
+    different assumptions can help illustrate which inputs have the
+    greatest effect on the projection.
+</p>
+<h2>How to Interpret Your Compound Interest Estimate</h2>
+<p>
+    The result is an estimate based on the values entered and the
+    calculator's growth assumptions. Actual savings or investment results
+    may differ because rates can change and real financial products may
+    apply different contribution timing, compounding methods, fees, taxes,
+    rounding rules or other conditions.
+</p>
+<p>
+    The calculator is useful for exploring mathematical growth scenarios,
+    but its projected future value should not be treated as a guaranteed
+    investment outcome.
+</p>
+
+
+    </section>
+
+    <!-- TOOLXONE:STATIC-ARTICLE:END compound-interest-calculator --></div>
 
 <div id="financeFAQ"></div>
 

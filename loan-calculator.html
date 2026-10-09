@@ -172,7 +172,552 @@
 
 </section>
 
-<div id="financeInfo"></div>
+<div id="financeInfo"><!-- TOOLXONE:STATIC-ARTICLE:START loan-calculator -->
+
+    <section class="tool-article">
+
+    <h1>How Loan Payments, Interest, and Repayment Are Calculated</h1>
+<p>A loan allows you to borrow money and repay it over an agreed period, usually through regular payments. Understanding how the loan amount, interest rate, and repayment term work together can help you estimate monthly payments and compare different borrowing scenarios.</p>
+<p>ToolXone's Loan Calculator uses the values you enter to estimate your monthly payment, total interest, and total repayment for a standard fixed-rate amortizing loan.</p>
+<h2>What Information Does the Loan Calculator Use?</h2>
+<p>
+    The calculation is based on three main financial inputs and the unit
+    used for the repayment term.
+</p>
+<div class="loan-info-grid">
+
+    <div class="loan-info-box">
+        <strong>Loan Amount</strong>
+        <p>
+            The principal amount borrowed before interest and other
+            borrowing costs.
+        </p>
+    </div>
+
+    <div class="loan-info-box">
+        <strong>Annual Interest Rate</strong>
+        <p>
+            The annual percentage rate entered for calculating interest
+            on the loan.
+        </p>
+    </div>
+
+    <div class="loan-info-box">
+        <strong>Loan Term</strong>
+        <p>
+            The length of time over which the loan is scheduled to be
+            repaid.
+        </p>
+    </div>
+
+    <div class="loan-info-box">
+        <strong>Loan Term Type</strong>
+        <p>
+            The calculator accepts the repayment term in either years
+            or months.
+        </p>
+    </div>
+
+</div>
+<h2>What Is Loan Principal?</h2>
+<p>
+    Loan principal is the amount originally borrowed. It forms the
+    starting balance on which the repayment calculation is based.
+</p>
+<div class="loan-example-box">
+    <strong>Example:</strong>
+    If you borrow $20,000, the initial loan principal is $20,000.
+</div>
+<p>
+    As payments are made on a standard amortizing loan, part of each
+    payment reduces the outstanding principal while another part covers
+    interest.
+</p>
+<h2>How Does Loan Interest Work?</h2>
+<p>
+    Interest is the cost of borrowing money. For the fixed-rate
+    calculation used by this calculator, the entered annual interest
+    rate is converted into a monthly rate.
+</p>
+<div class="loan-formula-box">
+    Monthly Interest Rate =
+    Annual Interest Rate ÷ 12 ÷ 100
+</div>
+<p>
+    For example, if the entered annual interest rate is 6%:
+</p>
+<div class="loan-example-box">
+    <strong>Monthly Rate:</strong>
+    6 ÷ 12 ÷ 100 = 0.005
+</div>
+<p>
+    This decimal monthly rate is used in the monthly payment formula.
+</p>
+<h2>How Is the Loan Term Converted?</h2>
+<p class="loan-related-note">
+    To explore compounding separately from loan repayment,
+    try ToolXone's
+    <a href="compound-interest-calculator.html">
+        Compound Interest Calculator
+    </a>.
+</p>
+<p>
+    The payment formula needs the total number of monthly payments.
+    When a loan term is entered in years, the calculator converts it
+    into months.
+</p>
+<div class="loan-formula-box">
+    Number of Payments = Loan Term in Years × 12
+</div>
+<div class="loan-example-box">
+    <strong>Example:</strong>
+    5 years × 12 = 60 monthly payments
+</div>
+<p>
+    If the term is already entered in months, that value can be used
+    directly as the number of monthly payments.
+</p>
+<h2>How Is the Monthly Loan Payment Calculated?</h2>
+<p>
+    For a standard fixed-rate amortizing loan with an interest rate
+    greater than zero, the estimated monthly payment can be calculated
+    using the amortization formula:
+</p>
+<div class="loan-formula-box loan-formula-large">
+    Monthly Payment =
+    P × r × (1 + r)<sup>n</sup>
+    ÷
+    ((1 + r)<sup>n</sup> − 1)
+</div>
+<div class="loan-definition-list">
+
+    <div>
+        <strong>P</strong>
+        <span>= Loan principal</span>
+    </div>
+
+    <div>
+        <strong>r</strong>
+        <span>= Monthly interest rate</span>
+    </div>
+
+    <div>
+        <strong>n</strong>
+        <span>= Total number of monthly payments</span>
+    </div>
+
+</div>
+<p>
+    This formula produces a level monthly payment for the assumptions
+    used by the calculator.
+</p>
+<h2>Example of a Loan Payment Calculation</h2>
+<p class="loan-related-note">
+    If your main goal is to calculate an equated monthly installment,
+    you can also use ToolXone's
+    <a href="emi-calculator.html">
+        EMI Calculator
+    </a>
+    for an EMI-focused calculation.
+</p>
+<p>
+    Suppose a borrower evaluates the following loan:
+</p>
+<div class="loan-example-grid">
+
+    <div class="loan-example-stat">
+        <span>Loan Amount</span>
+        <strong>$20,000</strong>
+    </div>
+
+    <div class="loan-example-stat">
+        <span>Annual Interest Rate</span>
+        <strong>6%</strong>
+    </div>
+
+    <div class="loan-example-stat">
+        <span>Loan Term</span>
+        <strong>5 Years</strong>
+    </div>
+
+    <div class="loan-example-stat">
+        <span>Payments</span>
+        <strong>60 Months</strong>
+    </div>
+
+</div>
+<p>
+    First, convert the annual rate into a monthly decimal rate:
+</p>
+<div class="loan-example-box">
+    6 ÷ 12 ÷ 100 = 0.005
+</div>
+<p>
+    Then apply the monthly payment formula using a principal of
+    $20,000, a monthly rate of 0.005, and 60 payments.
+</p>
+<div class="loan-result-example">
+    <span>Estimated Monthly Payment</span>
+    <strong>≈ $386.66</strong>
+</div>
+<p>
+    The exact displayed result may vary slightly because of rounding.
+</p>
+<h2>How Is Total Repayment Calculated?</h2>
+<p>
+    Once the monthly payment is known, the estimated total repayment
+    can be calculated by multiplying the payment by the number of
+    scheduled monthly payments.
+</p>
+<div class="loan-formula-box">
+    Total Repayment =
+    Monthly Payment × Number of Payments
+</div>
+<p>
+    Using the previous example:
+</p>
+<div class="loan-example-box">
+    <strong>Estimated Total Repayment:</strong>
+    $386.66 × 60 ≈ $23,199.60
+</div>
+<p>
+    Because the monthly payment shown above is rounded, multiplying
+    that displayed amount can differ slightly from calculations made
+    with the full-precision payment value.
+</p>
+<h2>How Is Total Interest Calculated?</h2>
+<p>
+    Estimated total interest represents the difference between the
+    total amount repaid and the original principal.
+</p>
+<div class="loan-formula-box">
+    Total Interest =
+    Total Repayment − Loan Principal
+</div>
+<div class="loan-example-box">
+    <strong>Using the rounded example:</strong>
+    $23,199.60 − $20,000 ≈ $3,199.60
+</div>
+<p>
+    This shows why the total cost of a loan can be substantially higher
+    than the amount originally borrowed.
+</p>
+<h2>What Is Loan Amortization?</h2>
+<p>
+    Amortization is the process of repaying a loan through scheduled
+    payments over time. With a standard fixed-rate amortizing loan, the
+    scheduled monthly payment remains level while the way that payment
+    is divided between principal and interest changes as the balance
+    declines.
+</p>
+<div class="loan-amortization-grid">
+
+    <div class="loan-amortization-card">
+        <span>Earlier Payments</span>
+        <strong>More Interest</strong>
+        <p>
+            A larger portion of the payment generally goes toward
+            interest when the outstanding balance is higher.
+        </p>
+    </div>
+
+    <div class="loan-amortization-arrow">
+        →
+    </div>
+
+    <div class="loan-amortization-card">
+        <span>Later Payments</span>
+        <strong>More Principal</strong>
+        <p>
+            As the balance falls, less interest accrues and more of the
+            scheduled payment can reduce principal.
+        </p>
+    </div>
+
+</div>
+<h2>What Happens With a 0% Interest Loan?</h2>
+<p>
+    A zero-interest loan does not require the standard interest-bearing
+    amortization formula. The principal can simply be divided by the
+    number of scheduled payments.
+</p>
+<div class="loan-formula-box">
+    Monthly Payment =
+    Loan Principal ÷ Number of Payments
+</div>
+<p>
+    For example, consider a $12,000 loan repaid over 12 months at 0%
+    interest:
+</p>
+<div class="loan-example-box">
+    <strong>Monthly Payment:</strong>
+    $12,000 ÷ 12 = $1,000
+</div>
+<div class="loan-zero-grid">
+
+    <div>
+        <span>Principal</span>
+        <strong>$12,000</strong>
+    </div>
+
+    <div>
+        <span>Total Interest</span>
+        <strong>$0</strong>
+    </div>
+
+    <div>
+        <span>Total Repayment</span>
+        <strong>$12,000</strong>
+    </div>
+
+</div>
+<h2>How Does the Loan Term Affect Repayment?</h2>
+<p>
+    The repayment term can significantly affect both the monthly
+    payment and the total amount of interest paid.
+</p>
+<div class="loan-comparison-grid">
+
+    <div class="loan-comparison-card">
+        <span>Shorter Loan Term</span>
+
+        <strong>Higher Monthly Payment</strong>
+
+        <ul>
+            <li>Fewer scheduled payments</li>
+            <li>Principal is repaid faster</li>
+            <li>Generally less total interest</li>
+            <li>Higher monthly payment requirement</li>
+        </ul>
+    </div>
+
+    <div class="loan-comparison-card">
+        <span>Longer Loan Term</span>
+
+        <strong>Lower Monthly Payment</strong>
+
+        <ul>
+            <li>More scheduled payments</li>
+            <li>Principal is repaid more slowly</li>
+            <li>Generally more total interest</li>
+            <li>Lower monthly payment requirement</li>
+        </ul>
+    </div>
+
+</div>
+<div class="loan-tip-box">
+    <strong>Key idea:</strong>
+    A lower monthly payment does not necessarily mean a lower-cost
+    loan. Extending the repayment period can increase total interest.
+</div>
+<h2>How Does the Interest Rate Affect a Loan?</h2>
+<p>
+    When the principal and repayment term remain the same, a higher
+    interest rate generally increases both the monthly payment and the
+    total interest paid.
+</p>
+<div class="loan-rate-grid">
+
+    <div class="loan-rate-card">
+        <span>Lower Interest Rate</span>
+        <strong>↓ Borrowing Cost</strong>
+        <p>
+            A lower rate generally means less interest is charged under
+            otherwise identical loan assumptions.
+        </p>
+    </div>
+
+    <div class="loan-rate-card">
+        <span>Higher Interest Rate</span>
+        <strong>↑ Borrowing Cost</strong>
+        <p>
+            A higher rate generally increases the amount paid for
+            borrowing over the life of the loan.
+        </p>
+    </div>
+
+</div>
+<h2>How Does the Loan Amount Affect Payments?</h2>
+<p>
+    If the interest rate and loan term remain unchanged, borrowing a
+    larger principal results in a larger monthly payment and greater
+    total interest in dollar terms.
+</p>
+<div class="loan-tip-box">
+    <strong>Remember:</strong>
+    Loan amount, interest rate, and repayment term work together.
+    Comparing only the monthly payment can hide important differences
+    in total borrowing cost.
+</div>
+<h2>Where Can a Loan Calculator Be Useful?</h2>
+<p class="loan-related-note">
+    For property-specific borrowing scenarios, ToolXone's
+    <a href="mortgage-calculator.html">
+        Mortgage Calculator
+    </a>
+    provides a calculator focused on mortgage repayment estimates.
+</p>
+<p>
+    A loan calculator can help evaluate many standard fixed-rate
+    borrowing scenarios before reviewing an actual lender offer.
+</p>
+<div class="loan-use-grid">
+
+    <div class="loan-use-card">
+        <span>🏠</span>
+        <strong>Home Loan Scenarios</strong>
+        <p>
+            Explore payment estimates for a fixed-rate borrowing
+            scenario involving a home purchase.
+        </p>
+    </div>
+
+    <div class="loan-use-card">
+        <span>🚗</span>
+        <strong>Auto Loans</strong>
+        <p>
+            Estimate payments and interest for vehicle financing.
+        </p>
+    </div>
+
+    <div class="loan-use-card">
+        <span>👤</span>
+        <strong>Personal Loans</strong>
+        <p>
+            Compare different amounts, rates, and repayment terms.
+        </p>
+    </div>
+
+    <div class="loan-use-card">
+        <span>📊</span>
+        <strong>Loan Comparisons</strong>
+        <p>
+            Test hypothetical loan scenarios before comparing lender
+            terms.
+        </p>
+    </div>
+
+</div>
+<h2>Loan Calculator vs. EMI Calculator</h2>
+<p>
+    Loan Calculator and EMI Calculator are closely related because both
+    can use the same standard amortization mathematics. Their emphasis,
+    however, can be different.
+</p>
+<div class="loan-vs-grid">
+
+    <div class="loan-vs-card">
+        <strong>Loan Calculator</strong>
+
+        <p>
+            Focuses on the broader cost of borrowing, including the
+            monthly payment, total interest, and total repayment.
+        </p>
+    </div>
+
+    <div class="loan-vs-card">
+        <strong>EMI Calculator</strong>
+
+        <p>
+            Focuses specifically on the Equated Monthly Installment
+            required to repay an installment loan over a selected term.
+        </p>
+    </div>
+
+</div>
+<p>
+    ToolXone keeps these tools distinct so users can choose the
+    experience that best matches what they want to calculate.
+</p>
+<h2>What Does This Loan Calculator Include?</h2>
+<div class="loan-check-grid">
+
+    <div>✓ Loan principal</div>
+    <div>✓ Annual interest rate</div>
+    <div>✓ Loan term</div>
+    <div>✓ Monthly payment estimate</div>
+    <div>✓ Total interest estimate</div>
+    <div>✓ Total repayment estimate</div>
+
+</div>
+<h2>What Is Not Automatically Included?</h2>
+<p>
+    Real loan agreements can contain costs and repayment structures
+    beyond the inputs used by this calculator.
+</p>
+<div class="loan-warning-grid">
+
+    <div>Origination or application fees</div>
+    <div>Taxes</div>
+    <div>Insurance premiums</div>
+    <div>Late-payment charges</div>
+    <div>Prepayment penalties</div>
+    <div>Variable interest-rate changes</div>
+    <div>Balloon payments</div>
+    <div>Interest-only repayment periods</div>
+
+</div>
+<p>
+    Review the lender's actual agreement and disclosures when
+    evaluating a real loan.
+</p>
+<h2>What Type of Loan Does This Calculator Model?</h2>
+<p class="loan-related-note">
+    If you are planning toward a financial target rather than borrowing,
+    you can use ToolXone's
+    <a href="savings-goal-calculator.html">
+        Savings Calculator
+    </a>
+    to estimate progress toward a savings goal.
+</p>
+<p>
+    The calculator is designed around a standard fixed-rate amortizing
+    loan with regular monthly payments. The interest rate remains
+    constant throughout the calculation, and the loan is assumed to be
+    repaid across the selected number of months.
+</p>
+<div class="loan-tip-box">
+    Loans with variable rates, irregular payments, balloon payments,
+    interest-only periods, or lender-specific repayment structures may
+    require a different calculation.
+</div>
+<h2>How to Compare Loan Scenarios</h2>
+<p>
+    Instead of looking only at the monthly payment, compare several
+    parts of each borrowing scenario.
+</p>
+<div class="loan-check-grid">
+
+    <div>✓ Amount borrowed</div>
+    <div>✓ Interest rate</div>
+    <div>✓ Monthly payment</div>
+    <div>✓ Repayment term</div>
+    <div>✓ Total interest</div>
+    <div>✓ Total repayment</div>
+
+</div>
+<p>
+    Changing one input at a time can make it easier to see how that
+    factor affects the estimated cost of the loan.
+</p>
+<h2>Important Note</h2>
+<aside class="loan-important-note">
+
+    <p>
+        ToolXone's Loan Calculator provides estimates based on the values
+        entered and the assumptions described above. Actual loan payments,
+        interest charges, repayment amounts, fees, and lender calculations
+        may differ. Results are intended for informational and educational
+        purposes and should not be treated as a loan offer or financial,
+        investment, tax, or legal advice.
+    </p>
+
+</aside>
+
+
+    </section>
+
+    <!-- TOOLXONE:STATIC-ARTICLE:END loan-calculator --></div>
 
 <div id="financeFAQ"></div>
 

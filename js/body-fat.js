@@ -653,6 +653,12 @@ function calculateBodyFat() {
        CALCULATE BODY FAT
        ===================================================== */
 
+    // Hodgdon-Beckett density equations require centimeter measurements.
+    const heightCm = heightInches * 2.54;
+    const neckCm = neckInches * 2.54;
+    const waistCm = waistInches * 2.54;
+    const hipCm = hipInches === null ? null : hipInches * 2.54;
+
     let bodyFat;
 
 
@@ -678,13 +684,13 @@ function calculateBodyFat() {
                 - (
                     0.19077 *
                     Math.log10(
-                        waistInches - neckInches
+                        waistCm - neckCm
                     )
                 )
                 + (
                     0.15456 *
                     Math.log10(
-                        heightInches
+                        heightCm
                     )
                 )
             )
@@ -715,15 +721,15 @@ function calculateBodyFat() {
                 - (
                     0.35004 *
                     Math.log10(
-                        waistInches +
-                        hipInches -
-                        neckInches
+                        waistCm +
+                        hipCm -
+                        neckCm
                     )
                 )
                 + (
                     0.22100 *
                     Math.log10(
-                        heightInches
+                        heightCm
                     )
                 )
             )

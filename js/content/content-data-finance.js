@@ -4904,350 +4904,201 @@ ToolXoneContentRegistry.register(
                     "What Information Does the Currency Profit Calculator Use?",
 
                 content:
-                    "The calculation is based on four inputs. Together, these values describe the currency exchange scenario you want to evaluate.",
+                    `<p>The calculation is based on four inputs. Together, these values describe the currency exchange scenario you want to evaluate.</p>
 
-                items: [
-
-                    {
-                        title:
-                            "Currency Amount",
-
-                        description:
-                            "The quantity of foreign currency being bought, sold, or evaluated."
-                    },
-
-                    {
-                        title:
-                            "Buy Rate",
-
-                        description:
-                            "The exchange rate used to calculate how much it costs to acquire the selected currency amount."
-                    },
-
-                    {
-                        title:
-                            "Sell Rate",
-
-                        description:
-                            "The exchange rate used to calculate the value of the currency amount when it is sold or evaluated."
-                    },
-
-                    {
-                        title:
-                            "Exchange Fee / Commission",
-
-                        description:
-                            "An optional transaction cost deducted from the gross result when calculating net profit or loss."
-                    }
-
-                ]
+<ul>
+    <li><strong>Currency Amount</strong> The quantity of foreign currency being bought, sold, or evaluated.</li>
+    <li><strong>Buy Rate</strong> The exchange rate used to calculate how much it costs to acquire the selected currency amount.</li>
+    <li><strong>Sell Rate</strong> The exchange rate used to calculate the value of the currency amount when it is sold or evaluated.</li>
+    <li><strong>Exchange Fee / Commission</strong> An optional transaction cost deducted from the gross result when calculating net profit or loss.</li>
+</ul>`
             },
-
 
             {
                 heading:
                     "How Is Buying Cost Calculated?",
 
                 content:
-                    "Buying cost represents the amount required to purchase the entered currency amount at the selected buy rate.",
+                    `<p>Buying cost represents the amount required to purchase the entered currency amount at the selected buy rate.</p>
 
-                formula:
-                    "Buying Cost = Currency Amount × Buy Rate",
+<p>Buying Cost = Currency Amount × Buy Rate</p>
 
-                example:
-                    "For example, if you evaluate 1,000 units of a currency at a buy rate of 278, the buying cost is 1,000 × 278 = 278,000."
+<p>For example, if you evaluate 1,000 units of a currency at a buy rate of 278, the buying cost is 1,000 × 278 = 278,000.</p>`
             },
-
 
             {
                 heading:
                     "How Is Selling Value Calculated?",
 
                 content:
-                    "Selling value represents the value of the same currency amount at the entered sell rate.",
+                    `<p>Selling value represents the value of the same currency amount at the entered sell rate.</p>
 
-                formula:
-                    "Selling Value = Currency Amount × Sell Rate",
+<p>Selling Value = Currency Amount × Sell Rate</p>
 
-                example:
-                    "If the same 1,000 units are evaluated at a sell rate of 286, the selling value becomes 1,000 × 286 = 286,000."
+<p>If the same 1,000 units are evaluated at a sell rate of 286, the selling value becomes 1,000 × 286 = 286,000.</p>`
             },
-
 
             {
                 heading:
                     "Gross Profit or Loss",
 
                 content:
-                    "Gross profit or loss measures the difference between the selling value and the original buying cost before any exchange fee or commission is deducted.",
+                    `<p>Gross profit or loss measures the difference between the selling value and the original buying cost before any exchange fee or commission is deducted.</p>
 
-                formula:
-                    "Gross Profit or Loss = Selling Value − Buying Cost",
+<p>Gross Profit or Loss = Selling Value − Buying Cost</p>
 
-                example:
-                    "Using the previous example, 286,000 − 278,000 = 8,000. Because the result is positive, the example produces a gross profit of 8,000. If the result were negative, it would represent a gross loss."
+<p>Using the previous example, 286,000 − 278,000 = 8,000. Because the result is positive, the example produces a gross profit of 8,000. If the result were negative, it would represent a gross loss.</p>`
             },
-
 
             {
                 heading:
                     "How Exchange Fees Affect Profit",
 
                 content:
-                    "Exchange services, payment providers, brokers, banks, or other intermediaries may charge transaction fees or commissions. A fee reduces the result of the exchange and therefore needs to be considered when estimating net profit or loss.",
+                    `<p>Exchange services, payment providers, brokers, banks, or other intermediaries may charge transaction fees or commissions. A fee reduces the result of the exchange and therefore needs to be considered when estimating net profit or loss.</p>
 
-                formula:
-                    "Net Profit or Loss = Gross Profit or Loss − Exchange Fee",
+<p>Net Profit or Loss = Gross Profit or Loss − Exchange Fee</p>
 
-                example:
-                    "If the gross profit is 8,000 and the transaction includes a fee of 500, the net result is 8,000 − 500 = 7,500. The estimated net profit is therefore 7,500 after accounting for the entered fee."
+<p>If the gross profit is 8,000 and the transaction includes a fee of 500, the net result is 8,000 − 500 = 7,500. The estimated net profit is therefore 7,500 after accounting for the entered fee.</p>`
             },
-
 
             {
                 heading:
                     "How Is Profit or Loss Percentage Calculated?",
 
                 content:
-                    "The percentage result shows the net gain or loss relative to the original buying cost. This makes it easier to understand the size of the result compared with the amount originally spent.",
+                    `<p>The percentage result shows the net gain or loss relative to the original buying cost. This makes it easier to understand the size of the result compared with the amount originally spent.</p>
 
-                formula:
-                    "Profit / Loss % = (Net Profit or Loss ÷ Buying Cost) × 100",
+<p>Profit / Loss % = (Net Profit or Loss ÷ Buying Cost) × 100</p>
 
-                example:
-                    "Using the example above, (7,500 ÷ 278,000) × 100 ≈ 2.70%. The transaction therefore produces an estimated net profit equal to approximately 2.70% of the original buying cost."
+<p>Using the example above, (7,500 ÷ 278,000) × 100 ≈ 2.70%. The transaction therefore produces an estimated net profit equal to approximately 2.70% of the original buying cost.</p>`
             },
-
 
             {
                 heading:
                     "Buy Rate vs. Sell Rate: Why the Difference Matters",
 
                 content:
-                    "The relationship between the buy rate and sell rate is central to the calculation. When the sell rate is higher than the buy rate, the exchange produces a positive gross difference before fees. When the sell rate is lower, the exchange produces a gross loss.",
+                    `<p>The relationship between the buy rate and sell rate is central to the calculation. When the sell rate is higher than the buy rate, the exchange produces a positive gross difference before fees. When the sell rate is lower, the exchange produces a gross loss.</p>
 
-                comparisons: [
-
-                    {
-                        title:
-                            "Sell Rate > Buy Rate",
-
-                        description:
-                            "The rate difference produces a positive gross result. Fees can reduce that profit and may even turn the final result into a net loss."
-                    },
-
-                    {
-                        title:
-                            "Sell Rate < Buy Rate",
-
-                        description:
-                            "The selling value is lower than the buying cost, producing a gross loss before any additional fees are deducted."
-                    }
-
-                ]
+<ul>
+    <li><strong>Sell Rate &gt; Buy Rate</strong> The rate difference produces a positive gross result. Fees can reduce that profit and may even turn the final result into a net loss.</li>
+    <li><strong>Sell Rate &lt; Buy Rate</strong> The selling value is lower than the buying cost, producing a gross loss before any additional fees are deducted.</li>
+</ul>`
             },
-
 
             {
                 heading:
                     "What Is the Exchange Rate Spread?",
 
                 content:
-                    "The difference between two exchange rates is often described as a rate spread. In the context of this calculator, the difference between the entered sell rate and buy rate helps determine the gross result of the transaction.",
+                    `<p>The difference between two exchange rates is often described as a rate spread. In the context of this calculator, the difference between the entered sell rate and buy rate helps determine the gross result of the transaction.</p>
 
-                formula:
-                    "Rate Difference = Sell Rate − Buy Rate",
+<p>Rate Difference = Sell Rate − Buy Rate</p>
 
-                example:
-                    "For a buy rate of 278 and a sell rate of 286, the rate difference is 286 − 278 = 8. For 1,000 currency units, that rate difference corresponds to a gross difference of 8,000 before fees."
+<p>For a buy rate of 278 and a sell rate of 286, the rate difference is 286 − 278 = 8. For 1,000 currency units, that rate difference corresponds to a gross difference of 8,000 before fees.</p>`
             },
-
 
             {
                 heading:
                     "Can a Profitable Rate Difference Still Produce a Net Loss?",
 
                 content:
-                    "Yes. A higher sell rate does not automatically guarantee a positive net result. Transaction fees can exceed the gross profit created by the rate difference.",
+                    `<p>Yes. A higher sell rate does not automatically guarantee a positive net result. Transaction fees can exceed the gross profit created by the rate difference.</p>
 
-                example:
-                    "Suppose 1,000 currency units are bought at 278 and sold at 280. The gross profit is (1,000 × 280) − (1,000 × 278) = 2,000. If the exchange fee is 3,000, the net result is 2,000 − 3,000 = −1,000. Although the sell rate is higher than the buy rate, the fee turns the transaction into a net loss of 1,000."
+<p>Suppose 1,000 currency units are bought at 278 and sold at 280. The gross profit is (1,000 × 280) − (1,000 × 278) = 2,000. If the exchange fee is 3,000, the net result is 2,000 − 3,000 = −1,000. Although the sell rate is higher than the buy rate, the fee turns the transaction into a net loss of 1,000.</p>`
             },
-
 
             {
                 heading:
                     "What Is the Break-Even Exchange Rate?",
 
                 content:
-                    "A break-even sell rate is the rate at which the selling value covers both the original buying cost and the entered fee, leaving a net result of zero.",
+                    `<p>A break-even sell rate is the rate at which the selling value covers both the original buying cost and the entered fee, leaving a net result of zero.</p>
 
-                formula:
-                    "Break-Even Sell Rate = Buy Rate + (Exchange Fee ÷ Currency Amount)",
+<p>Break-Even Sell Rate = Buy Rate + (Exchange Fee ÷ Currency Amount)</p>
 
-                example:
-                    "With 1,000 currency units bought at a rate of 278 and a fee of 500, the break-even sell rate is 278 + (500 ÷ 1,000) = 278.50. Under this simplified scenario, a sell rate of 278.50 would produce a selling value of 278,500, exactly covering the 278,000 buying cost and 500 fee."
+<p>With 1,000 currency units bought at a rate of 278 and a fee of 500, the break-even sell rate is 278 + (500 ÷ 1,000) = 278.50. Under this simplified scenario, a sell rate of 278.50 would produce a selling value of 278,500, exactly covering the 278,000 buying cost and 500 fee.</p>`
             },
-
 
             {
                 heading:
                     "What Happens When the Buy Rate and Sell Rate Are Equal?",
 
                 content:
-                    "If the buy rate and sell rate are identical, the buying cost and selling value are equal. This produces a gross result of zero.",
+                    `<p>If the buy rate and sell rate are identical, the buying cost and selling value are equal. This produces a gross result of zero.</p>
 
-                formula:
-                    "Sell Rate = Buy Rate → Gross Profit / Loss = 0",
+<p>Sell Rate = Buy Rate → Gross Profit / Loss = 0</p>
 
-                example:
-                    "With no exchange fee, the transaction is break-even. If a fee is entered, the transaction produces a net loss equal to that fee."
+<p>With no exchange fee, the transaction is break-even. If a fee is entered, the transaction produces a net loss equal to that fee.</p>`
             },
-
 
             {
                 heading:
                     "Example of a Currency Exchange Loss",
 
                 content:
-                    "A loss occurs when the calculated selling value is lower than the buying cost, or when fees push the final result below zero.",
+                    `<p>A loss occurs when the calculated selling value is lower than the buying cost, or when fees push the final result below zero.</p>
 
-                example:
-                    "Suppose 1,000 currency units are bought at 286 and later evaluated at a sell rate of 278. Buying Cost = 1,000 × 286 = 286,000. Selling Value = 1,000 × 278 = 278,000. Gross Loss = 278,000 − 286,000 = −8,000. If an additional fee of 500 is included, the net loss becomes −8,000 − 500 = −8,500."
+<p>Suppose 1,000 currency units are bought at 286 and later evaluated at a sell rate of 278. Buying Cost = 1,000 × 286 = 286,000. Selling Value = 1,000 × 278 = 278,000. Gross Loss = 278,000 − 286,000 = −8,000. If an additional fee of 500 is included, the net loss becomes −8,000 − 500 = −8,500.</p>`
             },
-
 
             {
                 heading:
                     "Where Can Currency Profit Calculations Be Useful?",
 
                 content:
-                    "Comparing buy and sell rates can be useful in many situations involving foreign currency. The same basic calculation can help evaluate different exchange scenarios before comparing the financial result.",
+                    `<p>Comparing buy and sell rates can be useful in many situations involving foreign currency. The same basic calculation can help evaluate different exchange scenarios before comparing the financial result.</p>
 
-                items: [
-
-                    {
-                        title:
-                            "✈️ Travel Money",
-
-                        description:
-                            "Compare the cost and value of exchanging currency at different quoted rates."
-                    },
-
-                    {
-                        title:
-                            "🌍 International Payments",
-
-                        description:
-                            "Explore how exchange-rate differences and fees may affect cross-border transactions."
-                    },
-
-                    {
-                        title:
-                            "💼 Business Transactions",
-
-                        description:
-                            "Estimate exchange results when receiving, holding, or converting foreign currency."
-                    },
-
-                    {
-                        title:
-                            "📊 Currency Scenarios",
-
-                        description:
-                            "Compare hypothetical buy rates, sell rates, and fees to understand possible profit or loss outcomes."
-                    }
-
-                ]
+<ul>
+    <li><strong>✈️ Travel Money</strong> Compare the cost and value of exchanging currency at different quoted rates.</li>
+    <li><strong>🌍 International Payments</strong> Explore how exchange-rate differences and fees may affect cross-border transactions.</li>
+    <li><strong>💼 Business Transactions</strong> Estimate exchange results when receiving, holding, or converting foreign currency.</li>
+    <li><strong>📊 Currency Scenarios</strong> Compare hypothetical buy rates, sell rates, and fees to understand possible profit or loss outcomes.</li>
+</ul>`
             },
-
 
             {
                 heading:
                     "Exchange Profit Is Not the Same as Currency Conversion",
 
                 content:
-                    "A standard currency converter answers a different question: how much one currency is worth in another currency at a given exchange rate. A currency profit calculator instead compares the financial result between an entered buy rate and sell rate.",
+                    `<p>A standard currency converter answers a different question: how much one currency is worth in another currency at a given exchange rate. A currency profit calculator instead compares the financial result between an entered buy rate and sell rate.</p>
 
-                comparisons: [
-
-                    {
-                        title:
-                            "Currency Converter",
-
-                        description:
-                            "Converts an amount from one currency into another using an exchange rate."
-                    },
-
-                    {
-                        title:
-                            "Currency Profit Calculator",
-
-                        description:
-                            "Compares buying cost and selling value to estimate profit or loss after optional fees."
-                    }
-
-                ]
+<ul>
+    <li><strong>Currency Converter</strong> Converts an amount from one currency into another using an exchange rate.</li>
+    <li><strong>Currency Profit Calculator</strong> Compares buying cost and selling value to estimate profit or loss after optional fees.</li>
+</ul>`
             },
-
 
             {
                 heading:
                     "Important Factors to Consider",
 
                 content:
-                    "This calculator provides an estimate based only on the values entered. Actual currency transactions can involve additional costs or conditions that are not automatically included in the calculation.",
+                    `<p>This calculator provides an estimate based only on the values entered. Actual currency transactions can involve additional costs or conditions that are not automatically included in the calculation.</p>
 
-                items: [
+<ul>
+    <li><strong>Bank or payment-provider fees</strong></li>
+    <li><strong>Broker commissions</strong></li>
+    <li><strong>Different quoted buy and sell rates</strong></li>
+    <li><strong>Transfer or withdrawal charges</strong></li>
+    <li><strong>Rate changes between transactions</strong></li>
+    <li><strong>Taxes or other costs where applicable</strong></li>
+</ul>
 
-                    {
-                        title:
-                            "Bank or payment-provider fees"
-                    },
-
-                    {
-                        title:
-                            "Broker commissions"
-                    },
-
-                    {
-                        title:
-                            "Different quoted buy and sell rates"
-                    },
-
-                    {
-                        title:
-                            "Transfer or withdrawal charges"
-                    },
-
-                    {
-                        title:
-                            "Rate changes between transactions"
-                    },
-
-                    {
-                        title:
-                            "Taxes or other costs where applicable"
-                    }
-
-                ],
-
-                closing:
-                    "Include relevant transaction costs in the fee field when you want the calculator's net result to reflect those costs."
+<p>Include relevant transaction costs in the fee field when you want the calculator's net result to reflect those costs.</p>`
             },
-
 
             {
                 heading:
                     "Does the Calculator Use Live Exchange Rates?",
 
                 content:
-                    "No. The Currency Exchange Profit Calculator does not automatically retrieve live market rates. It calculates the scenario using the buy rate and sell rate entered by you.",
+                    `<p>No. The Currency Exchange Profit Calculator does not automatically retrieve live market rates. It calculates the scenario using the buy rate and sell rate entered by you.</p>
 
-                closing:
-                    "This makes it possible to evaluate quoted rates, historical examples, personal transaction records, or hypothetical exchange scenarios without depending on a specific live exchange-rate source."
+<p>This makes it possible to evaluate quoted rates, historical examples, personal transaction records, or hypothetical exchange scenarios without depending on a specific live exchange-rate source.</p>`
             },
-
 
             {
                 heading:

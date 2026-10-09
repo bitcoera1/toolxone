@@ -29,7 +29,7 @@
             title:
                 "QR Code Generator Guide",
 
-            intro:
+            introduction:
                 "Create scannable QR codes online with ToolXone's free QR Code Generator. Generate QR codes for websites, text, email addresses, phone numbers, SMS messages and WiFi information quickly from your browser.",
 
             sections: [

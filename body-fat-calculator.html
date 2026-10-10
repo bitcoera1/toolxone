@@ -296,6 +296,10 @@ Body Fat Calculator – Free Body Fat Percentage Calculator | ToolXone
     Estimate your body fat percentage from your body measurements using metric or imperial units.
 </p>
 
+<p>
+    Use abdominal circumference at the navel for men, and natural waist plus hip circumference for women. See the measurement instructions below. Weight does not affect this calculation.
+</p>
+
 
 <h2>
     Calculate Your Body Fat
@@ -710,31 +714,48 @@ Body Fat Calculator – Free Body Fat Percentage Calculator | ToolXone
     <section class="tool-article">
 
     <h1>What Is Body Fat Percentage and How Is It Calculated?</h1>
-<p>Body fat percentage is the proportion of a person's total body weight that consists of body fat. Unlike BMI, which uses only height and weight, a body fat estimate uses additional body measurements. ToolXone's Body Fat Calculator uses the U.S. Navy body fat estimation method to provide an estimated body fat percentage from measurements such as height, neck and waist circumference, with hip circumference also used for women.</p>
+<p>Body fat percentage describes the proportion of body weight that is fat. ToolXone estimates this percentage using the historical Hodgdon–Beckett circumference-based body-density equations published in 1984, followed by the separate Siri density-to-body-fat conversion. The calculation uses height and neck circumference, abdominal circumference for men, and natural waist and hip circumference for women. It is an estimate, not a direct measurement or medical diagnosis.</p>
 <h2>What Is Body Fat Percentage?</h2>
 <p>Body fat percentage describes how much of total body weight is estimated to be body fat. The remaining body weight includes lean tissues such as muscle, bone, organs and body water. Body fat is a normal part of human body composition and is necessary for functions including energy storage, insulation and hormone-related processes.</p>
 <h2>How Does a Body Fat Calculator Work?</h2>
-<p>A body fat calculator estimates body fat percentage from physical measurements and a mathematical equation. ToolXone's calculator uses the U.S. Navy method, which estimates body fat from measurements including height, waist and neck circumference. The female calculation also uses hip circumference.</p>
+<p>This calculator first estimates body density from circumference measurements and height. It then converts that density estimate to body fat percentage using the Siri equation. Body weight is not an input to these equations; the displayed weight fields do not affect the result.</p>
 <h2>What Is the U.S. Navy Body Fat Method?</h2>
-<p>The U.S. Navy body fat method is a circumference-based estimation technique that uses body measurements together with height and sex to estimate body fat percentage. It is an estimation method rather than a direct measurement of body composition.</p>
+<p>The name refers here to the historical circumference equations developed by Hodgdon and Beckett at the Naval Health Research Center. ToolXone uses their body-density equations followed by Siri conversion. It does not implement a current military qualification assessment, official measurement rounding, or military pass/fail standards. ToolXone is not endorsed by the U.S. Navy, Department of Defense, or the cited authors or institutions.</p>
+<h2>Calculation Formulas</h2>
+<p>All measurements below are in centimeters, and log10 means the base-10 logarithm. Let H be height, N neck circumference, A male abdominal circumference at the navel, W female natural waist circumference, and P female hip circumference.</p>
+<p><strong>Male estimated density:</strong> D = 1.0324 − 0.19077 × log10(A − N) + 0.15456 × log10(H)</p>
+<p><strong>Female estimated density:</strong> D = 1.29579 − 0.35004 × log10(W + P − N) + 0.22100 × log10(H)</p>
+<p><strong>Siri conversion, applied separately to either density estimate:</strong> Estimated body fat (%) = 495 / D − 450</p>
+<p>D is expressed in g/cm³. The logarithm arguments must be positive. ToolXone rejects non-finite results and estimates outside its implemented 0–70% output range; this software range is not a healthy-range recommendation.</p>
 <h2>Measurements Needed for Men</h2>
-<p>For the male calculation, the calculator uses height, neck circumference and waist circumference. These measurements are entered in either Metric or Imperial mode and are converted as needed for the calculation.</p>
+<p>For the male calculation, use height, neck circumference and abdominal circumference.</p>
+<ul>
+<li><strong>Height:</strong> Measure standing height without shoes, standing upright with your head level and looking forward.</li>
+<li><strong>Neck:</strong> With your head upright and shoulders relaxed, measure just below the larynx (Adam’s apple), not over it. Position the tape perpendicular to the neck’s long axis and avoid including the shoulder muscles. Keep the tape as close to horizontal as anatomically feasible.</li>
+<li><strong>Male abdominal circumference:</strong> Use the field labelled Waist for abdominal circumference at the level of the navel. Keep the tape horizontal and measure at the end of a normal, relaxed exhalation without drawing in your abdomen.</li>
+</ul>
 <h2>Measurements Needed for Women</h2>
-<p>For the female calculation, the calculator uses height, neck circumference, waist circumference and hip circumference. Hip circumference is included because the female version of the circumference-based equation uses this additional measurement.</p>
+<p>For the female calculation, use height, neck circumference, natural waist and hip circumference.</p>
+<ul>
+<li><strong>Height:</strong> Measure standing height without shoes, standing upright with your head level and looking forward.</li>
+<li><strong>Neck:</strong> With your head upright and shoulders relaxed, measure just below the larynx (Adam’s apple), not over it. Position the tape perpendicular to the neck’s long axis and avoid including the shoulder muscles. Keep the tape as close to horizontal as anatomically feasible.</li>
+<li><strong>Female waist:</strong> Measure the natural waist at the narrowest abdominal circumference, generally between the navel and the lower end of the breastbone. Keep the tape horizontal, with arms at your sides, and measure after a normal, relaxed exhalation.</li>
+<li><strong>Female hip:</strong> Measure around the greatest protrusion of the buttocks, keeping the tape horizontal. Avoid shaping or compressive clothing.</li>
+</ul>
 <h2>Metric and Imperial Body Fat Calculations</h2>
-<p>ToolXone's Body Fat Calculator supports both Metric and Imperial measurements. Metric mode uses centimeters, while Imperial mode uses feet, inches and inches-based circumference measurements. The calculator handles the required unit conversions before producing the estimated body fat percentage.</p>
+<p>The equations use centimeters and base-10 logarithms. Metric inputs are supplied in centimeters. Imperial height and circumference inputs are converted using 1 inch = 2.54 centimeters. The calculation retains numerical precision until the result is displayed to one decimal place. It does not apply military half-inch rounding.</p>
 <h2>How to Measure Your Waist and Neck</h2>
-<p>For a more consistent estimate, measurements should be taken carefully with a flexible measuring tape. Keep the tape level and avoid pulling it excessively tight. Taking measurements under similar conditions each time can also make repeated estimates easier to compare.</p>
+<p>Use a flexible, non-stretch tape held against the body without compressing the skin. Repeat measurements to check consistency and use the same sites and technique for later comparisons. Enter your measured values without military rounding.</p>
 <h2>Why Sex Is Used in the Calculation</h2>
-<p>The U.S. Navy estimation equations use different calculations for men and women. This is why the calculator asks for sex and why women are asked to provide an additional hip measurement.</p>
+<p>The historical method provides separate male and female regression equations. The selected sex determines which equation and required circumference measurements this calculator uses.</p>
 <h2>Body Fat Percentage vs BMI</h2>
 <p>BMI and body fat percentage are related but different measurements. BMI is calculated from height and weight, while body fat percentage attempts to estimate the proportion of body weight that is fat. A person can have the same BMI as another person while having a different body composition.</p>
 <h2>Body Fat Percentage vs Body Weight</h2>
 <p>Body weight tells you how much a person weighs, while body fat percentage estimates how much of that weight is body fat. Two people with the same body weight can have different body fat percentages because their amounts of muscle, fat and other tissues can differ.</p>
 <h2>Is a Body Fat Calculator Accurate?</h2>
-<p>A body fat calculator provides an estimate rather than a direct measurement. Circumference-based equations can differ from results obtained through laboratory or specialized body-composition methods. Measurement technique, body shape and individual differences can also affect the estimate.</p>
+<p>Circumference equations predict body composition rather than measure fat directly. Tape placement, tension, posture and breathing can affect the inputs. Prediction error can also depend on body shape, fat distribution and how closely an individual resembles the populations used to develop and evaluate the equations. Siri conversion uses a two-compartment density model with assumptions about fat and fat-free tissue. The displayed decimal place does not establish the estimate’s accuracy.</p>
 <h2>What Does a Body Fat Percentage Result Mean?</h2>
-<p>The result represents an estimated percentage of total body weight that is body fat. It should be interpreted as an informational estimate rather than a diagnosis or a definitive assessment of health. Body composition can be evaluated using multiple measurements and methods.</p>
+<p>The result is an estimated percentage, not a health classification, athletic-status assessment, recommended target, or military qualification result. ToolXone does not assign a body-fat category from this estimate.</p>
 <h2>How to Use the Body Fat Calculator</h2>
 <p>Select your sex and choose Metric or Imperial units. Enter your height, neck circumference and waist circumference. If using the female calculation, also enter hip circumference. Select Calculate Body Fat to receive the estimated body fat percentage.</p>
 <h2>Body Fat and Fitness Tracking</h2>
@@ -742,7 +763,15 @@ Body Fat Calculator – Free Body Fat Percentage Calculator | ToolXone
 <h2>Body Fat Is an Estimate, Not a Medical Diagnosis</h2>
 <p>The result from a circumference-based calculator is an estimate of body composition. It does not diagnose a medical condition and should not be used by itself to determine whether a person is healthy, unhealthy or in need of a particular treatment.</p>
 <h2>Who Can Use This Body Fat Calculator?</h2>
-<p>This calculator is designed as an adult body fat estimation tool. Its result is intended for general informational and fitness-tracking purposes and should not replace professional assessment when a more precise body-composition measurement is required.</p>
+<p>This tool is intended for adult informational use. The historical equations were developed using military samples; their performance is not established here for every population or individual. This page does not establish their suitability for children, pregnancy, or clinical decision-making.</p>
+<h2>Methodology and Sources</h2>
+<p>These references document the historical method, measurement guidance and limitations. They do not imply endorsement of ToolXone or establish current military qualification rules.</p>
+<ul>
+<li><a href="https://escholarship.org/content/qt9451r851/qt9451r851.pdf">Zhang, Huizenga, Arens and Yu (2001), Considering individual physiological differences in a human thermal model</a> — Table 1 documents the density equations, measurement units and separate Siri conversion.</li>
+<li><a href="https://www.mynavyhr.navy.mil/Portals/55/Support/Culture%20Resilience/Physical/Guide%204%20-%20Body%20Composition%20Assessment.pdf?ver=E7NbYxxBqU4PkbWxQqnglQ%3D%3D">U.S. Navy, Guide 4: Body Composition Assessment, January 2024</a> — historical measurement guidance in Sections 1 and 3; ToolXone does not apply its official assessment rounding or qualification standards.</li>
+<li><a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2022.868627/full">Circumference-Based Predictions of Body Fat Revisited: Preliminary Results From a US Marine Corps Body Composition Survey (2022)</a> — research on prediction assumptions and population differences, not a guaranteed accuracy specification for ToolXone.</li>
+</ul>
+<p><strong>Historical attribution:</strong> Hodgdon and Beckett (1984), Prediction of Percent Body Fat for U.S. Navy Men from Body Circumferences and Height, Report 84-11; Prediction of Percent Body Fat for U.S. Navy Women from Body Circumferences and Height, Report 84-29. Siri (1961), Body Composition from Fluid Spaces and Density: Analysis of Methods.</p>
 
 
     </section>

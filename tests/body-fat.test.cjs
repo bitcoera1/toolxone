@@ -4,7 +4,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
 const source = fs.readFileSync(path.join(__dirname, '../js/body-fat.js'), 'utf8');
-const explanation = 'This result is an estimate based on your body measurements and the U.S. Navy body fat estimation method.';
+const explanation = 'Estimated using historical Hodgdon–Beckett circumference equations and Siri conversion. This is not a medical diagnosis, health category, or military qualification result.';
 const inputIds = ['heightCm','neckCm','waistCm','hipCm','heightFt','heightIn','neckIn','waistIn','hipIn','weightKg','weightLb'];
 function harness() {
     const elements = new Map(), timers = new Map(), alerts = [], records = [], results = [];
@@ -55,12 +55,12 @@ function close(actual,expected) {
 // Fixed independent evaluations of published centimeter density equations + Siri.
 // Expected percentages are literals, never computed using a copied production formula.
 const references = [
-    ['male metric',{sex:'male',heightCm:177.8,waistCm:91.44,neckCm:38.10},21.1236649803767,'Average',false],
-    ['male imperial',{sex:'male',heightFt:5,heightIn:10,waistIn:36,neckIn:15},21.1236649803767,'Average',true],
-    ['female metric',{sex:'female',heightCm:165.10,waistCm:76.20,neckCm:33.02,hipCm:96.52},28.2573793515133,'Average',false],
-    ['female imperial',{sex:'female',heightFt:5,heightIn:5,waistIn:30,neckIn:13,hipIn:38},28.2573793515133,'Average',true],
-    ['male original unit failure',{sex:'male',heightCm:175,waistCm:90,neckCm:40},19.2070089251118,'Average',false],
-    ['female original unit failure',{sex:'female',heightCm:165,waistCm:75,neckCm:34,hipCm:95},26.4058821429019,'Average',false]
+    ['male metric',{sex:'male',heightCm:177.8,waistCm:91.44,neckCm:38.10},21.1236649803767,'Circumference-based estimate',false],
+    ['male imperial',{sex:'male',heightFt:5,heightIn:10,waistIn:36,neckIn:15},21.1236649803767,'Circumference-based estimate',true],
+    ['female metric',{sex:'female',heightCm:165.10,waistCm:76.20,neckCm:33.02,hipCm:96.52},28.2573793515133,'Circumference-based estimate',false],
+    ['female imperial',{sex:'female',heightFt:5,heightIn:5,waistIn:30,neckIn:13,hipIn:38},28.2573793515133,'Circumference-based estimate',true],
+    ['male original unit failure',{sex:'male',heightCm:175,waistCm:90,neckCm:40},19.2070089251118,'Circumference-based estimate',false],
+    ['female original unit failure',{sex:'female',heightCm:165,waistCm:75,neckCm:34,hipCm:95},26.4058821429019,'Circumference-based estimate',false]
 ];
 for (const [name,inputs,expected,category,imperial] of references) test(name + ': numeric oracle, display, category and statistics',()=>{
     const h=harness(); if(imperial) h.imperial(); h.run(inputs);
@@ -108,15 +108,17 @@ for(const [name,inputs,imperial] of invalid) test('Reject without display/statis
     h.run(inputs); assert.equal(h.alerts.length,1); assert.equal(h.results.length,0); assert.deepEqual(h.records,[]);
     assert.equal(h.element('bodyFatValue').textContent,'unchanged'); assert.equal(h.element('bodyFatDetails').textContent,'unchanged details');
 });
-for(const [sex,thresholds] of [['male',[6,14,18,25]],['female',[14,21,25,32]]]) test('Existing unrounded category boundaries: '+sex,()=>{
-    const h=harness(),labels=['Essential Fat','Athletes','Fitness','Average','Above Average'];
-    thresholds.forEach((boundary,i)=>{
-        assert.equal(h.context.getBodyFatCategory(boundary-.001,sex),labels[i]);
-        assert.equal(h.context.getBodyFatCategory(boundary,sex),labels[i+1]);
-        h.context.displayBodyFatResult(boundary-.001,sex); h.flush();
-        assert.equal(h.element('bodyFatValue').textContent,boundary.toFixed(1)+'%');
-        assert.equal(h.element('bodyFatCategory').textContent,labels[i]);
-    }); assert.deepEqual(h.records,[]);
+for(const sex of ['male','female']) test('Neutral descriptor across former category bands: '+sex,()=>{
+    const h=harness();
+    for(const value of [0,2,5.999,6,13.999,14,17.999,18,20.999,21,24.999,25,31.999,32,50,70]) {
+        h.context.displayBodyFatResult(value,sex); h.flush();
+        assert.equal(h.element('bodyFatValue').textContent,value.toFixed(1)+'%');
+        assert.equal(h.element('bodyFatDetails').textContent,'Estimated body fat: '+value.toFixed(1)+'%');
+        assert.equal(h.element('bodyFatCategory').textContent,'Circumference-based estimate');
+        assert.equal(h.element('bodyFatExplanation').textContent,explanation);
+    }
+    assert.deepEqual(h.records,[]);
+    assert.equal(typeof h.context.getBodyFatCategory,'undefined');
 });
 for(const index of [0,3]) test('Reset preserves sex and clears input/results: '+references[index][0],()=>{
     const h=harness(); if(references[index][4]) h.imperial(); h.run(references[index][1]); h.click('resetBtn');

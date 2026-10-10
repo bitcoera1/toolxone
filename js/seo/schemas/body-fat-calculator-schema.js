@@ -63,8 +63,6 @@ meta: {
 
             "body fat estimate",
 
-            "healthy body fat percentage",
-
             "ToolXone"
 
         ]
@@ -294,7 +292,7 @@ schema: {
                 "How is body fat percentage calculated?",
 
             answer:
-                "ToolXone's Body Fat Calculator uses the U.S. Navy body fat estimation method, which uses body measurements together with height and sex to estimate body fat percentage."
+                "ToolXone uses the historical Hodgdon–Beckett body-density equations with centimeter measurements and base-10 logarithms, followed by the separate Siri conversion: body fat percentage = 495 / density − 450."
         },
 
 
@@ -303,7 +301,7 @@ schema: {
                 "What measurements are needed for the Body Fat Calculator?",
 
             answer:
-                "The calculator uses sex, height, neck circumference and waist circumference. The female calculation also requires hip circumference."
+                "Both calculations use height and neck circumference. Men use abdominal circumference at the navel; women use natural waist and hip circumference. Weight does not affect the calculation."
         },
 
 
@@ -312,7 +310,7 @@ schema: {
                 "Why does the calculator ask for my sex?",
 
             answer:
-                "The U.S. Navy estimation method uses different equations for men and women, so the selected sex determines which calculation is used."
+                "The historical method provides separate male and female regression equations. The selected sex determines which equation and required circumference measurements this calculator uses."
         },
 
 
@@ -330,7 +328,7 @@ schema: {
                 "What is the U.S. Navy body fat method?",
 
             answer:
-                "It is a circumference-based method that estimates body fat percentage using measurements such as height, waist and neck circumference, with hip circumference also used for women."
+                "Here, the name means the historical Hodgdon–Beckett circumference method. This calculator is an informational estimate, not an official or current military qualification assessment."
         },
 
 
@@ -357,7 +355,7 @@ schema: {
                 "Is a body fat calculator accurate?",
 
             answer:
-                "A body fat calculator provides an estimate rather than a direct measurement. Results can vary because of measurement technique, body shape and individual differences."
+                "It provides an estimate. Measurement technique, body shape, fat distribution and the population represented by the equations can affect the result. One decimal place is display precision, not an accuracy guarantee."
         },
 
 
@@ -393,7 +391,7 @@ schema: {
                 "How should I measure my waist for the calculator?",
 
             answer:
-                "Use a flexible measuring tape and keep it level around the waist. Avoid pulling the tape excessively tight and try to use a consistent measurement technique each time."
+                "For men, measure horizontally at the navel after a normal, relaxed exhalation. For women, measure the natural waist at the narrowest abdominal circumference, with arms at your sides, after a normal, relaxed exhalation. Keep the tape against the body without compressing the skin."
         },
 
 
@@ -402,7 +400,7 @@ schema: {
                 "How should I measure my neck?",
 
             answer:
-                "Use a flexible measuring tape around the neck and keep the measurement consistent. Avoid pulling the tape excessively tight."
+                "With your head upright and shoulders relaxed, measure just below the larynx (Adam’s apple), not over it. Position the tape perpendicular to the neck’s long axis and avoid including the shoulder muscles. Keep the tape as close to horizontal as anatomically feasible."
         },
 
 
@@ -447,7 +445,16 @@ schema: {
                 "Who is this Body Fat Calculator intended for?",
 
             answer:
-                "It is designed as an adult body fat estimation tool for general informational and fitness-tracking purposes."
+                "This tool is intended for adult informational use. The historical equations were developed using military samples; their performance is not established here for every population or individual. This page does not establish their suitability for children, pregnancy, or clinical decision-making."
+        },
+
+
+        {
+            question:
+                "Does this result determine a healthy range or military qualification?",
+
+            answer:
+                "No. ToolXone does not classify the estimate as a healthy range or determine military eligibility."
         }
 
     ]

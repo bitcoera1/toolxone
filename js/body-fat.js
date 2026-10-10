@@ -813,10 +813,7 @@ function displayBodyFatResult(
     if (categoryElement) {
 
         categoryElement.textContent =
-            getBodyFatCategory(
-                bodyFat,
-                sex
-            );
+            "Circumference-based estimate";
 
     }
 
@@ -842,7 +839,7 @@ function displayBodyFatResult(
     if (explanationElement) {
 
         explanationElement.textContent =
-            "This result is an estimate based on your body measurements and the U.S. Navy body fat estimation method.";
+            "Estimated using historical Hodgdon–Beckett circumference equations and Siri conversion. This is not a medical diagnosis, health category, or military qualification result.";
 
     }
 
@@ -855,89 +852,6 @@ function displayBodyFatResult(
 
         resultCard.style.display =
             "block";
-
-    }
-
-}
-
-
-/* =========================================================
-   BODY FAT CATEGORY
-   ========================================================= */
-
-function getBodyFatCategory(
-    bodyFat,
-    sex
-) {
-
-
-    /*
-     Approximate adult reference categories.
-     These are used for general informational display
-     and are not a medical diagnosis.
-    */
-
-
-    if (sex === "male") {
-
-
-        if (bodyFat < 6) {
-
-            return "Essential Fat";
-
-        }
-
-        if (bodyFat < 14) {
-
-            return "Athletes";
-
-        }
-
-        if (bodyFat < 18) {
-
-            return "Fitness";
-
-        }
-
-        if (bodyFat < 25) {
-
-            return "Average";
-
-        }
-
-        return "Above Average";
-
-    }
-
-
-    else {
-
-
-        if (bodyFat < 14) {
-
-            return "Essential Fat";
-
-        }
-
-        if (bodyFat < 21) {
-
-            return "Athletes";
-
-        }
-
-        if (bodyFat < 25) {
-
-            return "Fitness";
-
-        }
-
-        if (bodyFat < 32) {
-
-            return "Average";
-
-        }
-
-        return "Above Average";
 
     }
 

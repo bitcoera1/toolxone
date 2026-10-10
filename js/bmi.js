@@ -1,4 +1,5 @@
 let currentUnit = "metric";
+let bmiAnimationTimer = null;
 
 document.addEventListener("DOMContentLoaded", function () {
     const metricBtn = document.getElementById("metricBtn");
@@ -65,7 +66,17 @@ function calculateBMI() {
     return;
 }
 
-        bmi = weight / Math.pow(height / 100, 2);
+        const heightMeters = height / 100;
+        const denominator = Math.pow(heightMeters, 2);
+        if (
+            !Number.isFinite(heightMeters) || heightMeters <= 0 ||
+            !Number.isFinite(denominator) || denominator <= 0
+        ) {
+            alert("Please enter valid height and weight values.");
+            return;
+        }
+
+        bmi = weight / denominator;
     } else {
         const feetInput = document.getElementById("heightFt").value.trim();
 const inchesInput = document.getElementById("heightIn").value.trim();
@@ -107,7 +118,22 @@ if (totalInches <= 0) {
     return;
 }
 
-bmi = (weightLb / Math.pow(totalInches, 2)) * 703;
+const denominator = Math.pow(totalInches, 2);
+if (
+    !Number.isFinite(totalInches) || totalInches <= 0 ||
+    !Number.isFinite(denominator) || denominator <= 0
+) {
+    alert("Please enter valid height and weight values.");
+    return;
+}
+
+bmi = (weightLb / denominator) * 703;
+    }
+
+    // A positive animation increment must remain representable as well.
+    if (!Number.isFinite(bmi) || bmi <= 0 || bmi / 40 <= 0) {
+        alert("Please enter valid height and weight values.");
+        return;
     }
 
     animateBMI(bmi);
@@ -150,17 +176,22 @@ if (
 }
 
 function animateBMI(target) {
+    if (bmiAnimationTimer !== null) {
+        clearInterval(bmiAnimationTimer);
+        bmiAnimationTimer = null;
+    }
     const element = document.getElementById("bmiNumber");
 
     let current = 0;
     const increment = target / 40;
 
-    const timer = setInterval(() => {
+    bmiAnimationTimer = setInterval(() => {
         current += increment;
 
         if (current >= target) {
             current = target;
-            clearInterval(timer);
+            clearInterval(bmiAnimationTimer);
+            bmiAnimationTimer = null;
         }
 
         element.textContent = current.toFixed(1);
@@ -168,6 +199,10 @@ function animateBMI(target) {
 }
 
 function resetBMI() {
+    if (bmiAnimationTimer !== null) {
+        clearInterval(bmiAnimationTimer);
+        bmiAnimationTimer = null;
+    }
     document.getElementById("heightCm").value = "";
     document.getElementById("weightKg").value = "";
     document.getElementById("heightFt").value = "";

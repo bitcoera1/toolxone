@@ -5443,22 +5443,12 @@ ToolXoneContentRegistry.register(
     "retirement-calculator",
 
     {
-
-        title:
-            "How to Plan for Retirement",
-
-        introduction:
-            `Retirement planning involves estimating how your savings may grow over time and understanding how factors such as your current savings, monthly contributions, investment returns, retirement age and inflation can affect your financial future. ToolXone's Retirement Calculator helps you explore these factors by projecting the future value of your retirement savings.`,
-
+        title: "How to Plan for Retirement",
+        introduction: "Retirement planning involves estimating how your savings may grow over time and understanding how factors such as your current savings, monthly contributions, investment returns and retirement age can affect your financial future. ToolXone's Retirement Calculator helps you explore these factors by projecting the future value of your retirement savings. Inflation is not included in the projection and should be considered separately.",
         sections: [
-
             {
-
-                heading:
-                    "How This Retirement Calculator Works",
-
-                content:
-                    `
+                heading: "How This Retirement Calculator Works",
+                content: `
 <p>
     Enter your current age, planned retirement age, current savings,
     monthly contribution and expected annual return. The calculator
@@ -5473,16 +5463,52 @@ ToolXoneContentRegistry.register(
     returns.
 </p>
 `
-
             },
-
             {
+                heading: "Calculation Methodology and Output Definitions",
+                content: `
+<p>Let S represent current savings, P the constant monthly contribution, A the entered annual return percentage, n the number of months and r the monthly rate. Use the same monetary unit for current savings and monthly contributions.</p>
 
-                heading:
-                    "Why Starting Earlier Can Matter",
+<p>years = retirementAge − currentAge</p>
 
-                content:
-                    `
+<p>n = years × 12</p>
+
+<p>r = A ÷ 100 ÷ 12</p>
+
+<p>The calculator treats the entered annual return as a nominal annual rate and divides it by 12 to obtain a constant monthly rate. It does not convert an effective annual return into a monthly rate. The entered value is an assumption for the scenario, not a forecast, recommended return or historically expected return.</p>
+
+<p>Current savings compound monthly under the constant-rate assumption.</p>
+
+<p>Future current savings = S × (1 + r)^n</p>
+
+<p>When r is nonzero, future contributions use the ordinary-annuity formula. For a whole number of months, this assumes equal contributions at the end of each month, so the last contribution receives no interest before the projection endpoint.</p>
+
+<p>Future contributions = P × ((1 + r)^n − 1) ÷ r</p>
+
+<p>At zero annual return, current savings remain unchanged and future contributions equal the monthly contribution multiplied by the number of months.</p>
+
+<p>Future current savings = S</p>
+
+<p>Future contributions = P × n</p>
+
+<p>Fractional ages produce fractional years and months. The calculator uses those fractional periods directly in the formulas without rounding the number of months. This is a mathematical extension of the formulas, not a simulation of partial-month deposits.</p>
+
+<ul>
+<li><strong>Projected fund:</strong> Future current savings plus future contributions.</li>
+<li><strong>Total contributions:</strong> Current savings plus monthly contribution × months. This includes the starting savings balance.</li>
+<li><strong>Investment growth:</strong> Projected fund minus total contributions. For fractional periods, this formula can produce negative investment growth even when the entered return is positive.</li>
+</ul>
+
+<p>Projected fund = future current savings + future contributions</p>
+
+<p>Total contributions = S + P × n</p>
+
+<p>Investment growth = projected fund − total contributions</p>
+`
+            },
+            {
+                heading: "Why Starting Earlier Can Matter",
+                content: `
 <p>
     A longer investment period gives savings and investment returns more
     time to compound. Starting earlier may therefore have a significant
@@ -5497,16 +5523,10 @@ ToolXoneContentRegistry.register(
     </a>.
 </p>
 `
-
             },
-
             {
-
-                heading:
-                    "Monthly Contributions and Retirement Savings",
-
-                content:
-                    `
+                heading: "Monthly Contributions and Retirement Savings",
+                content: `
 <p>
     Regular contributions can play an important role in building retirement
     savings. Increasing the amount contributed each month can increase both
@@ -5522,16 +5542,10 @@ ToolXoneContentRegistry.register(
     can help you explore how much you may need to save toward that goal.
 </p>
 `
-
             },
-
             {
-
-                heading:
-                    "Investment Returns and Retirement Planning",
-
-                content:
-                    `
+                heading: "Investment Returns and Retirement Planning",
+                content: `
 <p>
     The expected annual return is an assumption about how investments may
     grow over time. Because future returns are uncertain, retirement
@@ -5548,16 +5562,10 @@ ToolXoneContentRegistry.register(
     </a>.
 </p>
 `
-
             },
-
             {
-
-                heading:
-                    "Remember the Effect of Inflation",
-
-                content:
-                    `
+                heading: "Remember the Effect of Inflation",
+                content: `
 <p>
     A future retirement balance may look much larger than today's savings,
     but inflation can reduce the purchasing power of money over time.
@@ -5575,16 +5583,22 @@ ToolXoneContentRegistry.register(
     money over time.
 </p>
 `
-
             },
-
             {
+                heading: "The Fixed 4% Monthly-Income Illustration",
+                content: `
+<p>Estimated monthly retirement income is calculated by multiplying the projected fund by 0.04 and dividing by 12.</p>
 
-                heading:
-                    "How to Interpret Your Retirement Estimate",
+<p>Estimated monthly retirement income = projected fund × 0.04 ÷ 12</p>
 
-                content:
-                    `
+<p>The 4% figure is a fixed illustrative withdrawal assumption and cannot be adjusted in this calculator. The output is not a recommended withdrawal amount, a sustainable-income determination or a retirement-income plan.</p>
+
+<p>The calculator does not simulate withdrawals after retirement, subsequent inflation adjustments, changing investment returns or portfolio depletion. It does not determine how long the fund will last.</p>
+`
+            },
+            {
+                heading: "How to Interpret Your Retirement Estimate",
+                content: `
 <p>
     Treat the calculated amount as an estimate rather than a guaranteed
     retirement outcome. Your actual results can be affected by investment
@@ -5598,14 +5612,31 @@ ToolXoneContentRegistry.register(
     can help you understand which assumptions have the greatest effect on
     your projected savings.
 </p>
+
+<p>This calculator provides illustrative projections, not financial advice, individualized recommendations or guaranteed outcomes.</p>
+
+<p>The calculator does not model inflation, taxes, fees, changing returns, changing contributions, pre-retirement withdrawals, pensions or Social Security, spending needs, asset allocation, longevity or drawdown, or individualized circumstances. It uses a constant return assumption and a constant monthly contribution.</p>
+
+<p>Calculations retain unrounded values. Monetary results display two decimal places, while years remaining display up to two decimal places. Display rounding does not change the values used in the calculations.</p>
+
+<p>The bars show contribution and investment-growth proportions, not probabilities or retirement adequacy. Their widths are limited to 0%–100%; negative investment growth displays a zero-width growth bar.</p>
 `
+            },
+            {
+                heading: "References and Source Context",
+                content: `
+<ol>
+<li><a href="https://www.financialplanningassociation.org/sites/default/files/2021-04/MAR04%20Determining%20Withdrawal%20Rates%20Using%20Historical%20Data.pdf">William P. Bengen (1994) — Determining Withdrawal Rates Using Historical Data (publisher-hosted reprint)</a>
+<p>This historical research provides context for discussing an initial withdrawal followed by inflation-adjusted withdrawals using historical portfolio returns. It does not validate ToolXone's accumulation projection or fixed monthly-income illustration, and it does not guarantee future sustainability.</p></li>
+<li><a href="https://www.investor.gov/introduction-investing/investing-basics/what-risk">SEC Investor.gov — What is Risk?</a>
+<p>This source provides general context about investment uncertainty, potential loss, volatility and inflation's effect on purchasing power. It does not validate ToolXone's entered return assumption, fixed 4% assumption or calculator.</p></li>
+</ol>
 
+<p>These references provide context and imply no endorsement of ToolXone by the authors, publishers or institutions.</p>
+`
             }
-
         ]
-
     }
-
 );
 
     /* ==========================================================
@@ -6789,90 +6820,68 @@ ToolXoneContentRegistry.register(
 
     "retirement-calculator",
 
-    [
-
-        {
-
-            question:
-                "What does this retirement calculator estimate?",
-
-            answer:
-                "This retirement calculator estimates the future value of your retirement savings based on your current age, planned retirement age, current savings, monthly contributions, and expected annual return."
-
-        },
-
-        {
-
-            question:
-                "How does the retirement calculator work?",
-
-            answer:
-                "The calculator projects your current savings forward and adds the estimated growth of your monthly contributions over the years remaining until retirement. The result is an estimate based on the values and expected return you enter."
-
-        },
-
-        {
-
-            question:
-                "How can I use this calculator for retirement planning?",
-
-            answer:
-                "Try different retirement ages, contribution amounts, savings balances, and expected returns to compare possible retirement planning scenarios. This can help you understand how saving more, investing for longer, or changing your assumptions may affect the projected result."
-
-        },
-
-        {
-
-            question:
-                "How do monthly contributions affect retirement savings?",
-
-            answer:
-                "Regular monthly contributions can increase your retirement savings over time because you are adding more money to the fund and those contributions may also earn investment returns during the remaining years before retirement."
-
-        },
-
-        {
-
-            question:
-                "What annual return should I enter?",
-
-            answer:
-                "Enter an annual return that reflects the assumption you want to test. Actual investment returns can vary and are not guaranteed, so comparing several return assumptions can provide a more useful range of possible outcomes."
-
-        },
-
-        {
-
-            question:
-                "Does this retirement calculator include inflation?",
-
-            answer:
-                "This calculator focuses on projected savings and investment growth and does not automatically adjust the result for inflation. Inflation can reduce future purchasing power, so it should be considered separately when planning for retirement."
-
-        },
-
-        {
-
-            question:
-                "Is this retirement calculator free to use?",
-
-            answer:
-                "Yes. ToolXone's Retirement Calculator is free to use online and can be used to compare different retirement savings and investment scenarios."
-
-        },
-
-        {
-
-            question:
-                "What is the 4% rule?",
-
-            answer:
-                "The 4% rule is a commonly discussed retirement withdrawal guideline in which approximately 4% of a retirement portfolio is withdrawn in the first year and later withdrawals are adjusted over time. It is a planning guideline rather than a guarantee and may not be appropriate for every retirement situation."
-
-        }
-
-    ]
-
+[
+    {
+        "question": "What does this retirement calculator estimate?",
+        "answer": "This calculator provides an illustrative projection of the future value of current savings and constant monthly contributions under the annual return assumption you enter. It also shows total contributions, investment growth and a fixed monthly-income illustration. It does not determine whether your savings are sufficient for retirement."
+    },
+    {
+        "question": "How is the retirement projection calculated?",
+        "answer": "Years remaining equal retirement age minus current age, and months equal years remaining multiplied by 12. The monthly rate equals the entered annual return percentage divided by 100 and then by 12. The projected fund combines the future value of current savings and monthly contributions."
+    },
+    {
+        "question": "How are current savings compounded?",
+        "answer": "Current savings are multiplied by (1 + monthly rate) raised to the number of months. This applies a constant monthly compounding assumption throughout the projection."
+    },
+    {
+        "question": "When are monthly contributions assumed to occur?",
+        "answer": "For whole-month periods, contributions are assumed to occur at the end of each month. The final contribution receives no interest before the projection endpoint. Contributions are assumed to remain constant."
+    },
+    {
+        "question": "What happens when the annual return is zero?",
+        "answer": "Current savings remain unchanged. Future contributions equal monthly contribution multiplied by months, so the projected fund equals current savings plus those contributions and investment growth is zero."
+    },
+    {
+        "question": "Can I enter fractional ages or periods?",
+        "answer": "The calculation accepts fractional ages and uses the resulting fractional years and months without rounding the period. Fractional-period results are mathematical extensions of the formulas, not simulations of partial-month deposits."
+    },
+    {
+        "question": "What do total contributions and investment growth mean?",
+        "answer": "Total contributions equal current savings plus monthly contribution multiplied by months, including the starting savings balance. Investment growth equals projected fund minus total contributions. Fractional periods can produce negative calculated investment growth even with a positive entered return."
+    },
+    {
+        "question": "What does the annual return input mean?",
+        "answer": "It is your scenario assumption, not a forecast, recommended return or historically expected return. The calculator treats it as a nominal annual rate divided by 12, rather than converting an effective annual return. Actual investment returns can vary and include losses."
+    },
+    {
+        "question": "How is estimated monthly retirement income calculated?",
+        "answer": "Estimated monthly retirement income equals projected fund multiplied by 0.04 and divided by 12. This is a fixed illustration, not a recommended withdrawal amount, a sustainable-income determination or a retirement-income plan."
+    },
+    {
+        "question": "Can I change the withdrawal assumption?",
+        "answer": "No. The calculator uses a fixed 4% annual assumption for its monthly-income illustration. It does not provide a withdrawal-rate input or simulate a retirement withdrawal schedule."
+    },
+    {
+        "question": "Does the 4% illustration guarantee that savings will last?",
+        "answer": "No. Historical withdrawal-rate research provides context for discussing an initial withdrawal followed by inflation adjustments. ToolXone does not implement that historical analysis or test portfolio longevity. Its fixed illustration does not establish future sustainability."
+    },
+    {
+        "question": "Does this calculator account for inflation?",
+        "answer": "No. The projection is nominal and is not automatically adjusted for inflation. Inflation can reduce purchasing power, so a future balance does not represent an equivalent amount of purchasing power today."
+    },
+    {
+        "question": "What other factors are excluded?",
+        "answer": "The calculator does not model taxes, fees, changing returns, changing contributions, pre-retirement withdrawals, pensions or Social Security, spending needs, asset allocation, longevity or drawdown, or individualized circumstances. It uses a constant return assumption and a constant monthly contribution."
+    },
+    {
+        "question": "How are displayed results rounded?",
+        "answer": "Calculations retain unrounded values. Monetary results display two decimal places, and years remaining display up to two decimal places. Display rounding does not change the values used in the calculations."
+    },
+    {
+        "question": "Are these results financial advice or guaranteed outcomes?",
+        "answer": "No. The results are illustrative projections based on your inputs and simplified assumptions. They are not financial advice, individualized recommendations or guaranteed retirement outcomes."
+    }
+]
 );
 
     /* ==========================================================
@@ -8364,7 +8373,7 @@ ToolXoneContentRegistry.register(
             "Free Retirement Calculator",
 
         subtitle:
-            "Estimate your future retirement savings and plan for a financially secure future.",
+            "Explore illustrative retirement savings projections using your own assumptions.",
 
         description:
             "Use ToolXone's free Retirement Calculator to estimate how your current savings and monthly contributions may grow over time. Enter your current age, retirement age, existing savings, monthly contribution and expected annual return to explore your projected retirement savings.",
@@ -8377,7 +8386,7 @@ ToolXoneContentRegistry.register(
 
             "Compare different retirement ages and returns",
 
-            "Plan your long-term retirement strategy"
+            "Compare retirement savings scenarios"
 
         ],
 
@@ -8396,10 +8405,10 @@ ToolXoneContentRegistry.register(
             accuracy: {
 
                 value:
-                    "Formula",
+                    "Illustrative",
 
                 label:
-                    "Accuracy"
+                    "Projection"
 
             },
 

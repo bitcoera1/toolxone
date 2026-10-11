@@ -35,7 +35,7 @@ meta: {
             "Calorie Calculator – Free Daily Calorie Calculator | ToolXone",
 
         description:
-            "Use ToolXone's free Calorie Calculator to estimate daily calorie needs, BMR and calorie targets based on age, sex, height, weight and activity level.",
+            "Use ToolXone's free Calorie Calculator to estimate daily calorie needs, BMR and illustrative calorie scenarios based on age, sex, height, weight and activity level.",
 
         keywords: [
 
@@ -46,8 +46,6 @@ meta: {
             "daily calorie calculator",
 
             "calorie needs calculator",
-
-            "calorie intake calculator",
 
             "BMR calorie calculator",
 
@@ -66,8 +64,6 @@ meta: {
             "daily calorie needs",
 
             "maintenance calories",
-
-            "calorie target calculator",
 
             "ToolXone"
 
@@ -117,7 +113,7 @@ meta: {
             "Calorie Calculator – Free Daily Calorie Calculator | ToolXone",
 
         description:
-            "Estimate your daily calorie needs, BMR and calorie targets using ToolXone's free online Calorie Calculator.",
+            "Estimate your daily calorie needs, BMR and illustrative calorie scenarios using ToolXone's free online Calorie Calculator.",
 
         type:
             "website",
@@ -208,7 +204,7 @@ schema: {
             "https://www.toolxone.com/calorie-calculator.html",
 
         description:
-            "Free online Calorie Calculator for estimating daily calorie needs, basal metabolic rate and calorie targets based on personal measurements and activity level."
+            "Free online Calorie Calculator for estimating daily calorie needs, basal metabolic rate and illustrative calorie scenarios based on personal measurements and activity level."
 
     },
 
@@ -283,141 +279,66 @@ schema: {
     =====================================================*/
 
     faq: [
-
         {
-            question:
-                "What does a Calorie Calculator measure?",
-
-            answer:
-                "A Calorie Calculator estimates the approximate number of calories a person may need each day based on information such as age, sex, height, weight and activity level."
+            "question": "What does ToolXone’s Calorie Calculator estimate?",
+            "answer": "It predicts resting energy expenditure and applies a simplified activity factor to estimate daily maintenance calories. It also shows fixed loss and gain scenarios for informational comparison."
         },
-
-
         {
-            question:
-                "How does a Calorie Calculator estimate daily calories?",
-
-            answer:
-                "A calorie calculator generally estimates resting energy requirements from personal measurements and then accounts for physical activity to estimate broader daily energy needs."
+            "question": "Why does the calculator use the BMR label?",
+            "answer": "The familiar BMR label refers here to a Mifflin–St Jeor prediction of resting energy expenditure (REE), not a direct laboratory measurement of basal metabolism."
         },
-
-
         {
-            question:
-                "What information do I need for the Calorie Calculator?",
-
-            answer:
-                "ToolXone's Calorie Calculator uses age, sex, height, weight and activity level to estimate daily calorie needs."
+            "question": "Which resting-energy equations are used?",
+            "answer": "The male equation is 10W + 6.25H − 5A + 5; the female equation is 10W + 6.25H − 5A − 161. W is weight in kilograms, H is height in centimeters and A is age in years."
         },
-
-
         {
-            question:
-                "Does the Calorie Calculator use activity level?",
-
-            answer:
-                "Yes. Activity level is used to account for differences in estimated daily energy expenditure."
+            "question": "How are imperial measurements converted?",
+            "answer": "Height in feet and inches is converted to total inches and multiplied by 2.54. Weight in pounds is multiplied by 0.45359237 to obtain kilograms."
         },
-
-
         {
-            question:
-                "Is a Calorie Calculator the same as a BMR Calculator?",
-
-            answer:
-                "No. BMR estimates energy requirements at rest, while a daily calorie estimate can account for physical activity and provide a broader estimate of daily energy needs."
+            "question": "How is the maintenance estimate calculated?",
+            "answer": "Predicted REE is multiplied by the selected activity factor. This is a simplified estimate, not a measurement of total daily energy expenditure."
         },
-
-
         {
-            question:
-                "Can I use Metric measurements?",
-
-            answer:
-                "Yes. ToolXone's Calorie Calculator supports Metric measurements using centimeters and kilograms."
+            "question": "Which activity factors does ToolXone use?",
+            "answer": "The factors are 1.20 for Sedentary, 1.375 for Lightly Active, 1.55 for Moderately Active, 1.725 for Very Active and 1.90 for Extra Active."
         },
-
-
         {
-            question:
-                "Can I use feet, inches and pounds?",
-
-            answer:
-                "Yes. Imperial mode supports height in feet and inches and weight in pounds."
+            "question": "Are those activity factors individualized or validated by Mifflin?",
+            "answer": "No. They are simplified calculator assumptions, separate from the original resting-energy equation. Exercise frequency alone does not measure whole-day activity."
         },
-
-
         {
-            question:
-                "Are calorie calculator results accurate?",
-
-            answer:
-                "A calorie calculator provides an estimate rather than a direct measurement. Actual daily energy expenditure can differ because individual physiology and activity patterns vary."
+            "question": "How is the loss scenario calculated?",
+            "answer": "It is the greater of 1,200 and the maintenance estimate minus 500 calories/day. This fixed calculation is not an individualized dietary recommendation."
         },
-
-
         {
-            question:
-                "What are maintenance calories?",
-
-            answer:
-                "Maintenance calories are an estimate of the average daily energy intake associated with maintaining body weight under a particular activity pattern. A calculator can provide a general estimate, but actual requirements vary between individuals."
+            "question": "Why can the loss scenario display “—”?",
+            "answer": "It displays “—” when the calculated loss scenario is not below the unrounded maintenance estimate."
         },
-
-
         {
-            question:
-                "Why does activity level affect calorie needs?",
-
-            answer:
-                "Physical activity contributes to daily energy expenditure, so people with different activity levels can have different estimated daily calorie requirements."
+            "question": "Is 1,200 calories a universal safe minimum?",
+            "answer": "No. It is this calculator’s numerical floor and does not establish a safe or nutritionally adequate intake for an individual."
         },
-
-
         {
-            question:
-                "Can calorie needs change over time?",
-
-            answer:
-                "Yes. Changes in body weight, activity level, age and other factors can affect estimated daily calorie needs."
+            "question": "How is the gain scenario calculated?",
+            "answer": "It is the maintenance estimate plus 500 calories/day. This fixed assumption is not an individualized recommendation or a guarantee of weight gain."
         },
-
-
         {
-            question:
-                "Can I use this calculator for weight management?",
-
-            answer:
-                "A calorie estimate can provide general information about energy needs, but it should not be treated as individualized medical or nutritional advice. Weight changes are influenced by multiple factors."
+            "question": "Which ages does the calculator accept?",
+            "answer": "The software accepts ages 18–120. The original Mifflin study reported 498 healthy participants aged 19–78 and does not establish validation across the entire accepted range."
         },
-
-
         {
-            question:
-                "Does the calculator directly measure calories burned?",
-
-            answer:
-                "No. The calculator uses a predictive estimation method. It does not directly measure an individual's actual daily energy expenditure."
+            "question": "Who should not use these values as dietary guidance?",
+            "answer": "This general adult estimator is not designed for children, pregnancy or breastfeeding, or individualized clinical dietary planning. Specific dietary needs require qualified professional guidance."
         },
-
-
         {
-            question:
-                "Why are calorie needs different between people?",
-
-            answer:
-                "Calorie needs can differ because people vary in age, sex, height, weight, activity level, body composition and individual physiology."
+            "question": "How are results rounded?",
+            "answer": "Displayed values are rounded to whole calories/day. Calculations and the unavailable-loss comparison use unrounded values."
         },
-
-
         {
-            question:
-                "Who is this Calorie Calculator intended for?",
-
-            answer:
-                "It is designed as a general adult calorie-estimation tool for informational purposes."
+            "question": "Do the results measure metabolism or prescribe calorie intake?",
+            "answer": "No. They are predictions and arithmetic scenarios, not direct measurements, diagnoses or individualized calorie prescriptions. Individual physiology, body composition and activity can change actual requirements."
         }
-
     ]
 
 }

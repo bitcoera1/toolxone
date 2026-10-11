@@ -63,8 +63,10 @@ const BMI_CALCULATOR_CONTENT = {
             functions:
                 "2",
 
-            accuracy:
-                "High",
+            accuracy: {
+                value: "Screening",
+                label: "Measure"
+            },
 
             availability:
                 "24/7",
@@ -110,7 +112,7 @@ article: {
         "How BMI Is Calculated and What Your Result Means",
 
     introduction:
-        "Body Mass Index (BMI) is a screening measure that relates an adult's weight to their height. It provides a numerical value that can be compared with commonly used adult BMI ranges. BMI is simple to calculate, but it should be interpreted as a screening measure rather than a complete assessment of health or body composition.",
+        "Body Mass Index (BMI) is a screening measure that relates an adult's weight to their height. It provides a numerical value that can be compared with commonly used adult BMI ranges. BMI is simple to calculate, but it should be interpreted as a screening measure rather than a complete assessment of health or body composition. The displayed categories follow the CDC convention for adults ages 20 and older.",
 
     sections: [
 
@@ -130,7 +132,7 @@ article: {
                 "BMI Formula Using Pounds and Inches",
 
             content:
-                "When weight is entered in pounds and height is measured in inches, the BMI formula used by this calculator is: BMI = [weight (lb) ÷ height² (in²)] × 703. ToolXone's Feet / Pounds mode allows height to be entered as feet and inches. The calculator converts the height to total inches before applying the formula."
+                "When weight is entered in pounds and height is measured in inches, the BMI formula used by this calculator is: BMI = [weight (lb) ÷ height² (in²)] × 703. ToolXone's Feet / Pounds mode allows height to be entered as feet and inches. The calculator converts the height to total inches before applying the formula. The factor 703 is the conventional rounded conversion factor used in the customary-unit BMI formula."
 
         },
 
@@ -140,7 +142,17 @@ article: {
                 "Adult BMI Ranges",
 
             content:
-                "This calculator groups adult BMI results into four ranges: Underweight — Below 18.5; Healthy Weight Range — 18.5 to below 25; Overweight — 25 to below 30; Obesity Range — 30 or higher. These ranges are used for adult BMI screening. A BMI result identifies the range in which the calculated value falls; it does not by itself determine a person's overall health."
+                "This calculator groups adult BMI results into four ranges: Underweight — Below 18.5; Healthy Weight Range — 18.5 to below 25; Overweight — 25 to below 30; Obesity Range — 30 or higher. These are screening categories for adults ages 20 and older. “Healthy Weight Range” names a BMI category; it does not establish that an individual is healthy."
+
+        },
+
+        {
+
+            heading:
+                "Measuring Height and Weight",
+
+            content:
+                "<p><strong>Height:</strong> Measure without shoes, standing upright with both feet flat and weight evenly distributed. Look straight ahead and remove anything on top of your head that interferes with the measurement. Use a height-measuring device with a horizontal headpiece resting on top of the head.</p>\n<p><strong>Weight:</strong> Measure without shoes. Stand centrally on the scale with your hands at your sides and wait until the reading is stable.</p>\n<p>Enter height and weight in the units shown beside the selected inputs.</p>"
 
         },
 
@@ -150,7 +162,7 @@ article: {
                 "How to Use the BMI Calculator",
 
             content:
-                "Choose Metric if you want to enter height in centimeters and weight in kilograms. Choose Feet / Pounds if you want to enter height in feet and inches and weight in pounds. Enter your measurements and select Calculate BMI. The calculator displays your BMI rounded to one decimal place, the corresponding adult BMI range, and a visual marker showing where the result falls on the calculator's BMI scale."
+                "Choose Metric if you want to enter height in centimeters and weight in kilograms. Choose Feet / Pounds if you want to enter height in feet and inches and weight in pounds. Enter your measurements and select Calculate BMI. The calculator displays your BMI rounded to one decimal place, the corresponding adult BMI range, and a visual marker showing where the result falls on the calculator's BMI scale. The category is determined from the unrounded BMI, while the displayed number is rounded to one decimal place. Near a boundary, the display can equal that boundary while the underlying value remains below it. For example, BMI 24.96 displays as 25.0 but remains in the Healthy Weight Range."
 
         },
 
@@ -180,7 +192,7 @@ article: {
                 "Adult BMI and BMI for Children Are Not Interpreted the Same Way",
 
             content:
-                "The fixed ranges shown by this calculator are intended for adults. BMI for children and teenagers is interpreted differently and should not be classified using these adult ranges."
+                "This calculator displays categories for adults ages 20 and older. For people ages 2–19, BMI requires interpretation relative to age and sex using BMI-for-age percentiles. This calculator does not provide that interpretation."
 
         },
 
@@ -190,7 +202,7 @@ article: {
                 "Metric vs. Imperial BMI",
 
             content:
-                "Metric and imperial calculations are two ways of expressing the same height-and-weight relationship. If equivalent measurements are entered correctly, both methods should produce approximately the same BMI, allowing for normal rounding differences. If you need to convert a weight measurement before using a calculator, ToolXone's Weight Converter can help convert between common weight units."
+                "Equivalent metric and customary-unit measurements produce approximately the same BMI. Small differences can arise from the rounded factor 703 and from rounding the entered measurements. Very near a category boundary, those differences can place the results in different categories. If you need to convert a weight measurement before using a calculator, ToolXone's Weight Converter can help convert between common weight units."
 
         },
 
@@ -201,6 +213,16 @@ article: {
 
             content:
                 "Use the result to understand which adult BMI range corresponds to the height and weight entered. Avoid interpreting the number as a complete description of health, fitness or body composition. If an individual health assessment is needed, factors beyond BMI may need to be considered by an appropriately qualified healthcare professional."
+
+        },
+
+        {
+
+            heading:
+                "Methodology and Sources",
+
+            content:
+                "<p>These sources support the BMI formulas, adult screening categories, interpretation and measurement guidance described above. Their inclusion does not imply endorsement of ToolXone.</p>\n<ul>\n<li><a href=\"https://www.cdc.gov/bmi/faq/\">CDC — BMI Frequently Asked Questions</a></li>\n<li><a href=\"https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html\">CDC — Adult BMI Categories</a></li>\n<li><a href=\"https://wwwn.cdc.gov/nchs/data/nhanes/public/2019/manuals/2020-Anthropometry-Procedures-Manual-508.pdf\">CDC/NCHS — NHANES Anthropometry Procedures Manual, January 2020</a></li>\n</ul>"
 
         }
 
@@ -231,7 +253,7 @@ faq: [
             "How is BMI calculated?",
 
         answer:
-            "In metric units, BMI is calculated by dividing weight in kilograms by height in meters squared. In imperial units, weight in pounds is divided by height in inches squared and the result is multiplied by 703."
+            "In metric units, BMI is calculated by dividing weight in kilograms by height in meters squared. In imperial units, weight in pounds is divided by height in inches squared and the result is multiplied by 703. The factor 703 is the conventional rounded conversion factor."
 
     },
 
@@ -241,7 +263,7 @@ faq: [
             "What are the adult BMI ranges?",
 
         answer:
-            "The ranges used by this calculator are below 18.5 for underweight, 18.5 to below 25 for the healthy weight range, 25 to below 30 for overweight, and 30 or higher for the obesity range."
+            "The ranges used by this calculator are below 18.5 for underweight, 18.5 to below 25 for the healthy weight range, 25 to below 30 for overweight, and 30 or higher for the obesity range. These categories are intended for adults ages 20 and older and do not by themselves determine overall health."
 
     },
 
@@ -291,7 +313,27 @@ faq: [
             "Is this BMI Calculator intended for adults?",
 
         answer:
-            "Yes. The BMI ranges displayed by this calculator are intended for adults. BMI assessment for children and teenagers is interpreted differently and should not use these adult ranges."
+            "Yes. Its displayed categories are intended for adults ages 20 and older. People ages 2–19 require age- and sex-specific BMI-for-age interpretation, which this calculator does not provide."
+
+    },
+
+    {
+
+        question:
+            "Why can the displayed BMI appear inconsistent with its category?",
+
+        answer:
+            "Categories use the unrounded BMI; the displayed number is rounded to one decimal place. For example, 24.96 displays as 25.0 but remains below the category boundary of 25."
+
+    },
+
+    {
+
+        question:
+            "How should I measure height and weight?",
+
+        answer:
+            "Measure height without shoes, standing upright with feet flat and looking straight ahead. For weight, remove shoes, stand centrally on the scale with hands at your sides, and wait for a stable reading. Use the measurement units shown beside the inputs."
 
     }
 

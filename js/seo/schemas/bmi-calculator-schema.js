@@ -286,7 +286,7 @@ schema: {
                 "How is BMI calculated?",
 
             answer:
-                "In metric units, BMI is calculated by dividing weight in kilograms by height in meters squared. In imperial units, weight in pounds is divided by height in inches squared and the result is multiplied by 703."
+                "In metric units, BMI is calculated by dividing weight in kilograms by height in meters squared. In imperial units, weight in pounds is divided by height in inches squared and the result is multiplied by 703. The factor 703 is the conventional rounded conversion factor."
 
         },
 
@@ -296,7 +296,7 @@ schema: {
                 "What are the adult BMI ranges?",
 
             answer:
-                "The ranges used by this calculator are below 18.5 for underweight, 18.5 to below 25 for the healthy weight range, 25 to below 30 for overweight, and 30 or higher for the obesity range."
+                "The ranges used by this calculator are below 18.5 for underweight, 18.5 to below 25 for the healthy weight range, 25 to below 30 for overweight, and 30 or higher for the obesity range. These categories are intended for adults ages 20 and older and do not by themselves determine overall health."
 
         },
 
@@ -346,7 +346,27 @@ schema: {
                 "Is this BMI Calculator intended for adults?",
 
             answer:
-                "Yes. The BMI ranges displayed by this calculator are intended for adults. BMI assessment for children and teenagers is interpreted differently and should not use these adult ranges."
+                "Yes. Its displayed categories are intended for adults ages 20 and older. People ages 2–19 require age- and sex-specific BMI-for-age interpretation, which this calculator does not provide."
+
+        },
+
+        {
+
+            question:
+                "Why can the displayed BMI appear inconsistent with its category?",
+
+            answer:
+                "Categories use the unrounded BMI; the displayed number is rounded to one decimal place. For example, 24.96 displays as 25.0 but remains below the category boundary of 25."
+
+        },
+
+        {
+
+            question:
+                "How should I measure height and weight?",
+
+            answer:
+                "Measure height without shoes, standing upright with feet flat and looking straight ahead. For weight, remove shoes, stand centrally on the scale with hands at your sides, and wait for a stable reading. Use the measurement units shown beside the inputs."
 
         }
 

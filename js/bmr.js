@@ -1,4 +1,5 @@
 let currentUnit = "metric";
+let bmrAnimationTimer = null;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -471,6 +472,11 @@ function animateBMR(target) {
     }
 
 
+    if (bmrAnimationTimer !== null) {
+        clearInterval(bmrAnimationTimer);
+        bmrAnimationTimer = null;
+    }
+
     let current = 0;
 
     const increment =
@@ -480,6 +486,10 @@ function animateBMR(target) {
     const timer =
         setInterval(function () {
 
+            if (bmrAnimationTimer !== timer) {
+                return;
+            }
+
             current += increment;
 
 
@@ -488,6 +498,7 @@ function animateBMR(target) {
                 current = target;
 
                 clearInterval(timer);
+                bmrAnimationTimer = null;
 
             }
 
@@ -497,6 +508,8 @@ function animateBMR(target) {
 
         }, 20);
 
+    bmrAnimationTimer = timer;
+
 }
 
 
@@ -505,6 +518,11 @@ function animateBMR(target) {
    ========================================================= */
 
 function resetBMR() {
+
+    if (bmrAnimationTimer !== null) {
+        clearInterval(bmrAnimationTimer);
+        bmrAnimationTimer = null;
+    }
 
     const fields = [
 

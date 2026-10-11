@@ -45,7 +45,7 @@
                             Free Online Calculators & Smart Utility Tools.
                             Helping everyone calculate, convert and make
                             smarter decisions —
-                            Fast, Accurate & Free.
+                            Practical Online Tools — Free to Use.
                         </p>
 
                     </div>

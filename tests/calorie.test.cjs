@@ -10,7 +10,7 @@ const unavailable = 'A weight-loss target is unavailable because the calculator�
 const format = value => Math.round(value).toLocaleString();
 const ordinary = { sex: 'male', age: 30, heightCm: 180, weightKg: 80, activityLevel: 'moderate' };
 function harness() {
-    const elements = new Map(), timers = new Map(), alerts = [], records = [], results = [];
+    const elements = new Map(), timers = new Map(), callbacks = new Map(), cleared = [], alerts = [], records = [], results = [];
     let ready, timerId = 0;
     function element(id) {
         if (!elements.has(id)) {
@@ -29,8 +29,8 @@ function harness() {
             querySelectorAll() { return inputIds.map(element); } },
         alert(message) { alerts.push(message); },
         ToolXoneStatisticsEvents: { recordCalculation(id) { records.push(id); } },
-        setInterval(fn) { timers.set(++timerId, fn); return timerId; },
-        clearInterval(id) { timers.delete(id); }
+        setInterval(fn, delay) { assert.equal(delay, 20); timers.set(++timerId, fn); callbacks.set(timerId, fn); return timerId; },
+        clearInterval(id) { cleared.push(id); timers.delete(id); }
     };
     vm.createContext(context);
     vm.runInContext(source, context);
@@ -40,7 +40,9 @@ function harness() {
     function flush() { for (let i = 0; timers.size && i < 100; i++) for (const fn of [...timers.values()]) fn(); assert.equal(timers.size, 0); }
     function set(inputs) { for (const [id, v] of Object.entries(inputs)) element(id).value = String(v); }
     function click(id) { element(id).events.get('click')(); }
-    return { element, context, alerts, records, results, set, click, flush,
+    return { element, context, alerts, records, results, set, click, flush, timers, cleared,
+        tick() { for (const [id, fn] of [...timers]) if (timers.has(id)) fn(); },
+        stale(id) { assert.equal(typeof callbacks.get(id), "function"); callbacks.get(id)(); },
         run(inputs) { set(inputs); click('calculateBtn'); flush(); },
         imperial() { click('imperialBtn'); } };
 }
@@ -111,4 +113,88 @@ test('Enter calculates once and unit switches preserve existing reset behavior',
     h.imperial(); assert.equal(h.element('.metric-inputs').style.display, 'none'); assert.equal(h.element('.imperial-inputs').style.display, 'block'); assert.equal(h.element('resultCard').style.display, 'none');
     h.click('metricBtn'); assert.equal(h.element('.metric-inputs').style.display, 'block'); assert.equal(h.element('.imperial-inputs').style.display, 'none');
     h.run(ordinary); assert.deepEqual(h.results[1], references[4][2]); assert.equal(h.records.length, 2);
+});
+
+
+function lifecycleSnapshot(h) {
+    return ['calorieValue', 'bmrValue', 'maintenanceValue', 'weightLossValue',
+        'weightGainValue', 'calorieExplanation'].map(id => h.element(id).textContent)
+        .concat(h.element('resultCard').style.display);
+}
+function startPending(h, values) {
+    h.set(values); h.click('calculateBtn');
+    assert.equal(h.timers.size, 1);
+    const id = [...h.timers.keys()][0];
+    h.tick();
+    return id;
+}
+
+test('Reset during animation cancels ownership and blocks captured stale callbacks', () => {
+    const h = harness(), id = startPending(h, ordinary);
+    assert.deepEqual(h.records, ['calorie-calculator']);
+    h.click('resetBtn');
+    assert.equal(h.timers.size, 0);
+    assert.ok(h.cleared.includes(id));
+    const reset = lifecycleSnapshot(h);
+    assert.deepEqual(reset, ['—', '—', '—', '—', '—', '', 'none']);
+    h.stale(id); h.tick(); h.flush();
+    assert.deepEqual(lifecycleSnapshot(h), reset);
+    assert.deepEqual(h.records, ['calorie-calculator']);
+});
+
+for (const [from, to] of [['metricBtn', 'imperialBtn'], ['imperialBtn', 'metricBtn']]) {
+    test('Pending unit switch cancels and blocks stale animation: ' + from + ' to ' + to, () => {
+        const h = harness(); h.click(from);
+        const values = from === 'metricBtn' ? ordinary : {
+            sex: 'male', age: 30, heightFt: 5, heightIn: 9, weightLb: 154, activityLevel: 'moderate'
+        };
+        const id = startPending(h, values);
+        h.click(to);
+        assert.equal(h.timers.size, 0); assert.ok(h.cleared.includes(id));
+        const reset = lifecycleSnapshot(h);
+        assert.deepEqual(reset, ['—', '—', '—', '—', '—', '', 'none']);
+        for (const field of ['age', 'heightCm', 'weightKg', 'heightFt', 'heightIn', 'weightLb'])
+            assert.equal(h.element(field).value, '');
+        assert.equal(h.element(to).classList.contains('active'), true);
+        assert.equal(h.element(from).classList.contains('active'), false);
+        h.stale(id); h.tick(); h.flush();
+        assert.deepEqual(lifecycleSnapshot(h), reset);
+        assert.deepEqual(h.records, ['calorie-calculator']);
+    });
+}
+
+test('Replacement cancels older animation, rejects stale writes and completes newest result once', () => {
+    const h = harness(), first = startPending(h, ordinary);
+    h.set({ sex: 'female', age: 40, heightCm: 165, weightKg: 60, activityLevel: 'sedentary' });
+    h.click('calculateBtn');
+    assert.equal(h.timers.size, 1);
+    assert.equal(h.timers.has(first), false); assert.ok(h.cleared.includes(first));
+    const second = [...h.timers.keys()][0]; assert.notEqual(second, first);
+    assert.deepEqual(h.results[1], [1270.25, 1524.3, 1200, 2024.3]);
+    const before = lifecycleSnapshot(h); h.stale(first);
+    assert.deepEqual(lifecycleSnapshot(h), before);
+    h.tick(); const afterTick = lifecycleSnapshot(h); h.stale(first);
+    assert.deepEqual(lifecycleSnapshot(h), afterTick);
+    h.flush();
+    assert.equal(h.element('calorieValue').textContent, '1,524');
+    assert.equal(h.element('maintenanceValue').textContent, '1,524');
+    assert.ok(h.cleared.includes(second)); assert.equal(h.timers.size, 0);
+    const completed = lifecycleSnapshot(h);
+    h.stale(first); h.stale(second);
+    assert.deepEqual(lifecycleSnapshot(h), completed);
+    assert.deepEqual(h.records, ['calorie-calculator', 'calorie-calculator']);
+});
+
+test('Completed animation releases ownership before reset and another calculation', () => {
+    const h = harness(), first = startPending(h, ordinary);
+    h.flush(); assert.equal(h.timers.size, 0);
+    const clearsAfterCompletion = h.cleared.length;
+    h.click('resetBtn');
+    assert.equal(h.cleared.length, clearsAfterCompletion, 'Reset must not retain a completed timer');
+    h.set(ordinary); h.click('calculateBtn');
+    const before = lifecycleSnapshot(h); h.stale(first);
+    assert.deepEqual(lifecycleSnapshot(h), before);
+    h.flush();
+    assert.equal(h.element('calorieValue').textContent, '2,759');
+    assert.deepEqual(h.records, ['calorie-calculator', 'calorie-calculator']);
 });

@@ -33,6 +33,7 @@
 ========================================================= */
 
 let currentUnit = "metric";
+let calorieAnimationTimer = null;
 
 
 /* =========================================================
@@ -912,6 +913,11 @@ function animateCalorieValue(
     }
 
 
+    if (calorieAnimationTimer !== null) {
+        clearInterval(calorieAnimationTimer);
+        calorieAnimationTimer = null;
+    }
+
     let current = 0;
 
 
@@ -922,6 +928,10 @@ function animateCalorieValue(
     const timer =
         setInterval(
             function () {
+
+                if (calorieAnimationTimer !== timer) {
+                    return;
+                }
 
 
                 current += increment;
@@ -936,6 +946,7 @@ function animateCalorieValue(
                     clearInterval(
                         timer
                     );
+                    calorieAnimationTimer = null;
 
                 }
 
@@ -950,6 +961,8 @@ function animateCalorieValue(
             20
         );
 
+    calorieAnimationTimer = timer;
+
 }
 
 
@@ -958,6 +971,11 @@ function animateCalorieValue(
 ========================================================= */
 
 function resetCalorieCalculator() {
+
+    if (calorieAnimationTimer !== null) {
+        clearInterval(calorieAnimationTimer);
+        calorieAnimationTimer = null;
+    }
 
 
     /* =====================================================

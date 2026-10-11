@@ -74,6 +74,16 @@ function calculateRetirement() {
         100 /
         12;
 
+    // Reject unusable derived periods/rates before calculating the projection.
+    if (
+        !Number.isFinite(years) || years <= 0 ||
+        !Number.isFinite(months) || months <= 0 ||
+        !Number.isFinite(monthlyRate)
+    ) {
+        alert("These values are too large to calculate reliably. Please use smaller values.");
+        return;
+    }
+
     let futureCurrentSavings;
     let futureContributions;
 
@@ -94,14 +104,12 @@ function calculateRetirement() {
                 months
             );
 
+        // log1p/expm1 preserve contribution growth when 1 + rate rounds to 1.
         futureContributions =
             monthlyContribution *
             (
-                (
-                    Math.pow(
-                        1 + monthlyRate,
-                        months
-                    ) - 1
+                Math.expm1(
+                    months * Math.log1p(monthlyRate)
                 ) /
                 monthlyRate
             );
@@ -138,6 +146,13 @@ const estimatedMonthlyIncome =
  * Protect against overflow / non-finite results.
  */
 if (
+    !Number.isFinite(futureCurrentSavings) ||
+    !Number.isFinite(futureContributions) ||
+    (currentSavings > 0 && futureCurrentSavings <= 0) ||
+    (monthlyContribution > 0 && futureContributions <= 0) ||
+    futureFund <= 0 ||
+    totalContributions <= 0 ||
+    estimatedMonthlyIncome <= 0 ||
     !Number.isFinite(futureFund) ||
     !Number.isFinite(totalContributions) ||
     !Number.isFinite(investmentGrowth) ||

@@ -171,11 +171,11 @@ test('Runtime rendering replaces existing article rather than duplicating it', (
     assert.equal(second.split('Methodology and Sources').length - 1, 1);
 });
 
-test('Unrelated health content remains byte-equivalent after line-ending normalization', () => {
+test('Body Fat registration/content remains byte-equivalent after line-ending normalization', () => {
     const source = read('js/content/content-data-health.js').replace(/\r\n/g, '\n');
     const start = source.indexOf('const BODY_FAT_CALCULATOR_CONTENT = {');
     const end = source.indexOf('/*=========================================================\n RELATED TOOLS — BMR CALCULATOR', start);
     assert.ok(start >= 0 && end > start);
-    const outside = source.slice(0,start) + source.slice(end);
-    assert.equal(crypto.createHash('sha256').update(outside).digest('hex'), '597544b8d77b5b94c49d95306b392ac70ef1a2fc82001614c3a8fec5b21786f2');
+    const bodyFat = source.slice(start, end);
+    assert.equal(crypto.createHash('sha256').update(bodyFat).digest('hex'), '5d4bb1e98a97cec1deb64918d078e41077edf87d3ad9a2fbdd975c70f20e1495');
 });

@@ -62,7 +62,7 @@
                 "Free Basal Metabolic Rate Calculator",
 
             description:
-                "Estimate your Basal Metabolic Rate (BMR) from age, sex, height and weight using the Mifflin-St Jeor equation.",
+                "Estimate resting energy expenditure (REE) from age, sex, height and weight using the Mifflin–St Jeor equation. This calculator labels the estimate BMR.",
 
             badge:
                 "Health Tool",
@@ -85,8 +85,10 @@
                 functions:
                     "2",
 
-                accuracy:
-                    "High",
+                accuracy: {
+                    value: "Predicted",
+                    label: "REE"
+                },
 
                 availability:
                     "24/7",
@@ -130,7 +132,7 @@
                 "What Is BMR and How Is Basal Metabolic Rate Calculated?",
 
             introduction:
-                "Basal Metabolic Rate (BMR) is an estimate of the energy your body needs to support essential physiological functions while at complete rest. These functions include processes such as breathing, circulation and maintaining basic cellular activity. A BMR estimate can provide a starting point for understanding daily energy needs, but it is not a direct measurement of metabolism and should not be treated as a medical diagnosis.",
+                "This calculator labels its result Basal Metabolic Rate (BMR), but implements the Mifflin–St Jeor prediction equation for resting energy expenditure (REE). The result estimates energy expenditure at rest in calories per day. It is not a laboratory measurement, an exact individual metabolic requirement, total daily energy expenditure or a recommended calorie intake.",
 
 
             sections: [
@@ -140,16 +142,16 @@
                         "What Is Basal Metabolic Rate (BMR)?",
 
                     content:
-                        "Basal Metabolic Rate, commonly abbreviated as BMR, estimates how much energy the body requires to support essential functions while at rest. BMR is expressed in calories per day. It represents only a baseline estimate and does not include the additional energy used for physical activity, digestion or other daily activities."
+                        "BMR refers to energy expenditure under basal conditions. Resting energy expenditure is a related measure of energy expenditure at rest. This calculator predicts REE using the Mifflin–St Jeor equation and presents it under the familiar BMR label; it does not measure either value directly."
                 },
 
 
                 {
                     heading:
-                        "How the Mifflin-St Jeor Equation Calculates BMR",
+                        "How the Mifflin–St Jeor Equation Predicts REE",
 
                     content:
-                        "ToolXone's BMR Calculator uses the Mifflin-St Jeor equation. For men, the equation is: BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5. For women, the equation is: BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161. The calculator uses the appropriate equation based on the sex selected."
+                        "For the male selection: REE = (10 × weight in kg) + (6.25 × height in cm) − (5 × age in years) + 5. For the female selection: REE = (10 × weight in kg) + (6.25 × height in cm) − (5 × age in years) − 161. The result is expressed in calories per day."
                 },
 
 
@@ -158,7 +160,7 @@
                         "Example of a BMR Calculation",
 
                     content:
-                        "For example, consider a 30-year-old man who weighs 70 kg and is 175 cm tall. Using the Mifflin-St Jeor equation: BMR = (10 × 70) + (6.25 × 175) − (5 × 30) + 5. This produces an estimated BMR of approximately 1,649 calories per day. The result represents an estimate of resting energy expenditure rather than the person's total daily calorie requirement."
+                        "For example, consider a 30-year-old man who weighs 70 kg and is 175 cm tall. Using the Mifflin-St Jeor equation: REE = (10 × 70) + (6.25 × 175) − (5 × 30) + 5. This produces predicted REE of approximately 1,649 calories per day, displayed under the BMR label. The result represents an estimate of resting energy expenditure rather than the person's total daily calorie requirement."
                 },
 
 
@@ -167,7 +169,7 @@
                         "BMR vs. Total Daily Energy Expenditure",
 
                     content:
-                        "BMR is not the same as the number of calories a person needs throughout an entire day. Total daily energy expenditure can include resting energy expenditure, physical activity and the energy used to process food. Because of this, a person's daily calorie needs are generally higher than their estimated BMR."
+                        "The predicted REE displayed under the BMR label is not total daily energy expenditure. Total daily energy expenditure includes resting energy expenditure, physical activity and the energy used to process food. This calculator does not calculate that total or recommend calorie intake."
                 },
 
 
@@ -185,7 +187,7 @@
                         "Metric and Imperial BMR Calculations",
 
                     content:
-                        "The Mifflin-St Jeor equation uses kilograms for weight and centimeters for height. ToolXone's Metric mode accepts kilograms and centimeters directly. Feet / Pounds mode accepts height in feet and inches and weight in pounds, then converts those measurements to the units required by the equation before calculating BMR."
+                        "The Mifflin-St Jeor equation uses kilograms for weight and centimeters for height. ToolXone's Metric mode accepts kilograms and centimeters directly. Feet / Pounds mode accepts height in feet and inches and weight in pounds, then converts those measurements to the units required by the equation before calculating the estimate. Imperial height is converted from total inches using 2.54 centimeters per inch, and pounds are converted using 0.45359237 kilograms per pound."
                 },
 
 
@@ -194,7 +196,7 @@
                         "How to Use the BMR Calculator",
 
                     content:
-                        "Select your sex and enter your age. Choose Metric to enter height in centimeters and weight in kilograms, or choose Feet / Pounds to enter height in feet and inches and weight in pounds. Select Calculate BMR to receive your estimated calories-per-day BMR result."
+                        "Select your sex and enter your age. Choose Metric to enter height in centimeters and weight in kilograms, or choose Feet / Pounds to enter height in feet and inches and weight in pounds. Select Calculate BMR to receive predicted REE in calories per day, displayed under the BMR label."
                 },
 
 
@@ -203,7 +205,7 @@
                         "What Does a BMR Result Mean?",
 
                     content:
-                        "A BMR result is an estimated number of calories per day associated with maintaining basic physiological functions at rest. It should be viewed as a baseline estimate rather than a precise measurement of an individual's metabolism. Two people with similar characteristics can still have different actual energy requirements."
+                        "The BMR-labelled result is predicted resting energy expenditure in calories per day rather than a precise measurement of an individual's metabolism. Two people with similar characteristics can still have different actual energy requirements. Predicted REE can differ from an individual’s measured resting energy expenditure. This result does not calculate total daily energy expenditure, diagnose a condition, determine appropriate calorie intake or prescribe a weight-management plan."
                 },
 
 
@@ -230,9 +232,17 @@
                         "Who Can Use This BMR Calculator?",
 
                     content:
-                        "This calculator is designed as an adult BMR estimation tool. The Mifflin-St Jeor equation used here was developed from adult participants, so this calculator should not be presented as a pediatric energy-needs calculator. Children and adolescents require age-appropriate assessment methods."
-                }
+                        "The software accepts ages 18–120. The original Mifflin study reported 498 healthy participants aged 19–78. Acceptance of an age by the calculator does not establish that the equation was validated for that age or population. This is not a pediatric energy-needs calculator."
+                },
 
+
+                {
+                    heading:
+                        "Methodology and Reference",
+
+                    content:
+                        "<p>The implemented equations are the simplified sex-specific REE equations reported by Mifflin and colleagues. Their study compared predictions with REE measured by indirect calorimetry. Citing the publication identifies the methodology; it does not imply endorsement of ToolXone.</p><p><a href=\"https://pubmed.ncbi.nlm.nih.gov/2305711/\">Mifflin et al. (1990) — A new predictive equation for resting energy expenditure in healthy individuals</a></p>"
+                }
             ]
         },
 
@@ -248,108 +258,96 @@
                     "What does BMR stand for?",
 
                 answer:
-                    "BMR stands for Basal Metabolic Rate. It is an estimate of the energy the body needs to support essential physiological functions while at rest."
+                    "BMR stands for Basal Metabolic Rate. This calculator uses that familiar label for a Mifflin–St Jeor prediction of resting energy expenditure (REE), rather than a direct measurement of basal metabolism."
             },
-
 
             {
                 question:
-                    "How is BMR calculated?",
+                    "How is this calculator’s result calculated?",
 
                 answer:
-                    "ToolXone's BMR Calculator uses the Mifflin-St Jeor equation, which uses age, sex, height and weight to estimate resting energy expenditure."
+                    "It uses age, sex, height and weight in the simplified Mifflin–St Jeor equations to predict resting energy expenditure in calories per day."
             },
-
 
             {
                 question:
-                    "What is the Mifflin-St Jeor equation?",
+                    "What is the Mifflin–St Jeor equation?",
 
                 answer:
-                    "The Mifflin-St Jeor equation is a commonly used predictive equation for estimating resting energy expenditure. It uses weight, height and age, with a sex-specific adjustment."
+                    "It is a predictive equation for resting energy expenditure. The original study compared equation predictions with resting energy expenditure measured by indirect calorimetry."
             },
-
 
             {
                 question:
-                    "What is the BMR formula for men?",
+                    "What is the formula for the male selection?",
 
                 answer:
-                    "For men, the Mifflin-St Jeor equation is: BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) + 5."
+                    "REE = (10 × weight in kg) + (6.25 × height in cm) − (5 × age in years) + 5. The calculator displays this predicted REE under the BMR label."
             },
-
 
             {
                 question:
-                    "What is the BMR formula for women?",
+                    "What is the formula for the female selection?",
 
                 answer:
-                    "For women, the Mifflin-St Jeor equation is: BMR = (10 × weight in kg) + (6.25 × height in cm) − (5 × age) − 161."
+                    "REE = (10 × weight in kg) + (6.25 × height in cm) − (5 × age in years) − 161. The calculator displays this predicted REE under the BMR label."
             },
-
 
             {
                 question:
-                    "Is BMR the same as daily calorie needs?",
+                    "Is this result the same as total daily calorie needs?",
 
                 answer:
-                    "No. BMR estimates energy requirements at rest. Total daily energy expenditure also includes energy used for physical activity, digestion and other daily functions."
+                    "No. It predicts resting energy expenditure. Total daily energy expenditure also includes physical activity and the energy used to process food; this calculator does not calculate that total."
             },
-
 
             {
                 question:
-                    "Can I calculate BMR using feet and pounds?",
+                    "Can I calculate the estimate using metric or imperial units?",
 
                 answer:
-                    "Yes. ToolXone's BMR Calculator supports Metric mode using centimeters and kilograms and Feet / Pounds mode using feet, inches and pounds."
+                    "Yes. Metric mode accepts centimeters and kilograms. Feet / Pounds mode accepts feet, inches and pounds, then converts them to centimeters and kilograms before applying the equation."
             },
-
 
             {
                 question:
-                    "Is BMR the same for everyone?",
+                    "Can people with similar inputs have different measured results?",
 
                 answer:
-                    "No. BMR varies between individuals. Age, height, weight and sex are included in the Mifflin-St Jeor equation, while actual energy requirements can also vary because of individual differences."
+                    "Yes. People with similar age, sex, height and weight can have different measured resting energy expenditure. The equation does not capture every individual difference."
             },
-
 
             {
                 question:
-                    "How accurate is a BMR calculator?",
+                    "How accurate is this estimate?",
 
                 answer:
-                    "A BMR calculator provides an estimate rather than a direct measurement. Predictive equations can differ from an individual's actual resting energy expenditure."
+                    "It is a prediction rather than a laboratory measurement or an exact individual metabolic requirement. An individual’s measured resting energy expenditure can differ from the calculated value."
             },
-
 
             {
                 question:
-                    "Can BMR be used for weight loss planning?",
+                    "Does this result prescribe calorie intake or a weight-loss plan?",
 
                 answer:
-                    "BMR can provide a baseline estimate when considering overall energy needs, but BMR alone does not determine appropriate calorie intake or guarantee weight loss. Individual goals and circumstances should be considered separately."
+                    "No. Predicted resting energy expenditure alone does not determine appropriate calorie intake or prescribe a weight-management plan. This calculator does not provide individualized dietary advice."
             },
-
 
             {
                 question:
-                    "Is this BMR Calculator suitable for children?",
+                    "What ages does the calculator accept, and what ages were studied?",
 
                 answer:
-                    "No. This calculator is intended for adult BMR estimation. Children and adolescents require age-appropriate methods for estimating energy requirements."
+                    "The software accepts ages 18–120. The original Mifflin study reported 498 healthy participants aged 19–78. Software acceptance does not establish validation across the entire accepted range, and this is not a pediatric energy-needs calculator."
             },
-
 
             {
                 question:
-                    "Does BMR measure metabolism directly?",
+                    "Does this calculator directly measure metabolism or diagnose a condition?",
 
                 answer:
-                    "No. This calculator estimates resting energy expenditure using a predictive equation. It does not directly measure an individual's metabolism."
+                    "No. It predicts resting energy expenditure from the entered measurements. It does not directly measure metabolism or diagnose a medical condition."
             }
-
         ]
 
     };

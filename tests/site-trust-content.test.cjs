@@ -187,3 +187,15 @@ test('Frozen literal reversal preserves all source outside explicitly approved e
   assert.equal(crypto.createHash('sha256').update(s).digest('hex'),frozen.hashes[p],p+' original normalized source');
  }
 });
+
+
+test('Homepage mini-stat cards describe present pricing and browser access without absolute promises',()=>{
+    const html=read('index.html');
+    const sections=[...html.matchAll(/<div\b[^>]*class="hero-mini-stats"[^>]*>([\s\S]*?)<\/div>\s*<div class="market-card hero-market-card">/g)];
+    assert.equal((html.match(/class="hero-mini-stats"/g)||[]).length,1);
+    assert.equal(sections.length,1);
+    const section=sections[0][1];
+    const pairs=[...section.matchAll(/<div>\s*<strong>([^<]+)<\/strong>\s*<span>([^<]+)<\/span>\s*<\/div>/g)].map(match=>[match[1],match[2]]);
+    assert.deepEqual(pairs,[['25','Professional Tools'],['Free','To Use'],['Browser','Access']]);
+    assert.doesNotMatch(section,/Free Forever|Always Online|24\/7/);
+});

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Currency Converter - Live Exchange Rates | ToolXone</title>
+<title>Currency Converter - Exchange Rates | ToolXone</title>
 
 <meta name="description" content="Convert currencies instantly with ToolXone's free Currency Converter. Get the latest available exchange rates for 17 supported currencies. Fast, accurate and mobile-friendly.">
 
@@ -14,15 +14,15 @@
 
 <link rel="canonical" href="https://www.toolxone.com/currency-converter.html">
 
-<meta property="og:title" content="Currency Converter - Live Exchange Rates | ToolXone">
-<meta property="og:description" content="Free online Currency Converter with live exchange rates for 17 supported currencies.">
+<meta property="og:title" content="Currency Converter - Exchange Rates | ToolXone">
+<meta property="og:description" content="Free online Currency Converter with latest available exchange rates for 17 supported currencies.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.toolxone.com/currency-converter.html">
 <meta property="og:image" content="https://www.toolxone.com/images/toolxone-logo.jpg">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Currency Converter - Live Exchange Rates | ToolXone">
-<meta name="twitter:description" content="Convert currencies instantly using live exchange rates with ToolXone.">
+<meta name="twitter:title" content="Currency Converter - Exchange Rates | ToolXone">
+<meta name="twitter:description" content="Convert currencies instantly using latest available exchange rates with ToolXone.">
 <meta name="twitter:image" content="https://www.toolxone.com/images/toolxone-logo.jpg">
 
 <link rel="icon" type="image/png" href="images/toolxone-favicon.png">
@@ -43,6 +43,11 @@
 <link rel="stylesheet" href="css/calculator-components.css">
 
 <link rel="stylesheet" href="css/currency-converter.css">
+
+<style>
+.currency-rate-note { color: #e2e8f0; }
+.currency-rate-note a { color: inherit; }
+</style>
 
 <!-- ======================================================
      Shared Tool Components
@@ -71,7 +76,7 @@
   "applicationCategory":"FinanceApplication",
   "operatingSystem":"Any",
   "url":"https://www.toolxone.com/currency-converter.html",
-  "description":"Free online currency converter with live exchange rates for 17 supported currencies.",
+  "description":"Free online currency converter with latest available exchange rates for 17 supported currencies.",
   "offers":{
     "@type":"Offer",
     "price":"0",
@@ -284,8 +289,14 @@ Fast • Accurate • Free
     Ready ✔
 </div>
 
-<div class="note">
-Live exchange rates powered by ExchangeRate API.
+<div class="note currency-rate-note" aria-live="polite">
+    Retrieved at: <span id="currencyRetrievedAt">Unavailable</span><br>
+    Rate data updated: <span id="currencyRateUpdatedAt">Unavailable</span>
+</div>
+
+<div class="note currency-rate-note">
+<a href="https://www.exchangerate-api.com">Rates By Exchange Rate API</a>
+Provider rate data updates daily. Retrieval time does not indicate a new rate-data update.
 </div>
 
 <a class="back" href="index.html">← Back to Home</a>
@@ -324,8 +335,8 @@ Live exchange rates powered by ExchangeRate API.
 <p>A currency converter can help shoppers estimate the cost of products priced in another currency. For example, someone using Pakistani Rupees can convert an international product price into PKR to better understand its approximate cost before making a purchase.</p>
 <h2>Currency Conversion for Business</h2>
 <p>Businesses that work with international customers, suppliers or services may need to compare values across currencies. A currency converter can provide a quick estimate when reviewing international prices, payments, expenses and other financial amounts.</p>
-<h2>Live Exchange Rates and Conversion Results</h2>
-<p>ToolXone requests the latest available exchange-rate data when a conversion is performed. This allows the calculator to use a current rate returned by its online exchange-rate service rather than relying on a manually entered fixed rate. Exchange rates may differ from the final rate offered by banks, card networks, money-transfer services or currency exchange providers because those services may apply their own rates, spreads or fees.</p>
+<h2>Exchange Rate Data and Conversion Results</h2>
+<p>ToolXone requests the latest available exchange-rate data when a conversion is performed. This allows the calculator to use the rate returned by its online exchange-rate service rather than relying on a manually entered fixed rate. Exchange rates may differ from the final rate offered by banks, card networks, money-transfer services or currency exchange providers because those services may apply their own rates, spreads or fees. The provider’s open endpoint updates its rate data once per day. Retrieving it again does not necessarily mean the underlying rates have changed.</p>
 <h2>Currency Converter vs. Manual Calculation</h2>
 <p>Manual currency conversion requires finding the appropriate exchange rate and multiplying the amount by that rate. ToolXone automates both the exchange-rate lookup and the mathematical calculation, reducing the amount of manual work required and making quick currency comparisons easier.</p>
 <h2>Tips for Accurate Currency Conversion</h2>
@@ -467,15 +478,15 @@ if (pageSchema) {
 renderFinanceInfo(
     "financeInfo",
     "Why Use a Currency Converter?",
-    "A currency converter helps you quickly convert money between different currencies using live exchange rates."
+    "A currency converter helps you quickly convert money between different currencies using latest available exchange rates."
 );
 
 renderFinanceFAQ(
     "financeFAQ",
     [
         {
-            question: "Does this currency converter use live rates?",
-            answer: "Yes. It fetches the latest available exchange rates from an online exchange rate API."
+            question: "How often are the exchange rates updated?",
+            answer: "ExchangeRate-API’s open endpoint updates its rate data once per day. ToolXone requests the latest available data when you perform a conversion. Retrieval time is separate from the provider’s rate-data update time."
         },
         {
             question: "Can I swap currencies?",

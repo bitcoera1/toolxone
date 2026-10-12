@@ -157,10 +157,10 @@
                 {
 
                     heading:
-                        "Live Exchange Rates and Conversion Results",
+                        "Exchange Rate Data and Conversion Results",
 
                     content:
-                        "ToolXone requests the latest available exchange-rate data when a conversion is performed. This allows the calculator to use a current rate returned by its online exchange-rate service rather than relying on a manually entered fixed rate. Exchange rates may differ from the final rate offered by banks, card networks, money-transfer services or currency exchange providers because those services may apply their own rates, spreads or fees."
+                        "ToolXone requests the latest available exchange-rate data when a conversion is performed. This allows the calculator to use the rate returned by its online exchange-rate service rather than relying on a manually entered fixed rate. Exchange rates may differ from the final rate offered by banks, card networks, money-transfer services or currency exchange providers because those services may apply their own rates, spreads or fees. The provider’s open endpoint updates its rate data once per day. Retrieving it again does not necessarily mean the underlying rates have changed."
 
                 },
 
@@ -246,10 +246,10 @@
             {
 
                 question:
-                    "Does the ToolXone Currency Converter use live exchange rates?",
+                    "How often are the exchange rates updated?",
 
                 answer:
-                    "Yes. The converter requests the latest available exchange-rate data from its online exchange-rate service when you perform a conversion."
+                    "ExchangeRate-API’s open endpoint updates its rate data once per day. ToolXone requests the latest available data when you perform a conversion. Retrieval time is separate from the provider’s rate-data update time."
 
             },
 
@@ -518,7 +518,7 @@
         {
 
             title:
-                "Live Currency Converter",
+                "Currency Converter",
 
             subtitle:
                 "Fast & Easy Exchange Rate Conversion",
@@ -610,7 +610,7 @@
         {
 
             title:
-                "Currency Converter - Live Exchange Rates | ToolXone",
+                "Currency Converter - Exchange Rates | ToolXone",
 
             description:
                 "Convert currencies instantly with ToolXone's free online Currency Converter. Compare supported international currencies using the latest available exchange rates.",
@@ -620,8 +620,6 @@
                 "currency converter",
 
                 "currency converter online",
-
-                "live currency converter",
 
                 "exchange rate converter",
 

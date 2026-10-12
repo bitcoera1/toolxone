@@ -1,3 +1,9 @@
+function formatHeroRateUpdate(value) {
+    if (typeof value !== "number" || !Number.isFinite(value) || !Number.isInteger(value) || value <= 0) return "Unavailable";
+    const date = new Date(value * 1000);
+    return Number.isFinite(date.getTime()) ? date.toISOString() : "Unavailable";
+}
+
 const heroCurrencies = ["USD", "EUR", "GBP", "AED"];
 
 const currencyData = {
@@ -110,6 +116,7 @@ async function loadHeroSnapshot(){
     if(!select || !rowsBox) return;
 
     const quote = select.value || "PKR";
+    if(marketTime) marketTime.textContent = "Unavailable";
 
     rowsBox.innerHTML = `<div class="market-loading">Loading latest exchange rates...</div>`;
 
@@ -118,6 +125,7 @@ async function loadHeroSnapshot(){
 
         for(const base of heroCurrencies){
             let rate = 1;
+            let rateUpdate = "Same-currency rate; provider update not applicable.";
 
             if(base !== quote){
                 const response = await fetch(`https://open.er-api.com/v6/latest/${base}`);
@@ -125,6 +133,7 @@ async function loadHeroSnapshot(){
 
                 const data = await response.json();
                 rate = data.rates[quote];
+                rateUpdate = "Rate data updated: " + formatHeroRateUpdate(data.time_last_update_unix);
 
                 if(!rate) throw new Error("Rate not found");
             }
@@ -142,6 +151,7 @@ async function loadHeroSnapshot(){
                         <div>
                             <strong>${base} / ${quote}</strong>
                             <small>${baseInfo.name} to ${quoteInfo.name}</small>
+                            <small>${rateUpdate}</small>
                         </div>
                     </div>
 
@@ -173,7 +183,7 @@ async function loadHeroSnapshot(){
         }
 
         if(marketTime){
-            marketTime.textContent = new Date().toLocaleTimeString();
+            marketTime.textContent = new Date().toISOString();
         }
 
     }catch(error){

@@ -1,3 +1,16 @@
+function formatCurrencyRateUpdate(value) {
+    if (typeof value !== "number" || !Number.isFinite(value) || !Number.isInteger(value) || value <= 0) return "Unavailable";
+    const date = new Date(value * 1000);
+    return Number.isFinite(date.getTime()) ? date.toISOString() : "Unavailable";
+}
+
+function clearCurrencyFreshness() {
+    for (const id of ["currencyRetrievedAt", "currencyRateUpdatedAt"]) {
+        const element = document.getElementById(id);
+        if (element) element.textContent = "Unavailable";
+    }
+}
+
 let rateChart;
 
 
@@ -34,6 +47,7 @@ function swapCurrencies() {
    ====================================== */
 
 async function convertCurrency() {
+    clearCurrencyFreshness();
     const amount =
         Number(
             document.getElementById(
@@ -97,6 +111,7 @@ async function convertCurrency() {
         const data =
             await response.json();
 
+        const retrievedAt = new Date().toISOString();
         const rate =
             data.rates[to];
 
@@ -120,7 +135,12 @@ async function convertCurrency() {
         );
 
         statusBar.innerHTML =
-            "✅ Updated Successfully";
+            "✅ Rates retrieved successfully";
+
+        const retrieved = document.getElementById("currencyRetrievedAt");
+        const updated = document.getElementById("currencyRateUpdatedAt");
+        if (retrieved) retrieved.textContent = retrievedAt;
+        if (updated) updated.textContent = formatCurrencyRateUpdate(data.time_last_update_unix);
 
             // Record successful conversion
 ToolXoneStatisticsEvents.recordCalculation(
@@ -130,6 +150,7 @@ ToolXoneStatisticsEvents.recordCalculation(
     }
     
     catch (error) {
+        clearCurrencyFreshness();
         console.error(
             "Currency conversion error:",
             error
@@ -139,7 +160,7 @@ ToolXoneStatisticsEvents.recordCalculation(
             "❌ Connection Error";
 
         result.innerHTML =
-            "Unable to fetch live exchange rates. Please try again.";
+            "Unable to fetch exchange rates. Please try again.";
     }
 }
 
@@ -221,7 +242,7 @@ function displayResult(
             </div>
 
             <div class="currency-live-note">
-                ✔ Latest Exchange Rate Available
+                ✔ Indicative exchange rate
             </div>
 
         </div>

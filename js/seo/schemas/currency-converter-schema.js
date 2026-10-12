@@ -31,7 +31,7 @@ Object.freeze({
         basic: {
 
             title:
-                "Currency Converter - Live Exchange Rates | ToolXone",
+                "Currency Converter - Exchange Rates | ToolXone",
 
             description:
                 "Use ToolXone's free Currency Converter to convert amounts between international currencies using the latest available exchange rates quickly and accurately.",
@@ -43,8 +43,6 @@ Object.freeze({
                 "currency converter online",
 
                 "free currency converter",
-
-                "live currency converter",
 
                 "exchange rate converter",
 
@@ -100,7 +98,7 @@ Object.freeze({
         openGraph: {
 
             title:
-                "Currency Converter - Live Exchange Rates | ToolXone",
+                "Currency Converter - Exchange Rates | ToolXone",
 
             description:
                 "Convert currencies instantly with ToolXone's free online Currency Converter using the latest available exchange rates.",
@@ -140,7 +138,7 @@ Object.freeze({
                 "@ToolXone",
 
             title:
-                "Currency Converter - Live Exchange Rates | ToolXone",
+                "Currency Converter - Exchange Rates | ToolXone",
 
             description:
                 "Convert international currencies quickly with ToolXone's free online Currency Converter.",
@@ -261,10 +259,10 @@ Object.freeze({
             {
 
                 question:
-                    "Does the ToolXone Currency Converter use live exchange rates?",
+                    "How often are the exchange rates updated?",
 
                 answer:
-                    "Yes. The converter requests the latest available exchange-rate data from its online exchange-rate service when you perform a conversion."
+                    "ExchangeRate-API’s open endpoint updates its rate data once per day. ToolXone requests the latest available data when you perform a conversion. Retrieval time is separate from the provider’s rate-data update time."
 
             },
 

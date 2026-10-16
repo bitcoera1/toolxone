@@ -28,18 +28,17 @@ test('Canonical category membership and category navigation remain intact',()=>{
 });
 test('Redundant collection containers and the empty recommended section are absent',()=>{
  const h=harness();for(const id of ['toolCards','newTools','recommendedTools','recommended-section'])assert.equal(h.elements[id],undefined,id);
- assert.equal((h.html.match(/id="dashboard"/g)||[]).length,1);assert.equal((h.html.match(/id="whats-new"/g)||[]).length,1);
+ assert.equal(h.elements.dashboard,undefined);assert.equal(h.elements["whats-new"],undefined);
 });
-test('Featured and New fragment destinations retain non-card discovery links matching current configuration',()=>{
- const h=harness();for(const [id,label,tools]of [['dashboard','Featured tools',h.c.TOOLXONE.getFeaturedTools()],['whats-new','Recently added tools',h.c.TOOLXONE.getNewestTools()]]){
- const match=h.html.match(new RegExp('<section id="'+id+'">([\\s\\S]*?)<ul aria-label="'+label+'">([\\s\\S]*?)<\\/ul>'));assert.ok(match,id);const links=anchors(match[2]);assert.deepEqual(links.map(a=>a.href),Array.from(tools,t=>t.url||t.link));assert.ok(links.every(a=>!a.classes.includes('tool-card')));
- }
+test('Removed homepage discovery sections and temporary link lists cannot return',()=>{
+ const h=harness();assert.doesNotMatch(h.html,/Our Most Popular Tools|Recently Added Tools|aria-label="Featured tools"|aria-label="Recently added tools"/);
+ for(const file of ['index.html','js/navbar.js','js/footer.js','js/app.js','css/home.css'])assert.doesNotMatch(read(file),/#dashboard\b|#whats-new\b|id="(?:dashboard|whats-new)"/,file);
 });
 test('Browse All Tools scrolls to the actual canonical card collection',()=>{
  const h=harness();h.elements.exploreToolsBtn.listeners.click();assert.equal(h.scrolls.length,1);assert.equal(h.scrolls[0].id,'category-tool-sections');assert.equal(h.scrolls[0].options.behavior,'smooth');assert.ok(h.elements['category-tool-sections'].innerHTML.includes('tool-card'));
 });
 test('Existing navbar/footer homepage fragment destinations resolve to meaningful retained sections',()=>{
- const h=harness();for(const file of ['js/navbar.js','js/footer.js'])for(const m of read(file).matchAll(/href="index\.html#([^"]+)"/g)){assert.ok(h.elements[m[1]],file+' #'+m[1]);assert.ok(['dashboard','whats-new','categories-section'].includes(m[1]));}
+ const h=harness();for(const file of ['js/navbar.js','js/footer.js'])for(const m of read(file).matchAll(/href="index\.html#([^"]+)"/g)){assert.ok(h.elements[m[1]],file+' #'+m[1]);assert.ok(['categories-section','category-tool-sections'].includes(m[1]));}
 });
 test('Repeated actual app initialization replaces category output without duplicating cards or the PDF gateway',()=>{
  const h=harness(),cards=h.elements['category-tool-sections'].innerHTML,gateway=h.elements.categoryCards.innerHTML;h.events.DOMContentLoaded();assert.equal(h.elements['category-tool-sections'].innerHTML,cards);assert.equal(h.elements.categoryCards.innerHTML,gateway);assert.equal(anchors(cards).filter(a=>a.classes.includes('tool-card')).length,25);assert.equal(anchors(gateway).filter(a=>a.href==='pdf-tools.html').length,1);

@@ -60,15 +60,11 @@
                             🏠 Home
                         </a>
 
-                        <a href="index.html#dashboard">
-                            ⭐ Popular Tools
-                        </a>
-
                         <a href="index.html#categories-section">
                             📂 Categories
                         </a>
 
-                        <a href="index.html#dashboard">
+                        <a href="index.html#category-tool-sections">
                             🧮 Explore Tools
                         </a>
 

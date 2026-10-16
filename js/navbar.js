@@ -145,18 +145,10 @@ function initializeNavbar() {
                 ${buildCategoryMenus(currentPage)}
 
                 <a
-                    href="index.html#dashboard"
+                    href="index.html#category-tool-sections"
                     class="nav-link">
 
-                    ⭐ Featured
-
-                </a>
-
-                <a
-                    href="index.html#whats-new"
-                    class="nav-link">
-
-                    🆕 New
+                    🧮 All Tools
 
                 </a>
 

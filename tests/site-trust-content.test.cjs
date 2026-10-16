@@ -53,6 +53,10 @@ const frozen = {
     ],
     "js/footer.js": [
       {
+        "before": "                        <a href=\"index.html#dashboard\">\n                            ⭐ Popular Tools\n                        </a>\n\n                        <a href=\"index.html#categories-section\">\n                            📂 Categories\n                        </a>\n\n                        <a href=\"index.html#dashboard\">\n                            🧮 Explore Tools\n                        </a>\n\n",
+        "after": "                        <a href=\"index.html#categories-section\">\n                            📂 Categories\n                        </a>\n\n                        <a href=\"index.html#category-tool-sections\">\n                            🧮 Explore Tools\n                        </a>\n\n"
+      },
+      {
         "before": "Fast, Accurate & Free.",
         "after": "Practical Online Tools — Free to Use."
       }

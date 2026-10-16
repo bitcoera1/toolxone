@@ -235,13 +235,6 @@
    DASHBOARD SECTIONS
 ========================== */
 
-#dashboard{
-    max-width:1200px;
-    margin:40px auto 60px;
-    padding:20px;
-}
-
-#whats-new,
 #recommended-section,
 #categories-section,
 #category-tool-sections{
@@ -956,8 +949,6 @@
 ========================== */
 
 body.dark-mode .home-dashboard-hero,
-body.dark-mode #dashboard,
-body.dark-mode #whats-new,
 body.dark-mode #recommended-section,
 body.dark-mode #categories-section,
 body.dark-mode #category-tool-sections{

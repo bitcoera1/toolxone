@@ -68,7 +68,7 @@ revealOnScroll();
 
     if (exploreBtn) {
         exploreBtn.addEventListener("click", () => {
-            document.getElementById("dashboard").scrollIntoView({
+            document.getElementById("category-tool-sections").scrollIntoView({
                 behavior: "smooth"
             });
         });

@@ -12,7 +12,6 @@ RESPONSIBILITY
 - Tool grouping and ordering
 - Conversion workflow definitions
 - SEO-friendly category metadata
-- Future PDF ecosystem extensibility
 
 IMPORTANT
 ----------------------------------------------------------
@@ -113,339 +112,20 @@ This configuration must NOT contain:
        ====================================================== */
 
     const subcategories = [
-
-        /* --------------------------------------------------
-           01 — ORGANIZE
-           -------------------------------------------------- */
-
         {
-
-            id:
-                "organize",
-
-            name:
-                "Organize PDF",
-
-            icon:
-                "🗂️",
-
-            description:
-                "Organize PDF pages and documents with practical page management tools.",
-
-            order:
-                1,
-
-            tools: [
-
-                "merge-pdf",
-
-                "split-pdf",
-
-                "extract-pdf-pages",
-
-                "remove-pdf-pages",
-
-                "reorder-pdf-pages"
-
-            ]
-
-        },
-
-
-        /* --------------------------------------------------
-           02 — COMPRESS & OPTIMIZE
-           -------------------------------------------------- */
-
-        {
-
-            id:
-                "compress-optimize",
-
-            name:
-                "Compress & Optimize",
-
-            icon:
-                "⚡",
-
-            description:
-                "Reduce PDF file size and optimize documents for easier storage and sharing.",
-
-            order:
-                2,
-
-            tools: [
-
-                "compress-pdf",
-
-                "optimize-pdf",
-
-                "repair-pdf"
-
-            ]
-
-        },
-
-
-        /* --------------------------------------------------
-           03 — CONVERT
-           -------------------------------------------------- */
-
-        {
-
-            id:
-                "convert",
-
-            name:
-                "Convert PDF",
-
-            icon:
-                "🔄",
-
-            description:
-                "Convert PDF pages to JPG, PNG or WebP images, and convert supported images into PDF documents.",
-
-            order:
-                3,
-
-            tools: [
-
-                "image-to-pdf",
-
-                "pdf-to-image",
-
-                "word-to-pdf",
-
-                "excel-to-pdf",
-
-                "powerpoint-to-pdf",
-
-                "pdf-to-office"
-
-            ]
-
-        },
-
-
-        /* --------------------------------------------------
-           04 — EDIT
-           -------------------------------------------------- */
-
-        {
-
-            id:
-                "edit",
-
-            name:
-                "Edit PDF",
-
-            icon:
-                "✏️",
-
-            description:
-                "Make practical changes to PDF documents including rotation, cropping, watermarks, and page numbering.",
-
-            order:
-                4,
-
-            tools: [
-
-                "rotate-pdf",
-
-                "crop-pdf",
-
-                "watermark-pdf",
-
-                "add-page-numbers",
-
-                "edit-pdf"
-
-            ]
-
-        },
-
-
-        /* --------------------------------------------------
-           05 — SECURITY
-           -------------------------------------------------- */
-
-        {
-
-            id:
-                "security",
-
-            name:
-                "PDF Security",
-
-            icon:
-                "🔐",
-
-            description:
-                "Protect and manage PDF documents with security and privacy-focused tools.",
-
-            order:
-                5,
-
-            tools: [
-
-                "protect-pdf",
-
-                "unlock-pdf",
-
-                "sign-pdf",
-
-                "redact-pdf"
-
-            ]
-
-        },
-
-
-        /* --------------------------------------------------
-           06 — EXTRACT & OCR
-           -------------------------------------------------- */
-
-        {
-
-            id:
-                "extract-ocr",
-
-            name:
-                "Extract & OCR",
-
-            icon:
-                "🔍",
-
-            description:
-                "Extract useful information from PDFs and work with scanned documents using OCR.",
-
-            order:
-                6,
-
-            tools: [
-
-                "ocr-pdf",
-
-                "extract-pdf-text",
-
-                "extract-pdf-images",
-
-                "pdf-metadata"
-
-            ]
-
-        },
-
-
-        /* --------------------------------------------------
-           07 — PDF INTELLIGENCE
-           -------------------------------------------------- */
-
-        {
-
-            id:
-                "intelligence",
-
-            name:
-                "PDF Intelligence",
-
-            icon:
-                "🤖",
-
-            description:
-                "Use intelligent PDF workflows to understand, summarize, translate, and work with documents.",
-
-            order:
-                7,
-
-            tools: [
-
-                "summarize-pdf",
-
-                "ask-pdf",
-
-                "translate-pdf"
-
-            ]
-
+            id: "convert",
+            name: "Convert PDF",
+            icon: "🔄",
+            description: "Convert PDF pages to JPG, PNG or WebP images, and convert supported images into PDF documents.",
+            order: 1,
+            tools: ["pdf-to-image", "image-to-pdf"]
         }
-
     ];
 
-
-    /* ======================================================
-       FEATURED PDF TOOLS
-       ======================================================
-
-       These are the tools we expect to become major
-       entry points within the PDF ecosystem.
-
-       They can be changed later without modifying the
-       category architecture.
-       ====================================================== */
-
-    const featuredTools = [
-
-        "image-to-pdf",
-
-        "pdf-to-image",
-
-        "merge-pdf",
-
-        "compress-pdf",
-
-        "split-pdf",
-
-        "ocr-pdf"
-
-    ];
-
-
-    /* ======================================================
-       NEWEST / DEVELOPMENT PRIORITY
-       ====================================================== */
-
-    const developmentPriority = [
-
-        "image-to-pdf",
-
-        "pdf-to-image",
-
-        "merge-pdf",
-
-        "split-pdf",
-
-        "compress-pdf"
-
-    ];
-
+    const featuredTools = ["pdf-to-image", "image-to-pdf"];
 
     /* ======================================================
        CONVERSION WORKFLOW DEFINITIONS
-       ======================================================
-
-       These definitions intentionally describe the
-       USER WORKFLOW rather than individual formats.
-
-       Example:
-
-           PDF → JPG
-           PDF → PNG
-           PDF → WEBP
-
-       become:
-
-           PDF → Image
-
-       Likewise:
-
-           JPG → PDF
-           PNG → PDF
-           WEBP → PDF
-
-       become:
-
-           Image → PDF
-
        ====================================================== */
 
     const conversionWorkflows = [
@@ -493,23 +173,7 @@ This configuration must NOT contain:
                 true,
 
             description:
-                "Convert JPG, PNG, and WebP images into PDF documents.",
-
-            futureOptions: [
-
-                "page-size",
-
-                "orientation",
-
-                "margin",
-
-                "image-fit",
-
-                "image-quality",
-
-                "page-order"
-
-            ]
+                "Convert JPG, PNG, and WebP images into PDF documents."
 
         },
 
@@ -561,21 +225,7 @@ This configuration must NOT contain:
                 false,
 
             description:
-                "Convert PDF pages into JPG, PNG, or WebP images.",
-
-            futureOptions: [
-
-                "page-selection",
-
-                "image-quality",
-
-                "resolution",
-
-                "output-format",
-
-                "zip-download"
-
-            ]
+                "Convert PDF pages into JPG, PNG, or WebP images."
 
         }
 
@@ -586,132 +236,14 @@ This configuration must NOT contain:
        PDF CAPABILITY GROUPS
        ====================================================== */
 
-    const capabilities = {
-
-        organize:
-            true,
-
-        compress:
-            true,
-
-        convert:
-            true,
-
-        edit:
-            true,
-
-        security:
-            true,
-
-        extraction:
-            true,
-
-        ocr:
-            true,
-
-        intelligence:
-            true
-
-    };
-
+    const capabilities = { convert: true };
 
     /* ======================================================
        CATEGORY NAVIGATION
        ====================================================== */
 
     const navigation = [
-
-        {
-
-            id:
-                "organize",
-
-            label:
-                "Organize",
-
-            icon:
-                "🗂️"
-
-        },
-
-        {
-
-            id:
-                "compress-optimize",
-
-            label:
-                "Compress & Optimize",
-
-            icon:
-                "⚡"
-
-        },
-
-        {
-
-            id:
-                "convert",
-
-            label:
-                "Convert",
-
-            icon:
-                "🔄"
-
-        },
-
-        {
-
-            id:
-                "edit",
-
-            label:
-                "Edit",
-
-            icon:
-                "✏️"
-
-        },
-
-        {
-
-            id:
-                "security",
-
-            label:
-                "Security",
-
-            icon:
-                "🔐"
-
-        },
-
-        {
-
-            id:
-                "extract-ocr",
-
-            label:
-                "Extract & OCR",
-
-            icon:
-                "🔍"
-
-        },
-
-        {
-
-            id:
-                "intelligence",
-
-            label:
-                "PDF Intelligence",
-
-            icon:
-                "🤖"
-
-        }
-
+        { id: "convert", label: "Convert", icon: "🔄" }
     ];
 
 
@@ -732,9 +264,6 @@ This configuration must NOT contain:
 
         featuredTools:
             featuredTools,
-
-        developmentPriority:
-            developmentPriority,
 
         conversionWorkflows:
             conversionWorkflows,

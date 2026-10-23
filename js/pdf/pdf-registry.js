@@ -24,7 +24,7 @@ const ToolXonePDFRegistry = Object.freeze({
     category: {
         id: "pdf",
         name: "PDF Tools",
-        description: "Free online PDF tools for converting, managing, and working with PDF files."
+        description: "Free online tools for converting PDF pages to images and images to PDF documents."
     },
 
     tools: {

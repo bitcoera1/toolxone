@@ -857,8 +857,7 @@ const ToolXoneToolsRegistry = [
         ],
 
         related: [
-            "image-to-pdf",
-            "compress-pdf"
+            "image-to-pdf"
         ],
 
         featured: true,

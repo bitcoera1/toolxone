@@ -415,9 +415,10 @@ IMPORTANT
                 "function"
         ) {
 
-            return cards.createToolCard(
-                tool
-            );
+            return cards.createToolCard({
+                ...tool,
+                url: tool.url || tool.file
+            });
 
         }
 

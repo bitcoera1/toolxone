@@ -43,3 +43,13 @@ test('Existing navbar/footer homepage fragment destinations resolve to meaningfu
 test('Repeated actual app initialization replaces category output without duplicating cards or the PDF gateway',()=>{
  const h=harness(),cards=h.elements['category-tool-sections'].innerHTML,gateway=h.elements.categoryCards.innerHTML;h.events.DOMContentLoaded();assert.equal(h.elements['category-tool-sections'].innerHTML,cards);assert.equal(h.elements.categoryCards.innerHTML,gateway);assert.equal(anchors(cards).filter(a=>a.classes.includes('tool-card')).length,25);assert.equal(anchors(gateway).filter(a=>a.href==='pdf-tools.html').length,1);
 });
+
+
+test('Homepage PDF gateway advertises only its two available tools without capability badges',()=>{
+ const h=harness(),gateway=h.gateways[0];assert.equal(h.gateways.length,1);assert.equal(gateway.href,'pdf-tools.html');
+ assert.equal(gateway.content.match(/<h3>\s*([^<]+?)\s*<\/h3>/)[1].trim(),'PDF Tools');
+ assert.ok(gateway.content.includes('📄'));assert.ok(gateway.content.includes('Explore PDF Tools'));
+ assert.ok(gateway.content.includes('PDF to Image and Image to PDF'));
+ assert.doesNotMatch(gateway.content,/category-capabilit|Complete PDF workspace|Compress|Organize|Security|Extract|OCR|Intelligence|\bEdit\b|\bConvert\b/i);
+ assert.match(h.elements.categoryCards.innerHTML,/aria-label="\s*Open PDF Tools\s*"/);
+});

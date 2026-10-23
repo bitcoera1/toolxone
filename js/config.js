@@ -121,7 +121,7 @@ empty configuration.
         "showcase",
 
     description:
-        "Complete PDF workspace",
+        "PDF to Image and Image to PDF",
 
     link:
         "pdf-tools.html",
@@ -129,36 +129,7 @@ empty configuration.
     cta:
         "Explore PDF Tools",
 
-    capabilities: [
-        {
-            icon: "🔄",
-            label: "Convert"
-        },
-        {
-            icon: "⚡",
-            label: "Compress"
-        },
-        {
-            icon: "✏️",
-            label: "Edit"
-        },
-        {
-            icon: "🗂️",
-            label: "Organize"
-        },
-        {
-            icon: "🔐",
-            label: "Security"
-        },
-        {
-            icon: "🔍",
-            label: "Extract & OCR"
-        },
-        {
-            icon: "🤖",
-            label: "Intelligence"
-        }
-    ]
+    capabilities: []
 }
         
     ];

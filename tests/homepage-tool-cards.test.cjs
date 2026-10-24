@@ -53,3 +53,18 @@ test('Homepage PDF gateway advertises only its two available tools without capab
  assert.doesNotMatch(gateway.content,/category-capabilit|Complete PDF workspace|Compress|Organize|Security|Extract|OCR|Intelligence|\bEdit\b|\bConvert\b/i);
  assert.match(h.elements.categoryCards.innerHTML,/aria-label="\s*Open PDF Tools\s*"/);
 });
+
+test('Homepage omits the non-operational roadmap and preserves operational content and footer scripts',()=>{
+ const h=harness(),css=read('css/home.css');
+ assert.doesNotMatch(h.html,/coming-soon|Coming Soon|What’s Coming Next to ToolXone|What's Coming Next to ToolXone|COMING SOON — TOOLXONE ROADMAP/i);
+ assert.doesNotMatch(h.html,/<h3>\s*(?:Image Tools|Developer Tools|AI Tools)\s*<\/h3>/);
+ assert.doesNotMatch(css,/coming-soon-/);
+ assert.equal((h.html.match(/<section id="category-tool-sections"><\/section>/g)||[]).length,1);
+ assert.equal((h.html.match(/<footer id="siteFooter"><\/footer>/g)||[]).length,1);
+ assert.match(h.html,/<section id="category-tool-sections"><\/section>\s*<footer id="siteFooter"><\/footer>/);
+ const scripts=[...h.html.matchAll(/<script\b[^>]*src="([^"]+)"/g)].map(m=>m[1]);
+ for(const file of ['js/config.js','js/navbar.js','js/search.js','js/tool-cards.js','js/tools.js','js/config/tools-registry.js','js/app.js','js/footer.js'])assert.ok(scripts.includes(file),file);
+ assert.deepEqual(h.individuals.map(a=>a.href).sort(),[...expected].sort());
+ assert.equal(h.gateways.length,1);assert.equal(h.gateways[0].href,'pdf-tools.html');
+ assert.equal(new Set([...h.individuals,...h.gateways].map(a=>a.href)).size,26);
+});

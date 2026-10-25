@@ -59,6 +59,10 @@ const frozen = {
       {
         "before": "Fast, Accurate & Free.",
         "after": "Practical Online Tools — Free to Use."
+      },
+      {
+        "before": "                        <a href=\"feedback.html\">\n                            💬 Feedback\n                        </a>\n\n                    </div>",
+        "after": "                        <a href=\"feedback.html\">\n                            💬 Feedback\n                        </a>\n\n                        <a\n                            href=\"https://cvxone.com/\"\n                            target=\"_blank\"\n                            rel=\"noopener noreferrer\">\n                            CVXone Website\n                        </a>\n\n                    </div>"
       }
     ]
   },
@@ -121,6 +125,13 @@ function section(s,title){const h=s.indexOf(title);assert.ok(h>=0,title);const s
 function requireCopy(s,items){for(const item of items)assert.equal(count(visible(s),visible(item)),1,item);}
 const trustLinks=['about.html','contact.html','feedback.html','privacy-policy.html','terms-conditions.html','disclaimer.html','affiliate-disclosure.html'];
 function hrefs(s){return [...s.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]);}
+function requireCVXoneLink(s){
+ const link=[...s.matchAll(/<a\b[^>]*href="https:\/\/cvxone\.com\/"[^>]*>[\s\S]*?<\/a>/g)];
+ assert.equal(link.length,1);
+ assert.equal(visible(link[0][0]),'CVXone Website');
+ assert.match(link[0][0],/\btarget="_blank"/);
+ assert.match(link[0][0],/\brel="noopener noreferrer"/);
+}
 function footerHarness(state='complete',missing=false){
  const target={innerHTML:''},listeners=[];
  class FixedDate extends Date{constructor(...args){super(...(args.length?args:['2026-10-11T00:00:00.000Z']));}getFullYear(){return 2026;}}
@@ -159,10 +170,12 @@ test('Contact response wording has no fixed response deadline',()=>{
 });
 test('Real ready-DOM footer renders conservative slogan and all existing trust links',()=>{
  const s=footerHarness().target.innerHTML;requireCopy(s,[frozen.copy.slogan]);assert.doesNotMatch(s,/Fast, Accurate & Free/);
+ requireCVXoneLink(s);
  for(const p of trustLinks)assert.equal(hrefs(s).filter(x=>x===p).length,1);assert.ok(visible(s).includes('© 2026 ToolXone. All rights reserved.'));
 });
 test('Real loading-DOM footer waits and repeated callback replaces rather than duplicates',()=>{
  const h=footerHarness('loading');assert.equal(h.target.innerHTML,'');assert.equal(h.listeners.length,1);h.listeners[0]();const first=h.target.innerHTML;h.listeners[0]();assert.equal(h.target.innerHTML,first);assert.equal(count(first,'class="footer-content"'),1);requireCopy(first,[frozen.copy.slogan]);for(const p of trustLinks)assert.equal(hrefs(first).filter(x=>x===p).length,1);
+ requireCVXoneLink(first);
 });
 test('Real footer safely handles a missing target',()=>{
  const h=footerHarness('complete',true);assert.equal(h.target.innerHTML,'');assert.equal(h.listeners.length,0);

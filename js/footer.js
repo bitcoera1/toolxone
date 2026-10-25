@@ -88,6 +88,13 @@
                             💬 Feedback
                         </a>
 
+                        <a
+                            href="https://cvxone.com/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            CVXone Website
+                        </a>
+
                     </div>
 
 

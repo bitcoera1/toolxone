@@ -92,7 +92,7 @@
                             href="https://cvxone.com/"
                             target="_blank"
                             rel="noopener noreferrer">
-                            CVXone Website
+                            🌐 CVXone Website
                         </a>
 
                     </div>

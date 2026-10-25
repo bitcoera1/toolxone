@@ -62,7 +62,7 @@ const frozen = {
       },
       {
         "before": "                        <a href=\"feedback.html\">\n                            💬 Feedback\n                        </a>\n\n                    </div>",
-        "after": "                        <a href=\"feedback.html\">\n                            💬 Feedback\n                        </a>\n\n                        <a\n                            href=\"https://cvxone.com/\"\n                            target=\"_blank\"\n                            rel=\"noopener noreferrer\">\n                            CVXone Website\n                        </a>\n\n                    </div>"
+        "after": "                        <a href=\"feedback.html\">\n                            💬 Feedback\n                        </a>\n\n                        <a\n                            href=\"https://cvxone.com/\"\n                            target=\"_blank\"\n                            rel=\"noopener noreferrer\">\n                            🌐 CVXone Website\n                        </a>\n\n                    </div>"
       }
     ]
   },
@@ -128,7 +128,7 @@ function hrefs(s){return [...s.matchAll(/<a\b[^>]*href="([^"]+)"/g)].map(m=>m[1]
 function requireCVXoneLink(s){
  const link=[...s.matchAll(/<a\b[^>]*href="https:\/\/cvxone\.com\/"[^>]*>[\s\S]*?<\/a>/g)];
  assert.equal(link.length,1);
- assert.equal(visible(link[0][0]),'CVXone Website');
+ assert.equal(visible(link[0][0]),'🌐 CVXone Website');
  assert.match(link[0][0],/\btarget="_blank"/);
  assert.match(link[0][0],/\brel="noopener noreferrer"/);
 }

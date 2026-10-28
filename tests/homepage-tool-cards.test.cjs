@@ -2,7 +2,7 @@
 // Real registry, card renderer and app initialization; in-memory DOM only, no network or writes.
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const expected=['calculator.html','scientific-calculator.html','percentage-calculator.html','bmi-calculator.html','bmr-calculator.html','body-fat-calculator.html','calorie-calculator.html','loan-calculator.html','emi-calculator.html','mortgage-calculator.html','compound-interest-calculator.html','roi-calculator.html','profit-margin-calculator.html','discount-calculator.html','gst-vat-calculator.html','inflation-calculator.html','currency-profit-calculator.html','savings-goal-calculator.html','retirement-calculator.html','currency-converter.html','weight-converter.html','age-calculator.html','qr-code-generator.html','pdf-to-image.html','image-to-pdf.html'];
+const expected=['calculator.html','scientific-calculator.html','percentage-calculator.html','gpa-cgpa-calculator.html','bmi-calculator.html','bmr-calculator.html','body-fat-calculator.html','calorie-calculator.html','loan-calculator.html','emi-calculator.html','mortgage-calculator.html','compound-interest-calculator.html','roi-calculator.html','profit-margin-calculator.html','discount-calculator.html','gst-vat-calculator.html','inflation-calculator.html','currency-profit-calculator.html','savings-goal-calculator.html','retirement-calculator.html','currency-converter.html','weight-converter.html','age-calculator.html','qr-code-generator.html','pdf-to-image.html','image-to-pdf.html'];
 function anchors(html){return [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].map(m=>({href:m[1].match(/\bhref="([^"]+)"/)?.[1],classes:(m[1].match(/\bclass="([^"]*)"/)?.[1]||'').trim().split(/\s+/),content:m[2]}));}
 function harness(){
  const html=read('index.html'),elements={},events={},scrolls=[];
@@ -15,11 +15,11 @@ function harness(){
  const gateways=anchors(elements.categoryCards.innerHTML).filter(a=>a.classes.includes('category-card--showcase'));
  return {html,c,elements,events,scrolls,individuals,gateways};
 }
-test('Homepage initializes exactly 25 individual cards plus the separate PDF gateway, with 26 unique destinations',()=>{
- const h=harness(),all=[...h.individuals,...h.gateways];assert.equal(h.individuals.length,25);assert.equal(h.gateways.length,1);assert.equal(all.length,26);assert.equal(new Set(all.map(a=>a.href)).size,26);assert.deepEqual(h.individuals.map(a=>a.href).sort(),[...expected].sort());assert.equal(h.gateways[0].href,'pdf-tools.html');
+test('Homepage initializes exactly 26 individual cards plus the separate PDF gateway, with 27 unique destinations',()=>{
+ const h=harness(),all=[...h.individuals,...h.gateways];assert.equal(h.individuals.length,26);assert.equal(h.gateways.length,1);assert.equal(all.length,27);assert.equal(new Set(all.map(a=>a.href)).size,27);assert.deepEqual(h.individuals.map(a=>a.href).sort(),[...expected].sort());assert.equal(h.gateways[0].href,'pdf-tools.html');
 });
 test('Every active canonical registry tool remains represented exactly once and the gateway remains outside that registry',()=>{
- const h=harness(),active=h.c.ToolXoneToolsRegistry.filter(t=>t.active===true);assert.equal(active.length,25);assert.ok(!active.some(t=>t.url==='pdf-tools.html'));
+ const h=harness(),active=h.c.ToolXoneToolsRegistry.filter(t=>t.active===true);assert.equal(active.length,26);assert.ok(!active.some(t=>t.url==='pdf-tools.html'));
  for(const tool of active){const matches=h.individuals.filter(a=>a.href===tool.url);assert.equal(matches.length,1,tool.id);assert.ok(matches[0].content.includes(tool.name));assert.ok(fs.existsSync(path.join(root,tool.url)));}assert.ok(fs.existsSync(path.join(root,'pdf-tools.html')));
 });
 test('Canonical category membership and category navigation remain intact',()=>{
@@ -41,7 +41,7 @@ test('Existing navbar/footer homepage fragment destinations resolve to meaningfu
  const h=harness();for(const file of ['js/navbar.js','js/footer.js'])for(const m of read(file).matchAll(/href="index\.html#([^"]+)"/g)){assert.ok(h.elements[m[1]],file+' #'+m[1]);assert.ok(['categories-section','category-tool-sections'].includes(m[1]));}
 });
 test('Repeated actual app initialization replaces category output without duplicating cards or the PDF gateway',()=>{
- const h=harness(),cards=h.elements['category-tool-sections'].innerHTML,gateway=h.elements.categoryCards.innerHTML;h.events.DOMContentLoaded();assert.equal(h.elements['category-tool-sections'].innerHTML,cards);assert.equal(h.elements.categoryCards.innerHTML,gateway);assert.equal(anchors(cards).filter(a=>a.classes.includes('tool-card')).length,25);assert.equal(anchors(gateway).filter(a=>a.href==='pdf-tools.html').length,1);
+ const h=harness(),cards=h.elements['category-tool-sections'].innerHTML,gateway=h.elements.categoryCards.innerHTML;h.events.DOMContentLoaded();assert.equal(h.elements['category-tool-sections'].innerHTML,cards);assert.equal(h.elements.categoryCards.innerHTML,gateway);assert.equal(anchors(cards).filter(a=>a.classes.includes('tool-card')).length,26);assert.equal(anchors(gateway).filter(a=>a.href==='pdf-tools.html').length,1);
 });
 
 
@@ -66,5 +66,5 @@ test('Homepage omits the non-operational roadmap and preserves operational conte
  for(const file of ['js/config.js','js/navbar.js','js/search.js','js/tool-cards.js','js/tools.js','js/config/tools-registry.js','js/app.js','js/footer.js'])assert.ok(scripts.includes(file),file);
  assert.deepEqual(h.individuals.map(a=>a.href).sort(),[...expected].sort());
  assert.equal(h.gateways.length,1);assert.equal(h.gateways[0].href,'pdf-tools.html');
- assert.equal(new Set([...h.individuals,...h.gateways].map(a=>a.href)).size,26);
+ assert.equal(new Set([...h.individuals,...h.gateways].map(a=>a.href)).size,27);
 });

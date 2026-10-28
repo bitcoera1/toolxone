@@ -1,0 +1,72 @@
+.gpa-page {
+    width: min(100% - 2rem, 1000px);
+    max-width: 100%;
+    min-width: 0;
+    margin: 2rem auto 4rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+}
+
+.gpa-card {
+    width: 100%;
+    max-width: 100%;
+    background: #fff;
+    color: #172033;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: clamp(1rem, 3vw, 2rem);
+    min-width: 0;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, .08);
+}
+
+.gpa-card h1, .gpa-card h2, .gpa-card h3 { margin-top: 0; }
+.gpa-intro { color: #475569; }
+.gpa-mode-picker { width: 100%; max-width: 100%; min-width: 0; border: 1px solid #cbd5e1; border-radius: 12px; margin: 1.25rem 0; padding: 1rem; }
+.gpa-mode-picker legend { font-weight: 700; padding: 0 .35rem; }
+.gpa-mode-picker label { display: flex; align-items: flex-start; gap: .6rem; margin: .55rem 0; cursor: pointer; }
+.gpa-mode-picker input { margin-top: .25rem; accent-color: #2563eb; }
+.gpa-mode-panel { max-width: 100%; min-width: 0; margin: 1.25rem 0; }
+.gpa-mode-panel[hidden], .gpa-result[hidden] { display: none; }
+.gpa-table-wrap { display: block; width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; margin: 1rem 0; }
+.gpa-table { width: 100%; min-width: 500px; border-collapse: collapse; }
+.gpa-table th, .gpa-table td { padding: .65rem; text-align: left; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+.gpa-table th { color: #334155; font-size: .92rem; }
+.gpa-table input, .gpa-table select, .gpa-field input { box-sizing: border-box; width: 100%; min-height: 44px; padding: .65rem .7rem; border: 1px solid #94a3b8; border-radius: 8px; background: #fff; color: #172033; font: inherit; }
+.gpa-table input:focus, .gpa-table select:focus, .gpa-field input:focus, .gpa-mode-picker input:focus-visible, .gpa-page button:focus-visible { outline: 3px solid #60a5fa; outline-offset: 2px; }
+.gpa-remove-button { border: 0; border-radius: 8px; min-width: 42px; min-height: 42px; background: #fee2e2; color: #991b1b; font: inherit; font-weight: 700; cursor: pointer; }
+.gpa-primary-button, .gpa-secondary-button { min-height: 44px; border: 0; border-radius: 10px; padding: .7rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
+.gpa-primary-button { background: #2563eb; color: #fff; }
+.gpa-secondary-button { background: #e2e8f0; color: #172033; }
+.gpa-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin: 1.25rem 0; }
+.gpa-message { min-height: 1.5rem; color: #991b1b; font-weight: 600; }
+.gpa-result { margin-top: 1.25rem; padding: 1rem; border-radius: 14px; background: #eff6ff; border: 1px solid #bfdbfe; }
+.gpa-result-value { color: #1d4ed8; font-size: clamp(2rem, 8vw, 3.25rem); font-weight: 800; line-height: 1.1; margin: .5rem 0 1rem; }
+.gpa-result-details { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin: 0; }
+.gpa-result-details div { min-width: 9rem; }
+.gpa-result-details dt { color: #475569; font-size: .9rem; }
+.gpa-result-details dd { font-size: 1.15rem; font-weight: 700; margin: .2rem 0 0; }
+.gpa-field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 1rem; }
+.gpa-field label { display: block; font-weight: 700; margin-bottom: .4rem; }
+.gpa-field small, .gpa-note { display: block; color: #475569; margin-top: .45rem; }
+.gpa-note { padding: .75rem; border-left: 4px solid #60a5fa; background: #f8fafc; }
+.gpa-empty-state { color: #475569; font-style: italic; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+body.dark-mode .gpa-card { background: #1f2937; color: #e5e7eb; border-color: #374151; }
+body.dark-mode .gpa-intro, body.dark-mode .gpa-note, body.dark-mode .gpa-field small, body.dark-mode .gpa-result-details dt { color: #cbd5e1; }
+body.dark-mode .gpa-empty-state { color: #cbd5e1; }
+body.dark-mode .gpa-mode-picker { border-color: #64748b; }
+body.dark-mode .gpa-table th, body.dark-mode .gpa-table td { border-color: #475569; color: #e5e7eb; }
+body.dark-mode .gpa-table input, body.dark-mode .gpa-table select, body.dark-mode .gpa-field input { background: #111827; border-color: #64748b; color: #f8fafc; }
+body.dark-mode .gpa-secondary-button { background: #334155; color: #f8fafc; }
+body.dark-mode .gpa-result { background: #172554; border-color: #1d4ed8; }
+body.dark-mode .gpa-note { background: #111827; }
+@media (max-width: 600px) {
+    .gpa-page { width: min(100% - 1rem, 1000px); margin-top: 1rem; }
+    .gpa-actions > button { flex: 1 1 100%; }
+    .gpa-table { width: 100%; min-width: 0; table-layout: fixed; }
+    .gpa-table th, .gpa-table td { min-width: 0; overflow-wrap: anywhere; }
+    .gpa-table input, .gpa-table select { min-width: 0; padding-inline: .4rem; }
+    .gpa-remove-button { width: 100%; min-width: 0; }
+}

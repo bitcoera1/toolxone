@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPA and CGPA Calculator – Free Weighted Grade Calculator | ToolXone</title>
+<meta name="description" content="Calculate semester GPA and cumulative CGPA with credit-weighted courses. Choose quick grade points or define your institution's grading scale.">
+<meta name="robots" content="index,follow">
+<meta name="author" content="ToolXone">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://www.toolxone.com/gpa-cgpa-calculator.html">
+<meta property="og:title" content="GPA and CGPA Calculator | ToolXone">
+<meta property="og:description" content="Calculate a credit-weighted GPA or CGPA using your own institutional grading scale.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.toolxone.com/gpa-cgpa-calculator.html">
+<meta property="og:image" content="https://www.toolxone.com/images/gpa-cgpa-calculator.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPA and CGPA Calculator | ToolXone">
+<meta name="twitter:description" content="Calculate a credit-weighted GPA or CGPA using your own institutional grading scale.">
+<meta name="twitter:image" content="https://www.toolxone.com/images/gpa-cgpa-calculator.svg">
+<link rel="icon" type="image/png" href="images/toolxone-favicon.png">
+<link rel="shortcut icon" href="images/toolxone-favicon.png">
+<link rel="apple-touch-icon" href="images/toolxone-favicon.png">
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/calculator-layout.css">
+<link rel="stylesheet" href="css/calculator-components.css">
+<link rel="stylesheet" href="css/tool-hero.css">
+<link rel="stylesheet" href="css/tool-article.css">
+<link rel="stylesheet" href="css/tool-faq.css">
+<link rel="stylesheet" href="css/tool-related.css">
+<link rel="stylesheet" href="css/tool-reviews.css">
+<link rel="stylesheet" href="css/tool-feedback.css">
+<link rel="stylesheet" href="css/validation.css">
+<link rel="stylesheet" href="css/gpa-cgpa-calculator.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609883417414465" crossorigin="anonymous"></script>
+</head>
+<body data-tool="gpa-cgpa-calculator">
+<header class="site-header">
+    <img src="images/toolxone-logo.jpg" alt="ToolXone Logo" class="site-logo">
+    <p>Free Online Calculators, Converters &amp; Utility Tools</p>
+    <p>Fast • Accurate • Free</p>
+</header>
+<div id="navbar"></div>
+<section id="toolHero" class="tx-hero-section"></section>
+
+<main class="gpa-page tx-calculator-section">
+    <section class="gpa-card" aria-labelledby="gpa-title">
+        <h1 id="gpa-title">🎓 GPA / CGPA Calculator</h1>
+        <p class="gpa-intro">Calculate credit-weighted grades using the scale your institution uses.</p>
+
+        <fieldset class="gpa-mode-picker">
+            <legend>Course entry mode</legend>
+            <label><input type="radio" name="courseMode" value="quick" checked> Quick GPA: enter grade points</label>
+            <label><input type="radio" name="courseMode" value="custom"> Custom grading system: define and select letter grades</label>
+        </fieldset>
+
+        <section id="quickMode" class="gpa-mode-panel" aria-labelledby="quick-heading">
+            <h2 id="quick-heading">Courses and grade points</h2>
+            <p>Enter the grade-point value assigned by your institution for each course. Zero is allowed; Quick GPA has no fixed maximum, so use your institution's scale.</p>
+            <div class="gpa-table-wrap">
+                <table class="gpa-table">
+                    <thead><tr><th scope="col">Course</th><th scope="col">Grade points</th><th scope="col">Credit hours</th><th scope="col"><span class="visually-hidden">Remove course</span></th></tr></thead>
+                    <tbody id="quickCourses"></tbody>
+                </table>
+            </div>
+            <p id="quickCourseEmpty" class="gpa-empty-state" hidden>No courses yet. Select “Add course” to enter a course.</p>
+            <button class="gpa-secondary-button" id="addQuickCourse" type="button">Add course</button>
+        </section>
+
+        <section id="customMode" class="gpa-mode-panel" aria-labelledby="custom-heading" hidden>
+            <h2 id="custom-heading">Your grading scale</h2>
+            <p>Add the letter grades and grade points from your institution. No grading scale is assumed.</p>
+            <div class="gpa-table-wrap">
+                <table class="gpa-table gpa-scale-table">
+                    <thead><tr><th scope="col">Letter grade</th><th scope="col">Grade points</th><th scope="col"><span class="visually-hidden">Remove grade</span></th></tr></thead>
+                    <tbody id="gradeScale"></tbody>
+                </table>
+            </div>
+            <p id="gradeScaleEmpty" class="gpa-empty-state" hidden>No grade scale entries yet. Add a letter grade and its points.</p>
+            <button class="gpa-secondary-button" id="addScaleGrade" type="button">Add grade to scale</button>
+            <h2>Courses and letter grades</h2>
+            <p>Choose a grade from your scale and enter each course's credit hours.</p>
+            <div class="gpa-table-wrap">
+                <table class="gpa-table">
+                    <thead><tr><th scope="col">Course</th><th scope="col">Letter grade</th><th scope="col">Credit hours</th><th scope="col"><span class="visually-hidden">Remove course</span></th></tr></thead>
+                    <tbody id="customCourses"></tbody>
+                </table>
+            </div>
+            <p id="customCourseEmpty" class="gpa-empty-state" hidden>No courses yet. Select “Add course” to enter a course.</p>
+            <button class="gpa-secondary-button" id="addCustomCourse" type="button">Add course</button>
+        </section>
+
+        <div class="gpa-actions">
+            <button class="gpa-primary-button" id="calculateSemester" type="button">Calculate semester GPA</button>
+            <button class="gpa-secondary-button" id="resetCalculator" type="button">Reset</button>
+        </div>
+        <div id="gpaMessage" class="gpa-message" role="status" aria-live="polite"></div>
+        <section id="semesterResult" class="gpa-result" aria-live="polite" aria-atomic="true" hidden>
+            <h2>Semester GPA</h2>
+            <p class="gpa-result-value" id="semesterGpaValue"></p>
+            <dl class="gpa-result-details"><div><dt>Total credit hours</dt><dd id="semesterCredits"></dd></div><div><dt>Courses counted</dt><dd id="semesterCourseCount"></dd></div></dl>
+            <p>GPA = sum of (grade points × credit hours) ÷ total credit hours.</p>
+        </section>
+    </section>
+
+    <section class="gpa-card gpa-cgpa-card" aria-labelledby="cgpa-heading">
+        <h2 id="cgpa-heading">Calculate cumulative GPA (CGPA)</h2>
+        <p>Choose one method. CGPA is weighted by credits; do not average semester GPAs without weighting.</p>
+        <fieldset class="gpa-mode-picker">
+            <legend>CGPA calculation method</legend>
+            <label><input type="radio" name="cgpaMode" value="previous" checked> Previous CGPA plus the semester above</label>
+            <label><input type="radio" name="cgpaMode" value="semesters"> Enter multiple semesters</label>
+        </fieldset>
+        <section id="previousCgpaMode" class="gpa-mode-panel">
+            <div class="gpa-field-grid">
+                <div class="gpa-field"><label for="previousCgpa">Previous CGPA</label><input id="previousCgpa" type="number" min="0" step="any" inputmode="decimal" aria-describedby="previousCgpaHelp"><small id="previousCgpaHelp">Enter the CGPA reported by your institution.</small></div>
+                <div class="gpa-field"><label for="completedCredits">Previously completed credit hours</label><input id="completedCredits" type="number" min="0.01" step="any" inputmode="decimal"></div>
+            </div>
+            <p class="gpa-note">First calculate this semester's GPA above. The semester's course credits are added to your previous completed credits.</p>
+        </section>
+        <section id="semestersMode" class="gpa-mode-panel" hidden>
+            <p>Enter each semester's GPA and earned credit hours according to your institution's rules.</p>
+            <div class="gpa-table-wrap"><table class="gpa-table"><thead><tr><th scope="col">Semester</th><th scope="col">GPA</th><th scope="col">Credit hours</th><th scope="col"><span class="visually-hidden">Remove semester</span></th></tr></thead><tbody id="semesterRows"></tbody></table></div>
+            <p id="semesterEmpty" class="gpa-empty-state" hidden>No semester entries yet. Select “Add semester” to enter one.</p>
+            <button class="gpa-secondary-button" id="addSemester" type="button">Add semester</button>
+        </section>
+        <button class="gpa-primary-button" id="calculateCgpa" type="button">Calculate CGPA</button>
+        <button class="gpa-secondary-button" id="resetCgpa" type="button">Reset</button>
+        <div id="cgpaMessage" class="gpa-message" role="status" aria-live="polite"></div>
+        <section id="cgpaResult" class="gpa-result" aria-live="polite" aria-atomic="true" hidden>
+            <h3>Cumulative GPA</h3>
+            <p class="gpa-result-value" id="cgpaValue"></p>
+            <dl class="gpa-result-details"><div><dt>Total credit hours</dt><dd id="cgpaCredits"></dd></div><div><dt>Periods included</dt><dd id="cgpaSemesters"></dd></div></dl>
+        </section>
+    </section>
+</main>
+
+<section id="related-tools-section"><div id="relatedTools"></div></section>
+<div id="financeInfo"><!-- TOOLXONE:STATIC-ARTICLE:START gpa-cgpa-calculator -->
+
+    <section class="tool-article">
+
+    <h1>How GPA and CGPA Are Calculated</h1>
+<p>A grade point average summarizes course results while accounting for the credit hours assigned to each course. This GPA and CGPA Calculator lets you enter grade points directly or define the letter-grade values used by your institution.</p>
+<h2>What Is a Semester GPA?</h2>
+<p>A semester GPA is the weighted average of the grade points earned in courses during a term. A course with more credits contributes more to the result than a course with fewer credits.</p>
+<h2>The Credit-Weighted GPA Formula</h2>
+<p>For each course, multiply its grade points by its credit hours. Add those products, then divide by the sum of the included credit hours.</p><p><strong>Semester GPA = Σ (course grade points × course credits) ÷ Σ course credits</strong></p><p>For example, a 4-credit course with 3.7 points and a 2-credit course with 3.0 points produce (4 × 3.7 + 2 × 3.0) ÷ (4 + 2) = 3.467 before display rounding.</p>
+<h2>Use Your Institution's Grading Scale</h2>
+<p>Institutions can use different letter grades, grade-point values, credit rules, and rounding policies. In Custom Grading System mode, enter the letter grades and point values from your institution, then select a grade for each course. The listed points are inputs to the calculation and are not a universal standard.</p><p>Quick GPA mode accepts grade points directly when you already know the point value for each course.</p>
+<h2>How CGPA Combines Coursework</h2>
+<p>CGPA is calculated by weighting grade averages by credits. When you enter a previous CGPA and completed credits, the calculator combines those quality points with the current semester's weighted GPA and credits.</p><p><strong>Combined CGPA = (previous CGPA × previous credits + current semester GPA × current semester credits) ÷ total credits</strong></p><p>You can also enter GPA and credits for multiple semesters. The calculator combines their weighted points rather than taking a simple average of semester GPAs.</p>
+<h2>Check Credit and Institutional Rules</h2>
+<p>Enter the credits your institution counts toward the GPA. Some institutions exclude particular courses, use repeated-course replacement rules, or apply special treatment to pass/fail courses. Follow your transcript or academic handbook when deciding which grades and credits to include.</p>
+<h2>GPA Is Not Automatically a Percentage</h2>
+<p>There is no single percentage conversion that applies to every institution or grading scale. This calculator reports weighted GPA values only. Use a percentage conversion only when your institution publishes the specific formula that applies to your records.</p>
+<h2>Rounding and Results</h2>
+<p>Results display to three decimal places. The displayed value is rounded for presentation; institutions may retain more precision or apply their own rounding rules, so an official transcript can differ slightly.</p>
+
+
+    </section>
+
+    <!-- TOOLXONE:STATIC-ARTICLE:END gpa-cgpa-calculator --></div>
+<div id="financeFAQ"></div>
+<div id="tool-reviews"></div>
+<div id="financeFeedback"></div>
+<footer id="siteFooter"></footer>
+
+<script src="js/config.js"></script><script src="js/navbar.js"></script><script src="js/clock.js"></script><script src="js/theme.js"></script><script src="js/search.js"></script><script src="js/tool-cards.js"></script><script src="js/tools.js"></script><script src="js/config/tool-identity.js"></script><script src="js/finance-components.js"></script>
+<script src="js/backend/backend-config.js"></script><script src="js/backend/api-client.js"></script><script src="js/backend/statistics-api.js"></script><script src="js/backend/statistics-service.js"></script><script src="js/backend/analytics-api.js"></script><script src="js/backend/feedback-api.js"></script><script src="js/backend/phoenix-api.js"></script><script src="js/backend/tool-usage-api.js"></script><script src="js/backend/backend.js"></script>
+<script src="js/config/tools-registry.js"></script>
+<script src="js/statistics/statistics-storage.js"></script><script src="js/statistics/statistics-engine.js"></script><script src="js/statistics/statistics-events.js"></script><script src="js/statistics/statistics-api.js"></script><script src="js/statistics/statistics-intelligence.js"></script><script src="js/statistics/statistics-dashboard.js"></script><script src="js/statistics/statistics-loader.js"></script>
+<script src="js/seo/schema-registry.js"></script><script src="js/seo/schema-engine.js"></script><script src="js/seo/meta-registry.js"></script><script src="js/seo/meta-engine.js"></script><script src="js/seo/seo-validator.js"></script><script src="js/seo/seo-tests.js"></script><script src="js/seo/rich-results-validator.js"></script><script src="js/seo/sitemap-engine.js"></script><script src="js/seo/robots-engine.js"></script><script src="js/seo/seo-platform.js"></script><script src="js/seo/schemas/gpa-cgpa-calculator-schema.js"></script>
+<script>
+const pageSchema = ToolXoneSchemaRegistry.get("GpaCgpaCalculator");
+if (pageSchema) { ToolXoneSchema.render(pageSchema.schema); ToolXoneMeta.render(pageSchema.meta); }
+</script>
+<script src="js/performance/performance-registry.js"></script><script src="js/performance/performance-engine.js"></script><script src="js/performance/core-web-vitals.js"></script><script src="js/performance/lazy-loader.js"></script><script src="js/performance/asset-optimizer.js"></script><script src="js/performance/image-optimizer.js"></script><script src="js/performance/performance-validator.js"></script><script src="js/performance/performance-tests.js"></script><script src="js/performance/performance-platform.js"></script>
+<script src="js/content/content-registry.js"></script><script src="js/content/content-engine.js"></script><script src="js/content/content-data-education.js"></script>
+<script src="js/content/article-loader.js"></script><script src="js/content/faq-loader.js"></script><script src="js/content/related-loader.js"></script><script src="js/content/metadata-loader.js"></script><script src="js/content/schema-loader.js"></script><script src="js/content/glossary-loader.js"></script><script src="js/content/content-platform.js"></script>
+<script src="js/content/article-renderer.js"></script><script src="js/content/faq-renderer.js"></script><script src="js/content/related-renderer.js"></script><script src="js/content/metadata-renderer.js"></script><script src="js/content/schema-renderer.js"></script><script src="js/content/hero-loader.js"></script><script src="js/content/hero-renderer.js"></script><script src="js/content/tool-action-engine.js"></script><script src="js/content/content-integration-engine.js"></script>
+<script src="js/gpa-cgpa-calculator.js"></script><script src="js/footer.js"></script><script src="js/app.js"></script>
+<script>
+renderToolReviews("tool-reviews", "GPA / CGPA Calculator");
+renderFinanceFeedback("financeFeedback", "GPA / CGPA Calculator");
+</script>
+</body>
+</html>

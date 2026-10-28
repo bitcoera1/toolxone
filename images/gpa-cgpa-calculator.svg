@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="420" viewBox="0 0 640 420" role="img" aria-labelledby="title desc">
+  <title id="title">GPA and CGPA calculator illustration</title>
+  <desc id="desc">A graduation cap above a course grade table and a weighted GPA result card.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eff6ff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient></defs>
+  <rect width="640" height="420" rx="32" fill="url(#bg)"/>
+  <circle cx="518" cy="92" r="42" fill="#bfdbfe"/>
+  <path d="m300 52 154 65-154 65-154-65 154-65Z" fill="#1d4ed8"/>
+  <path d="M214 147v53c47 34 125 34 172 0v-53l-86 37-86-37Z" fill="#2563eb"/>
+  <path d="M454 117v66" stroke="#1e3a8a" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="454" cy="190" r="10" fill="#f59e0b"/>
+  <rect x="94" y="211" width="452" height="160" rx="20" fill="#fff" stroke="#bfdbfe" stroke-width="3"/>
+  <rect x="118" y="235" width="250" height="18" rx="9" fill="#dbeafe"/>
+  <rect x="390" y="230" width="126" height="46" rx="12" fill="#eff6ff"/>
+  <text x="453" y="260" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#1d4ed8">GPA 3.82</text>
+  <path d="M118 286h397M118 322h397M296 278v74M393 278v74" stroke="#e2e8f0" stroke-width="3"/>
+  <rect x="131" y="296" width="105" height="12" rx="6" fill="#cbd5e1"/>
+  <rect x="131" y="332" width="130" height="12" rx="6" fill="#cbd5e1"/>
+  <text x="344" y="307" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#334155">A</text>
+  <text x="344" y="343" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="700" fill="#334155">B+</text>
+  <text x="453" y="307" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#475569">3 credits</text>
+  <text x="453" y="343" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#475569">4 credits</text>
+</svg>

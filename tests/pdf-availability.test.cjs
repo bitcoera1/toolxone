@@ -26,7 +26,7 @@ test('PDF registry retains exactly the two original active identities and engine
  const {c}=hub();assert.deepEqual(JSON.parse(JSON.stringify(c.getAllPDFTools())),[{id:'pdf-to-image',name:'PDF to Image',file:'pdf-to-image.html',engine:'pdf-to-image.js',status:'active'},{id:'image-to-pdf',name:'Image to PDF',file:'image-to-pdf.html',engine:'image-to-pdf.js',status:'active'}]);assert.equal(c.getActivePDFTools().length,2);for(const id of ids)assert.equal(c.getPDFTool(id).status,'active');assert.equal(c.getPDFTool('missing-pdf-tool'),null);
 });
 test('Global registry PDF relationships resolve only to real current tools',()=>{
- const {c}=hub(),pdf=c.ToolXoneToolsRegistry.filter(t=>t.categoryId==='pdf');assert.deepEqual(Array.from(pdf,t=>t.id).sort(),[...ids].sort());for(const t of pdf)for(const id of t.related)assert.ok(ids.includes(id));assert.equal(c.ToolXoneToolsRegistry.filter(t=>t.active).length,25);
+ const {c}=hub(),pdf=c.ToolXoneToolsRegistry.filter(t=>t.categoryId==='pdf');assert.deepEqual(Array.from(pdf,t=>t.id).sort(),[...ids].sort());for(const t of pdf)for(const id of t.related)assert.ok(ids.includes(id));assert.equal(c.ToolXoneToolsRegistry.filter(t=>t.active).length,26);
 });
 test('Hub HTML contains only conversion and retains its article/FAQ/related targets',()=>{
  const html=read('pdf-tools.html');assert.deepEqual([...html.matchAll(/<section\s+id="pdf-([^"]+)"[^>]*data-pdf-category="([^"]+)"/g)].map(m=>m[2]),['convert']);assert.doesNotMatch(html,/id="pdf-(?:organize|compress|edit|security|extract|intelligence)/);for(const id of ['pdf-convert','pdf-convert-heading','pdf-convert-tools','pdfInfo','pdfFAQ','relatedTools'])assert.equal((html.match(new RegExp('id="'+id+'"','g'))||[]).length,1,id);

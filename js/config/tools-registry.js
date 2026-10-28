@@ -51,6 +51,23 @@ const ToolXoneToolsRegistry = [
        ====================================================== */
 
     {
+        id: "gpa-cgpa-calculator",
+        name: "GPA / CGPA Calculator",
+        slug: "gpa-cgpa-calculator",
+        type: "calculator",
+        category: "calculator",
+        categoryId: "calculators",
+        statisticsCategory: "calculator",
+        icon: "🎓",
+        url: "gpa-cgpa-calculator.html",
+        aliases: ["gpa calculator", "cgpa calculator", "grade point average", "gpa-cgpa-calculator"],
+        related: ["basic-calculator", "percentage-calculator", "scientific-calculator"],
+        featured: false,
+        newest: true,
+        active: true
+    },
+
+    {
         id: "basic-calculator",
         name: "Basic Calculator",
         slug: "basic-calculator",

@@ -54,7 +54,7 @@ test('Strict UTF-8 round trip rejects malformed bytes and retains valid BOM/unic
 test('--check is zero-write for fresh and stale synthetic views',()=>{
  const plan=g.prepare(),fresh=new Map(plan.map(p=>[p.file,p.after]));let writes=0;
  const view=file=>fresh.has(file)?fresh.get(file):read(file);
- assert.deepEqual(g.run(['--check'],{read:view,write(){writes++;}}),{checked:26,changed:0});
+ assert.deepEqual(g.run(['--check'],{read:view,write(){writes++;}}),{checked:27,changed:0});
  const p=plan[0],r=g.region(p.after,p);fresh.set(p.file,p.after.slice(0,r.start)+p.after.slice(r.end));
  assert.throws(()=>g.run(['--check'],{read:view,write(){writes++;}}),/Stale/);
  assert.equal(writes,0);
@@ -107,8 +107,8 @@ test('EMI main and Loan/Mortgage formula blocks retain exact existing markup',()
  ];
  for(const [key,block] of expected){const html=runtime.render(key);assert.equal(g.validateOutput(html),html);assert.ok(html.includes(block),key+' unchanged formula block');}
 });
-test('All 26 registered articles pass the unchanged structural validator',()=>{
- const runtime=g.loadRuntime(),keys=runtime.registry.list('articles');assert.equal(keys.length,26);
+test('All 27 registered articles pass the unchanged structural validator',()=>{
+ const runtime=g.loadRuntime(),keys=runtime.registry.list('articles');assert.equal(keys.length,27);
  assert.deepEqual(Array.from(keys).sort(),g.MANIFEST.map(e=>e.key).sort());
  for(const key of keys){const target={innerHTML:'',classList:{add(){}}};
   assert.equal(runtime.context.ToolXoneArticleRenderer.renderArticle(target,runtime.registry.get('articles',key)),true);
@@ -120,6 +120,7 @@ test('All 26 registered articles pass the unchanged structural validator',()=>{
 // Independent expectations: never inferred from generator or registry output.
 const EXPECTED_MANIFEST=Object.freeze([
  ['age-calculator.html','age-calculator','#financeInfo'],
+ ['gpa-cgpa-calculator.html','gpa-cgpa-calculator','#financeInfo'],
  ['calculator.html','basic','#financeInfo'],
  ['bmi-calculator.html','bmi-calculator','#financeInfo'],
  ['bmr-calculator.html','bmr-calculator','#financeInfo'],
@@ -149,6 +150,7 @@ const EXPECTED_MANIFEST=Object.freeze([
 const EXPECTED_DATA_FILES=[
  'js/content/content-data-age.js','js/content/content-data-basic.js',
  'js/content/content-data-bmi.js','js/content/content-data-currency.js',
+ 'js/content/content-data-education.js',
  'js/content/content-data-finance.js','js/content/content-data-health.js',
  'js/content/content-data-pdf.js','js/content/content-data-percentage.js',
  'js/content/content-data-qr.js','js/content/content-data-scientific.js',
@@ -194,11 +196,11 @@ function articleHeadingSection(html,heading){
 function orderedText(html,values){const text=visibleArticle(html);let at=0;
  for(const value of values){const next=text.indexOf(value,at);assert.ok(next>=at,value);at=next+value.length;}}
 
-test('Frozen exact 26 file/key/selector triples and independent registry parity',()=>{
- assert.equal(EXPECTED_MANIFEST.length,26);
+test('Frozen exact 27 file/key/selector triples and independent registry parity',()=>{
+ assert.equal(EXPECTED_MANIFEST.length,27);
  assert.deepEqual(g.MANIFEST,EXPECTED_MANIFEST);
- assert.equal(new Set(EXPECTED_MANIFEST.map(e=>e.file)).size,26);
- assert.equal(new Set(EXPECTED_MANIFEST.map(e=>e.key)).size,26);
+ assert.equal(new Set(EXPECTED_MANIFEST.map(e=>e.file)).size,27);
+ assert.equal(new Set(EXPECTED_MANIFEST.map(e=>e.key)).size,27);
  const app=independentHarness();
  assert.deepEqual(Array.from(app.registry.list('articles')).sort(),EXPECTED_MANIFEST.map(e=>e.key).sort());
 });
@@ -276,9 +278,9 @@ for(const [name,change] of mappingCases)test('Invalid mapping rejected before so
  assert.throws(()=>g.prepare({manifest,read(){reads++;throw new Error('Unexpected read');}}),/Invalid\/duplicate/);
  assert.equal(reads,0);
 });
-for(const count of [25,27])test('Wrong manifest count rejected: '+count,()=>{
- const manifest=count===25?EXPECTED_MANIFEST.slice(0,25):[...EXPECTED_MANIFEST,EXPECTED_MANIFEST[0]];
- assert.throws(()=>g.validateManifest(manifest),/exactly 26/);
+for(const count of [26,28])test('Wrong manifest count rejected: '+count,()=>{
+ const manifest=count===26?EXPECTED_MANIFEST.slice(0,26):[...EXPECTED_MANIFEST,EXPECTED_MANIFEST[0]];
+ assert.throws(()=>g.validateManifest(manifest),/exactly 27/);
 });
 test('Missing approved page prevents all writes',()=>{
  let writes=0;

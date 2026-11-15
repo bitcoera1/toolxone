@@ -67,7 +67,7 @@
         </p>
 
         <p>
-            <strong>Last Updated: September 8, 2026</strong>
+            <strong>Last Updated: November 15, 2026</strong>
         </p>
 
     </div>
@@ -84,9 +84,9 @@
         </h2>
 
         <p>
-            This Privacy Policy explains how ToolXone may collect, use,
-            store and protect information associated with your use of
-            the website.
+            This Privacy Policy describes information handling associated
+            with the ToolXone website. This notice does not itself record a
+            consent choice for analytics, cookies, or advertising technologies.
         </p>
 
         <p>
@@ -95,11 +95,6 @@
             We aim to collect and use information only for legitimate
             operational, analytical, communication, security and
             improvement purposes.
-        </p>
-
-        <p>
-            By using ToolXone, you acknowledge the practices described
-            in this Privacy Policy.
         </p>
 
     </div>
@@ -121,18 +116,26 @@
         </p>
 
         <p>
-            When you browse ToolXone, certain technical and usage
-            information may be processed automatically. This may include
-            information such as browser type, device type, operating
-            system, referring pages, pages visited, approximate
-            geographic information and information about how visitors
-            interact with the website.
+            ToolXone records tool-use information, including tool
+            identifiers or names and usage statistics. Some of this
+            information is stored in the browser, and tool-use information
+            is sent to the ToolXone API for aggregate statistics, as
+            described below.
         </p>
 
         <p>
-            ToolXone may also receive information that you voluntarily
-            provide when you contact us, submit feedback, report an issue,
-            or otherwise communicate with us.
+            ToolXone pages also load third-party analytics and advertising
+            code and make requests to external APIs and libraries. The
+            information those providers process depends on their code and
+            configuration; those details have not been established by
+            inspection of ToolXone's source code.
+        </p>
+
+        <p>
+            When a feedback or public-review submission is sent, ToolXone's
+            Worker may derive a country code from the request and store it
+            with the submission. Information visitors choose to provide is
+            described below.
         </p>
 
     </div>
@@ -149,25 +152,38 @@
         </h2>
 
         <p>
-            If you contact ToolXone or submit feedback, you may choose
-            to provide information such as your name, email address,
-            message, feedback, rating, feedback category or other details
-            that you include in your communication.
+            The feedback form on ToolXone tools can submit a tool
+            identifier and name, rating, message, feedback category for
+            private feedback, submission type, name and optional email
+            address. The form defaults to private feedback. A visitor may
+            instead select public review and submit the required
+            publication-consent choice.
         </p>
 
         <p>
-            Some ToolXone feedback features may also process information
-            associated with the tool being reviewed and other information
-            necessary to manage and understand the submitted feedback.
+            If you contact ToolXone by email, you choose what information
+            to include in your message.
         </p>
 
         <p>
-            Private feedback is not published as a public review. Only
-            when you explicitly choose to submit a public review may
-            your submitted name (or Anonymous), rating, message, tool,
-            server-derived country when available, and date be publicly
-            displayed. Email remains private and is never publicly
-            displayed, whether you submit private feedback or a public review.
+            When a feedback or public-review submission is sent, the
+            Worker may derive a country code from Cloudflare request
+            metadata and store it with the submission when available.
+        </p>
+
+        <p>
+            Private feedback is not included in public-review responses.
+            For public reviews, the Worker records the publication-consent
+            version and timestamp and includes a review in public responses
+            only when the required consent fields and published status are
+            present.
+            The current implementation can display the submitted name (or
+            Anonymous), rating, message, tool,
+            server-derived country when available, and date. Email is not
+            included in the public-review responses generated by the
+            current implementation. Publication consent applies to
+            displaying a public review; it is not consent for advertising,
+            cookies, or general tracking.
         </p>
 
         <p>
@@ -189,22 +205,25 @@
         </h2>
 
         <p>
-            ToolXone may maintain usage statistics to understand which
-            tools are being used, measure platform activity and improve
-            the website.
+            ToolXone stores a local statistics object in browser local
+            storage. It includes aggregate totals and per-tool information
+            such as the tool identifier, name, category, action count, and
+            first- and last-use timestamps.
         </p>
 
         <p>
-            Depending on the tool and feature involved, statistics may
-            include information such as the tool identifier, tool name,
-            usage counts and the time associated with recorded usage.
+            Tool actions also send the tool identifier and name, and
+            separate aggregate counter keys, to the ToolXone Worker. The
+            Worker maintains aggregate counts and server-generated
+            last-use or update times. The application payloads inspected
+            for this policy do not include the local first- or last-use
+            timestamps or a visitor identifier.
         </p>
 
         <p>
-            These statistics are intended to help us understand tool
-            popularity, monitor the platform and prioritize improvements.
-            Tool usage statistics are not intended to require a user
-            account or identify you by name.
+            You can clear local statistics through your browser's
+            site-data settings. The inspected code contains a reset
+            function but no visitor-facing control for it.
         </p>
 
     </div>
@@ -276,26 +295,18 @@
         </h2>
 
         <p>
-            ToolXone and services used on the website may use cookies
-            and similar browser technologies.
+            ToolXone's inspected code uses browser local storage for
+            theme preferences and tool-use statistics. The website also
+            loads Google Analytics, Google AdSense, and Monetag code.
+            Whether those third-party scripts use cookies or other
+            browser storage, and what information they process, depends
+            on their behavior and configuration; those details have not
+            been verified through ToolXone's source code.
         </p>
 
         <p>
-            Cookies are small pieces of information stored on a device
-            that can help websites operate correctly, remember
-            preferences, understand usage and support certain features.
-        </p>
-
-        <p>
-            Depending on the services enabled on ToolXone, cookies or
-            similar technologies may be used for functionality, security,
-            analytics, measurement or future advertising purposes.
-        </p>
-
-        <p>
-            You can manage or disable many cookies through your browser
-            settings. Disabling certain technologies may affect some
-            website features.
+            You can manage browser storage and cookies through your
+            browser settings.
         </p>
 
     </div>
@@ -312,26 +323,17 @@
         </h2>
 
         <p>
-            ToolXone may use browser local storage to remember certain
-            preferences and locally maintained information.
+            ToolXone uses browser local storage to remember display-theme
+            preferences and maintain local tool-use statistics. The
+            statistics can include tool identifiers and names, categories,
+            action counts, aggregate totals, and first- and last-use
+            timestamps. The site code does not establish an expiry period
+            for these local values.
         </p>
 
         <p>
-            For example, ToolXone may store your selected display theme
-            in your browser so that your light or dark mode preference
-            can be maintained when you return to the website.
-        </p>
-
-        <p>
-            Certain locally maintained statistics or tool-related
-            information may also be stored in the browser where required
-            for the operation of ToolXone features.
-        </p>
-
-        <p>
-            Information stored locally in your browser can generally be
-            cleared through your browser settings or by clearing the
-            website's stored data.
+            You can remove these values by clearing ToolXone's site data
+            through your browser settings.
         </p>
 
     </div>
@@ -348,28 +350,18 @@
         </h2>
 
         <p>
-            ToolXone may use analytics and measurement services to
-            understand how visitors interact with the website and its
-            tools.
-        </p>
-
-        <p>
-            Analytics services may process information such as pages
-            visited, device and browser information, traffic sources,
-            interactions and other usage information.
-        </p>
-
-        <p>
-            This information helps us evaluate website performance,
-            understand which tools are useful, identify areas for
-            improvement and improve the overall user experience.
+            ToolXone includes and configures Google Analytics 4 code. The
+            information processed by Google Analytics and its retention
+            or other settings depend on Google's service and account
+            configuration. Those provider-side details have not been
+            established by inspection of ToolXone's source code.
         </p>
 
     </div>
 
 
     <!-- ==================================================
-         9. ADVERTISING & FUTURE MONETIZATION
+         9. ADVERTISING & MONETIZATION
     ================================================== -->
 
     <div class="trust-card">
@@ -379,30 +371,24 @@
         </h2>
 
         <p>
-            ToolXone has been configured for Google AdSense and may display
-            advertisements when advertising is enabled and approved. At the
-            time of this Privacy Policy's publication, ToolXone is not currently
-            displaying Google AdSense advertisements.
+            ToolXone includes Google AdSense code. Whether advertisements
+            are delivered depends on Google's service and account
+            configuration. The presence of the code does not establish
+            that advertisements are being served.
         </p>
 
         <p>
-            ToolXone may introduce third-party advertising services in
-            the future, including Google AdSense, to help support the
-            continued development and operation of the website.
+            ToolXone also integrates Monetag as an advertising technology
+            provider through an In-Page Push integration. The integration
+            is present in the inspected website code, but the behavior and
+            information handling of Monetag's remote code have not been
+            established by inspection of ToolXone's source code.
         </p>
 
         <p>
-            If advertising services are introduced, advertising
-            providers may use cookies, web beacons, IP addresses or
-            similar technologies to deliver, measure, secure or
-            personalize advertisements, subject to applicable law,
-            consent requirements and user choices.
-        </p>
-
-        <p>
-            If and when advertising services are enabled, ToolXone will
-            update this Privacy Policy as necessary to describe the
-            technologies and data practices actually used on the website.
+            ToolXone has not verified whether these providers use cookies
+            or other storage, what information their scripts process, or
+            what settings are enabled in provider dashboards.
         </p>
 
         <p>
@@ -433,9 +419,13 @@
         </h2>
 
         <p>
-            ToolXone may use third-party services for functions such as
-            analytics, website infrastructure, APIs, external libraries,
-            security, future advertising or other website features.
+            ToolXone currently loads Google Analytics and advertising
+            code, uses a Cloudflare Worker for statistics and feedback
+            functions, requests currency-conversion information from
+            external APIs, and loads third-party libraries from
+            content-delivery networks. Provider-side information handling
+            and retention depend on each provider's behavior and
+            configuration and have not been fully verified.
         </p>
 
         <p>
@@ -521,29 +511,21 @@
         </h2>
 
         <p>
-            ToolXone does not currently publish a fixed retention period
-            for every category of information because retention can
-            depend on the type of information, how it was provided and
-            the operational purpose for which it is used.
+            ToolXone does not state a fixed retention period for each
+            category of information in this policy. Repository inspection
+            does not establish how long production feedback records,
+            aggregate statistics, backups, or information held by service
+            providers are retained, or the production procedures for
+            deleting them.
         </p>
 
         <p>
-            Information voluntarily submitted through contact or
-            feedback channels may be retained for as long as reasonably
-            necessary to respond to inquiries, manage feedback,
-            investigate issues, maintain appropriate records and meet
-            applicable legal or operational requirements.
-        </p>
-
-        <p>
-            Platform statistics and operational records may be retained
-            for as long as reasonably necessary to maintain and improve
-            ToolXone.
-        </p>
-
-        <p>
-            Third-party services may apply their own retention periods
-            according to their policies and applicable requirements.
+            The Worker source includes an administrator-protected
+            function to delete an individual feedback record. This does
+            not establish actual production retention, backup deletion,
+            or how deletion requests are handled. For questions about
+            information submitted to ToolXone, contact us using the
+            details below.
         </p>
 
     </div>
@@ -560,16 +542,21 @@
         </h2>
 
         <p>
-            ToolXone takes reasonable measures to protect information
-            associated with the website from unauthorized access,
-            disclosure, alteration or misuse.
+            The website code includes application-level safeguards. The
+            website's configured API endpoint URL uses HTTPS; feedback
+            responses are marked as not to be cached; feedback fields are
+            validated; and the individual-feedback deletion route checks
+            an administrative credential. Review content is escaped when
+            rendered in the page.
         </p>
 
         <p>
-            However, no method of transmission over the internet or
-            electronic storage can be guaranteed to be completely
-            secure. Users should avoid sending sensitive information
-            that is not necessary for their inquiry or feedback.
+            These code-level measures do not establish all hosting,
+            infrastructure, account, or provider security settings. No
+            method of transmission or electronic storage can be
+            guaranteed to be completely secure. Please avoid sending
+            sensitive information that is not necessary for your inquiry
+            or feedback.
         </p>
 
     </div>
@@ -617,22 +604,21 @@
         </p>
 
         <p>
-            You can control many browser-based cookies and locally stored
-            information through your browser settings. You may also clear
-            locally stored ToolXone data through your browser's site-data
-            or storage controls.
+            You can manage cookies through your browser settings and clear
+            ToolXone's locally stored theme preferences and statistics
+            through your browser's site-data or storage controls. To ask
+            about information you submitted to ToolXone, contact us using
+            the details below.
         </p>
 
         <p>
-            If you have voluntarily provided personal information to
-            ToolXone and have a question about that information, you may
-            contact us using the details provided below.
-        </p>
-
-        <p>
-            Where advertising or other consent-based services are
-            introduced in the future, appropriate privacy and consent
-            controls will be provided where required by applicable law.
+            The ToolXone code reviewed for this policy did not identify a
+            local cookie-consent interface, TCF API integration, or
+            Google Consent Mode implementation. This does not establish
+            whether consent tools or settings are provided through an
+            external service or account dashboard. The public-review
+            consent choice applies only to publication of a review; it is
+            not consent for advertising or cookies.
         </p>
 
     </div>
@@ -649,16 +635,21 @@
         </h2>
 
         <p>
-            ToolXone is intended for a general audience and is not
-            designed to knowingly collect personal information from
-            children in violation of applicable privacy laws.
+            ToolXone does not implement an age-verification step or a
+            child-specific privacy workflow. The Age Calculator allows a
+            visitor to enter a date of birth to calculate age.
+            The inspected first-party calculator code uses the entered
+            date in the browser, and its ToolXone statistics event records
+            tool use rather than the date-of-birth fields. The behavior of
+            third-party scripts on the page has not been established by
+            this code inspection.
         </p>
 
         <p>
-            If you believe that a child has provided personal information
-            to ToolXone in a manner that requires removal, please contact
-            us so that we can review the request and take appropriate
-            action.
+            If you have a question or concern about information provided
+            to ToolXone, you may contact us using the details below. The
+            website code does not establish a specific process or
+            timeframe for handling children's data requests.
         </p>
 
     </div>

@@ -80,7 +80,7 @@ SEO schema architecture remains in:
                 "Complete Guide to ToolXone PDF Tools",
 
             introduction:
-                "PDF files are part of everyday office work, education, business communication and document sharing. ToolXone currently offers two PDF tools: PDF to Image and Image to PDF.",
+                "PDF files are part of everyday office work, education, business communication and document sharing. ToolXone currently offers Merge PDF, PDF to Image and Image to PDF.",
 
             sections: [
 
@@ -90,7 +90,7 @@ SEO schema architecture remains in:
                         "What Are PDF Tools?",
 
                     content:
-                        "ToolXone's currently available PDF tools convert PDF pages into images and create PDF documents from supported images."
+                    "ToolXone's current PDF tools combine PDF documents, convert PDF pages into images and create PDF documents from supported images."
 
                 },
 
@@ -107,10 +107,20 @@ SEO schema architecture remains in:
                 {
 
                     heading:
+                        "Merge PDF Documents",
+
+                    content:
+                        "Use Merge PDF to combine multiple supported PDF documents in the order you choose. Reorder files before merging them into one document."
+
+                },
+
+                {
+
+                    heading:
                         "Why Use ToolXone PDF Tools?",
 
                     content:
-                        "ToolXone brings PDF-to-image and image-to-PDF conversion together in one place, making it easy to choose the direction you need."
+                        "ToolXone brings PDF merging and PDF-to-image and image-to-PDF conversion together in one place."
 
                 },
 
@@ -120,7 +130,7 @@ SEO schema architecture remains in:
                         "PDF Tools for Everyday Work",
 
                     content:
-                        "Convert PDF pages into images for previews and sharing, or turn images of receipts, photographs and scanned pages into PDF documents."
+                        "Merge related documents, convert PDF pages into images for previews and sharing, or turn scans and photographs into PDFs."
 
                 }
 
@@ -155,7 +165,17 @@ SEO schema architecture remains in:
                     "What are PDF tools?",
 
                 answer:
-                    "ToolXone currently provides two PDF conversion tools: PDF to Image and Image to PDF."
+                    "ToolXone currently provides Merge PDF, PDF to Image and Image to PDF."
+
+            },
+
+            {
+
+                question:
+                    "Can I merge multiple PDF files?",
+
+                answer:
+                    "Yes. Add at least two valid PDFs, arrange them in the order you want, and merge them into one PDF in your browser."
 
             },
 
@@ -195,7 +215,7 @@ SEO schema architecture remains in:
                     "What PDF tasks can ToolXone support?",
 
                 answer:
-                    "You can convert PDF pages into JPG, PNG or WebP images, and convert JPG, PNG or WebP images into PDF documents."
+                    "You can merge PDF files, convert PDF pages into JPG, PNG or WebP images, and convert supported images into PDF documents."
 
             },
 
@@ -231,6 +251,22 @@ SEO schema architecture remains in:
         "pdf-tools",
 
         [
+
+            {
+
+                icon:
+                    "📑",
+
+                title:
+                    "Merge PDF",
+
+                description:
+                    "Combine PDF documents in the order you choose.",
+
+                url:
+                    "merge-pdf.html"
+
+            },
 
             {
 
@@ -291,10 +327,10 @@ SEO schema architecture remains in:
                 "Free Online PDF Tools",
 
             subtitle:
-                "Convert Between PDFs and Images",
+                "Merge PDFs and Convert Between PDFs and Images",
 
             description:
-                "Convert PDF pages to images and convert images to PDF documents with practical online tools designed for everyday work.",
+                "Merge PDF documents in the order you choose, convert PDF pages to images and create PDFs from supported images.",
 
             badge:
                 "PDF TOOLS",
@@ -310,6 +346,8 @@ SEO schema architecture remains in:
 
             highlights: [
 
+                "Merge PDF",
+
                 "PDF to Image",
                 "Image to PDF",
                 "JPG, PNG & WebP",
@@ -323,7 +361,7 @@ SEO schema architecture remains in:
                     "1 Conversion Category",
 
                 workflows:
-                    "2 Available",
+                "3 Available",
 
                 availability:
                     "24/7",
@@ -350,7 +388,7 @@ SEO schema architecture remains in:
                         </strong>
 
                         <span>
-                            PDF to Image • Image to PDF
+                            Merge PDF • PDF to Image • Image to PDF
                         </span>
 
                     </div>
@@ -396,10 +434,10 @@ SEO schema architecture remains in:
                 "2026-08-22",
 
             title:
-                "Free Online PDF Tools - PDF to Image & Image to PDF | ToolXone",
+                "Free Online PDF Tools - Merge, PDF to Image & Image to PDF | ToolXone",
 
             description:
-                "Use ToolXone's free online PDF tools to convert PDF pages to images and convert JPG, PNG and WebP images to PDF documents.",
+                "Use ToolXone to merge PDFs in your chosen order, convert PDF pages to images, and convert JPG, PNG and WebP images to PDF documents.",
 
             keywords: [
 
@@ -648,6 +686,22 @@ SEO schema architecture remains in:
         "pdf-to-image",
 
         [
+
+            {
+
+                icon:
+                    "📑",
+
+                title:
+                    "Merge PDF",
+
+                description:
+                    "Combine PDF documents in the order you choose.",
+
+                url:
+                    "merge-pdf.html"
+
+            },
 
             {
 
@@ -1049,6 +1103,22 @@ SEO schema architecture remains in:
             {
 
                 icon:
+                    "📑",
+
+                title:
+                    "Merge PDF",
+
+                description:
+                    "Combine PDF documents in the order you choose.",
+
+                url:
+                    "merge-pdf.html"
+
+            },
+
+            {
+
+                icon:
                     "🖼️",
 
                 title:
@@ -1231,6 +1301,58 @@ preview: `
     console.info(
         "✓ Image to PDF metadata registered."
     );
+
+
+    /* ======================================================
+       MERGE PDF
+    ====================================================== */
+
+    window.ToolXoneContentRegistry.register("articles", "merge-pdf", {
+        title: "How to Merge PDF Files",
+        introduction: "Combine multiple PDF documents into one file with ToolXone Merge PDF. Add files, arrange their order, and merge them in your browser.",
+        sections: [
+            { heading: "Arrange PDF Files", content: "Add at least two supported PDF files. Use Move Up and Move Down to set the order of documents and their pages in the merged output." },
+            { heading: "Merge PDFs in Your Browser", content: "ToolXone validates selected PDF content and combines files locally in the browser. The initial tool limits are 10 files, 25 MiB per file, and 100 MiB combined." },
+            { heading: "Unsupported or Protected Files", content: "Malformed, encrypted, password-protected, or otherwise unsupported PDFs may not be mergeable. The tool identifies files it cannot read and explains the issue by filename." }
+        ]
+    });
+
+    window.ToolXoneContentRegistry.register("faq", "merge-pdf", [
+        { question: "How do I merge PDF files?", answer: "Choose or drop at least two valid PDFs, arrange them in the desired order, and select Merge PDFs. Download the resulting document when processing finishes." },
+        { question: "Can I change the order of PDFs before merging?", answer: "Yes. Use the accessible Move Up and Move Down buttons beside each selected PDF." },
+        { question: "Are my PDF files uploaded?", answer: "PDF contents are processed locally in your browser and are not uploaded to ToolXone for merging. The page loads pdf-lib from a CDN and the site may make separate requests for analytics or advertising." },
+        { question: "What are the Merge PDF limits?", answer: "The initial limits are 10 files, 25 MiB per PDF, and 100 MiB combined. Browser memory and performance vary, so some complex files may still fail within those limits." },
+        { question: "Can I merge encrypted PDFs?", answer: "Password-protected and encrypted PDFs are not supported by this workflow. Remove protection using a method you are authorized to use, then select the resulting PDF." }
+    ]);
+
+    window.ToolXoneContentRegistry.register("related", "merge-pdf", [
+        { icon: "🖼️", title: "PDF to Image", description: "Convert PDF pages to JPG, PNG or WebP images.", url: "pdf-to-image.html" },
+        { icon: "📄", title: "Image to PDF", description: "Convert JPG, PNG and WebP images into PDF documents.", url: "image-to-pdf.html" }
+    ]);
+
+    window.ToolXoneContentRegistry.register("hero", "merge-pdf", {
+        title: "Merge PDF Files",
+        subtitle: "Combine PDFs in Your Chosen Order",
+        description: "Add multiple PDF files, arrange their order, and combine them into one document in your browser.",
+        badge: "PDF ORGANIZER", category: "PDF Tools", difficulty: "Easy", icon: "📑",
+        highlights: ["Multiple PDFs", "Reorder Files", "Browser Processing"],
+        statistics: { functions: "3", accuracy: "High", availability: "24/7", price: "Free" },
+        preview: {
+            image: {
+                src: "images/merge-pdf.png",
+                alt: "Three PDF documents flowing into one merged PDF"
+            }
+        },
+        cta: { primary: "Choose PDFs", secondary: "Learn More" }
+    });
+
+    window.ToolXoneContentRegistry.register("metadata", "merge-pdf", {
+        lastUpdated: "2026-11-23",
+        title: "Merge PDF Files Online Free | ToolXone",
+        description: "Combine multiple PDF files into one document online. Arrange files in order and merge them locally in your browser with ToolXone.",
+        keywords: ["merge PDF", "combine PDF files", "join PDF", "merge PDF online", "PDF merger", "reorder PDFs"],
+        canonical: "https://www.toolxone.com/merge-pdf.html", robots: "index,follow", author: "ToolXone"
+    });
 
 
     /* ======================================================

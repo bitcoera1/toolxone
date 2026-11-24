@@ -23,10 +23,10 @@ version:"1.0.0",
     basic: {
 
         title:
-            "PDF Tools – Free Online PDF Tools for PDF to Image & Image to PDF | ToolXone",
+            "PDF Tools – Merge, PDF to Image & Image to PDF | ToolXone",
 
         description:
-            "Use ToolXone's free online PDF Tools to convert PDF pages to images and convert images to PDF documents. Free, practical and mobile-friendly PDF conversion tools.",
+            "Use ToolXone's free online PDF Tools to merge PDFs, convert PDF pages to images and convert images to PDF documents.",
 
         keywords: [
 
@@ -55,6 +55,10 @@ version:"1.0.0",
             "PDF utilities",
 
             "document tools",
+
+            "merge PDF",
+
+            "combine PDF files",
 
             "ToolXone"
 
@@ -96,10 +100,10 @@ version:"1.0.0",
     openGraph: {
 
         title:
-            "PDF Tools – Free Online PDF Tools | ToolXone",
+                "PDF Tools – Merge and Convert PDFs Online | ToolXone",
 
         description:
-            "Use ToolXone's free online PDF Tools to convert PDF pages to images and convert images to PDF documents with practical, easy-to-use workflows.",
+                "Merge PDF files, convert PDF pages to images and create PDFs from supported images with ToolXone.",
 
         type:
             "website",
@@ -136,10 +140,10 @@ version:"1.0.0",
             "@ToolXone",
 
         title:
-            "PDF Tools - Free Online PDF Tools | ToolXone",
+                "PDF Tools - Merge and Convert PDFs | ToolXone",
 
         description:
-            "Convert PDF pages to images or turn JPG, PNG and WebP images into PDF documents with ToolXone's free online PDF Tools.",
+                "Merge PDFs, convert PDF pages to images, or turn supported images into PDF documents with ToolXone.",
 
         image:
             "https://www.toolxone.com/images/toolxone-logo.jpg",
@@ -182,7 +186,7 @@ version:"1.0.0",
                 "https://www.toolxone.com/pdf-tools.html",
 
             description:
-                "A collection of practical online PDF tools for converting PDF pages to images and converting images into PDF documents."
+                "A collection of practical online PDF tools for merging PDFs and converting between PDF documents and images."
 
         },
 
@@ -228,7 +232,17 @@ version:"1.0.0",
                     "What are PDF tools?",
 
                 answer:
-                    "ToolXone currently provides two PDF conversion tools: PDF to Image and Image to PDF."
+                    "ToolXone currently provides Merge PDF, PDF to Image and Image to PDF."
+
+            },
+
+            {
+
+                question:
+                    "Can I merge multiple PDF files?",
+
+                answer:
+                    "Yes. ToolXone Merge PDF combines at least two valid PDFs in the order you choose."
 
             },
 

@@ -121,7 +121,7 @@ empty configuration.
         "showcase",
 
     description:
-        "PDF to Image and Image to PDF",
+        "Merge PDF, PDF to Image and Image to PDF",
 
     link:
         "pdf-tools.html",

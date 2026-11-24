@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merge PDF Files Online Free | ToolXone</title>
+<meta name="description" content="Combine multiple PDF files into one document online with ToolXone. Arrange files in order and merge them privately in your browser.">
+<meta name="robots" content="index,follow">
+<meta name="author" content="ToolXone">
+<meta name="theme-color" content="#0f172a">
+<link rel="canonical" href="https://www.toolxone.com/merge-pdf.html">
+<meta property="og:title" content="Merge PDF Files Online Free | ToolXone">
+<meta property="og:description" content="Combine PDF files in your chosen order. Files are processed locally in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.toolxone.com/merge-pdf.html">
+<meta property="og:image" content="https://www.toolxone.com/images/toolxone-logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Merge PDF Files Online | ToolXone">
+<meta name="twitter:description" content="Combine and reorder PDFs in your browser with ToolXone's free Merge PDF tool.">
+<meta name="twitter:image" content="https://www.toolxone.com/images/toolxone-logo.jpg">
+<link rel="icon" type="image/png" href="images/toolxone-favicon.png">
+<link rel="stylesheet" href="css/tools.css">
+<link rel="stylesheet" href="css/pdf/pdf-components.css">
+<link rel="stylesheet" href="css/pdf/pdf-workspace.css">
+<link rel="stylesheet" href="css/pdf/merge-pdf.css">
+<link rel="stylesheet" href="css/tool-hero.css">
+<link rel="stylesheet" href="css/tool-article.css">
+<link rel="stylesheet" href="css/tool-faq.css">
+<link rel="stylesheet" href="css/tool-related.css">
+<link rel="stylesheet" href="css/tool-reviews.css">
+<link rel="stylesheet" href="css/tool-feedback.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3609883417414465" crossorigin="anonymous"></script>
+</head>
+<body data-tool="merge-pdf" data-category="pdf">
+<header class="site-header">
+    <img src="images/toolxone-logo.jpg" alt="ToolXone Logo" class="site-logo">
+    <p>Free Online Calculators, Converters &amp; Utility Tools</p><p>Fast • Accurate • Free</p>
+</header>
+<div id="navbar"></div>
+<section id="toolHero" class="tx-hero-section"></section>
+<main class="merge-pdf-page">
+    <header class="merge-pdf-intro">
+        <span class="merge-pdf-badge">📄 PDF ORGANIZER</span>
+        <h1>Merge PDF Files</h1>
+        <p>Combine PDFs into one document. Add files, arrange their order, and merge them in your browser.</p>
+    </header>
+    <section id="mergePdfUploadTarget" class="merge-pdf-card" aria-label="Merge PDF workspace" tabindex="-1">
+      <div id="mergePdfUploadWorkspace">
+        <div class="merge-pdf-panels">
+        <section class="merge-pdf-operations-panel" aria-label="Merge operations">
+        <h2 id="mergePdfHeading">Choose PDFs to merge</h2>
+        <p id="mergePdfLimits" class="merge-pdf-limits">Up to 10 files · 25 MiB each · 100 MiB total</p>
+        <div id="mergePdfDrop" class="merge-pdf-drop" role="region" aria-label="PDF file drop area">
+            <span aria-hidden="true" class="merge-pdf-upload-icon">📄</span>
+            <p>Drag and drop PDF files here</p>
+            <p class="merge-pdf-or">or</p>
+            <button id="mergePdfBrowse" class="merge-pdf-button merge-pdf-secondary" type="button">Choose PDF files</button>
+            <input id="mergePdfInput" type="file" accept="application/pdf,.pdf" multiple hidden aria-describedby="mergePdfLimits">
+        </div>
+        <p id="mergePdfStatus" class="merge-pdf-status" role="status" aria-live="polite">Choose at least two PDFs to begin.</p>
+        <section id="mergePdfRetainedResult" class="merge-pdf-retained-result" aria-label="Previous merged result" hidden>
+            <strong>Previous Merged Result</strong>
+            <span id="mergePdfRetainedName"></span>
+            <span id="mergePdfRetainedSize"></span>
+            <a id="mergePdfRetainedDownload" class="merge-pdf-button merge-pdf-secondary" download="toolxone-merged.pdf">Download previous result</a>
+            <p>This document stays first and will be included in the next merge.</p>
+        </section>
+        <ul id="mergePdfErrors" class="merge-pdf-errors" aria-live="assertive"></ul>
+        <div class="merge-pdf-main-actions">
+            <button id="mergePdfMerge" class="merge-pdf-button merge-pdf-primary" type="button" disabled>Merge PDFs</button>
+            <button id="mergePdfClear" class="merge-pdf-button merge-pdf-secondary" type="button" disabled>Clear All</button>
+        </div>
+        <section id="mergePdfProcessing" class="merge-pdf-processing" aria-live="polite" hidden>
+            <h3 id="mergePdfProcessingTitle">Reading PDFs</h3>
+            <p id="mergePdfProcessingMessage">Preparing your files.</p>
+            <progress id="mergePdfProgress" max="100" aria-label="PDF processing progress"></progress>
+        </section>
+        </section>
+        <section class="merge-pdf-document-panel" aria-labelledby="mergePdfFilesHeading">
+        <section class="merge-pdf-file-section" aria-labelledby="mergePdfFilesHeading">
+            <div class="merge-pdf-list-heading">
+                <h3 id="mergePdfFilesHeading">Selected files</h3>
+                <span id="mergePdfCount" aria-live="polite">0 of 10 PDFs selected</span>
+            </div>
+            <p class="merge-pdf-order-note">Files merge from top to bottom. Press and hold a PDF's grip to drag with a mouse, or use Move Up and Move Down.</p>
+            <div id="mergePdfListViewport" class="merge-pdf-list-viewport" role="region" tabindex="0" aria-label="Selected PDF files; scroll within this list to review all files">
+                <ol id="mergePdfFiles" class="merge-pdf-files" aria-label="PDF merge order"></ol>
+            </div>
+        </section>
+      </section>
+        </div>
+      </div>
+      <section id="mergePdfResultWorkspace" class="merge-pdf-result-workspace" aria-labelledby="mergePdfResultHeading" aria-live="polite" hidden>
+          <h2 id="mergePdfResultHeading" tabindex="-1">Your merged PDF is ready</h2>
+          <p>Download the combined document to your device.</p>
+          <dl class="merge-pdf-output-details">
+              <div><dt>File</dt><dd id="mergePdfOutputName">toolxone-merged.pdf</dd></div>
+              <div><dt>Size</dt><dd id="mergePdfOutputSize">Preparing…</dd></div>
+          </dl>
+          <div class="merge-pdf-result-actions">
+              <a id="mergePdfDownload" class="merge-pdf-button merge-pdf-primary" download="toolxone-merged.pdf">Download Merged PDF</a>
+          <button id="mergePdfMore" class="merge-pdf-button merge-pdf-primary" type="button">Add More PDFs to This Result</button>
+          <button id="mergePdfNew" class="merge-pdf-button merge-pdf-secondary" type="button">Start a New Merge</button>
+          </div>
+      </section>
+    </section>
+    <aside class="merge-pdf-privacy">
+        <h2>Private browser processing</h2>
+        <p>Your selected PDF contents are processed locally in this browser and are not uploaded to ToolXone for merging. The page still loads the PDF library from a CDN and may make separate requests for site functions such as analytics or advertising.</p>
+    </aside>
+</main>
+<section id="relatedTools" class="tool-related"></section>
+    <section id="pdfInfo" class="tool-article" tabindex="-1"><!-- TOOLXONE:STATIC-ARTICLE:START merge-pdf -->
+
+    <section class="tool-article">
+
+    <h1>How to Merge PDF Files</h1>
+<p>Combine multiple PDF documents into one file with ToolXone Merge PDF. Add files, arrange their order, and merge them in your browser.</p>
+<h2>Arrange PDF Files</h2>
+<p>Add at least two supported PDF files. Use Move Up and Move Down to set the order of documents and their pages in the merged output.</p>
+<h2>Merge PDFs in Your Browser</h2>
+<p>ToolXone validates selected PDF content and combines files locally in the browser. The initial tool limits are 10 files, 25 MiB per file, and 100 MiB combined.</p>
+<h2>Unsupported or Protected Files</h2>
+<p>Malformed, encrypted, password-protected, or otherwise unsupported PDFs may not be mergeable. The tool identifies files it cannot read and explains the issue by filename.</p>
+
+
+    </section>
+
+    <!-- TOOLXONE:STATIC-ARTICLE:END merge-pdf --></section>
+<section id="pdfFAQ" class="tool-faq"></section>
+<section id="tool-reviews"></section>
+<section id="pdfFeedback"></section>
+<footer id="siteFooter"></footer>
+<script src="js/config.js"></script><script src="js/navbar.js"></script><script src="js/theme.js"></script><script src="js/search.js"></script><script src="js/tool-cards.js"></script><script src="js/tools.js"></script>
+<script src="js/backend/backend-config.js"></script><script src="js/backend/api-client.js"></script><script src="js/backend/statistics-api.js"></script><script src="js/backend/statistics-service.js"></script><script src="js/backend/analytics-api.js"></script><script src="js/backend/feedback-api.js"></script><script src="js/backend/tool-usage-api.js"></script><script src="js/backend/backend.js"></script>
+<script src="js/finance-components.js"></script>
+<script src="js/config/tools-registry.js"></script>
+<script src="js/statistics/statistics-storage.js"></script><script src="js/statistics/statistics-engine.js"></script><script src="js/statistics/statistics-events.js"></script>
+<script src="js/seo/schema-registry.js"></script><script src="js/seo/schemas/merge-pdf-schema.js"></script><script src="js/seo/schema-engine.js"></script><script src="js/seo/meta-registry.js"></script><script src="js/seo/meta-engine.js"></script><script src="js/seo/seo-platform.js"></script>
+<script src="js/content/content-registry.js"></script><script src="js/content/article-loader.js"></script><script src="js/content/article-renderer.js"></script><script src="js/content/faq-loader.js"></script><script src="js/content/faq-renderer.js"></script><script src="js/content/related-loader.js"></script><script src="js/content/related-renderer.js"></script><script src="js/content/metadata-loader.js"></script><script src="js/content/metadata-renderer.js"></script><script src="js/content/hero-loader.js"></script><script src="js/content/hero-renderer.js"></script><script src="js/content/content-platform.js"></script><script src="js/content/content-data-pdf.js"></script><script src="js/content/content-integration-engine.js"></script>
+<script src="js/pdf/pdf-category-config.js"></script><script src="js/pdf/pdf-registry.js"></script><script src="js/pdf/pdf-state.js"></script><script src="js/pdf/pdf-components.js"></script><script src="js/pdf/pdf-workspace.js"></script><script src="js/pdf/pdf-engine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="js/pdf/merge-pdf.js"></script>
+<script>
+(function () {
+    "use strict";
+    if (window.ToolXoneHeroRenderer) ToolXoneHeroRenderer.render("merge-pdf");
+    if (typeof renderToolReviews === "function") renderToolReviews("tool-reviews", "Merge PDF");
+    if (typeof renderFinanceFeedback === "function") renderFinanceFeedback("pdfFeedback", "Merge PDF");
+    if (window.ToolXoneSchemaRegistry && window.ToolXoneSchema) {
+        const pageSchema = ToolXoneSchemaRegistry.get("MergePDF");
+        if (pageSchema) {
+            ToolXoneSchema.render(pageSchema.schema);
+            if (window.ToolXoneMeta) ToolXoneMeta.render(pageSchema.meta);
+        }
+    }
+})();
+</script>
+<script src="js/footer.js"></script><script src="js/app.js"></script>
+<script>(function(s){s.dataset.zone='12256017',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</body>
+</html>

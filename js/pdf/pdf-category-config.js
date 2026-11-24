@@ -57,11 +57,11 @@ This configuration must NOT contain:
         icon:
             "📄",
 
-        description:
-            "Online tools for converting PDF pages to images and images to PDF documents.",
+            description:
+            "Online tools to merge PDFs, convert PDF pages to images, and convert images to PDF documents.",
 
         shortDescription:
-            "Convert PDF pages to images and images to PDF online.",
+            "Merge PDF files and convert between PDFs and images online.",
 
         theme:
             "pdf",
@@ -79,10 +79,10 @@ This configuration must NOT contain:
     const seo = {
 
         title:
-            "Free Online PDF Tools - PDF to Image & Image to PDF | ToolXone",
+            "Free Online PDF Tools - Merge, Convert PDF & Images | ToolXone",
 
         description:
-            "Use ToolXone's free online tools to convert PDF pages to images and JPG, PNG and WebP images into PDF documents.",
+            "Use ToolXone's free online tools to merge PDF files, convert PDF pages to images, and create PDFs from images.",
 
         keywords: [
 
@@ -100,7 +100,11 @@ This configuration must NOT contain:
 
             "image to PDF",
 
-            "PDF utility"
+            "PDF utility",
+
+            "merge PDF",
+
+            "combine PDF files"
 
         ]
 
@@ -119,16 +123,46 @@ This configuration must NOT contain:
             description: "Convert PDF pages to JPG, PNG or WebP images, and convert supported images into PDF documents.",
             order: 1,
             tools: ["pdf-to-image", "image-to-pdf"]
+        },
+        {
+            id: "organize",
+            name: "Organize PDF",
+            icon: "🗂️",
+            description: "Combine PDF files in the order you choose.",
+            order: 2,
+            tools: ["merge-pdf"]
         }
     ];
 
-    const featuredTools = ["pdf-to-image", "image-to-pdf"];
+    const featuredTools = ["merge-pdf", "pdf-to-image", "image-to-pdf"];
 
     /* ======================================================
        CONVERSION WORKFLOW DEFINITIONS
        ====================================================== */
 
     const conversionWorkflows = [
+
+        {
+
+            id: "merge-pdf",
+
+            name: "Merge PDF",
+
+            direction: "merge-pdf",
+
+            inputTypes: ["application/pdf"],
+
+            inputExtensions: [".pdf"],
+
+            outputType: "application/pdf",
+
+            outputExtension: ".pdf",
+
+            multipleFiles: true,
+
+            description: "Combine multiple PDF documents in the selected order."
+
+        },
 
         {
 
@@ -236,14 +270,15 @@ This configuration must NOT contain:
        PDF CAPABILITY GROUPS
        ====================================================== */
 
-    const capabilities = { convert: true };
+    const capabilities = { convert: true, organize: true };
 
     /* ======================================================
        CATEGORY NAVIGATION
        ====================================================== */
 
     const navigation = [
-        { id: "convert", label: "Convert", icon: "🔄" }
+        { id: "convert", label: "Convert", icon: "🔄" },
+        { id: "organize", label: "Organize", icon: "🗂️" }
     ];
 
 

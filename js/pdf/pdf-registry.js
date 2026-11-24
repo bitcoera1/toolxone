@@ -24,7 +24,7 @@ const ToolXonePDFRegistry = Object.freeze({
     category: {
         id: "pdf",
         name: "PDF Tools",
-        description: "Free online tools for converting PDF pages to images and images to PDF documents."
+        description: "Free online tools to merge PDFs and convert between PDFs and images."
     },
 
     tools: {
@@ -42,6 +42,14 @@ const ToolXonePDFRegistry = Object.freeze({
             name: "Image to PDF",
             file: "image-to-pdf.html",
             engine: "image-to-pdf.js",
+            status: "active"
+        },
+
+        mergePdf: {
+            id: "merge-pdf",
+            name: "Merge PDF",
+            file: "merge-pdf.html",
+            engine: "merge-pdf.js",
             status: "active"
         }
 

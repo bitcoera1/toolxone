@@ -28,7 +28,8 @@ const MANIFEST=Object.freeze([
 ['weight-converter.html','weight-converter','#financeInfo'],
 ['pdf-tools.html','pdf-tools','#pdfInfo'],
 ['pdf-to-image.html','pdf-to-image','#pdfInfo'],
-['image-to-pdf.html','image-to-pdf','#pdfInfo']
+['image-to-pdf.html','image-to-pdf','#pdfInfo'],
+['merge-pdf.html','merge-pdf','#pdfInfo']
 ].map(([file,key,selector])=>Object.freeze({file,key,selector})));
 const DATA_FILES=Object.freeze(['age','basic','bmi','currency','education','finance','health','pdf','percentage','qr','scientific','weight'].map(n=>`js/content/content-data-${n}.js`));
 const VOID=new Set('area base br col embed hr img input link meta param source track wbr'.split(' '));
@@ -135,7 +136,7 @@ function replaceRegion(html,entry,output){
  return html.slice(0,bounds.start)+output.replace(/\r\n|\r|\n/g,newline)+html.slice(bounds.end);
 }
 function validateManifest(manifest){
- if(manifest.length!==27)fail('Expected exactly 27 mappings');const files=new Set(),keys=new Set();
+ if(manifest.length!==28)fail('Expected exactly 28 mappings');const files=new Set(),keys=new Set();
  for(const e of manifest){const approved=MANIFEST.find(m=>m.file===e.file);
   if(!approved||e.key!==approved.key||e.selector!==approved.selector||files.has(e.file)||keys.has(e.key))fail('Invalid/duplicate mapping');files.add(e.file);keys.add(e.key);
  }
@@ -157,7 +158,7 @@ function loadRuntime(read=readSource){
 }
 function prepare({manifest=MANIFEST,read=readSource}={}){
  validateManifest(manifest);const runtime=loadRuntime(read),keys=runtime.registry.list('articles');
- if(keys.length!==27||manifest.some(m=>!keys.includes(m.key)))fail('Registry/manifest mismatch');
+ if(keys.length!==28||manifest.some(m=>!keys.includes(m.key)))fail('Registry/manifest mismatch');
  return manifest.map(entry=>{const input=read(entry.file),before=Buffer.isBuffer(input)?decodeUTF8(input):input,output=runtime.render(entry.key),after=replaceRegion(before,entry,output);return {...entry,before,after,output,changed:before!==after};});
 }
 function run(args,{read,write=(file,text)=>fs.writeFileSync(path.join(ROOT,file),text,'utf8')}={}){

@@ -919,6 +919,23 @@ const ToolXoneToolsRegistry = [
         featured: true,
         newest: true,
         active: true
+    },
+
+    {
+        id: "merge-pdf",
+        name: "Merge PDF",
+        slug: "merge-pdf",
+        type: "pdf",
+        category: "pdf",
+        categoryId: "pdf",
+        statisticsCategory: "pdf",
+        icon: "📑",
+        url: "merge-pdf.html",
+        aliases: ["merge pdf", "combine pdf", "combine pdf files", "join pdf", "merge pdf files", "merge-pdf"],
+        related: ["pdf-to-image", "image-to-pdf"],
+        featured: true,
+        newest: true,
+        active: true
     }
 
 ];

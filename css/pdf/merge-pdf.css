@@ -1,0 +1,292 @@
+/* Merge PDF page styles. Selectors remain scoped to this page. */
+.merge-pdf-page {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: clamp(.75rem, 2vh, 1.5rem) 1rem 3rem;
+    color: var(--pdf-text, #0f172a);
+}
+
+.merge-pdf-intro {
+    margin: .25rem 0 1rem;
+    text-align: center;
+}
+
+.merge-pdf-intro h1 {
+    margin: .75rem 0;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.merge-pdf-intro p,
+.merge-pdf-order-note,
+.merge-pdf-privacy p {
+    color: var(--pdf-text-soft, #475569);
+    line-height: 1.65;
+}
+
+.merge-pdf-badge {
+    display: inline-flex;
+    padding: .45rem .8rem;
+    border-radius: 999px;
+    background: #ccfbf1;
+    color: #115e59;
+    font-weight: 800;
+    letter-spacing: .04em;
+}
+
+.merge-pdf-card,
+.merge-pdf-privacy {
+    padding: clamp(1rem, 3vw, 2rem);
+    border: 1px solid var(--pdf-border, #e2e8f0);
+    border-radius: var(--pdf-radius, 18px);
+    background: var(--pdf-surface, #fff);
+    box-shadow: var(--pdf-shadow, 0 10px 30px rgba(15, 23, 42, .08));
+}
+
+.merge-pdf-card > h2,
+.merge-pdf-privacy h2 { margin-top: 0; }
+
+/* Upload-state panels stay inside the visibility-controlled workspace. */
+.merge-pdf-panels {
+    display: grid;
+    grid-template-columns: minmax(15rem, 1fr) minmax(0, 3fr);
+    align-items: start;
+    gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.merge-pdf-operations-panel,
+.merge-pdf-document-panel { min-width: 0; }
+
+.merge-pdf-operations-panel { overflow-wrap: anywhere; }
+.merge-pdf-document-panel .merge-pdf-file-section { margin-top: 0; }
+.merge-pdf-result-workspace { max-width: 100%; box-sizing: border-box; }
+
+.merge-pdf-limits { color: #475569; font-size: .92rem; }
+
+.merge-pdf-drop {
+    display: grid;
+    justify-items: center;
+    gap: .5rem;
+    margin: .75rem 0;
+    padding: 1.25rem 1rem;
+    border: 2px dashed #94a3b8;
+    border-radius: 14px;
+    background: #f8fafc;
+    text-align: center;
+    transition: border-color .15s ease, background .15s ease;
+}
+
+.merge-pdf-drop.is-dragging { border-color: #0f766e; background: #f0fdfa; }
+.merge-pdf-drop p { margin: .2rem 0; }
+.merge-pdf-upload-icon { font-size: 2.5rem; }
+.merge-pdf-or { color: #64748b; }
+
+.merge-pdf-button {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: .7rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.merge-pdf-button:focus-visible,
+.merge-pdf-file-actions button:focus-visible {
+    outline: 3px solid #14b8a6;
+    outline-offset: 2px;
+}
+
+.merge-pdf-button:disabled,
+.merge-pdf-file-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.merge-pdf-primary { background: #0f766e; color: white; }
+.merge-pdf-primary:hover:not(:disabled) { background: #115e59; }
+.merge-pdf-secondary { border-color: #cbd5e1; background: #fff; color: #0f172a; }
+
+.merge-pdf-status { min-height: 1.5em; margin: .75rem 0; font-weight: 650; }
+.merge-pdf-status[data-kind="error"] { color: #b91c1c; }
+.merge-pdf-status[data-kind="success"] { color: #047857; }
+.merge-pdf-errors { padding-left: 1.25rem; color: #b91c1c; }
+.merge-pdf-errors:empty { display: none; }
+
+.merge-pdf-file-section { margin-top: .85rem; }
+.merge-pdf-list-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.merge-pdf-list-heading h3 { margin-bottom: .35rem; }
+.merge-pdf-list-heading span { color: #64748b; font-size: .9rem; }
+.merge-pdf-order-note { margin-top: .25rem; font-size: .92rem; }
+.merge-pdf-list-viewport {
+    max-height: min(36vh, 20rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    margin: .6rem 0;
+    padding: .15rem;
+    border-radius: 10px;
+}
+
+.merge-pdf-list-viewport:focus-visible {
+    outline: 3px solid #14b8a6;
+    outline-offset: 2px;
+}
+
+.merge-pdf-files { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+
+.merge-pdf-file {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .85rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    background: white;
+}
+
+.merge-pdf-file-info { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); align-items: center; min-width: 0; gap: .3rem .75rem; }
+.merge-pdf-preview { grid-row: span 3; display: grid; width: 4.5rem; height: 5.75rem; place-items: center; overflow: hidden; border: 1px solid #cbd5e1; border-radius: 6px; background: #f1f5f9; }
+.merge-pdf-preview canvas { display: block; max-width: 100%; max-height: 100%; object-fit: contain; }
+.merge-pdf-preview-placeholder { padding: .25rem; color: #64748b; font-size: .68rem; line-height: 1.25; text-align: center; }
+.merge-pdf-file-info strong { overflow-wrap: anywhere; }
+.merge-pdf-file-info span { color: #64748b; font-size: .9rem; }
+.merge-pdf-file-info .merge-pdf-page-count { color: #334155; font-size: .82rem; }
+.merge-pdf-file-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .4rem; }
+.merge-pdf-file-actions button { min-height: 40px; padding: .45rem .65rem; border: 1px solid #cbd5e1; border-radius: 7px; background: #fff; color: #0f172a; font: inherit; cursor: pointer; }
+.merge-pdf-file-actions button[data-action="remove"] { color: #991b1b; }
+.merge-pdf-drag-handle {
+    display: inline-grid;
+    width: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    place-items: center;
+    padding: .25rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    background: #f8fafc;
+    color: #334155;
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.merge-pdf-drag-handle:active { cursor: grabbing; }
+.merge-pdf-file.is-dragging { opacity: .55; }
+.merge-pdf-file.is-drop-before,
+.merge-pdf-file.is-drop-after { outline: 2px dashed #0f766e; outline-offset: 2px; }
+.merge-pdf-file.is-drop-before::before,
+.merge-pdf-file.is-drop-after::after {
+    position: absolute;
+    z-index: 1;
+    left: .5rem;
+    padding: .1rem .4rem;
+    border-radius: 4px;
+    background: #0f766e;
+    color: #fff;
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+.merge-pdf-file.is-drop-before::before { content: "Insert before"; top: -.85rem; }
+.merge-pdf-file.is-drop-after::after { content: "Insert after"; bottom: -.85rem; }
+.merge-pdf-file.is-reordered { outline: 2px solid #0f766e; outline-offset: 2px; }
+.merge-pdf-pinned-label { align-self: center; padding: .35rem .55rem; border: 1px solid #94a3b8; border-radius: 6px; color: #334155; font-size: .82rem; font-weight: 700; }
+.merge-pdf-main-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: .8rem; }
+
+.merge-pdf-processing,
+.merge-pdf-result-workspace {
+    margin-top: 1.25rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: #f1f5f9;
+}
+
+.merge-pdf-processing h3,
+.merge-pdf-result-workspace h2 { margin: 0 0 .4rem; }
+.merge-pdf-result-workspace h2:focus-visible { outline: 3px solid #14b8a6; outline-offset: 3px; border-radius: 2px; }
+.merge-pdf-processing progress { width: 100%; margin-top: .5rem; accent-color: #0f766e; }
+.merge-pdf-output-details { display: flex; flex-wrap: wrap; gap: .75rem 2rem; margin: 1rem 0; }
+.merge-pdf-output-details div { display: grid; gap: .2rem; }
+.merge-pdf-output-details dt { color: #64748b; font-size: .9rem; }
+.merge-pdf-output-details dd { margin: 0; font-weight: 700; overflow-wrap: anywhere; }
+.merge-pdf-result-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.merge-pdf-result-actions .merge-pdf-button { min-width: min(100%, 13rem); }
+.merge-pdf-privacy { margin-top: 1.5rem; }
+
+@media (max-width: 640px) {
+    .merge-pdf-panels { grid-template-columns: minmax(0, 1fr); }
+    .merge-pdf-list-viewport { max-height: min(36vh, 16rem); }
+    .merge-pdf-file { align-items: flex-start; flex-direction: column; }
+    .merge-pdf-file-actions { justify-content: flex-start; width: 100%; }
+    .merge-pdf-main-actions .merge-pdf-button,
+    .merge-pdf-result-actions .merge-pdf-button { flex: 1 1 100%; }
+}
+
+@media (min-width: 641px) and (max-width: 900px) {
+    .merge-pdf-panels { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .merge-pdf-drop { transition: none; }
+}
+
+/* Shared outer frame for Merge PDF page sections. */
+body[data-tool="merge-pdf"] {
+    --merge-pdf-content-max: 1240px;
+    --merge-pdf-content-gutters: clamp(2rem, 6vw, 4rem);
+}
+
+body[data-tool="merge-pdf"] .tx-tool-hero,
+body[data-tool="merge-pdf"] .merge-pdf-page,
+body[data-tool="merge-pdf"] #relatedTools,
+body[data-tool="merge-pdf"] #pdfInfo,
+body[data-tool="merge-pdf"] #pdfFAQ,
+body[data-tool="merge-pdf"] #tool-reviews,
+body[data-tool="merge-pdf"] #pdfFeedback {
+    width: min(calc(100% - var(--merge-pdf-content-gutters)), var(--merge-pdf-content-max));
+    max-width: var(--merge-pdf-content-max);
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+}
+
+body[data-tool="merge-pdf"] .merge-pdf-page {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+body[data-tool="merge-pdf"] #pdfFAQ .tx-faq-section,
+body[data-tool="merge-pdf"] #tool-reviews .tx-review-section,
+body[data-tool="merge-pdf"] #pdfFeedback .tx-feedback-section {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+/* Keep readable inner widths inside the shared outer frame. */
+body[data-tool="merge-pdf"] #pdfInfo > .tool-article {
+    width: min(calc(100% - 2rem), 1070px);
+    max-width: 1070px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body[data-tool="merge-pdf"] #pdfFAQ .toolxone-faq-item,
+body[data-tool="merge-pdf"] #tool-reviews .tx-review-list {
+    width: min(100%, 1080px);
+    max-width: 1080px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+body[data-tool="merge-pdf"] #pdfFeedback .tx-feedback-header,
+body[data-tool="merge-pdf"] #pdfFeedback .tx-feedback-tool,
+body[data-tool="merge-pdf"] #pdfFeedback .feedback-form {
+    width: min(100%, 760px);
+    max-width: 760px;
+    margin-right: auto;
+    margin-left: auto;
+}

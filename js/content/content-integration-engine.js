@@ -166,6 +166,16 @@
 
             },
 
+            "merge-pdf": {
+
+                article: "#pdfInfo",
+
+                faq: "#pdfFAQ",
+
+                related: "#relatedTools"
+
+            },
+
             "bmr-calculator": {
 
     article: "#financeInfo",
